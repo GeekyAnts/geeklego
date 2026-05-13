@@ -52,7 +52,7 @@
   "scripts": {
     "predev": "node -e \"try{require('esbuild')}catch(e){console.error('\\nesbuild binary mismatch — attempting auto-fix...\\n');try{require('child_process').execSync('pnpm rebuild esbuild',{stdio:'inherit'})}catch(e2){console.error('\\nAuto-fix failed. Run manually:\\n  pnpm store prune\\n  rm -rf node_modules packages/geeklego/node_modules apps/geeklego-site/node_modules\\n  pnpm install\\n');process.exit(1)}}\"",
     "dev": "vite --config vite.config.ts app",
-    "dev:all": "concurrently -n \"tokens,storybook\" -c \"cyan,magenta\" \"vite --config vite.config.ts app\" \"storybook dev -p 6006\"",
+    "dev:all": "concurrently -n \"tokens,storybook\" -c \"cyan,magenta\" --delay 2 \"vite --config vite.config.ts app\" \"storybook dev -p 6006\"",
     "prestorybook": "node -e \"try{require('esbuild')}catch(e){console.error('\\nesbuild binary mismatch — attempting auto-fix...\\n');try{require('child_process').execSync('pnpm rebuild esbuild',{stdio:'inherit'})}catch(e2){console.error('\\nAuto-fix failed. Run manually:\\n  pnpm store prune\\n  rm -rf node_modules packages/geeklego/node_modules apps/geeklego-site/node_modules\\n  pnpm install\\n');process.exit(1)}}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

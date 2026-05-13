@@ -1,0 +1,21 @@
+{
+  "default": {
+    "alignment": "received",
+    "children": "Hey! Are you free for a call later today?",
+    "timestamp": "2:34 PM",
+    "avatarInitials": "SR",
+    "senderName": "Sarah"
+  },
+  "variants": [
+    { "alignment": "received", "children": "Received message", "avatarInitials": "JD", "timestamp": "3:00 PM" },
+    { "alignment": "sent", "children": "Sent message", "timestamp": "3:01 PM" }
+  ],
+  "states": {
+    "withName": { "alignment": "received", "children": "Message with name shown", "avatarInitials": "SR", "senderName": "Sarah", "showName": true, "timestamp": "9:00 AM" },
+    "noTimestamp": { "alignment": "received", "children": "No timestamp", "avatarInitials": "JD" },
+    "sentNoAvatar": { "alignment": "sent", "children": "Sent — no avatar shown", "timestamp": "4:00 PM" }
+  },
+  "edge_cases": [
+    { "label": "Long message", "alignment": "received", "avatarInitials": "SR", "children": "This is a very long message that wraps across multiple lines to test bubble overflow and layout integrity in a realistic scenario.", "timestamp": "9:05 AM" }
+  ]
+}

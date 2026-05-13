@@ -1,0 +1,75 @@
+{
+  "default": {
+    "as": "span",
+    "children": "Search"
+  },
+  "variants": [
+    {
+      "as": "span",
+      "label": "span (inline — default)",
+      "children": "User avatar for Jane Smith",
+      "context": "Inside an avatar element, safe for inline parents"
+    },
+    {
+      "as": "div",
+      "label": "div (block)",
+      "children": "Chart showing monthly revenue. Use the data table below for details.",
+      "context": "Alongside a chart, providing a full description"
+    },
+    {
+      "as": "p",
+      "label": "p (paragraph)",
+      "children": "Navigation section. Contains 5 links to main areas of the application.",
+      "context": "Block container where a paragraph is semantically correct"
+    }
+  ],
+  "use_cases": [
+    {
+      "pattern": "icon_button_label",
+      "children": "Open settings",
+      "sr_announcement": "Open settings, button",
+      "description": "Provides accessible name for icon-only buttons"
+    },
+    {
+      "pattern": "loading_status",
+      "children": "Loading results, please wait…",
+      "aria_live": "polite",
+      "role": "status",
+      "description": "Status announcement for async operations"
+    },
+    {
+      "pattern": "badge_count",
+      "children": "3 unread notifications",
+      "visual_text": "3",
+      "description": "Full context for visually abbreviated badge counts"
+    },
+    {
+      "pattern": "landmark_description",
+      "children": "Primary navigation — 4 sections available",
+      "description": "Supplementary description for nav landmark"
+    }
+  ],
+  "edge_cases": [
+    {
+      "label": "very_long_text",
+      "children": "This is a very long description that would be read by a screen reader but would clutter the visual UI if shown. It provides complete context for an otherwise ambiguous visual element.",
+      "note": "No overflow issues — element is 1×1px regardless of content length"
+    },
+    {
+      "label": "special_characters",
+      "children": "Dashboard & Analytics — 12 items (3 new)",
+      "note": "Ampersands and parentheses read naturally via TTS"
+    },
+    {
+      "label": "numeric_context",
+      "children": "72 percent complete",
+      "visual_text": "72%",
+      "note": "Screen readers may read '72%' differently — explicit text prevents ambiguity"
+    },
+    {
+      "label": "nested_in_button",
+      "children": "Close dialog",
+      "note": "Atom has no forwardRef complexity — just passes ref through createElement"
+    }
+  ]
+}

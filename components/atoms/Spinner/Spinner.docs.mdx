@@ -1,0 +1,157 @@
+---
+title: Spinner
+description: Animated loading indicator with three visual variants and five sizes for inline and overlay contexts.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Spinner } from \"@geeklego/ui\"\n\n{/* Standard */}\n<Spinner variant=\"default\" />\n\n{/* On dark or colored background */}\n<Spinner variant=\"inverse\" />"}>
+  <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-2 items-start">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">default — arc on faint ring track</span>
+      <div className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-bg-secondary)]">
+        <Spinner variant="default" size="md" />
+        <span className="text-body-sm text-[var(--color-text-secondary)]">Standard loading indicator.</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2 items-start">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">inverse — white arc on faint ring track</span>
+      <div className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-action-primary)]">
+        <Spinner variant="inverse" size="md" />
+        <span className="text-body-sm text-[var(--color-text-inverse)]">White arc for dark/colored backgrounds.</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Spinner } from \"@geeklego/ui\"\n\n<Spinner size=\"xs\" />\n<Spinner size=\"sm\" />\n<Spinner size=\"md\" />\n<Spinner size=\"lg\" />\n<Spinner size=\"xl\" />"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex items-end gap-8">
+      <div className="flex flex-col items-center gap-3">
+        <Spinner variant="default" size="xs" />
+        <span className="text-body-xs text-[var(--color-text-tertiary)]">xs — 16px</span>
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <Spinner variant="default" size="sm" />
+        <span className="text-body-xs text-[var(--color-text-tertiary)]">sm — 20px</span>
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <Spinner variant="default" size="md" />
+        <span className="text-body-xs text-[var(--color-text-tertiary)]">md — 24px</span>
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <Spinner variant="default" size="lg" />
+        <span className="text-body-xs text-[var(--color-text-tertiary)]">lg — 32px</span>
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <Spinner variant="default" size="xl" />
+        <span className="text-body-xs text-[var(--color-text-tertiary)]">xl — 48px</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Inline with Text
+
+<ComponentPreview code={"import { Spinner } from \"@geeklego/ui\"\n\n{/* Inline with text */}\n<div className=\"flex items-center gap-2\">\n  <Spinner size=\"sm\" />\n  <span>Saving changes\u2026</span>\n</div>\n\n{/* Centered overlay */}\n<div className=\"flex items-center justify-center h-24\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <Spinner size=\"lg\" />\n    <span>Loading content\u2026</span>\n  </div>\n</div>\n\n{/* Custom label for screen readers */}\n<Spinner label=\"Uploading file, please wait\" />"}>
+  <div className="flex flex-col gap-8 w-full max-w-sm">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Inline with text</span>
+      <div className="flex items-center gap-2">
+        <Spinner size="sm" />
+        <span className="text-body-md text-[var(--color-text-secondary)]">Saving changes…</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Centered overlay pattern</span>
+      <div className="relative h-24 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2">
+          <Spinner size="lg" />
+          <span className="text-body-sm text-[var(--color-text-tertiary)]">Loading content…</span>
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Custom accessible label</span>
+      <div className="flex items-center gap-3">
+        <Spinner label="Uploading file, please wait" />
+        <span className="text-body-sm text-[var(--color-text-secondary)]">label="Uploading file, please wait"</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <Spinner variant=\"default\" size=\"md\" />\n  <Spinner variant=\"inverse\" size=\"md\" />\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-col gap-8">
+      <div className="flex items-center gap-8">
+        <div className="flex flex-col items-center gap-3">
+          <div className="p-3 rounded-lg bg-[var(--color-bg-secondary)]">
+            <Spinner variant="default" size="md" />
+          </div>
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">default</span>
+        </div>
+        <div className="flex flex-col items-center gap-3">
+          <div className="p-3 rounded-lg bg-[var(--color-action-primary)]">
+            <Spinner variant="inverse" size="md" />
+          </div>
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">inverse</span>
+        </div>
+      </div>
+      <div className="flex items-end gap-6">
+        <div className="flex flex-col items-center gap-2">
+          <Spinner variant="default" size="xs" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">xs</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Spinner variant="default" size="sm" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">sm</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Spinner variant="default" size="md" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">md</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Spinner variant="default" size="lg" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">lg</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Spinner variant="default" size="xl" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">xl</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'default' | 'inverse'", defaultValue: "'default'", description: "Visual style variant. default — arc on a faint ring. inverse — white arc for dark/colored backgrounds." },
+    { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", defaultValue: "'md'", description: "Diameter of the spinner. Maps to the icon size scale (xs=16px, sm=20px, md=24px, lg=32px, xl=48px)." },
+    { name: "label", type: "string", defaultValue: "'Loading…'", description: "Accessible label announced to screen readers via a visually-hidden span." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders with `role="status"` — a polite ARIA live region that announces the label when the spinner appears
+- The `label` prop is read by screen readers via a visually-hidden `<span>`; defaults to `"Loading…"`
+- Pass a specific `label` for context: `label="Uploading file, please wait"`
+- `aria-label` attribute overrides the `label` prop when more dynamic text is needed
+- For container-level loading, pair with `aria-busy="true"` on the parent element
+- Animation collapses to a static arc when `prefers-reduced-motion: reduce` is set
+- No interactive role — keyboard users do not focus the spinner
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| — | No keyboard interaction — display-only component |

@@ -1,0 +1,138 @@
+---
+title: FormField
+description: A form-field wrapper that associates a Label with any form control, plus optional hint text and error messaging.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-lg\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-2\">\n      labelPosition=\"top\" (default)\n    </p>\n    <FormField label=\"Full name\" htmlFor=\"name-top\" hint=\"As it appears on your ID.\">\n      <Input id=\"name-top\" placeholder=\"Jane Doe\" aria-describedby=\"name-top-hint\" />\n    </FormField>\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-2\">\n      labelPosition=\"left\" (inline)\n    </p>\n    <FormField label=\"Full name\" htmlFor=\"name-left\" labelPosition=\"left\" hint=\"As it appears on your ID.\">\n      <Input id=\"name-left\" placeholder=\"Jane Doe\" aria-describedby=\"name-left-hint\" />\n    </FormField>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-lg">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-2">labelPosition="top" (default)</p>
+      <FormField label="Full name" htmlFor="name-top" hint="As it appears on your ID.">
+        <Input id="name-top" placeholder="Jane Doe" aria-describedby="name-top-hint" />
+      </FormField>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-2">labelPosition="left" (inline)</p>
+      <FormField label="Full name" htmlFor="name-left" labelPosition="left" hint="As it appears on your ID.">
+        <Input id="name-left" placeholder="Jane Doe" aria-describedby="name-left-hint" />
+      </FormField>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-lg\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-2\">size=\"sm\"</p>\n    <FormField label=\"Username\" htmlFor=\"username-sm\" size=\"sm\" hint=\"3-20 characters, letters and numbers only.\">\n      <Input id=\"username-sm\" size=\"sm\" placeholder=\"johndoe\" aria-describedby=\"username-sm-hint\" />\n    </FormField>\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-2\">size=\"md\"</p>\n    <FormField label=\"Username\" htmlFor=\"username-md\" size=\"md\" hint=\"3-20 characters, letters and numbers only.\">\n      <Input id=\"username-md\" size=\"md\" placeholder=\"johndoe\" aria-describedby=\"username-md-hint\" />\n    </FormField>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-lg">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-2">size="sm"</p>
+      <FormField label="Username" htmlFor="username-sm" size="sm" hint="3-20 characters, letters and numbers only.">
+        <Input id="username-sm" size="sm" placeholder="johndoe" aria-describedby="username-sm-hint" />
+      </FormField>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-2">size="md"</p>
+      <FormField label="Username" htmlFor="username-md" size="md" hint="3-20 characters, letters and numbers only.">
+        <Input id="username-md" size="md" placeholder="johndoe" aria-describedby="username-md-hint" />
+      </FormField>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Required
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<FormField label=\"Required\" htmlFor=\"state-required\" required hint=\"This field is mandatory.\" className=\"max-w-lg\">\n  <Input id=\"state-required\" placeholder=\"Required field\" required aria-required=\"true\" aria-describedby=\"state-required-hint\" />\n</FormField>"}>
+  <FormField label="Required" htmlFor="state-required" required hint="This field is mandatory." className="max-w-lg">
+    <Input id="state-required" placeholder="Required field" required aria-required="true" aria-describedby="state-required-hint" />
+  </FormField>
+</ComponentPreview>
+
+## Optional
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<FormField label=\"Optional\" htmlFor=\"state-optional\" optional className=\"max-w-lg\">\n  <Input id=\"state-optional\" placeholder=\"Optional field\" />\n</FormField>"}>
+  <FormField label="Optional" htmlFor="state-optional" optional className="max-w-lg">
+    <Input id="state-optional" placeholder="Optional field" />
+  </FormField>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<FormField label=\"Disabled\" htmlFor=\"state-disabled\" disabled hint=\"This field is locked.\" className=\"max-w-lg\">\n  <Input id=\"state-disabled\" placeholder=\"Disabled field\" disabled aria-describedby=\"state-disabled-hint\" />\n</FormField>"}>
+  <FormField label="Disabled" htmlFor="state-disabled" disabled hint="This field is locked." className="max-w-lg">
+    <Input id="state-disabled" placeholder="Disabled field" disabled aria-describedby="state-disabled-hint" />
+  </FormField>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<FormField label=\"Error\" htmlFor=\"state-error\" error=\"Please enter a valid email address.\" required className=\"max-w-lg\">\n  <Input id=\"state-error\" placeholder=\"bad@\" error aria-invalid=\"true\" aria-describedby=\"state-error-error\" />\n</FormField>"}>
+  <FormField label="Error" htmlFor="state-error" error="Please enter a valid email address." required className="max-w-lg">
+    <Input id="state-error" placeholder="bad@" error aria-invalid="true" aria-describedby="state-error-error" />
+  </FormField>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { FormField, Input } from \"@geeklego/ui\"\n\n<FormField label=\"Loading\" htmlFor=\"state-loading\" className=\"max-w-lg\">\n  <Input id=\"state-loading\" placeholder=\"Validating...\" isLoading aria-busy=\"true\" />\n</FormField>"}>
+  <FormField label="Loading" htmlFor="state-loading" className="max-w-lg">
+    <Input id="state-loading" placeholder="Validating..." isLoading aria-busy="true" />
+  </FormField>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { FormField, Input, Select } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <FormField label=\"Email\" htmlFor=\"dark-email\" hint=\"We keep it private.\" required>\n    <Input id=\"dark-email\" type=\"email\" placeholder=\"you@example.com\" required aria-required=\"true\" aria-describedby=\"dark-email-hint\" />\n  </FormField>\n  <FormField label=\"Password\" htmlFor=\"dark-password\" error=\"Must be at least 8 characters.\">\n    <Input id=\"dark-password\" type=\"password\" placeholder=\"••••••••\" error aria-invalid=\"true\" aria-describedby=\"dark-password-error\" />\n  </FormField>\n  <FormField label=\"Role\" htmlFor=\"dark-role\" labelPosition=\"left\" optional>\n    <Select id=\"dark-role\" options={[{ value: \"admin\", label: \"Admin\" }, { value: \"editor\", label: \"Editor\" }, { value: \"viewer\", label: \"Viewer\" }]} placeholder=\"Choose a role\" />\n  </FormField>\n  <FormField label=\"Disabled\" htmlFor=\"dark-disabled\" disabled>\n    <Input id=\"dark-disabled\" placeholder=\"Locked\" disabled />\n  </FormField>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <FormField label="Email" htmlFor="dark-email" hint="We keep it private." required>
+      <Input id="dark-email" type="email" placeholder="you@example.com" required aria-required="true" aria-describedby="dark-email-hint" />
+    </FormField>
+    <FormField label="Password" htmlFor="dark-password" error="Must be at least 8 characters.">
+      <Input id="dark-password" type="password" placeholder="••••••••" error aria-invalid="true" aria-describedby="dark-password-error" />
+    </FormField>
+    <FormField label="Role" htmlFor="dark-role" labelPosition="left" optional>
+      <Select id="dark-role" options={[{ value: "admin", label: "Admin" }, { value: "editor", label: "Editor" }, { value: "viewer", label: "Viewer" }]} placeholder="Choose a role" />
+    </FormField>
+    <FormField label="Disabled" htmlFor="dark-disabled" disabled>
+      <Input id="dark-disabled" placeholder="Locked" disabled />
+    </FormField>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "label", type: "string", defaultValue: "—", description: "Human-readable label text. Rendered as a <label> via the Label atom. Required." },
+    { name: "htmlFor", type: "string", defaultValue: "—", description: "The id of the associated form control. Drives label association and deterministic hint/error IDs." },
+    { name: "hint", type: "string", defaultValue: "—", description: "Helper text displayed below the control. Hidden when [error] is present." },
+    { name: "error", type: "string", defaultValue: "—", description: "Validation error message. Rendered with role='alert' for immediate screen-reader announcement." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Shows a red asterisk and sr-only '(required)' text via the Label atom." },
+    { name: "optional", type: "boolean", defaultValue: "false", description: "Shows '(Optional)' in secondary color via the Label atom." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Applies disabled text color to the label. Does not propagate to children natively." },
+    { name: "labelPosition", type: "'top' | 'left'", defaultValue: "'top'", description: "Label placement. top — stacked layout. left — inline layout (stacks on mobile)." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Label typography scale. sm — 12px. md — 14px." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "The form control (Input, Select, Textarea, Checkbox, etc.). Required." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the wrapper div." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders a `<label>` via the Label atom with native `htmlFor` association to the form control
+- Hint text receives a deterministic `id` of `[htmlFor]-hint` for `aria-describedby` wiring
+- Error message receives `role="alert"` and `id` of `[htmlFor]-error` — announced immediately by screen readers when it appears
+- Required state shows a decorative red asterisk (`aria-hidden`) plus sr-only "(required)" text
+- Consumer is responsible for wiring `aria-describedby` on the control to the hint or error `id`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the form control inside the field |
+| Click on label | Focuses the associated control (native label behavior) |

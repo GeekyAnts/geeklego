@@ -1,0 +1,77 @@
+{
+  "default": {
+    "variant": "primary",
+    "size": "md",
+    "children": "Get started",
+    "disabled": false,
+    "isLoading": false
+  },
+  "variants": [
+    { "variant": "primary",     "size": "md", "children": "Primary" },
+    { "variant": "secondary",   "size": "md", "children": "Secondary" },
+    { "variant": "outline",     "size": "md", "children": "Outline" },
+    { "variant": "ghost",       "size": "md", "children": "Ghost" },
+    { "variant": "destructive", "size": "md", "children": "Destructive" },
+    { "variant": "link",        "size": "md", "children": "Link" }
+  ],
+  "sizes": [
+    { "variant": "primary", "size": "xs", "children": "XS" },
+    { "variant": "primary", "size": "sm", "children": "Small" },
+    { "variant": "primary", "size": "md", "children": "Medium" },
+    { "variant": "primary", "size": "lg", "children": "Large" },
+    { "variant": "primary", "size": "xl", "children": "XL" }
+  ],
+  "states": {
+    "loading": {
+      "variant": "primary", "size": "md", "children": "Saving changes", "isLoading": true
+    },
+    "disabled": {
+      "variant": "primary", "size": "md", "children": "Disabled", "disabled": true
+    },
+    "destructive_loading": {
+      "variant": "destructive", "size": "md", "children": "Deleting", "isLoading": true
+    }
+  },
+  "withIcons": [
+    { "variant": "primary",     "size": "md", "children": "Add item",  "leftIconName": "Plus" },
+    { "variant": "secondary",   "size": "md", "children": "Continue",  "rightIconName": "ArrowRight" },
+    { "variant": "outline",     "size": "md", "children": "Search",    "leftIconName": "Search" },
+    { "variant": "destructive", "size": "md", "children": "Delete",    "leftIconName": "Trash2" }
+  ],
+  "iconOnly": [
+    { "variant": "primary",     "size": "md", "children": "Add",      "iconOnly": true, "iconName": "Plus" },
+    { "variant": "secondary",   "size": "md", "children": "Copy",     "iconOnly": true, "iconName": "Copy" },
+    { "variant": "outline",     "size": "md", "children": "Search",   "iconOnly": true, "iconName": "Search" },
+    { "variant": "ghost",       "size": "md", "children": "Settings", "iconOnly": true, "iconName": "Settings" },
+    { "variant": "destructive", "size": "md", "children": "Delete",   "iconOnly": true, "iconName": "Trash2" }
+  ],
+  "edge_cases": [
+    {
+      "label": "Very long label",
+      "variant": "primary", "size": "md",
+      "children": "This is a very long button label that tests overflow handling"
+    },
+    {
+      "label": "Single character",
+      "variant": "outline", "size": "md",
+      "children": "X"
+    },
+    {
+      "label": "Loading preserves icon-bearing button width",
+      "variant": "primary", "size": "md",
+      "children": "Save changes",
+      "isLoading": true,
+      "leftIconName": "Download"
+    },
+    {
+      "label": "XS icon-only",
+      "variant": "ghost", "size": "xs",
+      "children": "Close", "iconOnly": true, "iconName": "X"
+    },
+    {
+      "label": "Inline link in prose",
+      "variant": "link", "size": "md",
+      "children": "Learn more about pricing"
+    }
+  ]
+}

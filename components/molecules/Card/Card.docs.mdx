@@ -1,0 +1,173 @@
+---
+title: Card
+description: A structured content container with header, body, and footer slots for grouping related information and actions.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Card, Button } from \"@geeklego/ui\"\n\n<div className=\"grid grid-cols-2 gap-6 max-w-2xl\">\n  <Card variant=\"elevated\">\n    <Card.Header title=\"Elevated\" description=\"Default shadow surface\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">A card with a subtle drop shadow and white background.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n      <Button variant=\"primary\" size=\"sm\">Save</Button>\n    </Card.Footer>\n  </Card>\n  <Card variant=\"outlined\">\n    <Card.Header title=\"Outlined\" description=\"Border, no shadow\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">A card defined by its border instead of a shadow.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n      <Button variant=\"primary\" size=\"sm\">Save</Button>\n    </Card.Footer>\n  </Card>\n  <Card variant=\"filled\">\n    <Card.Header title=\"Filled\" description=\"Muted background\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">A card with a subtle muted background and no border.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n      <Button variant=\"primary\" size=\"sm\">Save</Button>\n    </Card.Footer>\n  </Card>\n  <Card variant=\"ghost\">\n    <Card.Header title=\"Ghost\" description=\"Transparent surface\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">A fully transparent card useful for inline grouping.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n      <Button variant=\"primary\" size=\"sm\">Save</Button>\n    </Card.Footer>\n  </Card>\n</div>"}>
+  <div className="grid grid-cols-2 gap-6 max-w-2xl">
+    <Card variant="elevated">
+      <Card.Header title="Elevated" description="Default shadow surface" action={<Button variant="ghost" size="sm">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">A card with a subtle drop shadow and white background.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Save</Button>
+      </Card.Footer>
+    </Card>
+    <Card variant="outlined">
+      <Card.Header title="Outlined" description="Border, no shadow" action={<Button variant="ghost" size="sm">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">A card defined by its border instead of a shadow.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Save</Button>
+      </Card.Footer>
+    </Card>
+    <Card variant="filled">
+      <Card.Header title="Filled" description="Muted background" action={<Button variant="ghost" size="sm">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">A card with a subtle muted background and no border.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Save</Button>
+      </Card.Footer>
+    </Card>
+    <Card variant="ghost">
+      <Card.Header title="Ghost" description="Transparent surface" action={<Button variant="ghost" size="sm">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">A fully transparent card useful for inline grouping.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Save</Button>
+      </Card.Footer>
+    </Card>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Card, Button } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-sm\">\n  <Card variant=\"outlined\">\n    <Card.Header title=\"Compact Card\" description=\"Uses size sm buttons\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">Compact action buttons for dense layouts.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n      <Button variant=\"primary\" size=\"sm\">Save</Button>\n    </Card.Footer>\n  </Card>\n  <Card variant=\"outlined\">\n    <Card.Header title=\"Standard Card\" description=\"Uses size md buttons\" action={<Button variant=\"ghost\" size=\"md\">Edit</Button>} />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">Standard action buttons for most layouts.</p></Card.Body>\n    <Card.Footer>\n      <Button variant=\"outline\" size=\"md\">Cancel</Button>\n      <Button variant=\"primary\" size=\"md\">Save</Button>\n    </Card.Footer>\n  </Card>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-sm">
+    <Card variant="outlined">
+      <Card.Header title="Compact Card" description="Uses size sm buttons" action={<Button variant="ghost" size="sm">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">Compact action buttons for dense layouts.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Save</Button>
+      </Card.Footer>
+    </Card>
+    <Card variant="outlined">
+      <Card.Header title="Standard Card" description="Uses size md buttons" action={<Button variant="ghost" size="md">Edit</Button>} />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">Standard action buttons for most layouts.</p></Card.Body>
+      <Card.Footer>
+        <Button variant="outline" size="md">Cancel</Button>
+        <Button variant="primary" size="md">Save</Button>
+      </Card.Footer>
+    </Card>
+  </div>
+</ComponentPreview>
+
+## Interactive
+
+<ComponentPreview code={"import { Card } from \"@geeklego/ui\"\n\n<div className=\"max-w-sm\">\n  <Card variant=\"elevated\" interactive>\n    <Card.Header title=\"Interactive Card\" description=\"Hover or focus to see the state change\" />\n    <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">The entire card surface responds to pointer interaction with a shadow shift and background change.</p></Card.Body>\n  </Card>\n</div>"}>
+  <div className="max-w-sm">
+    <Card variant="elevated" interactive>
+      <Card.Header title="Interactive Card" description="Hover or focus to see the state change" />
+      <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">The entire card surface responds to pointer interaction with a shadow shift and background change.</p></Card.Body>
+    </Card>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Card, Button } from \"@geeklego/ui\"\n\n<div className=\"max-w-sm\">\n  <Card variant=\"outlined\" aria-busy=\"true\" aria-label=\"Loading card content\">\n    <Card.Body>\n      <div className=\"flex flex-col gap-3\" aria-hidden=\"true\">\n        <div className=\"skeleton h-4 w-3/4 rounded-[var(--radius-component-sm)]\" />\n        <div className=\"skeleton h-4 w-1/2 rounded-[var(--radius-component-sm)]\" />\n        <div className=\"skeleton h-4 w-5/6 rounded-[var(--radius-component-sm)]\" />\n      </div>\n    </Card.Body>\n    <Card.Footer>\n      <Button variant=\"primary\" size=\"sm\" isLoading>Save</Button>\n    </Card.Footer>\n  </Card>\n</div>"}>
+  <div className="max-w-sm">
+    <Card variant="outlined" aria-busy="true" aria-label="Loading card content">
+      <Card.Body>
+        <div className="flex flex-col gap-3" aria-hidden="true">
+          <div className="skeleton h-4 w-3/4 rounded-[var(--radius-component-sm)]" />
+          <div className="skeleton h-4 w-1/2 rounded-[var(--radius-component-sm)]" />
+          <div className="skeleton h-4 w-5/6 rounded-[var(--radius-component-sm)]" />
+        </div>
+      </Card.Body>
+      <Card.Footer>
+        <Button variant="primary" size="sm" isLoading>Save</Button>
+      </Card.Footer>
+    </Card>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Card, Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"grid grid-cols-2 gap-6\">\n    <Card variant=\"elevated\">\n      <Card.Header title=\"Elevated\" description=\"Dark mode\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n      <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">Card content in dark mode.</p></Card.Body>\n      <Card.Footer>\n        <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n        <Button variant=\"primary\" size=\"sm\">Save</Button>\n      </Card.Footer>\n    </Card>\n    <Card variant=\"outlined\">\n      <Card.Header title=\"Outlined\" description=\"Dark mode\" action={<Button variant=\"ghost\" size=\"sm\">Edit</Button>} />\n      <Card.Body><p className=\"text-body-md text-[var(--color-text-secondary)]\">Card content in dark mode.</p></Card.Body>\n      <Card.Footer>\n        <Button variant=\"outline\" size=\"sm\">Cancel</Button>\n        <Button variant=\"primary\" size=\"sm\">Save</Button>\n      </Card.Footer>\n    </Card>\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="grid grid-cols-2 gap-6">
+      <Card variant="elevated">
+        <Card.Header title="Elevated" description="Dark mode" action={<Button variant="ghost" size="sm">Edit</Button>} />
+        <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">Card content in dark mode.</p></Card.Body>
+        <Card.Footer>
+          <Button variant="outline" size="sm">Cancel</Button>
+          <Button variant="primary" size="sm">Save</Button>
+        </Card.Footer>
+      </Card>
+      <Card variant="outlined">
+        <Card.Header title="Outlined" description="Dark mode" action={<Button variant="ghost" size="sm">Edit</Button>} />
+        <Card.Body><p className="text-body-md text-[var(--color-text-secondary)]">Card content in dark mode.</p></Card.Body>
+        <Card.Footer>
+          <Button variant="outline" size="sm">Cancel</Button>
+          <Button variant="primary" size="sm">Save</Button>
+        </Card.Footer>
+      </Card>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Card
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'elevated' | 'outlined' | 'filled' | 'ghost'", defaultValue: "'elevated'", description: "Visual style of the card surface." },
+    { name: "interactive", type: "boolean", defaultValue: "false", description: "Enables hover shadow/background shift, focus ring, and cursor pointer. Use when the entire card is clickable." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Card slot content — typically Card.Header, Card.Body, and Card.Footer. Required." },
+  ]}
+/>
+
+### Card.Header
+
+<PropsTable
+  rows={[
+    { name: "title", type: "string", defaultValue: "—", description: "Primary title rendered as a heading. Required unless using children for a custom layout." },
+    { name: "description", type: "string", defaultValue: "—", description: "Supporting description rendered below the title." },
+    { name: "action", type: "ReactNode", defaultValue: "—", description: "Right-aligned action slot — pass a Button or icon button." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Custom layout override — replaces the default title/description/action layout when title is absent." },
+  ]}
+/>
+
+### Card.Footer
+
+<PropsTable
+  rows={[
+    { name: "border", type: "boolean", defaultValue: "true", description: "Renders a top border divider between body and footer." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Footer content — typically action buttons. Required." },
+  ]}
+/>
+
+## Accessibility
+
+- Non-interactive cards: add `role="article"` for self-contained content regions
+- Interactive cards: `tabIndex={0}` is auto-applied; add `role="button"` and `aria-label` when the whole card is a navigation target
+- Loading state: use `aria-busy="true"` and a descriptive `aria-label` on the card root; skeleton content should be `aria-hidden`
+- Action buttons in `Card.Header` should have descriptive `aria-label` values when their label alone is ambiguous
+- Focus ring is applied via `focus-visible:focus-ring` on interactive cards
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to an interactive card or controls inside |
+| Enter | Activates an interactive card |
+| Space | Activates an interactive card |

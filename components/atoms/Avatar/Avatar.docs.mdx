@@ -1,0 +1,92 @@
+---
+title: Avatar
+description: Display user profile images with fallback initials and status indicators.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Avatar } from \"@geeklego/ui\"\nimport { Star } from \"lucide-react\"\n\n<div className=\"flex flex-wrap gap-4 items-center\">\n  <Avatar variant=\"image\" src=\"https://i.pravatar.cc/80?u=avatar1\" alt=\"User\" size=\"lg\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" />\n  <Avatar variant=\"icon\" icon={<Star size={20} />} size=\"lg\" />\n  <Avatar variant=\"fallback\" size=\"lg\" />\n</div>"}>
+  <div className="flex flex-wrap gap-4 items-center">
+    <Avatar variant="image" src="https://i.pravatar.cc/80?u=avatar1" alt="User" size="lg" />
+    <Avatar variant="initials" initials="GL" size="lg" />
+    <Avatar variant="icon" icon={<Star size={20} />} size="lg" />
+    <Avatar variant="fallback" size="lg" />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Avatar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap gap-4 items-center\">\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"xs\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"sm\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"md\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"xl\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"2xl\" />\n</div>"}>
+  <div className="flex flex-wrap gap-4 items-center">
+    <Avatar variant="initials" initials="GL" size="xs" />
+    <Avatar variant="initials" initials="GL" size="sm" />
+    <Avatar variant="initials" initials="GL" size="md" />
+    <Avatar variant="initials" initials="GL" size="lg" />
+    <Avatar variant="initials" initials="GL" size="xl" />
+    <Avatar variant="initials" initials="GL" size="2xl" />
+  </div>
+</ComponentPreview>
+
+## Shapes
+
+<ComponentPreview code={"import { Avatar } from \"@geeklego/ui\"\nimport { User } from \"lucide-react\"\n\n<div className=\"flex flex-wrap gap-4 items-center\">\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" shape=\"circle\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" shape=\"rounded\" />\n  <Avatar variant=\"icon\" icon={<User size={20} />} size=\"lg\" shape=\"circle\" />\n  <Avatar variant=\"icon\" icon={<User size={20} />} size=\"lg\" shape=\"rounded\" />\n</div>"}>
+  <div className="flex flex-wrap gap-4 items-center">
+    <Avatar variant="initials" initials="GL" size="lg" shape="circle" />
+    <Avatar variant="initials" initials="GL" size="lg" shape="rounded" />
+    <Avatar variant="icon" icon={<User size={20} />} size="lg" shape="circle" />
+    <Avatar variant="icon" icon={<User size={20} />} size="lg" shape="rounded" />
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Avatar } from \"@geeklego/ui\"\nimport { Globe } from \"lucide-react\"\n\n{/* Default, bordered, icon rounded, broken image fallback */}\n<div className=\"flex flex-wrap gap-4 items-center\">\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" />\n  <Avatar variant=\"initials\" initials=\"GL\" size=\"lg\" bordered />\n  <Avatar variant=\"image\" src=\"https://i.pravatar.cc/80?u=avatar2\" alt=\"User\" size=\"lg\" bordered />\n  <Avatar variant=\"icon\" icon={<Globe size={20} />} size=\"lg\" shape=\"rounded\" />\n  <Avatar variant=\"image\" src=\"https://broken-url.invalid/img.png\" alt=\"Broken\" size=\"lg\" />\n</div>"}>
+  <div className="flex flex-wrap gap-4 items-center">
+    <Avatar variant="initials" initials="GL" size="lg" />
+    <Avatar variant="initials" initials="GL" size="lg" bordered />
+    <Avatar variant="image" src="https://i.pravatar.cc/80?u=avatar2" alt="User" size="lg" bordered />
+    <Avatar variant="icon" icon={<Globe size={20} />} size="lg" shape="rounded" />
+    <Avatar variant="image" src="https://broken-url.invalid/img.png" alt="Broken" size="lg" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Avatar } from \"@geeklego/ui\"\nimport { Moon } from \"lucide-react\"\n\n<div data-theme=\"dark\" className=\"flex flex-wrap gap-4 items-center p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <Avatar variant=\"image\" src=\"https://i.pravatar.cc/80?u=dark1\" alt=\"User\" size=\"lg\" />\n  <Avatar variant=\"initials\" initials=\"DK\" size=\"lg\" />\n  <Avatar variant=\"icon\" icon={<Moon size={20} />} size=\"lg\" />\n  <Avatar variant=\"fallback\" size=\"lg\" />\n  <Avatar variant=\"initials\" initials=\"BD\" size=\"lg\" bordered />\n</div>"}>
+  <div data-theme="dark" className="flex flex-wrap gap-4 items-center p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <Avatar variant="image" src="https://i.pravatar.cc/80?u=dark1" alt="User" size="lg" />
+    <Avatar variant="initials" initials="DK" size="lg" />
+    <Avatar variant="icon" icon={<Moon size={20} />} size="lg" />
+    <Avatar variant="fallback" size="lg" />
+    <Avatar variant="initials" initials="BD" size="lg" bordered />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'image' | 'initials' | 'icon' | 'fallback'", defaultValue: "'fallback'", description: "Visual variant. Determines what is displayed inside the avatar." },
+    { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'", defaultValue: "'md'", description: "Size of the avatar." },
+    { name: "shape", type: "'circle' | 'rounded'", defaultValue: "'circle'", description: "Shape of the avatar." },
+    { name: "src", type: "string", defaultValue: "—", description: "Image source URL. Used when variant is 'image'." },
+    { name: "alt", type: "string", defaultValue: "'User avatar'", description: "Alt text for the image. Pass empty string for decorative images." },
+    { name: "initials", type: "string", defaultValue: "—", description: "Initials to display (1–2 characters). Used when variant is 'initials'." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon element to display. Used when variant is 'icon'." },
+    { name: "bordered", type: "boolean", defaultValue: "false", description: "Whether to show a border ring." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Replaces the avatar with a shimmer skeleton circle placeholder." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org ImageObject Microdata (image variant only)." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="img"` on non-image variants (initials, icon, fallback)
+- `alt` text provides the accessible name for image variants
+- `aria-label` defaults to `"User avatar"` for initials, icon, and fallback variants
+- When `iconOnly`, the icon is `aria-hidden="true"` and the text children serve as the label
+- `loading` renders a skeleton placeholder with `aria-busy="true"`
+- Decorative avatars can pass `alt=""` to silence screen reader announcements
+- No keyboard interaction — Avatar is a display-only component

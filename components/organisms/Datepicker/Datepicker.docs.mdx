@@ -1,0 +1,111 @@
+---
+title: Datepicker
+description: Calendar-based date selection with text input, popover calendar, and full keyboard navigation.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { Datepicker } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 w-80\">\n  <Datepicker label=\"Default variant\" variant=\"default\" hint=\"Outlined input style\" />\n  <Datepicker label=\"Filled variant\" variant=\"filled\" hint=\"Filled input style\" />\n  <Datepicker label=\"Flushed variant\" variant=\"flushed\" hint=\"Bottom-border only\" />\n  <Datepicker label=\"Unstyled variant\" variant=\"unstyled\" hint=\"No border or background\" />\n</div>"}>
+  <div className="flex flex-col gap-6 w-80">
+    <Datepicker label="Default variant" variant="default" hint="Outlined input style" />
+    <Datepicker label="Filled variant" variant="filled" hint="Filled input style" />
+    <Datepicker label="Flushed variant" variant="flushed" hint="Bottom-border only" />
+    <Datepicker label="Unstyled variant" variant="unstyled" hint="No border or background" />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Datepicker } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 w-80\">\n  <Datepicker label=\"Small\" size=\"sm\" />\n  <Datepicker label=\"Medium (default)\" size=\"md\" />\n  <Datepicker label=\"Large\" size=\"lg\" />\n</div>"}>
+  <div className="flex flex-col gap-6 w-80">
+    <Datepicker label="Small" size="sm" />
+    <Datepicker label="Medium (default)" size="md" />
+    <Datepicker label="Large" size="lg" />
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Datepicker } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 w-80\">\n  <Datepicker label=\"Default\" hint=\"Normal resting state\" />\n  <Datepicker label=\"With value\" defaultValue={new Date(2026, 2, 15)} />\n  <Datepicker label=\"Error\" errorMessage=\"Please select a valid date\" />\n  <Datepicker label=\"Disabled\" disabled />\n  <Datepicker label=\"Loading\" isLoading />\n  <Datepicker\n    label=\"Min / Max constrained\"\n    min={new Date(2026, 2, 10)}\n    max={new Date(2026, 2, 20)}\n    hint=\"Only March 10\u201320, 2026 selectable\"\n  />\n</div>"}>
+  <div className="flex flex-col gap-6 w-80">
+    <Datepicker label="Default" hint="Normal resting state" />
+    <Datepicker label="With value" defaultValue={new Date(2026, 2, 15)} />
+    <Datepicker label="Error" errorMessage="Please select a valid date" />
+    <Datepicker label="Disabled" disabled />
+    <Datepicker label="Loading" isLoading />
+    <Datepicker
+      label="Min / Max constrained"
+      min={new Date(2026, 2, 10)}
+      max={new Date(2026, 2, 20)}
+      hint="Only March 10-20, 2026 selectable"
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Datepicker } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"flex flex-col gap-6 w-80\">\n    <Datepicker label=\"Dark mode\" hint=\"Calendar adapts to dark theme\" />\n    <Datepicker label=\"With value\" defaultValue={new Date(2026, 5, 1)} />\n    <Datepicker label=\"Error state\" errorMessage=\"Invalid date format\" />\n    <Datepicker label=\"Disabled\" disabled />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="flex flex-col gap-6 w-80">
+      <Datepicker label="Dark mode" hint="Calendar adapts to dark theme" />
+      <Datepicker label="With value" defaultValue={new Date(2026, 5, 1)} />
+      <Datepicker label="Error state" errorMessage="Invalid date format" />
+      <Datepicker label="Disabled" disabled />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "Date | null", defaultValue: "\u2014", description: "Currently selected date (controlled)." },
+    { name: "defaultValue", type: "Date", defaultValue: "\u2014", description: "Initial selected date (uncontrolled)." },
+    { name: "onChange", type: "(date: Date | null) => void", defaultValue: "\u2014", description: "Fired when the user selects or clears a date." },
+    { name: "min", type: "Date", defaultValue: "\u2014", description: "Earliest selectable date. Days before this are disabled." },
+    { name: "max", type: "Date", defaultValue: "\u2014", description: "Latest selectable date. Days after this are disabled." },
+    { name: "label", type: "string", defaultValue: "required", description: "Field label text. Required for accessibility." },
+    { name: "hint", type: "string", defaultValue: "\u2014", description: "Hint/helper text shown below the input when no error is present." },
+    { name: "errorMessage", type: "string", defaultValue: "\u2014", description: "Validation error message. Switches the input to its error state and replaces hint text." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "variant", type: "'default' | 'filled' | 'flushed' | 'unstyled'", defaultValue: "'default'", description: "Input visual style variant." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables all interaction." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Shows loading spinner and disables interaction." },
+    { name: "placeholder", type: "string", defaultValue: "'YYYY-MM-DD'", description: "Placeholder text for the input." },
+    { name: "firstDayOfWeek", type: "0 | 1", defaultValue: "1", description: "First day of week: 0 = Sunday, 1 = Monday." },
+    { name: "i18nStrings", type: "DatepickerI18nStrings", defaultValue: "\u2014", description: "Internationalisation strings for system-generated text." },
+    { name: "wrapperClassName", type: "string", defaultValue: "\u2014", description: "Additional class names applied to the outer wrapper div." },
+    { name: "id", type: "string", defaultValue: "auto", description: "ID for the underlying input element. Auto-generated when omitted." },
+  ]}
+/>
+
+## Accessibility
+
+- Input uses `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls` to link to the calendar panel
+- Calendar button has `aria-label` from i18n strings
+- Calendar panel is `role="dialog"` with `aria-modal="true"` and `aria-labelledby` pointing to the month heading
+- Calendar grid uses `role="grid"` with `th scope="col" abbr` for weekday headers
+- Each day cell is a button with `aria-selected`, `aria-current="date"` for today, and `aria-disabled` for out-of-range days
+- Each day button has a full-text `aria-label` (e.g. "15 March 2026")
+- Month/year heading has `aria-live="polite"` to announce month changes
+- Error messages use `role="alert"` for immediate screen reader announcement
+- Focus is trapped within the calendar panel when open
+- Focus returns to the input when the calendar closes
+
+### Keyboard Interaction
+
+| Key | Context | Action |
+|-----|---------|--------|
+| ArrowDown | Input focused | Opens calendar |
+| Enter / Space | Day focused | Selects date, closes calendar |
+| ArrowLeft / ArrowRight | Grid focused | Previous / next day |
+| ArrowUp / ArrowDown | Grid focused | Previous / next week |
+| Home / End | Grid focused | Start / end of week |
+| PageUp / PageDown | Grid focused | Previous / next month |
+| Shift+PageUp / Shift+PageDown | Grid focused | Previous / next year |
+| Escape | Calendar open | Closes calendar, returns focus to input |
+| Tab | Calendar open | Cycles within focus trap |

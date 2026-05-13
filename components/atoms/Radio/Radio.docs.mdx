@@ -1,0 +1,91 @@
+---
+title: Radio
+description: Single-select radio input with label, error state, and three sizes.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Radio } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction RadioGroup() {\n  const [picked, setPicked] = useState(\"b\")\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Radio name=\"group\" value=\"a\" checked={picked === \"a\"} onChange={() => setPicked(\"a\")}>\n        Option A\n      </Radio>\n      <Radio name=\"group\" value=\"b\" checked={picked === \"b\"} onChange={() => setPicked(\"b\")}>\n        Option B\n      </Radio>\n      <Radio name=\"group\" value=\"c\" checked={picked === \"c\"} onChange={() => setPicked(\"c\")}>\n        Option C\n      </Radio>\n    </div>\n  )\n}"}>
+  <div className="flex flex-col gap-4">
+      <Radio name="variants-demo" value="a" checked={false}>Unselected option</Radio>
+      <Radio name="variants-demo" value="b" checked>Selected option</Radio>
+      <Radio name="variants-demo" value="c" checked={false}>Another option</Radio>
+    </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Radio } from \"@geeklego/ui\"\n\n<Radio name=\"size\" value=\"sm\" size=\"sm\">Small</Radio>\n<Radio name=\"size\" value=\"md\" size=\"md\">Medium</Radio>\n<Radio name=\"size\" value=\"lg\" size=\"lg\">Large</Radio>"}>
+  <div className="flex flex-col gap-4">
+      <Radio name="size-demo" value="sm" size="sm" checked={false}>Small (14px indicator)</Radio>
+      <Radio name="size-demo" value="md" size="md" checked>Medium (16px indicator)</Radio>
+      <Radio name="size-demo" value="lg" size="lg" checked={false}>Large (20px indicator)</Radio>
+    </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Radio } from \"@geeklego/ui\"\n\n<Radio name=\"field\" value=\"a\" disabled>Disabled unselected</Radio>\n<Radio name=\"field\" value=\"b\" defaultChecked disabled>Disabled selected</Radio>"}>
+  <div className="flex flex-col gap-4">
+      <Radio name="disabled-demo" value="a" checked={false} disabled>Disabled unselected</Radio>
+      <Radio name="disabled-demo" value="b" checked disabled>Disabled selected</Radio>
+    </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Radio } from \"@geeklego/ui\"\n\n<Radio name=\"payment\" value=\"card\" error aria-describedby=\"payment-error\">\n  Credit card\n</Radio>\n<p id=\"payment-error\" role=\"alert\">Please select a payment method.</p>"}>
+  <div className="flex flex-col gap-4">
+      <Radio name="error-demo" value="a" checked={false} error>Error unselected</Radio>
+      <Radio name="error-demo" value="b" checked error>Error selected</Radio>
+    </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <Radio name=\"dark\" value=\"a\">Unselected</Radio>\n  <Radio name=\"dark\" value=\"b\" defaultChecked>Selected</Radio>\n  <Radio name=\"dark\" value=\"c\" disabled>Disabled</Radio>\n  <Radio name=\"dark\" value=\"d\" error>Error</Radio>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-[var(--radius-component-lg)] max-w-2xl">
+      <div className="flex flex-col gap-4">
+        <Radio name="dark-demo" value="a" checked={false}>Unselected in dark mode</Radio>
+        <Radio name="dark-demo" value="b" checked>Selected in dark mode</Radio>
+        <Radio name="dark-disabled" value="c" checked={false} disabled>Disabled in dark mode</Radio>
+        <Radio name="dark-error" value="d" checked={false} error>Error in dark mode</Radio>
+      </div>
+    </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Visual size of the indicator circle." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Marks the field as invalid — shifts border to error colour." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Label text rendered alongside the indicator. Without children, supply aria-label." },
+    { name: "checked", type: "boolean", defaultValue: "—", description: "Controlled checked state." },
+    { name: "defaultChecked", type: "boolean", defaultValue: "—", description: "Initial checked state for uncontrolled usage." },
+    { name: "onChange", type: "ChangeEventHandler<HTMLInputElement>", defaultValue: "—", description: "Called when the radio is selected." },
+    { name: "name", type: "string", defaultValue: "—", description: "Radio group name — all radios in the same group share the same name." },
+    { name: "value", type: "string", defaultValue: "—", description: "The value submitted when this radio is selected." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Marks the field as required." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a native `<input type="radio">` — full browser and assistive technology support
+- Group radios with the same `name` attribute — browser handles mutual exclusion automatically
+- Wrap groups in `<fieldset>` + `<legend>` for accessible group labeling
+- `children` provides the visible label; without it, pass `aria-label` for unlabeled radios
+- `error` shifts the border color; pair with `aria-describedby` pointing to an error message
+- `disabled` sets the HTML `disabled` attribute — removes the input from tab order
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the radio group |
+| Arrow Up / Down / Left / Right | Moves selection within the group |
+| Space | Selects the focused radio |

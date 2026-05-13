@@ -1,0 +1,172 @@
+---
+title: Popover
+description: A floating dialog panel anchored to a trigger element, with optional title, close button, footer slot, and 8 placement options.
+level: molecule
+---
+
+## Placements
+
+<ComponentPreview code={"import { Popover, Button } from \"@geeklego/ui\"\n\n<div className=\"grid grid-cols-2 gap-16 p-16\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">bottom-start</span>\n    <Popover open={true} placement=\"bottom-start\" trigger={<Button variant=\"outline\" size=\"sm\">Trigger</Button>}>\n      <p>Bottom start panel</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">bottom-end</span>\n    <Popover open={true} placement=\"bottom-end\" trigger={<Button variant=\"outline\" size=\"sm\">Trigger</Button>}>\n      <p>Bottom end panel</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">top-start</span>\n    <Popover open={true} placement=\"top-start\" trigger={<Button variant=\"outline\" size=\"sm\">Trigger</Button>}>\n      <p>Top start panel</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">top-end</span>\n    <Popover open={true} placement=\"top-end\" trigger={<Button variant=\"outline\" size=\"sm\">Trigger</Button>}>\n      <p>Top end panel</p>\n    </Popover>\n  </div>\n</div>"}>
+  <div className="grid grid-cols-2 gap-16 p-16">
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">bottom-start</span>
+      <Popover open={true} placement="bottom-start" trigger={<Button variant="outline" size="sm">Trigger</Button>}>
+        <p>Bottom start panel</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">bottom-end</span>
+      <Popover open={true} placement="bottom-end" trigger={<Button variant="outline" size="sm">Trigger</Button>}>
+        <p>Bottom end panel</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">top-start</span>
+      <Popover open={true} placement="top-start" trigger={<Button variant="outline" size="sm">Trigger</Button>}>
+        <p>Top start panel</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">top-end</span>
+      <Popover open={true} placement="top-end" trigger={<Button variant="outline" size="sm">Trigger</Button>}>
+        <p>Top end panel</p>
+      </Popover>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Content Variants
+
+<ComponentPreview code={"import { Popover, Button } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-start gap-8 p-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">Body only</span>\n    <Popover open={true} trigger={<Button variant=\"secondary\" size=\"sm\">Body only</Button>}>\n      <p>This popover has no header or footer — just content in the body slot.</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">Header, no close</span>\n    <Popover open={true} title=\"Panel title\" showCloseButton={false} trigger={<Button variant=\"secondary\" size=\"sm\">Header</Button>}>\n      <p>Header without a close button — dismiss via Escape or click outside.</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">Header + close</span>\n    <Popover open={true} title=\"Editable settings\" showCloseButton={true} trigger={<Button variant=\"secondary\" size=\"sm\">Header + close</Button>}>\n      <p>Header with a close (×) button on the trailing edge.</p>\n    </Popover>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-tertiary)]\">With footer</span>\n    <Popover\n      open={true}\n      title=\"Confirm action\"\n      trigger={<Button variant=\"secondary\" size=\"sm\">With footer</Button>}\n      footerContent={\n        <div className=\"flex justify-end gap-2\">\n          <Button variant=\"ghost\" size=\"sm\">Cancel</Button>\n          <Button variant=\"primary\" size=\"sm\">Confirm</Button>\n        </div>\n      }\n    >\n      <p>Footer slot with action buttons, separated by a top border divider.</p>\n    </Popover>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-start gap-8 p-8">
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">Body only</span>
+      <Popover open={true} trigger={<Button variant="secondary" size="sm">Body only</Button>}>
+        <p>This popover has no header or footer — just content in the body slot.</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">Header, no close</span>
+      <Popover open={true} title="Panel title" showCloseButton={false} trigger={<Button variant="secondary" size="sm">Header</Button>}>
+        <p>Header without a close button — dismiss via Escape or click outside.</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">Header + close</span>
+      <Popover open={true} title="Editable settings" showCloseButton={true} trigger={<Button variant="secondary" size="sm">Header + close</Button>}>
+        <p>Header with a close (×) button on the trailing edge.</p>
+      </Popover>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-label-sm text-[var(--color-text-tertiary)]">With footer</span>
+      <Popover
+        open={true}
+        title="Confirm action"
+        trigger={<Button variant="secondary" size="sm">With footer</Button>}
+        footerContent={
+          <div className="flex justify-end gap-2">
+            <Button variant="ghost" size="sm">Cancel</Button>
+            <Button variant="primary" size="sm">Confirm</Button>
+          </div>
+        }
+      >
+        <p>Footer slot with action buttons, separated by a top border divider.</p>
+      </Popover>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Interactive
+
+<ComponentPreview code={"import { Popover, Button } from \"@geeklego/ui\"\nimport { Settings, Info } from \"lucide-react\"\n\n<div className=\"flex gap-4\">\n  <Popover\n    trigger={<Button variant=\"primary\" leftIcon={<Settings size={14} />}>Settings</Button>}\n    title=\"Display settings\"\n    footerContent={\n      <div className=\"flex justify-end gap-2\">\n        <Button variant=\"ghost\" size=\"sm\">Cancel</Button>\n        <Button variant=\"primary\" size=\"sm\">Apply</Button>\n      </div>\n    }\n  >\n    <p>Click the trigger button to open and close this popover. Press Escape or click outside to dismiss.</p>\n  </Popover>\n\n  <Popover\n    placement=\"bottom-end\"\n    trigger={<Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Info size={14} />}>More info</Button>}\n  >\n    <p>Body-only popover — no title, no close button, dismisses on Escape or outside click.</p>\n  </Popover>\n</div>"}>
+  <div className="flex gap-4">
+    <Popover
+      trigger={<Button variant="primary" leftIcon={<Settings size={14} />}>Settings</Button>}
+      title="Display settings"
+      footerContent={
+        <div className="flex justify-end gap-2">
+          <Button variant="ghost" size="sm">Cancel</Button>
+          <Button variant="primary" size="sm">Apply</Button>
+        </div>
+      }
+    >
+      <p>Click the trigger button to open and close this popover. Press Escape or click outside to dismiss.</p>
+    </Popover>
+
+    <Popover
+      placement="bottom-end"
+      trigger={<Button variant="ghost" size="sm" iconOnly leftIcon={<Info size={14} />}>More info</Button>}
+    >
+      <p>Body-only popover — no title, no close button, dismisses on Escape or outside click.</p>
+    </Popover>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Popover, Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex items-center justify-center gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Popover\n    open={true}\n    title=\"Dark mode panel\"\n    trigger={<Button variant=\"secondary\">Open popover</Button>}\n  >\n    <p>Popover content renders against the dark surface token.</p>\n  </Popover>\n  <Popover\n    open={true}\n    placement=\"bottom-end\"\n    title=\"With footer\"\n    trigger={<Button variant=\"outline\">With footer</Button>}\n    footerContent={\n      <div className=\"flex justify-end gap-2\">\n        <Button variant=\"ghost\" size=\"sm\">Cancel</Button>\n        <Button variant=\"primary\" size=\"sm\">Save</Button>\n      </div>\n    }\n  >\n    <p>Footer slot in dark mode.</p>\n  </Popover>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex items-center justify-center gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Popover
+      open={true}
+      title="Dark mode panel"
+      trigger={<Button variant="secondary">Open popover</Button>}
+    >
+      <p>Popover content renders against the dark surface token.</p>
+    </Popover>
+    <Popover
+      open={true}
+      placement="bottom-end"
+      title="With footer"
+      trigger={<Button variant="outline">With footer</Button>}
+      footerContent={
+        <div className="flex justify-end gap-2">
+          <Button variant="ghost" size="sm">Cancel</Button>
+          <Button variant="primary" size="sm">Save</Button>
+        </div>
+      }
+    >
+      <p>Footer slot in dark mode.</p>
+    </Popover>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "trigger", type: "ReactElement", defaultValue: "—", description: "Element that opens and closes the popover. ARIA props (aria-haspopup='dialog', aria-expanded, aria-controls) are injected automatically via cloneElement. Required." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Content rendered inside the popover body. Required." },
+    { name: "title", type: "string", defaultValue: "—", description: "Optional title rendered in a header above the body. When provided, the panel gains aria-labelledby." },
+    { name: "headingLevel", type: "'h2' | 'h3' | 'h4' | 'h5' | 'h6'", defaultValue: "'h3'", description: "Heading element for the title. Override when nesting inside an organism with a different heading hierarchy." },
+    { name: "showCloseButton", type: "boolean", defaultValue: "true", description: "Show a close (×) button in the header when title is provided. Has no effect when title is omitted." },
+    { name: "footerContent", type: "ReactNode", defaultValue: "—", description: "Optional content rendered in a footer below the body, separated by a divider." },
+    { name: "placement", type: "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end' | 'left-start' | 'left-end' | 'right-start' | 'right-end'", defaultValue: "'bottom-start'", description: "Preferred panel placement relative to the trigger." },
+    { name: "open", type: "boolean", defaultValue: "—", description: "Controlled open state. Pair with onOpenChange for full control. Omit for uncontrolled mode." },
+    { name: "onOpenChange", type: "(open: boolean) => void", defaultValue: "—", description: "Called when the open state changes." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names on the root wrapper element." },
+    { name: "i18nStrings", type: "PopoverI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides (e.g. the close button aria-label)." },
+  ]}
+/>
+
+## Accessibility
+
+- Panel has `role="dialog"` with `aria-modal="true"` — screen readers announce it as a dialog
+- When `title` is provided, `aria-labelledby` links the panel to the title heading
+- `aria-hidden` toggles on the panel to hide it from assistive technology when closed
+- Trigger receives `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls` automatically
+- Focus is trapped inside the panel while open — Tab cycles through all interactive elements
+- Escape closes the panel and returns focus to the trigger
+- Click outside the component closes the panel
+- Close button has a localised `aria-label` via `i18nStrings.closeLabel`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Enter / Space | Opens the popover (on trigger) |
+| Tab | Cycles focus through interactive elements inside the panel |
+| Shift + Tab | Reverses focus cycle inside the panel |
+| Escape | Closes the panel and returns focus to the trigger |

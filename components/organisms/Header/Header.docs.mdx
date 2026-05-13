@@ -1,0 +1,232 @@
+---
+title: Header
+description: Page-level banner landmark with compound slots for brand, navigation, and actions. Manages responsive mobile menu state internally.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { Header, NavItem, Button, Avatar } from \"@geeklego/ui\"\n\nconst Logo = () => (\n  <span\n    className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n    aria-hidden=\"true\"\n  >\n    GL\n  </span>\n)\n\n<div className=\"flex flex-col gap-6\">\n  {/* Minimal — brand + CTA only */}\n  <Header>\n    <Header.Brand href=\"/\">\n      <Logo />\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Actions>\n      <Button variant=\"primary\" size=\"sm\">Get started</Button>\n    </Header.Actions>\n  </Header>\n\n  {/* Standard — brand + nav + actions */}\n  <Header>\n    <Header.Brand href=\"/\">\n      <Logo />\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Nav>\n      <NavItem href=\"/\" label=\"Home\" isActive />\n      <NavItem href=\"/docs\" label=\"Docs\" />\n      <NavItem href=\"/components\" label=\"Components\" />\n    </Header.Nav>\n    <Header.Actions>\n      <Button variant=\"ghost\" size=\"sm\">Sign in</Button>\n      <Button variant=\"primary\" size=\"sm\">Get started</Button>\n    </Header.Actions>\n  </Header>\n\n  {/* App shell — nav + icon actions + avatar */}\n  <Header>\n    <Header.Brand href=\"/\">\n      <Logo />\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Nav>\n      <NavItem href=\"/\" label=\"Dashboard\" isActive />\n      <NavItem href=\"/settings\" label=\"Settings\" />\n      <NavItem href=\"/help\" label=\"Help\" />\n    </Header.Nav>\n    <Header.Actions>\n      <Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Bell size={16} aria-hidden=\"true\" />}>Notifications</Button>\n      <Avatar variant=\"initials\" initials=\"JD\" size=\"sm\" />\n    </Header.Actions>\n  </Header>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Actions>
+        <Button variant="primary" size="sm">Get started</Button>
+      </Header.Actions>
+    </Header>
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Nav>
+        <NavItem href="/" label="Home" isActive />
+        <NavItem href="/docs" label="Docs" />
+        <NavItem href="/components" label="Components" />
+      </Header.Nav>
+      <Header.Actions>
+        <Button variant="ghost" size="sm">Sign in</Button>
+        <Button variant="primary" size="sm">Get started</Button>
+      </Header.Actions>
+    </Header>
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Nav>
+        <NavItem href="/" label="Dashboard" isActive />
+        <NavItem href="/settings" label="Settings" />
+        <NavItem href="/help" label="Help" />
+      </Header.Nav>
+      <Header.Actions>
+        <Button variant="ghost" size="sm" iconOnly leftIcon={<Bell size={16} aria-hidden="true" />}>Notifications</Button>
+        <Avatar variant="initials" initials="JD" size="sm" />
+      </Header.Actions>
+    </Header>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Header, NavItem, Button } from \"@geeklego/ui\"\nimport { Home, List, Grid } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-6\">\n  {/* Icon + label nav items */}\n  <Header>\n    <Header.Brand href=\"/\">\n      <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Nav>\n      <NavItem href=\"/\" label=\"Home\" icon={<Home size={14} />} isActive />\n      <NavItem href=\"/dashboard\" label=\"Dashboard\" icon={<Grid size={14} />} />\n      <NavItem href=\"/docs\" label=\"Docs\" icon={<List size={14} />} />\n    </Header.Nav>\n    <Header.Actions>\n      <Button variant=\"primary\" size=\"sm\">Sign up</Button>\n    </Header.Actions>\n  </Header>\n\n  {/* Label-only nav items */}\n  <Header>\n    <Header.Brand href=\"/\">\n      <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Nav>\n      <NavItem href=\"/\" label=\"Home\" isActive />\n      <NavItem href=\"/dashboard\" label=\"Dashboard\" />\n      <NavItem href=\"/docs\" label=\"Docs\" />\n      <NavItem href=\"/components\" label=\"Components\" />\n      <NavItem href=\"/about\" label=\"About\" />\n    </Header.Nav>\n    <Header.Actions>\n      <Button variant=\"ghost\" size=\"sm\">Log in</Button>\n      <Button variant=\"primary\" size=\"sm\">Sign up</Button>\n    </Header.Actions>\n  </Header>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Nav>
+        <NavItem href="/" label="Home" icon={<Home size={14} />} isActive />
+        <NavItem href="/dashboard" label="Dashboard" icon={<Grid size={14} />} />
+        <NavItem href="/docs" label="Docs" icon={<List size={14} />} />
+      </Header.Nav>
+      <Header.Actions>
+        <Button variant="primary" size="sm">Sign up</Button>
+      </Header.Actions>
+    </Header>
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Nav>
+        <NavItem href="/" label="Home" isActive />
+        <NavItem href="/dashboard" label="Dashboard" />
+        <NavItem href="/docs" label="Docs" />
+        <NavItem href="/components" label="Components" />
+        <NavItem href="/about" label="About" />
+      </Header.Nav>
+      <Header.Actions>
+        <Button variant="ghost" size="sm">Log in</Button>
+        <Button variant="primary" size="sm">Sign up</Button>
+      </Header.Actions>
+    </Header>
+  </div>
+</ComponentPreview>
+
+## Default State
+
+<ComponentPreview code={"import { Header, NavItem, Button } from \"@geeklego/ui\"\n\n<Header>\n  <Header.Brand href=\"/\">\n    <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n    <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n  </Header.Brand>\n  <Header.Nav>\n    <NavItem href=\"/\" label=\"Home\" isActive />\n    <NavItem href=\"/docs\" label=\"Docs\" />\n    <NavItem href=\"/components\" label=\"Components\" />\n  </Header.Nav>\n  <Header.Actions>\n    <Button variant=\"primary\" size=\"sm\">Get started</Button>\n  </Header.Actions>\n</Header>"}>
+  <Header>
+    <Header.Brand href="/">
+      <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+      <span className="truncate-label text-heading-h5">Geeklego</span>
+    </Header.Brand>
+    <Header.Nav>
+      <NavItem href="/" label="Home" isActive />
+      <NavItem href="/docs" label="Docs" />
+      <NavItem href="/components" label="Components" />
+    </Header.Nav>
+    <Header.Actions>
+      <Button variant="primary" size="sm">Get started</Button>
+    </Header.Actions>
+  </Header>
+</ComponentPreview>
+
+## With Badge Notification
+
+<ComponentPreview code={"import { Header, NavItem, Button, Avatar, Badge } from \"@geeklego/ui\"\nimport { Search } from \"lucide-react\"\n\n<Header>\n  <Header.Brand href=\"/\">\n    <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n    <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n  </Header.Brand>\n  <Header.Nav>\n    <NavItem href=\"/\" label=\"Home\" isActive />\n    <NavItem href=\"/inbox\" label=\"Inbox\" badge={<Badge variant=\"solid\" size=\"sm\">4</Badge>} />\n    <NavItem href=\"/settings\" label=\"Settings\" />\n  </Header.Nav>\n  <Header.Actions>\n    <Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Search size={16} aria-hidden=\"true\" />}>Search</Button>\n    <Avatar variant=\"initials\" initials=\"AB\" size=\"sm\" />\n  </Header.Actions>\n</Header>"}>
+  <Header>
+    <Header.Brand href="/">
+      <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+      <span className="truncate-label text-heading-h5">Geeklego</span>
+    </Header.Brand>
+    <Header.Nav>
+      <NavItem href="/" label="Home" isActive />
+      <NavItem href="/inbox" label="Inbox" badge={<Badge variant="solid" size="sm">4</Badge>} />
+      <NavItem href="/settings" label="Settings" />
+    </Header.Nav>
+    <Header.Actions>
+      <Button variant="ghost" size="sm" iconOnly leftIcon={<Search size={16} aria-hidden="true" />}>Search</Button>
+      <Avatar variant="initials" initials="AB" size="sm" />
+    </Header.Actions>
+  </Header>
+</ComponentPreview>
+
+## Schema.org Microdata
+
+<ComponentPreview code={"import { Header, NavItem, Button } from \"@geeklego/ui\"\n\n<Header schema>\n  <Header.Brand href=\"/\">\n    <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n    <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n  </Header.Brand>\n  <Header.Nav>\n    <NavItem href=\"/\" label=\"Home\" isActive schema />\n    <NavItem href=\"/docs\" label=\"Docs\" schema />\n  </Header.Nav>\n  <Header.Actions>\n    <Button variant=\"primary\" size=\"sm\">Get started</Button>\n  </Header.Actions>\n</Header>"}>
+  <Header schema>
+    <Header.Brand href="/">
+      <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+      <span className="truncate-label text-heading-h5">Geeklego</span>
+    </Header.Brand>
+    <Header.Nav>
+      <NavItem href="/" label="Home" isActive schema />
+      <NavItem href="/docs" label="Docs" schema />
+    </Header.Nav>
+    <Header.Actions>
+      <Button variant="primary" size="sm">Get started</Button>
+    </Header.Actions>
+  </Header>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Header, NavItem, Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden\"\n>\n  <Header>\n    <Header.Brand href=\"/\">\n      <span className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\" aria-hidden=\"true\">GL</span>\n      <span className=\"truncate-label text-heading-h5\">Geeklego</span>\n    </Header.Brand>\n    <Header.Nav>\n      <NavItem href=\"/\" label=\"Home\" isActive />\n      <NavItem href=\"/dashboard\" label=\"Dashboard\" />\n      <NavItem href=\"/docs\" label=\"Docs\" />\n    </Header.Nav>\n    <Header.Actions>\n      <Button variant=\"ghost\" size=\"sm\">Sign in</Button>\n      <Button variant=\"primary\" size=\"sm\">Get started</Button>\n    </Header.Actions>\n  </Header>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden"
+  >
+    <Header>
+      <Header.Brand href="/">
+        <span className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold" aria-hidden="true">GL</span>
+        <span className="truncate-label text-heading-h5">Geeklego</span>
+      </Header.Brand>
+      <Header.Nav>
+        <NavItem href="/" label="Home" isActive />
+        <NavItem href="/dashboard" label="Dashboard" />
+        <NavItem href="/docs" label="Docs" />
+      </Header.Nav>
+      <Header.Actions>
+        <Button variant="ghost" size="sm">Sign in</Button>
+        <Button variant="primary" size="sm">Get started</Button>
+      </Header.Actions>
+    </Header>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Compound slot children — Brand, Nav, Actions." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org WPHeader Microdata. Adds itemScope and itemType to the header element when true." },
+    { name: "i18nStrings", type: "HeaderI18nStrings", defaultValue: "—", description: "Override localised strings for nav label, mobile nav label, and mobile toggle labels." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the root header element." },
+  ]}
+/>
+
+### Header.Brand Props
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Content inside the brand link — logo image, text, or both." },
+    { name: "href", type: "string", defaultValue: "'#'", description: "URL the brand link navigates to. Sanitized via sanitizeHref()." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Header.Nav Props
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Navigation items — typically NavItem atoms or custom li elements. Rendered horizontally on md+ and vertically in the mobile panel." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Header.Actions Props
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Action elements — typically Button atoms and/or an Avatar." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<header>` element — announced as the "banner" landmark by screen readers
+- `<nav aria-label="Primary">` (or the value from `i18nStrings.navLabel`) — announced as "Primary navigation"
+- Mobile toggle button uses `aria-expanded` and `aria-controls` paired with the mobile panel `id` via `useId()`
+- Mobile toggle label changes between "Open menu" and "Close menu" (overridable via `i18nStrings`)
+- `NavItem` with `isActive` renders `aria-current="page"` on its link
+- `Header.Brand` link `href` is always passed through `sanitizeHref()` to strip dangerous protocols
+- Escape key dismisses the mobile navigation panel via `useEscapeDismiss`
+- Clicking outside the header also dismisses the mobile panel via `useClickOutside`
+- All decorative icons include `aria-hidden="true"`
+- Duplicate `<nav>` landmarks (desktop + mobile panel) each have an `aria-label` to distinguish them
+- Icon-only action buttons must provide a text child which becomes the `aria-label`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus through brand link, nav items, and action buttons |
+| Enter / Space | Activates the focused link or button |
+| Escape | Dismisses the mobile navigation panel when open |

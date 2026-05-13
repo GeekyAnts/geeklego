@@ -1,0 +1,117 @@
+---
+title: EmptyState
+description: Zero-data placeholder with icon, title, description, and optional action.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { EmptyState } from \"@geeklego/ui\"\nimport { Search, Grid } from \"lucide-react\"\n\n{/* Default — use inside cards or panels */}\n<EmptyState\n  title=\"No results found\"\n  description=\"Try adjusting your search or filters.\"\n  icon={<Search size={40} />}\n  variant=\"default\"\n/>\n\n{/* Ghost — use on plain page backgrounds */}\n<EmptyState\n  title=\"Your library is empty\"\n  description=\"Add your first item to get started.\"\n  icon={<Grid size={40} />}\n  variant=\"ghost\"\n/>"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-4">Default — subtle border + muted background</p>
+      <EmptyState
+        title="No results found"
+        description="Try adjusting your search or filters."
+        icon={<Search size={40} />}
+        variant="default"
+      />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-4">Ghost — borderless, transparent</p>
+      <EmptyState
+        title="Your library is empty"
+        description="Add your first item to get started."
+        icon={<Grid size={40} />}
+        variant="ghost"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { EmptyState } from \"@geeklego/ui\"\nimport { Bell } from \"lucide-react\"\n\n<EmptyState title=\"Nothing here\" icon={<Bell size={24} />} size=\"sm\" />\n<EmptyState title=\"Nothing here\" icon={<Bell size={40} />} size=\"md\" />\n<EmptyState title=\"Nothing here\" icon={<Bell size={56} />} size=\"lg\" />"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-4">SM</p>
+      <EmptyState title="Nothing here yet" description="Start by creating your first item." icon={<Bell size={24} />} size="sm" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-4">MD</p>
+      <EmptyState title="Nothing here yet" description="Start by creating your first item." icon={<Bell size={40} />} size="md" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-4">LG</p>
+      <EmptyState title="Nothing here yet" description="Start by creating your first item." icon={<Bell size={56} />} size="lg" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## With Icon
+
+<ComponentPreview code={"import { EmptyState } from \"@geeklego/ui\"\nimport { Plus } from \"lucide-react\"\n\n<EmptyState\n  title=\"No projects yet\"\n  description=\"Create a project to start collaborating with your team.\"\n  icon={<Plus size={40} />}\n/>"}>
+  <EmptyState
+    title="No projects yet"
+    description="Create a project to start collaborating with your team."
+    icon={<Plus size={40} />}
+  />
+</ComponentPreview>
+
+## With Action
+
+<ComponentPreview code={"import { EmptyState, Button } from \"@geeklego/ui\"\nimport { Star } from \"lucide-react\"\n\n<EmptyState\n  title=\"No favourites saved\"\n  description=\"Star items to find them quickly later.\"\n  icon={<Star size={40} />}\n  action={<Button variant=\"primary\">Browse items</Button>}\n/>"}>
+  <EmptyState
+    title="No favourites saved"
+    description="Star items to find them quickly later."
+    icon={<Star size={40} />}
+    action={
+      <button
+        type="button"
+        className="bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] px-[var(--spacing-component-lg)] py-[var(--spacing-component-sm)] rounded-[var(--radius-component-md)] text-body-sm transition-default hover:bg-[var(--color-action-primary-hover)]"
+      >
+        Browse items
+      </button>
+    }
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <EmptyState\n    title=\"No messages yet\"\n    description=\"When you receive messages, they'll appear here.\"\n    icon={<Bell size={40} />}\n  />\n</div>"}>
+  <div data-theme="dark" className="p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl flex flex-col gap-8">
+    <EmptyState
+      title="No messages yet"
+      description="When you receive messages, they'll appear here."
+      icon={<Bell size={40} />}
+    />
+    <EmptyState
+      title="No results found"
+      description="Try adjusting your search or filters to find what you're looking for."
+      icon={<Search size={40} />}
+      variant="ghost"
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "title", type: "string", defaultValue: "—", description: "Main empty state message. Rendered as a visible paragraph — not a heading." },
+    { name: "description", type: "string", defaultValue: "—", description: "Secondary explanatory text." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon or illustration slot. Wrapped in an aria-hidden container — purely decorative." },
+    { name: "action", type: "ReactNode", defaultValue: "—", description: "Call-to-action slot. Pass a Button or any ReactNode. Rendered below the text content." },
+    { name: "variant", type: "'default' | 'ghost'", defaultValue: "'default'", description: "`default` — subtle border + muted background. `ghost` — borderless and transparent." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Controls padding, icon size, and typography scale." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- The icon wrapper has `aria-hidden="true"` — purely decorative, not announced by screen readers
+- The `title` renders as a `<p>` — no heading level is assumed; use surrounding heading hierarchy as needed
+- For dynamically-inserted empty states (e.g. after a search returns no results), add `role="status"` so assistive technology announces the change
+- The `action` slot receives focus naturally via its own interactive element — no extra ARIA needed
+- No keyboard interaction specific to the component — focus moves through interactive children normally

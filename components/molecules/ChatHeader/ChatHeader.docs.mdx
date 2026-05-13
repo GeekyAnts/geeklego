@@ -1,0 +1,87 @@
+---
+title: ChatHeader
+description: Conversation header showing participant identity, presence status, and optional actions.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-sm)]\">\n  <ChatHeader name=\"Sarah Reynolds\" status=\"online\" avatarInitials=\"SR\" />\n  <ChatHeader name=\"John Doe\" status=\"away\" avatarInitials=\"JD\" />\n  <ChatHeader name=\"Mike Chen\" status=\"offline\" avatarInitials=\"MC\" />\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-sm)]">
+    <ChatHeader name="Sarah Reynolds" status="online" avatarInitials="SR" />
+    <ChatHeader name="John Doe" status="away" avatarInitials="JD" />
+    <ChatHeader name="Mike Chen" status="offline" avatarInitials="MC" />
+  </div>
+</ComponentPreview>
+
+## With Actions
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\nimport { Button } from \"@geeklego/ui\"\nimport { Phone, Info, X } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-sm)]\">\n  <ChatHeader name=\"Sarah Reynolds\" status=\"online\" avatarInitials=\"SR\" actions={<><Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Phone size={14} />}>Call</Button><Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Info size={14} />}>Info</Button><Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<X size={14} />}>Close</Button></>} />\n  <ChatHeader name=\"John Doe\" status=\"away\" avatarInitials=\"JD\" actions={<><Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Phone size={14} />}>Call</Button><Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<X size={14} />}>Close</Button></>} />\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-sm)]">
+    <ChatHeader name="Sarah Reynolds" status="online" avatarInitials="SR" actions={<><Button variant="ghost" size="sm" iconOnly leftIcon={<Phone size={14} />}>Call</Button><Button variant="ghost" size="sm" iconOnly leftIcon={<Info size={14} />}>Info</Button><Button variant="ghost" size="sm" iconOnly leftIcon={<X size={14} />}>Close</Button></>} />
+    <ChatHeader name="John Doe" status="away" avatarInitials="JD" actions={<><Button variant="ghost" size="sm" iconOnly leftIcon={<Phone size={14} />}>Call</Button><Button variant="ghost" size="sm" iconOnly leftIcon={<X size={14} />}>Close</Button></>} />
+  </div>
+</ComponentPreview>
+
+## Online
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<ChatHeader name=\"Sarah Reynolds\" status=\"online\" avatarInitials=\"SR\" />"}>
+  <ChatHeader name="Sarah Reynolds" status="online" avatarInitials="SR" />
+</ComponentPreview>
+
+## Away
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<ChatHeader name=\"John Doe\" status=\"away\" avatarInitials=\"JD\" />"}>
+  <ChatHeader name="John Doe" status="away" avatarInitials="JD" />
+</ComponentPreview>
+
+## Offline
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<ChatHeader name=\"Mike Chen\" status=\"offline\" avatarInitials=\"MC\" />"}>
+  <ChatHeader name="Mike Chen" status="offline" avatarInitials="MC" />
+</ComponentPreview>
+
+## Long Name (Truncated)
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<ChatHeader name=\"Alexandra Pemberton-Hughes de Villeneuve\" status=\"online\" avatarInitials=\"AP\" />"}>
+  <ChatHeader name="Alexandra Pemberton-Hughes de Villeneuve" status="online" avatarInitials="AP" />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ChatHeader } from \"@geeklego/ui\"\n\n<div data-theme=\"dark\" className=\"bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden\">\n  <ChatHeader name=\"Sarah Reynolds\" status=\"online\" avatarInitials=\"SR\" />\n  <ChatHeader name=\"John Doe\" status=\"away\" avatarInitials=\"JD\" />\n</div>"}>
+  <div data-theme="dark" className="bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden">
+    <ChatHeader name="Sarah Reynolds" status="online" avatarInitials="SR" />
+    <ChatHeader name="John Doe" status="away" avatarInitials="JD" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "name", type: "string", defaultValue: "—", description: "Required. Display name of the conversation participant." },
+    { name: "status", type: "'online' | 'away' | 'offline'", defaultValue: "'offline'", description: "Online presence status. Controls dot color and accessible status label." },
+    { name: "avatarSrc", type: "string", defaultValue: "—", description: "Avatar image URL for the participant." },
+    { name: "avatarInitials", type: "string", defaultValue: "—", description: "Initials for the fallback avatar (up to 2 characters)." },
+    { name: "actions", type: "ReactNode", defaultValue: "—", description: "Slot for action buttons (call, info, close). Renders end-aligned." },
+    { name: "i18nStrings", type: "ChatHeaderI18nStrings", defaultValue: "—", description: "Override localised system strings. Keys: onlineLabel, awayLabel, offlineLabel." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes merged onto the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<header>` element — landmark scoped to parent `<section>`
+- Avatar `alt` set to the `name` prop — provides accessible participant name
+- Status dot uses `aria-hidden="true"` — status conveyed by text label, not color alone
+- Visible status label follows the dot — meaning is not color-only
+- Action buttons must have accessible names via the `iconOnly` prop on `Button`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus through action buttons (if present) |
+| Enter | Activates the focused action button |
+| Space | Activates the focused action button |

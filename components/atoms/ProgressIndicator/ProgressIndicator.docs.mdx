@@ -1,0 +1,181 @@
+---
+title: ProgressIndicator
+description: A circular ring indicator for determinate and indeterminate progress states.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-end gap-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" variant=\"default\" showValue label=\"Default\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Default</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" variant=\"success\" showValue label=\"Success\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Success</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" variant=\"warning\" showValue label=\"Warning\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Warning</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" variant=\"error\" showValue label=\"Error\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Error</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-end gap-8">
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" variant="default" showValue label="Default" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Default</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" variant="success" showValue label="Success" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Success</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" variant="warning" showValue label="Warning" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Warning</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" variant="error" showValue label="Error" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Error</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-end gap-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"xs\" label=\"xs\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">xs · 16px</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"sm\" label=\"sm\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">sm · 24px</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"md\" showValue label=\"md\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">md · 40px</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" showValue label=\"lg\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">lg · 64px</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"xl\" showValue label=\"xl\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">xl · 80px</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-end gap-8">
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="xs" label="xs" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">xs · 16px</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="sm" label="sm" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">sm · 24px</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="md" showValue label="md" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">md · 40px</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" showValue label="lg" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">lg · 64px</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="xl" showValue label="xl" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">xl · 80px</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Determinate
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-end gap-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={0} size=\"lg\" showValue label=\"Empty\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">0%</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" showValue label=\"In progress\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">65%</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={100} size=\"lg\" variant=\"success\" showValue label=\"Complete\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">100% · success</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-end gap-8">
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={0} size="lg" showValue label="Empty" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">0%</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" showValue label="In progress" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">65%</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={100} size="lg" variant="success" showValue label="Complete" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">100% · success</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Indeterminate
+
+Omit the `value` prop entirely to enter the indeterminate state. The ring animates continuously to communicate that progress is unknown.
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-end gap-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"xs\" label=\"Loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">xs</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"sm\" label=\"Loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">sm</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"md\" label=\"Loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">md</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"lg\" label=\"Loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">lg</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"xl\" label=\"Loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">xl</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-end gap-8">
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="xs" label="Loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">xs</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="sm" label="Loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">sm</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="md" label="Loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">md</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="lg" label="Loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">lg</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="xl" label="Loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">xl</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+The `disabled` prop mutes all colors and stops the animation. Use this when the tracked action is paused or blocked.
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-end gap-8\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={40} size=\"lg\" showValue disabled label=\"Paused\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">disabled</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"lg\" disabled label=\"Paused loading\" />\n    <span className=\"text-caption-sm text-[var(--color-text-tertiary)]\">disabled + indeterminate</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-end gap-8">
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={40} size="lg" showValue disabled label="Paused" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">disabled</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="lg" disabled label="Paused loading" />
+      <span className="text-caption-sm text-[var(--color-text-tertiary)]">disabled + indeterminate</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ProgressIndicator } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-wrap items-end gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={65} size=\"lg\" variant=\"default\" showValue label=\"Default\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Default</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={80} size=\"lg\" variant=\"success\" showValue label=\"Success\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Success</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={45} size=\"lg\" variant=\"warning\" showValue label=\"Warning\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Warning</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator value={20} size=\"lg\" variant=\"error\" showValue label=\"Error\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Error</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ProgressIndicator size=\"lg\" label=\"Loading\" />\n    <span className=\"text-caption-md text-[var(--color-text-secondary)]\">Indeterminate</span>\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-wrap items-end gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={65} size="lg" variant="default" showValue label="Default" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Default</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={80} size="lg" variant="success" showValue label="Success" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Success</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={45} size="lg" variant="warning" showValue label="Warning" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Warning</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator value={20} size="lg" variant="error" showValue label="Error" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Error</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ProgressIndicator size="lg" label="Loading" />
+      <span className="text-caption-md text-[var(--color-text-secondary)]">Indeterminate</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "number", defaultValue: "—", description: "Current progress value (0–max). Omit for the indeterminate spinning state." },
+    { name: "max", type: "number", defaultValue: "100", description: "Maximum value the progress can reach." },
+    { name: "variant", type: "'default' | 'success' | 'warning' | 'error'", defaultValue: "'default'", description: "Color variant conveying the semantic meaning of the progress." },
+    { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", defaultValue: "'md'", description: "Overall diameter of the ring. xs=16px, sm=24px, md=40px, lg=64px, xl=80px." },
+    { name: "showValue", type: "boolean", defaultValue: "false", description: "Show the computed percentage at the center. Only visible on md, lg, xl. Hidden when indeterminate." },
+    { name: "label", type: "string", defaultValue: "—", description: "Accessible label used as aria-label. Required for standalone usage without a surrounding heading." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Muted appearance with no animation. Use when the tracked action is paused or blocked." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes merged onto the container div." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="progressbar"` on the container div — no native circular progress element exists
+- `aria-valuenow` set to the rounded percentage in determinate state; omitted when indeterminate
+- `aria-valuemin` is always `0`; `aria-valuemax` is always `100` in determinate state
+- `aria-valuetext` provides a human-readable percentage string (e.g. `"65%"`)
+- `aria-label` from the `label` prop — always provide a meaningful label for standalone usage
+- `aria-busy="true"` set in indeterminate state to signal active loading to assistive technology
+- `aria-disabled="true"` set when the `disabled` prop is true
+- The inner `<svg>` carries `aria-hidden="true"` and `focusable="false"` — screen readers narrate the outer container only
+- The component is not keyboard-focusable — it is a read-only status widget
+
+### Keyboard Interaction
+
+This component has no keyboard interaction. It is a display-only progress indicator. Focus management is the responsibility of the surrounding page or dialog that contains it.

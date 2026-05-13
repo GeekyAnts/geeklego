@@ -1,0 +1,85 @@
+{
+  "default": {
+    "steps": [
+      { "id": "cart",     "label": "Cart",     "description": "Review your items" },
+      { "id": "shipping", "label": "Shipping", "description": "Delivery details" },
+      { "id": "payment",  "label": "Payment",  "description": "Billing information" },
+      { "id": "review",   "label": "Review",   "description": "Confirm your order" }
+    ],
+    "activeStep": 1
+  },
+  "variants": [
+    {
+      "name": "numbered",
+      "steps": [
+        { "id": "s1", "label": "Step 1" },
+        { "id": "s2", "label": "Step 2" },
+        { "id": "s3", "label": "Step 3" }
+      ],
+      "activeStep": 1
+    },
+    {
+      "name": "dotted",
+      "steps": [
+        { "id": "d1", "label": "Step 1" },
+        { "id": "d2", "label": "Step 2" },
+        { "id": "d3", "label": "Step 3" },
+        { "id": "d4", "label": "Step 4" },
+        { "id": "d5", "label": "Step 5" }
+      ],
+      "activeStep": 2
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "activeStep": 1 },
+    { "size": "md", "activeStep": 1 },
+    { "size": "lg", "activeStep": 1 }
+  ],
+  "states": {
+    "allUpcoming": { "activeStep": 0 },
+    "midFlow":     { "activeStep": 2 },
+    "allComplete": { "activeStep": 99 },
+    "withError": {
+      "steps": [
+        { "id": "info",    "label": "Personal info",  "description": "Name and contact" },
+        { "id": "address", "label": "Address",        "description": "Delivery details", "status": "error" },
+        { "id": "confirm", "label": "Confirmation",   "description": "Review and submit" }
+      ],
+      "activeStep": 1
+    }
+  },
+  "orientations": ["horizontal", "vertical"],
+  "edge_cases": {
+    "singleStep": {
+      "steps": [{ "id": "only", "label": "Done" }],
+      "activeStep": 0
+    },
+    "twoSteps": {
+      "steps": [
+        { "id": "first", "label": "First" },
+        { "id": "last",  "label": "Last" }
+      ],
+      "activeStep": 0
+    },
+    "longLabel": {
+      "steps": [
+        { "id": "l1", "label": "A very long step label that might overflow its container" },
+        { "id": "l2", "label": "Short" },
+        { "id": "l3", "label": "Another somewhat longer step name here" }
+      ],
+      "activeStep": 1
+    },
+    "manySteps": {
+      "steps": [
+        { "id": "ms1", "label": "Step 1" },
+        { "id": "ms2", "label": "Step 2" },
+        { "id": "ms3", "label": "Step 3" },
+        { "id": "ms4", "label": "Step 4" },
+        { "id": "ms5", "label": "Step 5" },
+        { "id": "ms6", "label": "Step 6" },
+        { "id": "ms7", "label": "Step 7" }
+      ],
+      "activeStep": 3
+    }
+  }
+}

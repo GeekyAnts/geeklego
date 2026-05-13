@@ -1,0 +1,48 @@
+{
+  "default": {
+    "variant": "solid",
+    "color": "default",
+    "size": "md",
+    "shape": "pill",
+    "children": "Badge"
+  },
+  "variants": [
+    { "variant": "solid",   "color": "default",   "children": "Solid" },
+    { "variant": "soft",    "color": "success",  "children": "Soft" },
+    { "variant": "outline", "color": "warning",  "children": "Outline" },
+    { "variant": "dot",     "color": "error",    "dotLabel": "Error indicator" }
+  ],
+  "colors": [
+    { "color": "default", "children": "Default" },
+    { "color": "info",    "children": "Info" },
+    { "color": "success", "children": "Success" },
+    { "color": "warning", "children": "Warning" },
+    { "color": "error",   "children": "Error" }
+  ],
+  "sizes": [
+    { "size": "sm", "children": "Small" },
+    { "size": "md", "children": "Medium" }
+  ],
+  "shapes": [
+    { "shape": "pill",    "children": "Pill" },
+    { "shape": "rounded", "children": "Rounded" }
+  ],
+  "status_labels": [
+    { "variant": "soft", "color": "success", "children": "Active" },
+    { "variant": "soft", "color": "warning", "children": "Pending" },
+    { "variant": "soft", "color": "error",   "children": "Failed" },
+    { "variant": "soft", "color": "info",    "children": "In review" }
+  ],
+  "counts": [
+    { "variant": "solid", "color": "error",   "children": "3" },
+    { "variant": "solid", "color": "info",    "children": "12" },
+    { "variant": "solid", "color": "default", "children": "99+" }
+  ],
+  "edge_cases": {
+    "empty_string":  { "variant": "solid", "color": "default",   "children": "" },
+    "single_char":   { "variant": "solid", "color": "error",   "children": "!" },
+    "long_label":    { "variant": "soft",  "color": "default", "children": "Very long badge label that should truncate" },
+    "dot_no_label":  { "variant": "dot",   "color": "default" },
+    "dot_with_label":{ "variant": "dot",   "color": "success", "dotLabel": "Online" }
+  }
+}

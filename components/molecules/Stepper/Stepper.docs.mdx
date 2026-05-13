@@ -1,0 +1,231 @@
+---
+title: Stepper
+description: A multi-step progress indicator with numbered or dotted variants, horizontal and vertical orientations, error state, and accessible step announcements.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\nconst steps = [\n  { id: \"cart\", label: \"Cart\", description: \"Review your items\" },\n  { id: \"shipping\", label: \"Shipping\", description: \"Delivery details\" },\n  { id: \"payment\", label: \"Payment\", description: \"Billing information\" },\n  { id: \"review\", label: \"Review\", description: \"Confirm your order\" },\n]\n\n<div className=\"flex flex-col gap-8\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Numbered — horizontal</p>\n    <Stepper steps={steps} activeStep={2} variant=\"numbered\" />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Dotted — horizontal</p>\n    <Stepper steps={steps} activeStep={2} variant=\"dotted\" />\n  </div>\n  <div className=\"flex gap-8\">\n    <div className=\"flex-1\">\n      <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Numbered — vertical</p>\n      <Stepper steps={steps} activeStep={1} orientation=\"vertical\" variant=\"numbered\" />\n    </div>\n    <div className=\"flex-1\">\n      <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Dotted — vertical</p>\n      <Stepper steps={steps} activeStep={2} orientation=\"vertical\" variant=\"dotted\" />\n    </div>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Numbered — horizontal</p>
+      <Stepper
+        steps={[
+          { id: "cart", label: "Cart", description: "Review your items" },
+          { id: "shipping", label: "Shipping", description: "Delivery details" },
+          { id: "payment", label: "Payment", description: "Billing information" },
+          { id: "review", label: "Review", description: "Confirm your order" },
+        ]}
+        activeStep={2}
+        variant="numbered"
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Dotted — horizontal</p>
+      <Stepper
+        steps={[
+          { id: "s1", label: "Step 1" },
+          { id: "s2", label: "Step 2" },
+          { id: "s3", label: "Step 3" },
+          { id: "s4", label: "Step 4" },
+          { id: "s5", label: "Step 5" },
+        ]}
+        activeStep={2}
+        variant="dotted"
+      />
+    </div>
+    <div className="flex gap-8">
+      <div className="flex-1">
+        <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Numbered — vertical</p>
+        <Stepper
+          steps={[
+            { id: "cart", label: "Cart", description: "Review your items" },
+            { id: "shipping", label: "Shipping", description: "Delivery details" },
+            { id: "payment", label: "Payment", description: "Billing information" },
+            { id: "review", label: "Review", description: "Confirm your order" },
+          ]}
+          activeStep={1}
+          orientation="vertical"
+          variant="numbered"
+        />
+      </div>
+      <div className="flex-1">
+        <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Dotted — vertical</p>
+        <Stepper
+          steps={[
+            { id: "cart", label: "Cart", description: "Review your items" },
+            { id: "shipping", label: "Shipping", description: "Delivery details" },
+            { id: "payment", label: "Payment", description: "Billing information" },
+            { id: "review", label: "Review", description: "Confirm your order" },
+          ]}
+          activeStep={2}
+          orientation="vertical"
+          variant="dotted"
+        />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\nconst steps = [\n  { id: \"cart\", label: \"Cart\", description: \"Review items\" },\n  { id: \"shipping\", label: \"Shipping\", description: \"Delivery\" },\n  { id: \"payment\", label: \"Payment\", description: \"Billing\" },\n  { id: \"review\", label: \"Review\", description: \"Confirm\" },\n]\n\n<div className=\"flex flex-col gap-8\">\n  <Stepper steps={steps} activeStep={1} size=\"sm\" />\n  <Stepper steps={steps} activeStep={1} size=\"md\" />\n  <Stepper steps={steps} activeStep={1} size=\"lg\" />\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <Stepper
+      steps={[
+        { id: "cart", label: "Cart", description: "Review items" },
+        { id: "shipping", label: "Shipping", description: "Delivery" },
+        { id: "payment", label: "Payment", description: "Billing" },
+        { id: "review", label: "Review", description: "Confirm" },
+      ]}
+      activeStep={1}
+      size="sm"
+    />
+    <Stepper
+      steps={[
+        { id: "cart", label: "Cart", description: "Review items" },
+        { id: "shipping", label: "Shipping", description: "Delivery" },
+        { id: "payment", label: "Payment", description: "Billing" },
+        { id: "review", label: "Review", description: "Confirm" },
+      ]}
+      activeStep={1}
+      size="md"
+    />
+    <Stepper
+      steps={[
+        { id: "cart", label: "Cart", description: "Review items" },
+        { id: "shipping", label: "Shipping", description: "Delivery" },
+        { id: "payment", label: "Payment", description: "Billing" },
+        { id: "review", label: "Review", description: "Confirm" },
+      ]}
+      activeStep={1}
+      size="lg"
+    />
+  </div>
+</ComponentPreview>
+
+## All Upcoming
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\n<Stepper\n  steps={[\n    { id: \"cart\", label: \"Cart\", description: \"Review your items\" },\n    { id: \"shipping\", label: \"Shipping\", description: \"Delivery details\" },\n    { id: \"payment\", label: \"Payment\", description: \"Billing information\" },\n    { id: \"review\", label: \"Review\", description: \"Confirm your order\" },\n  ]}\n  activeStep={0}\n/>"}>
+  <Stepper
+    steps={[
+      { id: "cart", label: "Cart", description: "Review your items" },
+      { id: "shipping", label: "Shipping", description: "Delivery details" },
+      { id: "payment", label: "Payment", description: "Billing information" },
+      { id: "review", label: "Review", description: "Confirm your order" },
+    ]}
+    activeStep={0}
+  />
+</ComponentPreview>
+
+## Progress
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\n<Stepper\n  steps={[\n    { id: \"cart\", label: \"Cart\", description: \"Review your items\" },\n    { id: \"shipping\", label: \"Shipping\", description: \"Delivery details\" },\n    { id: \"payment\", label: \"Payment\", description: \"Billing information\" },\n    { id: \"review\", label: \"Review\", description: \"Confirm your order\" },\n  ]}\n  activeStep={2}\n/>"}>
+  <Stepper
+    steps={[
+      { id: "cart", label: "Cart", description: "Review your items" },
+      { id: "shipping", label: "Shipping", description: "Delivery details" },
+      { id: "payment", label: "Payment", description: "Billing information" },
+      { id: "review", label: "Review", description: "Confirm your order" },
+    ]}
+    activeStep={2}
+  />
+</ComponentPreview>
+
+## Completed
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\n<Stepper\n  steps={[\n    { id: \"cart\", label: \"Cart\", description: \"Review your items\" },\n    { id: \"shipping\", label: \"Shipping\", description: \"Delivery details\" },\n    { id: \"payment\", label: \"Payment\", description: \"Billing information\" },\n    { id: \"review\", label: \"Review\", description: \"Confirm your order\" },\n  ]}\n  activeStep={4}\n/>"}>
+  <Stepper
+    steps={[
+      { id: "cart", label: "Cart", description: "Review your items" },
+      { id: "shipping", label: "Shipping", description: "Delivery details" },
+      { id: "payment", label: "Payment", description: "Billing information" },
+      { id: "review", label: "Review", description: "Confirm your order" },
+    ]}
+    activeStep={4}
+  />
+</ComponentPreview>
+
+## Error State
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\n<Stepper\n  steps={[\n    { id: \"info\", label: \"Personal info\", description: \"Name and contact\" },\n    { id: \"address\", label: \"Address\", description: \"Delivery details\", status: \"error\" },\n    { id: \"confirm\", label: \"Confirmation\", description: \"Review and submit\" },\n  ]}\n  activeStep={1}\n/>"}>
+  <Stepper
+    steps={[
+      { id: "info", label: "Personal info", description: "Name and contact" },
+      { id: "address", label: "Address", description: "Delivery details", status: "error" },
+      { id: "confirm", label: "Confirmation", description: "Review and submit" },
+    ]}
+    activeStep={1}
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Stepper } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Stepper\n    steps={[\n      { id: \"cart\", label: \"Cart\", description: \"Review your items\" },\n      { id: \"shipping\", label: \"Shipping\", description: \"Delivery details\" },\n      { id: \"payment\", label: \"Payment\", description: \"Billing information\" },\n      { id: \"review\", label: \"Review\", description: \"Confirm your order\" },\n    ]}\n    activeStep={2}\n  />\n  <Stepper\n    steps={[\n      { id: \"info\", label: \"Personal info\", description: \"Name and contact\" },\n      { id: \"address\", label: \"Address\", description: \"Delivery details\", status: \"error\" },\n      { id: \"confirm\", label: \"Confirmation\", description: \"Review and submit\" },\n    ]}\n    activeStep={1}\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Stepper
+      steps={[
+        { id: "cart", label: "Cart", description: "Review your items" },
+        { id: "shipping", label: "Shipping", description: "Delivery details" },
+        { id: "payment", label: "Payment", description: "Billing information" },
+        { id: "review", label: "Review", description: "Confirm your order" },
+      ]}
+      activeStep={2}
+    />
+    <Stepper
+      steps={[
+        { id: "info", label: "Personal info", description: "Name and contact" },
+        { id: "address", label: "Address", description: "Delivery details", status: "error" },
+        { id: "confirm", label: "Confirmation", description: "Review and submit" },
+      ]}
+      activeStep={1}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Stepper
+
+<PropsTable
+  rows={[
+    { name: "steps", type: "StepItem[]", defaultValue: "—", description: "Ordered array of step data. Must contain at least one entry. Required." },
+    { name: "activeStep", type: "number", defaultValue: "0", description: "Zero-based index of the currently active step. Steps at earlier indices are rendered as completed." },
+    { name: "variant", type: "'numbered' | 'dotted'", defaultValue: "'numbered'", description: "numbered — shows the step number, check icon (completed), or alert icon (error). dotted — minimal solid dot with no numbers or icons." },
+    { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Layout direction of the step list." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Indicator circle size and label typography scale." },
+    { name: "onStepClick", type: "(index: number) => void", defaultValue: "—", description: "When provided, completed and active step indicators become clickable buttons. Receives the zero-based step index." },
+    { name: "i18nStrings", type: "StepperI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the list label and step state suffixes." },
+  ]}
+/>
+
+### StepItem
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Unique stable identifier. Used as React key. Required. |
+| `label` | `string` | Step label shown below (horizontal) or beside (vertical) the indicator. Required. |
+| `description` | `string` | Optional supporting text rendered under the label. |
+| `status` | `'error'` | Per-step error override — marks the step as errored regardless of `activeStep`. |
+
+## Accessibility
+
+- Rendered as `<ol aria-label="Steps">` — screen readers announce it as an ordered list
+- Active step indicator receives `aria-current="step"`
+- Completed steps include a screen-reader-only suffix (e.g. "(Completed)") via `VisuallyHidden`
+- Error steps include a screen-reader-only suffix (e.g. "(Error)") via `VisuallyHidden`
+- When `onStepClick` is provided, completed and active indicators render as `<button>` elements — keyboard-focusable and activatable
+- Connector lines are `aria-hidden="true"` — decorative only
+- `i18nStrings.listLabel` overrides the `<ol>` aria-label for contextual descriptions (e.g. "Checkout steps")
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between clickable step buttons (when `onStepClick` is provided) |
+| Enter | Activates the focused step button |
+| Space | Activates the focused step button |

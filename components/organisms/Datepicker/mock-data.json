@@ -1,0 +1,70 @@
+{
+  "default": {
+    "label": "Start date",
+    "hint": "Select a date from the calendar",
+    "placeholder": "YYYY-MM-DD"
+  },
+  "variants": [
+    { "label": "Default variant", "variant": "default" },
+    { "label": "Filled variant", "variant": "filled" },
+    { "label": "Flushed variant", "variant": "flushed" },
+    { "label": "Unstyled variant", "variant": "unstyled" }
+  ],
+  "sizes": [
+    { "label": "Small datepicker", "size": "sm" },
+    { "label": "Medium datepicker", "size": "md" },
+    { "label": "Large datepicker", "size": "lg" }
+  ],
+  "states": {
+    "default": {
+      "label": "Default state",
+      "hint": "Normal resting state"
+    },
+    "withValue": {
+      "label": "Pre-filled",
+      "value": "2026-03-15"
+    },
+    "error": {
+      "label": "Error state",
+      "errorMessage": "Please select a valid date"
+    },
+    "disabled": {
+      "label": "Disabled state",
+      "disabled": true
+    },
+    "loading": {
+      "label": "Loading state",
+      "isLoading": true
+    },
+    "constrained": {
+      "label": "Constrained range",
+      "min": "2026-03-10",
+      "max": "2026-03-20",
+      "hint": "Only March 10–20 selectable"
+    }
+  },
+  "edge_cases": {
+    "empty_label": {
+      "label": "",
+      "hint": "Empty label — accessibility violation"
+    },
+    "very_long_label": {
+      "label": "This is an extremely long label that tests the truncation and wrapping behavior of the datepicker field group",
+      "hint": "Also a very long hint text that should clamp correctly when the container is narrow"
+    },
+    "very_long_error": {
+      "label": "Date",
+      "errorMessage": "The date you entered is not valid. Please enter a date in YYYY-MM-DD format within the allowed range of January 1, 2020 to December 31, 2030."
+    },
+    "min_max_same_day": {
+      "label": "Single day",
+      "min": "2026-06-15",
+      "max": "2026-06-15",
+      "hint": "Only one day selectable"
+    },
+    "sunday_first": {
+      "label": "Sunday first",
+      "firstDayOfWeek": 0
+    }
+  }
+}

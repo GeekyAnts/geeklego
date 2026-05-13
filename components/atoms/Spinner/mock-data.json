@@ -1,0 +1,42 @@
+{
+  "default": {
+    "variant": "default",
+    "size": "md",
+    "label": "Loading…"
+  },
+  "variants": [
+    { "variant": "default", "size": "md", "label": "Loading…" },
+    { "variant": "default",         "size": "md", "label": "Loading…" },
+    { "variant": "inverse", "size": "md", "label": "Loading…" }
+  ],
+  "sizes": [
+    { "variant": "default", "size": "xs", "label": "Loading…" },
+    { "variant": "default", "size": "sm", "label": "Loading…" },
+    { "variant": "default", "size": "md", "label": "Loading…" },
+    { "variant": "default", "size": "lg", "label": "Loading…" },
+    { "variant": "default", "size": "xl", "label": "Loading…" }
+  ],
+  "states": {
+    "default_spinning": { "variant": "default", "size": "md", "label": "Loading content" },
+    "inline_text":      { "variant": "default", "size": "sm", "label": "Saving changes…" },
+    "overlay_large":    { "variant": "default", "size": "xl", "label": "Loading page" },
+    "on_dark_surface":  { "variant": "inverse", "size": "md", "label": "Loading…" },
+    "on_brand_surface": { "variant": "default",         "size": "md", "label": "Loading…" }
+  },
+  "edge_cases": {
+    "custom_label":       { "variant": "default", "size": "md", "label": "Uploading 3 of 5 files, please wait" },
+    "short_label":        { "variant": "default", "size": "md", "label": "…" },
+    "aria_label_override": {
+      "variant": "default",
+      "size": "md",
+      "label": "Loading",
+      "aria-label": "Fetching search results for 'dashboard'"
+    },
+    "extra_classes": {
+      "variant": "default",
+      "size": "md",
+      "label": "Loading…",
+      "className": "opacity-50"
+    }
+  }
+}

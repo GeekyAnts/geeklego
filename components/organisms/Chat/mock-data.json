@@ -1,0 +1,56 @@
+{
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "user-2",
+      "senderName": "Sarah",
+      "senderInitials": "SR",
+      "content": "Good morning! Did you get a chance to review the proposal?",
+      "timestamp": "9:01 AM",
+      "date": "2026-04-09"
+    },
+    {
+      "id": "2",
+      "senderId": "user-1",
+      "content": "Yes, I went through it last night. Overall it looks great!",
+      "timestamp": "9:04 AM",
+      "date": "2026-04-09"
+    },
+    {
+      "id": "3",
+      "senderId": "user-2",
+      "senderName": "Sarah",
+      "senderInitials": "SR",
+      "content": "Awesome. Any sections you would like to discuss in more detail?",
+      "timestamp": "9:05 AM",
+      "date": "2026-04-09"
+    },
+    {
+      "id": "4",
+      "senderId": "user-1",
+      "content": "The pricing section — I think we can be more competitive.",
+      "timestamp": "9:07 AM",
+      "date": "2026-04-09"
+    },
+    {
+      "id": "5",
+      "senderId": "user-2",
+      "senderName": "Sarah",
+      "senderInitials": "SR",
+      "content": "Great point! Let me rework those numbers.",
+      "timestamp": "9:09 AM",
+      "date": "2026-04-09"
+    }
+  ],
+  "currentUserId": "user-1",
+  "participant": {
+    "name": "Sarah Reynolds",
+    "status": "online",
+    "avatarInitials": "SR"
+  },
+  "states": {
+    "loading": { "messages": [], "loading": true },
+    "typing": { "isTyping": true },
+    "empty": { "messages": [] }
+  }
+}

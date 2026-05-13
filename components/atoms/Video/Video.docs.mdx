@@ -1,0 +1,145 @@
+---
+title: Video
+description: A semantic, accessible video embed component with aspect-ratio enforcement, multi-source codec fallback, WebVTT caption tracks, and optional Schema.org VideoObject microdata.
+level: atom
+---
+
+## Aspect Ratios
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\" style={{ maxWidth: 480 }}>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">ratio=\"16/9\" (default)</span>\n    <Video src=\"https://www.w3schools.com/html/mov_bbb.mp4\" poster=\"https://www.w3schools.com/html/img_chania.jpg\" ratio=\"16/9\" controls aria-label=\"16:9 demo\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">ratio=\"4/3\"</span>\n    <Video src=\"https://www.w3schools.com/html/mov_bbb.mp4\" poster=\"https://www.w3schools.com/html/img_chania.jpg\" ratio=\"4/3\" controls aria-label=\"4:3 demo\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">ratio=\"1/1\"</span>\n    <Video src=\"https://www.w3schools.com/html/mov_bbb.mp4\" poster=\"https://www.w3schools.com/html/img_chania.jpg\" ratio=\"1/1\" controls aria-label=\"1:1 demo\" />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-4" style={{ maxWidth: 480 }}>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">ratio="16/9" (default)</span>
+      <Video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="https://www.w3schools.com/html/img_chania.jpg" ratio="16/9" controls aria-label="16:9 demo" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">ratio="4/3"</span>
+      <Video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="https://www.w3schools.com/html/img_chania.jpg" ratio="4/3" controls aria-label="4:3 demo" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">ratio="1/1"</span>
+      <Video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="https://www.w3schools.com/html/img_chania.jpg" ratio="1/1" controls aria-label="1:1 demo" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Multi-Source with Tracks
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<Video\n  sources={[\n    { src: \"https://www.w3schools.com/html/mov_bbb.mp4\", type: \"video/mp4\" },\n    { src: \"https://www.w3schools.com/html/mov_bbb.webm\", type: \"video/webm\" },\n    { src: \"https://www.w3schools.com/html/mov_bbb.ogg\", type: \"video/ogg\" },\n  ]}\n  poster=\"https://www.w3schools.com/html/img_chania.jpg\"\n  tracks={[\n    { src: \"/captions/en.vtt\", kind: \"captions\", srcLang: \"en\", label: \"English\", default: true },\n    { src: \"/captions/fr.vtt\", kind: \"subtitles\", srcLang: \"fr\", label: \"Français\" },\n  ]}\n  caption=\"Multi-format with WebVTT caption tracks (en, fr)\"\n  controls\n  rounded\n  style={{ maxWidth: 600 }}\n/>"}>
+  <Video
+    sources={[
+      { src: "https://www.w3schools.com/html/mov_bbb.mp4", type: "video/mp4" },
+      { src: "https://www.w3schools.com/html/mov_bbb.webm", type: "video/webm" },
+      { src: "https://www.w3schools.com/html/mov_bbb.ogg", type: "video/ogg" },
+    ]}
+    poster="https://www.w3schools.com/html/img_chania.jpg"
+    tracks={[
+      { src: "/captions/en.vtt", kind: "captions", srcLang: "en", label: "English", default: true },
+      { src: "/captions/fr.vtt", kind: "subtitles", srcLang: "fr", label: "Français" },
+    ]}
+    caption="Multi-format with WebVTT caption tracks (en, fr)"
+    controls
+    rounded
+    style={{ maxWidth: 600 }}
+  />
+</ComponentPreview>
+
+## Rounded + Bordered
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<Video\n  src=\"https://www.w3schools.com/html/mov_bbb.mp4\"\n  poster=\"https://www.w3schools.com/html/img_chania.jpg\"\n  rounded\n  bordered\n  controls\n  aria-label=\"Rounded and bordered video\"\n  style={{ maxWidth: 520 }}\n/>"}>
+  <Video
+    src="https://www.w3schools.com/html/mov_bbb.mp4"
+    poster="https://www.w3schools.com/html/img_chania.jpg"
+    rounded
+    bordered
+    controls
+    aria-label="Rounded and bordered video"
+    style={{ maxWidth: 520 }}
+  />
+</ComponentPreview>
+
+## No Radius
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<Video\n  src=\"https://www.w3schools.com/html/mov_bbb.mp4\"\n  poster=\"https://www.w3schools.com/html/img_chania.jpg\"\n  rounded={false}\n  controls\n  aria-label=\"Video with no corner radius\"\n  style={{ maxWidth: 520 }}\n/>"}>
+  <Video
+    src="https://www.w3schools.com/html/mov_bbb.mp4"
+    poster="https://www.w3schools.com/html/img_chania.jpg"
+    rounded={false}
+    controls
+    aria-label="Video with no corner radius"
+    style={{ maxWidth: 520 }}
+  />
+</ComponentPreview>
+
+## With Caption
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<Video\n  src=\"https://www.w3schools.com/html/mov_bbb.mp4\"\n  poster=\"https://www.w3schools.com/html/img_chania.jpg\"\n  controls\n  rounded\n  caption=\"A sample caption providing context for the video content.\"\n  style={{ maxWidth: 520 }}\n/>"}>
+  <Video
+    src="https://www.w3schools.com/html/mov_bbb.mp4"
+    poster="https://www.w3schools.com/html/img_chania.jpg"
+    controls
+    rounded
+    caption="A sample caption providing context for the video content."
+    style={{ maxWidth: 520 }}
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Video } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Video\n    src=\"https://www.w3schools.com/html/mov_bbb.mp4\"\n    poster=\"https://www.w3schools.com/html/img_chania.jpg\"\n    controls\n    rounded\n    bordered\n    caption=\"Dark mode video with caption and border\"\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Video
+      src="https://www.w3schools.com/html/mov_bbb.mp4"
+      poster="https://www.w3schools.com/html/img_chania.jpg"
+      controls
+      rounded
+      bordered
+      caption="Dark mode video with caption and border"
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "src", type: "string", defaultValue: "—", description: "Single video source URL. Use sources for multi-format fallback." },
+    { name: "sources", type: "VideoSource[]", defaultValue: "—", description: "Multiple codec sources (mp4, webm, ogg). Preferred over src." },
+    { name: "poster", type: "string", defaultValue: "—", description: "Poster image URL displayed before the video plays." },
+    { name: "ratio", type: "'16/9' | '4/3' | '1/1' | '21/9'", defaultValue: "'16/9'", description: "Aspect ratio of the video container." },
+    { name: "controls", type: "boolean", defaultValue: "true", description: "Show native browser playback controls." },
+    { name: "autoPlay", type: "boolean", defaultValue: "false", description: "Autoplay on mount. Forces muted to true per browser policy." },
+    { name: "loop", type: "boolean", defaultValue: "false", description: "Loop playback." },
+    { name: "muted", type: "boolean", defaultValue: "false", description: "Mute audio. Required when autoPlay is true." },
+    { name: "playsInline", type: "boolean", defaultValue: "false", description: "Prevent fullscreen on iOS; play inline in the page." },
+    { name: "preload", type: "'none' | 'metadata' | 'auto'", defaultValue: "'metadata'", description: "Browser preload hint." },
+    { name: "tracks", type: "VideoTrack[]", defaultValue: "—", description: "WebVTT tracks for captions, subtitles, and descriptions." },
+    { name: "caption", type: "string", defaultValue: "—", description: "Visible caption rendered in figcaption. Also used as Schema.org name." },
+    { name: "rounded", type: "boolean", defaultValue: "true", description: "Apply corner radius." },
+    { name: "bordered", type: "boolean", defaultValue: "false", description: "Show a 1px border around the container." },
+    { name: "aria-label", type: "string", defaultValue: "caption", description: "Accessible label for the video landmark. Falls back to caption if omitted." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Emit Schema.org VideoObject microdata." },
+  ]}
+/>
+
+## Accessibility
+
+- `<figure>` wraps the media unit and receives `aria-label` and optional Schema.org itemscope
+- `<video>` element also receives `aria-label` so screen readers can identify it
+- `<figcaption>` renders only when `caption` is provided
+- `<track kind="captions">` required for WCAG 1.2.2 (Captions — Prerecorded)
+- Native `<video controls>` is fully keyboard-navigable
+- For ambient/decorative video, provide an explicit `aria-label` stating no information is conveyed
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the video controls |
+| Space | Play / pause |
+| Arrow keys | Seek forward/backward (browser-dependent) |
+| M | Toggle mute (browser-dependent) |
+| F | Toggle fullscreen (browser-dependent) |

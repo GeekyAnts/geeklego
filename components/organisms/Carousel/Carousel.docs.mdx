@@ -1,0 +1,168 @@
+---
+title: Carousel
+description: An accessible slide carousel with arrow navigation, dot indicators, optional autoplay, and full WAI-ARIA carousel pattern compliance.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8 max-w-2xl\">\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">default — stops at first and last slide</p>\n    <Carousel label=\"Default variant\" variant=\"default\" navigation=\"both\">\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-lg font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">loop — wraps from last back to first</p>\n    <Carousel label=\"Loop variant\" variant=\"loop\" navigation=\"both\">\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-lg font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-8 max-w-2xl">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">default — stops at first and last slide</p>
+      <Carousel label="Default variant" variant="default" navigation="both">
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-lg font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">loop — wraps from last back to first</p>
+      <Carousel label="Loop variant" variant="loop" navigation="both">
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-lg font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-2xl\">\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">sm</p>\n    <Carousel label=\"Small carousel\" size=\"sm\" navigation=\"both\">\n      <Carousel.Slide><div className=\"w-full h-32 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-32 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-32 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-md font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">md</p>\n    <Carousel label=\"Medium carousel\" size=\"md\" navigation=\"both\">\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-lg font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">lg</p>\n    <Carousel label=\"Large carousel\" size=\"lg\" navigation=\"both\">\n      <Carousel.Slide><div className=\"w-full h-48 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-48 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-48 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-lg font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-2xl">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">sm</p>
+      <Carousel label="Small carousel" size="sm" navigation="both">
+        <Carousel.Slide><div className="w-full h-32 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-32 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-32 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-md font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">md</p>
+      <Carousel label="Medium carousel" size="md" navigation="both">
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-lg font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">lg</p>
+      <Carousel label="Large carousel" size="lg" navigation="both">
+        <Carousel.Slide><div className="w-full h-48 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-48 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-48 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-lg font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Navigation Controls
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-2xl\">\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">arrows only</p>\n    <Carousel label=\"Arrows only\" navigation=\"arrows\">\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-md font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">dots only</p>\n    <Carousel label=\"Dots only\" navigation=\"dots\">\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 2</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-md font-semibold\">Slide 3</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">none</p>\n    <Carousel label=\"No controls\" navigation=\"none\">\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 1</span></div></Carousel.Slide>\n      <Carousel.Slide><div className=\"w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 2</span></div></Carousel.Slide>\n    </Carousel>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-2xl">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">arrows only</p>
+      <Carousel label="Arrows only" navigation="arrows">
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-md font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">dots only</p>
+      <Carousel label="Dots only" navigation="dots">
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 2</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-md font-semibold">Slide 3</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">none</p>
+      <Carousel label="No controls" navigation="none">
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 1</span></div></Carousel.Slide>
+        <Carousel.Slide><div className="w-full h-36 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 2</span></div></Carousel.Slide>
+      </Carousel>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Multiple Slides Per View
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div className=\"max-w-2xl\">\n  <Carousel label=\"Two slides per view\" navigation=\"both\" slidesPerView={2}>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 1</span></div></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 2</span></div></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-md font-semibold\">Slide 3</span></div></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-error)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-md font-semibold\">Slide 4</span></div></Carousel.Slide>\n  </Carousel>\n</div>"}>
+  <div className="max-w-2xl">
+    <Carousel label="Two slides per view" navigation="both" slidesPerView={2}>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 1</span></div></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 2</span></div></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-md font-semibold">Slide 3</span></div></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-error)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-md font-semibold">Slide 4</span></div></Carousel.Slide>
+    </Carousel>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div className=\"max-w-2xl\">\n  <Carousel label=\"Loading carousel\" loading>\n    <Carousel.Slide><div className=\"w-full h-40\" /></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40\" /></Carousel.Slide>\n  </Carousel>\n</div>"}>
+  <div className="max-w-2xl">
+    <Carousel label="Loading carousel" loading>
+      <Carousel.Slide><div className="w-full h-40" /></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40" /></Carousel.Slide>
+    </Carousel>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Carousel } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Carousel label=\"Dark mode carousel\" navigation=\"both\" variant=\"loop\">\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 1</span></div></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-0)] text-body-lg font-semibold\">Slide 2</span></div></Carousel.Slide>\n    <Carousel.Slide><div className=\"w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]\"><span className=\"text-[var(--color-neutral-950)] text-body-lg font-semibold\">Slide 3</span></div></Carousel.Slide>\n  </Carousel>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Carousel label="Dark mode carousel" navigation="both" variant="loop">
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-action-primary)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 1</span></div></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-success)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-0)] text-body-lg font-semibold">Slide 2</span></div></Carousel.Slide>
+      <Carousel.Slide><div className="w-full h-40 flex items-center justify-center bg-[var(--color-status-warning)] rounded-[var(--carousel-radius)]"><span className="text-[var(--color-neutral-950)] text-body-lg font-semibold">Slide 3</span></div></Carousel.Slide>
+    </Carousel>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "label", type: "string", defaultValue: "—", description: "Required. Accessible label for the carousel region (aria-label on the root section element)." },
+    { name: "variant", type: "'default' | 'loop'", defaultValue: "'default'", description: "Navigation wrap behaviour. default stops at the first and last slide. loop wraps from last back to first." },
+    { name: "navigation", type: "'arrows' | 'dots' | 'both' | 'none'", defaultValue: "'both'", description: "Which navigation controls to render." },
+    { name: "size", type: "'sm' | 'md' | 'lg' | 'full'", defaultValue: "'md'", description: "Controls arrow button size and overall density. full fills 100% of container height." },
+    { name: "slidesPerView", type: "1 | 2 | 3", defaultValue: "1", description: "Number of slides visible simultaneously." },
+    { name: "autoPlay", type: "boolean", defaultValue: "false", description: "Enable automatic slide advancement. Adds a pause/resume toggle." },
+    { name: "autoPlayInterval", type: "number", defaultValue: "4000", description: "Milliseconds between automatic advances." },
+    { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "Pause autoplay when the cursor hovers over the carousel." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Show a loading skeleton in place of slide content. Navigation controls are hidden." },
+    { name: "i18nStrings", type: "CarouselI18nStrings", defaultValue: "—", description: "Per-instance i18n overrides for previousSlide, nextSlide, goToSlide, slideLabel, pauseAutoPlay, and resumeAutoPlay." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names for the root section element." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Slides — each direct child becomes one slide. Wrap in Carousel.Slide for consistent sizing." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<section>` landmark with `aria-roledescription="carousel"` and `aria-label` from the required `label` prop
+- Each slide is a `<li>` with `role="group"` and `aria-roledescription="slide"`, labelled "X of N"
+- Off-screen slides have `aria-hidden="true"` to prevent screen reader announcement
+- A polite live region announces the current slide number on every navigation (`aria-live="polite" aria-atomic="true"`)
+- Track `<ul>` has `aria-live="off"` to suppress individual child announcements
+- Previous / Next buttons use `aria-label` from i18n strings
+- Dot indicators use `aria-label="Go to slide N"` and `aria-current="true"` on the active dot
+- Autoplay toggle uses `aria-pressed` to expose play/pause state
+- `aria-busy="true"` applied via `getLoadingProps()` when `loading` is true
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| ArrowLeft | Go to previous slide (when carousel section is focused) |
+| ArrowRight | Go to next slide (when carousel section is focused) |
+| Tab | Move focus to Previous / Next / Dot / Autoplay controls |
+| Enter / Space | Activate focused button |

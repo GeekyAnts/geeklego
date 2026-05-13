@@ -1,0 +1,106 @@
+---
+title: Switch
+description: Toggle control with on/off state, two color variants, label positioning, and description support.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Switch } from \"@geeklego/ui\"\n\n<Switch variant=\"default\">Notifications</Switch>\n<Switch variant=\"success\">Feature enabled</Switch>"}>
+  <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-3">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Default (brand colour)</p>
+        <div className="flex flex-col gap-2">
+          <Switch variant="default" defaultChecked={false}>Notifications off</Switch>
+          <Switch variant="default" defaultChecked>Notifications on</Switch>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Success (green — feature enabled)</p>
+        <div className="flex flex-col gap-2">
+          <Switch variant="success" defaultChecked={false}>Feature disabled</Switch>
+          <Switch variant="success" defaultChecked>Feature enabled</Switch>
+        </div>
+      </div>
+    </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Switch } from \"@geeklego/ui\"\n\n<Switch size=\"sm\">Small</Switch>\n<Switch size=\"md\">Medium</Switch>\n<Switch size=\"lg\">Large</Switch>"}>
+  <div className="flex flex-col gap-3 items-start">
+      <Switch size="sm" defaultChecked>Small (28×16)</Switch>
+      <Switch size="md" defaultChecked>Medium (44×24)</Switch>
+      <Switch size="lg" defaultChecked>Large (56×32)</Switch>
+    </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Switch } from \"@geeklego/ui\"\n\n<Switch disabled>Disabled off</Switch>\n<Switch disabled defaultChecked>Disabled on</Switch>"}>
+  <div className="flex flex-col gap-3 items-start">
+      <Switch defaultChecked={false} disabled>Disabled off</Switch>
+      <Switch defaultChecked disabled>Disabled on</Switch>
+    </div>
+</ComponentPreview>
+
+## With Description
+
+<ComponentPreview code={"import { Switch } from \"@geeklego/ui\"\n\n<Switch description=\"Sent once a day at 9 AM.\">\n  Morning digest\n</Switch>"}>
+  <Switch defaultChecked description="Sent once a day at 9 AM.">Morning digest</Switch>
+</ComponentPreview>
+
+## Label Position
+
+<ComponentPreview code={"import { Switch } from \"@geeklego/ui\"\n\n<Switch labelPosition=\"right\">Label right (default)</Switch>\n<Switch labelPosition=\"left\">Label left</Switch>"}>
+  <div className="flex flex-col gap-3 items-start">
+      <Switch labelPosition="right" defaultChecked>Label on the right (default)</Switch>
+      <Switch labelPosition="left" defaultChecked>Label on the left</Switch>
+    </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <Switch>Off</Switch>\n  <Switch defaultChecked>On</Switch>\n  <Switch variant=\"success\" defaultChecked>Success</Switch>\n  <Switch disabled>Disabled</Switch>\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+      <Switch defaultChecked={false}>Dark — off</Switch>
+      <Switch defaultChecked>Dark — on</Switch>
+      <Switch variant="success" defaultChecked>Dark — success</Switch>
+      <Switch disabled defaultChecked={false}>Dark — disabled off</Switch>
+      <Switch disabled defaultChecked>Dark — disabled on</Switch>
+    </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "checked", type: "boolean", defaultValue: "—", description: "Whether the switch is on. Use with onChange for controlled behaviour." },
+    { name: "defaultChecked", type: "boolean", defaultValue: "—", description: "Initial checked state for uncontrolled usage. Ignored when checked is provided." },
+    { name: "onChange", type: "(checked: boolean) => void", defaultValue: "—", description: "Called when the switch is toggled. Receives the new checked value." },
+    { name: "variant", type: "'default' | 'success'", defaultValue: "'default'", description: "Visual colour variant. default uses the brand action colour; success uses the success status colour." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Track and thumb size." },
+    { name: "labelPosition", type: "'left' | 'right'", defaultValue: "'right'", description: "Where the label text renders relative to the switch track." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Label text rendered beside the track, used as accessible name via aria-labelledby." },
+    { name: "description", type: "string", defaultValue: "—", description: "Optional secondary description rendered below the label." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Whether the switch is disabled." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names applied to the outermost wrapper div." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a `<button role="switch">` — announces as "switch, on" or "switch, off" to screen readers
+- `children` is used as the accessible name via `aria-labelledby`
+- When no `children`: supply `aria-label` directly (e.g. `aria-label="Toggle dark mode"`)
+- `description` is linked via `aria-describedby` — read after the label and role
+- `disabled` sets both HTML `disabled` and `aria-disabled` attributes
+- Focus ring applied on keyboard navigation via `focus-visible`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the switch |
+| Space | Toggles the switch on/off |
+| Enter | Toggles the switch on/off |

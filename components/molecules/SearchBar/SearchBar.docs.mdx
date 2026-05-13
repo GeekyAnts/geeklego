@@ -1,0 +1,156 @@
+---
+title: SearchBar
+description: A search input with clear button, loading state, error state, optional visible label, and a configurable search button slot.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <SearchBar variant=\"default\" placeholder=\"Search…\" />\n  <SearchBar variant=\"filled\" placeholder=\"Search…\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <SearchBar variant="default" placeholder="Search…" />
+    <SearchBar variant="filled" placeholder="Search…" />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <SearchBar size=\"sm\" placeholder=\"Small search\" />\n  <SearchBar size=\"md\" placeholder=\"Medium search\" />\n  <SearchBar size=\"lg\" placeholder=\"Large search\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <SearchBar size="sm" placeholder="Small search" />
+    <SearchBar size="md" placeholder="Medium search" />
+    <SearchBar size="lg" placeholder="Large search" />
+  </div>
+</ComponentPreview>
+
+## With Value
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<SearchBar\n  defaultValue=\"React components\"\n  placeholder=\"Search…\"\n  className=\"max-w-sm\"\n/>"}>
+  <SearchBar
+    defaultValue="React components"
+    placeholder="Search…"
+    className="max-w-sm"
+  />
+</ComponentPreview>
+
+## With Search Button
+
+<ComponentPreview code={"import { SearchBar, Button } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <SearchBar\n    placeholder=\"Search documentation…\"\n    searchButton={<Button variant=\"primary\" size=\"md\">Search</Button>}\n  />\n  <SearchBar\n    variant=\"filled\"\n    placeholder=\"Search…\"\n    searchButton={<Button variant=\"outline\" size=\"md\">Go</Button>}\n  />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <SearchBar
+      placeholder="Search documentation…"
+      searchButton={<Button variant="primary" size="md">Search</Button>}
+    />
+    <SearchBar
+      variant="filled"
+      placeholder="Search…"
+      searchButton={<Button variant="outline" size="md">Go</Button>}
+    />
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<SearchBar\n  isLoading\n  defaultValue=\"geeklego\"\n  placeholder=\"Search…\"\n  className=\"max-w-sm\"\n/>"}>
+  <SearchBar
+    isLoading
+    defaultValue="geeklego"
+    placeholder="Search…"
+    className="max-w-sm"
+  />
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<SearchBar\n  errorMessage=\"No results found for this query.\"\n  defaultValue=\"xyzzy123\"\n  placeholder=\"Search…\"\n  className=\"max-w-sm\"\n/>"}>
+  <SearchBar
+    errorMessage="No results found for this query."
+    defaultValue="xyzzy123"
+    placeholder="Search…"
+    className="max-w-sm"
+  />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<SearchBar\n  disabled\n  defaultValue=\"Search is unavailable\"\n  placeholder=\"Search…\"\n  className=\"max-w-sm\"\n/>"}>
+  <SearchBar
+    disabled
+    defaultValue="Search is unavailable"
+    placeholder="Search…"
+    className="max-w-sm"
+  />
+</ComponentPreview>
+
+## With Label
+
+<ComponentPreview code={"import { SearchBar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <SearchBar\n    label=\"Search components\"\n    placeholder=\"Type to filter…\"\n  />\n  <SearchBar\n    label=\"Product search\"\n    labelHidden\n    placeholder=\"Search products…\"\n  />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <SearchBar
+      label="Search components"
+      placeholder="Type to filter…"
+    />
+    <SearchBar
+      label="Product search"
+      labelHidden
+      placeholder="Search products…"
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { SearchBar, Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <SearchBar placeholder=\"Search…\" />\n  <SearchBar variant=\"filled\" defaultValue=\"React hooks\" placeholder=\"Search…\" />\n  <SearchBar\n    placeholder=\"Search docs…\"\n    searchButton={<Button variant=\"primary\" size=\"md\">Search</Button>}\n  />\n  <SearchBar errorMessage=\"No results found.\" defaultValue=\"unknown\" placeholder=\"Search…\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <SearchBar placeholder="Search…" />
+    <SearchBar variant="filled" defaultValue="React hooks" placeholder="Search…" />
+    <SearchBar
+      placeholder="Search docs…"
+      searchButton={<Button variant="primary" size="md">Search</Button>}
+    />
+    <SearchBar errorMessage="No results found." defaultValue="unknown" placeholder="Search…" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'default' | 'filled'", defaultValue: "'default'", description: "Visual treatment of the input. default — outlined border. filled — muted background." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale of the input." },
+    { name: "defaultValue", type: "string", defaultValue: "—", description: "Uncontrolled initial value. Shows the clear button when non-empty." },
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled value. Requires onValueChange to update." },
+    { name: "onValueChange", type: "(value: string) => void", defaultValue: "—", description: "Called on every keystroke with the current input value." },
+    { name: "onSearch", type: "(value: string) => void", defaultValue: "—", description: "Called when the user submits the search (Enter key or search button click)." },
+    { name: "onClear", type: "() => void", defaultValue: "—", description: "Called when the user activates the clear button." },
+    { name: "searchButton", type: "ReactNode", defaultValue: "—", description: "Optional action slot rendered to the right of the input — typically a Button." },
+    { name: "label", type: "string", defaultValue: "—", description: "Visible label text shown above the input." },
+    { name: "labelHidden", type: "boolean", defaultValue: "false", description: "Renders the label visually hidden (still accessible to screen readers)." },
+    { name: "errorMessage", type: "string", defaultValue: "—", description: "Validation error message. Switches the input to error state and announced via role='alert'." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Shows a loading spinner inside the input and disables interaction." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the input." },
+    { name: "searchUrl", type: "string", defaultValue: "—", description: "Used with schema=true to generate a Schema.org SearchAction JSON-LD block." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org SearchAction JSON-LD. Requires searchUrl." },
+    { name: "i18nStrings", type: "SearchBarI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the clear button and search button labels." },
+  ]}
+/>
+
+## Accessibility
+
+- Wrapped in `role="search"` — announced as a search landmark by screen readers
+- `<label>` is linked to the input via `htmlFor`/`id` — `id` is auto-generated with `useId()` when omitted
+- Clear button has a localised `aria-label` via `i18nStrings`
+- Error message uses `role="alert"` — announced immediately when it appears
+- Loading state sets `aria-busy="true"` on the input
+- Schema.org `SearchAction` JSON-LD injected via `<script type="application/ld+json">` when `schema` and `searchUrl` are provided
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the search input, clear button, or search button |
+| Enter | Submits the search query |
+| Escape | Clears the input when focused |

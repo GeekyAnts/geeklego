@@ -1,0 +1,202 @@
+---
+title: Navbar
+description: A horizontal or vertical navigation bar built from NavItem atoms, with variant styles, icon support, badge counts, and Schema.org SiteNavigationElement markup.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Navbar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <Navbar\n    aria-label=\"Pills navigation\"\n    variant=\"pills\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n      { id: \"blog\", href: \"/blog\", label: \"Blog\" },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Underline navigation\"\n    variant=\"underline\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n      { id: \"blog\", href: \"/blog\", label: \"Blog\" },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Flush navigation\"\n    variant=\"flush\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n      { id: \"blog\", href: \"/blog\", label: \"Blog\" },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Bordered navigation\"\n    variant=\"bordered\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n      { id: \"blog\", href: \"/blog\", label: \"Blog\" },\n    ]}\n  />\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <Navbar
+      aria-label="Pills navigation"
+      variant="pills"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+        { id: "blog", href: "/blog", label: "Blog" },
+      ]}
+    />
+    <Navbar
+      aria-label="Underline navigation"
+      variant="underline"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+        { id: "blog", href: "/blog", label: "Blog" },
+      ]}
+    />
+    <Navbar
+      aria-label="Flush navigation"
+      variant="flush"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+        { id: "blog", href: "/blog", label: "Blog" },
+      ]}
+    />
+    <Navbar
+      aria-label="Bordered navigation"
+      variant="bordered"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+        { id: "blog", href: "/blog", label: "Blog" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Navbar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <Navbar\n    aria-label=\"Small navigation\"\n    size=\"sm\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Medium navigation\"\n    size=\"md\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Large navigation\"\n    size=\"lg\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n    ]}\n  />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <Navbar
+      aria-label="Small navigation"
+      size="sm"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+      ]}
+    />
+    <Navbar
+      aria-label="Medium navigation"
+      size="md"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+      ]}
+    />
+    <Navbar
+      aria-label="Large navigation"
+      size="lg"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { Navbar } from \"@geeklego/ui\"\nimport { Home, List, Grid, Info, User } from \"lucide-react\"\n\n<Navbar\n  aria-label=\"Icon navigation\"\n  items={[\n    { id: \"home\", href: \"/\", label: \"Home\", icon: <Home size={16} />, isActive: true },\n    { id: \"docs\", href: \"/docs\", label: \"Docs\", icon: <List size={16} /> },\n    { id: \"components\", href: \"/components\", label: \"Components\", icon: <Grid size={16} /> },\n    { id: \"about\", href: \"/about\", label: \"About\", icon: <Info size={16} /> },\n    { id: \"profile\", href: \"/profile\", label: \"Profile\", icon: <User size={16} /> },\n  ]}\n/>"}>
+  <Navbar
+    aria-label="Icon navigation"
+    items={[
+      { id: "home", href: "/", label: "Home", icon: <Home size={16} />, isActive: true },
+      { id: "docs", href: "/docs", label: "Docs", icon: <List size={16} /> },
+      { id: "components", href: "/components", label: "Components", icon: <Grid size={16} /> },
+      { id: "about", href: "/about", label: "About", icon: <Info size={16} /> },
+      { id: "profile", href: "/profile", label: "Profile", icon: <User size={16} /> },
+    ]}
+  />
+</ComponentPreview>
+
+## Vertical
+
+<ComponentPreview code={"import { Navbar } from \"@geeklego/ui\"\nimport { Home, List, Grid, User } from \"lucide-react\"\n\n<div className=\"flex gap-8\">\n  <Navbar\n    aria-label=\"Vertical pills navigation\"\n    orientation=\"vertical\"\n    variant=\"pills\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", icon: <Home size={16} />, isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\", icon: <List size={16} /> },\n      { id: \"components\", href: \"/components\", label: \"Components\", icon: <Grid size={16} /> },\n      { id: \"profile\", href: \"/profile\", label: \"Profile\", icon: <User size={16} /> },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Vertical underline navigation\"\n    orientation=\"vertical\"\n    variant=\"underline\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n      { id: \"profile\", href: \"/profile\", label: \"Profile\" },\n    ]}\n  />\n</div>"}>
+  <div className="flex gap-8">
+    <Navbar
+      aria-label="Vertical pills navigation"
+      orientation="vertical"
+      variant="pills"
+      items={[
+        { id: "home", href: "/", label: "Home", icon: <Home size={16} />, isActive: true },
+        { id: "docs", href: "/docs", label: "Docs", icon: <List size={16} /> },
+        { id: "components", href: "/components", label: "Components", icon: <Grid size={16} /> },
+        { id: "profile", href: "/profile", label: "Profile", icon: <User size={16} /> },
+      ]}
+    />
+    <Navbar
+      aria-label="Vertical underline navigation"
+      orientation="vertical"
+      variant="underline"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+        { id: "profile", href: "/profile", label: "Profile" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Navbar } from \"@geeklego/ui\"\nimport { Home, List, Grid, User } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Navbar\n    aria-label=\"Dark pills navigation\"\n    variant=\"pills\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", icon: <Home size={16} />, isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\", icon: <List size={16} /> },\n      { id: \"components\", href: \"/components\", label: \"Components\", icon: <Grid size={16} /> },\n    ]}\n  />\n  <Navbar\n    aria-label=\"Dark underline navigation\"\n    variant=\"underline\"\n    items={[\n      { id: \"home\", href: \"/\", label: \"Home\", isActive: true },\n      { id: \"docs\", href: \"/docs\", label: \"Docs\" },\n      { id: \"components\", href: \"/components\", label: \"Components\" },\n    ]}\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Navbar
+      aria-label="Dark pills navigation"
+      variant="pills"
+      items={[
+        { id: "home", href: "/", label: "Home", icon: <Home size={16} />, isActive: true },
+        { id: "docs", href: "/docs", label: "Docs", icon: <List size={16} /> },
+        { id: "components", href: "/components", label: "Components", icon: <Grid size={16} /> },
+      ]}
+    />
+    <Navbar
+      aria-label="Dark underline navigation"
+      variant="underline"
+      items={[
+        { id: "home", href: "/", label: "Home", isActive: true },
+        { id: "docs", href: "/docs", label: "Docs" },
+        { id: "components", href: "/components", label: "Components" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Navbar
+
+<PropsTable
+  rows={[
+    { name: "items", type: "NavbarItemDef[]", defaultValue: "—", description: "Ordered list of navigation item definitions. Required." },
+    { name: "variant", type: "'pills' | 'underline' | 'flush' | 'bordered'", defaultValue: "'pills'", description: "Visual treatment for the active item and the nav track." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Typography and spacing scale for all items." },
+    { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Layout axis of the navigation bar." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Accessible label for the nav landmark. Required when multiple nav elements exist on the same page." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org SiteNavigationElement Microdata on each NavItem." },
+    { name: "i18nStrings", type: "NavbarI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the nav aria-label." },
+  ]}
+/>
+
+### NavbarItemDef
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Unique stable identifier. Used as React key. Required. |
+| `href` | `string` | Link destination. Required. |
+| `label` | `string` | Visible link text. Required. |
+| `icon` | `ReactNode` | Optional leading icon. |
+| `isActive` | `boolean` | Marks this item as the current page. |
+| `disabled` | `boolean` | Non-interactive, visually muted. |
+| `badge` | `string \| number` | Optional badge count shown on the trailing edge. |
+
+## Accessibility
+
+- Rendered as `<nav>` with `aria-label` — announced as a navigation landmark
+- Items are `<a>` elements inside `<ul>/<li>` — communicate list structure to screen readers
+- Active item receives `aria-current="page"` via the underlying NavItem atom
+- Disabled items are non-interactive and announced as dimmed
+- Multiple `<nav>` elements on the same page must each have a unique `aria-label`
+- Schema.org `SiteNavigationElement` Microdata available via the `schema` prop
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between navigation links |
+| Enter | Navigates to the focused link |

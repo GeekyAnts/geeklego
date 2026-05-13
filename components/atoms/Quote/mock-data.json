@@ -1,0 +1,88 @@
+{
+  "default": {
+    "children": "The only way to do great work is to love what you do.",
+    "attribution": "Steve Jobs",
+    "source": "Stanford Commencement Address",
+    "sourceUrl": "https://news.stanford.edu/2005/06/14/jobs-061505/",
+    "cite": "https://news.stanford.edu/2005/06/14/jobs-061505/",
+    "variant": "default",
+    "size": "md"
+  },
+  "variants": [
+    {
+      "variant": "default",
+      "children": "Design is not just what it looks like and feels like. Design is how it works.",
+      "attribution": "Steve Jobs"
+    },
+    {
+      "variant": "pullquote",
+      "children": "Simplicity is the ultimate sophistication.",
+      "attribution": "Leonardo da Vinci"
+    },
+    {
+      "variant": "minimal",
+      "children": "In the middle of difficulty lies opportunity.",
+      "attribution": "Albert Einstein"
+    },
+    {
+      "variant": "card",
+      "children": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "attribution": "Martin Fowler",
+      "source": "Refactoring: Improving the Design of Existing Code"
+    }
+  ],
+  "sizes": [
+    {
+      "size": "sm",
+      "children": "Less is more.",
+      "attribution": "Ludwig Mies van der Rohe"
+    },
+    {
+      "size": "md",
+      "children": "Less is more.",
+      "attribution": "Ludwig Mies van der Rohe"
+    },
+    {
+      "size": "lg",
+      "children": "Less is more.",
+      "attribution": "Ludwig Mies van der Rohe"
+    }
+  ],
+  "states": {
+    "textOnly": {
+      "children": "A standalone quote with no attribution or source."
+    },
+    "withAttribution": {
+      "children": "Nothing in life is to be feared, it is only to be understood.",
+      "attribution": "Marie Curie"
+    },
+    "withSource": {
+      "children": "Any fool can write code that a computer can understand.",
+      "attribution": "Martin Fowler",
+      "source": "Refactoring"
+    },
+    "withSourceUrl": {
+      "children": "Stay hungry, stay foolish.",
+      "attribution": "Steve Jobs",
+      "source": "Stanford Commencement Address",
+      "sourceUrl": "https://news.stanford.edu/2005/06/14/jobs-061505/",
+      "cite": "https://news.stanford.edu/2005/06/14/jobs-061505/"
+    }
+  },
+  "edge_cases": {
+    "longText": {
+      "children": "The measure of intelligence is the ability to change. The measure of wisdom is the ability to know when and how to adapt to circumstances that are continually shifting beneath your feet. Understanding this fundamental truth is what separates those who succeed from those who merely survive in an ever-changing world.",
+      "attribution": "A Very Long Author Name That Demonstrates Truncation Behaviour",
+      "variant": "default",
+      "size": "md"
+    },
+    "noAttribution": {
+      "children": "A quote without attribution or source rendered as a bare blockquote.",
+      "variant": "default"
+    },
+    "shortContent": {
+      "children": "Less is more.",
+      "variant": "default"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+---
+title: Skeleton
+description: Loading placeholder with text, box, and circle variants, shimmer animation, and composition support.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Skeleton } from \"@geeklego/ui\"\n\n{/* Text — single line */}\n<Skeleton variant=\"text\" size=\"md\" />\n\n{/* Text — multiple lines */}\n<Skeleton variant=\"text\" size=\"md\" lines={4} />\n\n{/* Box — image/card placeholder */}\n<Skeleton variant=\"box\" height=\"var(--spacing-32)\" />\n\n{/* Circle — avatar placeholder */}\n<Skeleton variant=\"circle\" circleSize=\"md\" />"}>
+  <div className="flex flex-col gap-8 w-80">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">text — single line</span>
+      <Skeleton variant="text" size="md" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">text — multiple lines</span>
+      <Skeleton variant="text" size="md" lines={4} />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">box</span>
+      <Skeleton variant="box" height="var(--spacing-32)" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">circle</span>
+      <Skeleton variant="circle" circleSize="md" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Skeleton } from \"@geeklego/ui\"\n\n<Skeleton variant=\"text\" size=\"sm\" />\n<Skeleton variant=\"text\" size=\"md\" />\n<Skeleton variant=\"text\" size=\"lg\" />\n\n<Skeleton variant=\"circle\" circleSize=\"xs\" />\n<Skeleton variant=\"circle\" circleSize=\"sm\" />\n<Skeleton variant=\"circle\" circleSize=\"md\" />\n<Skeleton variant=\"circle\" circleSize=\"lg\" />\n<Skeleton variant=\"circle\" circleSize=\"xl\" />\n<Skeleton variant=\"circle\" circleSize=\"2xl\" />"}>
+  <div className="flex flex-col gap-8 w-80">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Text line heights</span>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-4">
+          <span className="text-body-xs text-[var(--color-text-tertiary)] w-6 shrink-0">sm</span>
+          <div className="flex-1"><Skeleton variant="text" size="sm" /></div>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="text-body-xs text-[var(--color-text-tertiary)] w-6 shrink-0">md</span>
+          <div className="flex-1"><Skeleton variant="text" size="md" /></div>
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="text-body-xs text-[var(--color-text-tertiary)] w-6 shrink-0">lg</span>
+          <div className="flex-1"><Skeleton variant="text" size="lg" /></div>
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Circle sizes</span>
+      <div className="flex items-end gap-4 flex-wrap">
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="xs" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">xs</span>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="sm" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">sm</span>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="md" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">md</span>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="lg" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">lg</span>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="xl" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">xl</span>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <Skeleton variant="circle" circleSize="2xl" />
+          <span className="text-body-xs text-[var(--color-text-tertiary)]">2xl</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Card Composition
+
+<ComponentPreview code={"import { Skeleton } from \"@geeklego/ui\"\n\n{/* Avatar + name + description card */}\n<div className=\"flex gap-3 p-4 border border-[var(--color-border-subtle)] rounded-[var(--radius-component-md)]\">\n  <Skeleton variant=\"circle\" circleSize=\"md\" aria-label=\"Loading avatar\" />\n  <div className=\"flex flex-col gap-2 flex-1\">\n    <Skeleton variant=\"text\" size=\"md\" width=\"60%\" aria-label=\"Loading name\" />\n    <Skeleton variant=\"text\" size=\"sm\" aria-label=\"Loading email\" />\n    <Skeleton variant=\"text\" size=\"sm\" width=\"80%\" />\n  </div>\n</div>\n\n{/* Image placeholder */}\n<Skeleton variant=\"box\" height=\"var(--spacing-40)\" aria-label=\"Loading image\" />"}>
+  <div className="flex flex-col gap-8 w-80">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Card skeleton composition</span>
+      <div className="flex gap-3 p-4 border border-[var(--color-border-subtle)] rounded-[var(--radius-component-md)]">
+        <Skeleton variant="circle" circleSize="md" />
+        <div className="flex flex-col gap-2 flex-1">
+          <Skeleton variant="text" size="md" width="60%" />
+          <Skeleton variant="text" size="sm" />
+          <Skeleton variant="text" size="sm" width="80%" />
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Image/media placeholder</span>
+      <Skeleton variant="box" height="var(--spacing-40)" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <Skeleton variant=\"text\" size=\"md\" lines={3} />\n  <Skeleton variant=\"box\" height=\"var(--spacing-32)\" />\n  <Skeleton variant=\"circle\" circleSize=\"md\" />\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-col gap-8 w-80">
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">text — multi-line</span>
+        <Skeleton variant="text" size="md" lines={3} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">box</span>
+        <Skeleton variant="box" height="var(--spacing-32)" />
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">circles</span>
+        <div className="flex items-end gap-4">
+          <Skeleton variant="circle" circleSize="xs" />
+          <Skeleton variant="circle" circleSize="sm" />
+          <Skeleton variant="circle" circleSize="md" />
+          <Skeleton variant="circle" circleSize="lg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'text' | 'box' | 'circle'", defaultValue: "'text'", description: "Shape of the placeholder." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height of each text line (text variant only)." },
+    { name: "circleSize", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'", defaultValue: "'md'", description: "Diameter of the circle (circle variant only)." },
+    { name: "lines", type: "number", defaultValue: "1", description: "Number of text lines to render (text variant only)." },
+    { name: "width", type: "string", defaultValue: "—", description: "Optional explicit width override. Use token strings: 'var(--size-component-lg)'." },
+    { name: "height", type: "string", defaultValue: "—", description: "Optional explicit height override. Use token strings for box variant." },
+    { name: "animated", type: "boolean", defaultValue: "true", description: "Whether to show the shimmer animation. Set to false for a static placeholder." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders with `role="status"` and `aria-busy="true"` — announces "Loading" to screen readers when it appears
+- Use `aria-label` to provide context-specific announcements (e.g. `aria-label="Loading user profile"`)
+- The shimmer animation respects `prefers-reduced-motion` — motion is suppressed for users who prefer less animation
+- No keyboard interaction — display-only component
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| — | No keyboard interaction — display-only component |

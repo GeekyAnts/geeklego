@@ -1,0 +1,175 @@
+---
+title: Badge
+description: Compact status indicators for labeling, counting, and categorizing content.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Badge } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3 flex-wrap\">\n  <Badge variant=\"solid\" color=\"success\">Success</Badge>\n  <Badge variant=\"soft\" color=\"warning\">Warning</Badge>\n  <Badge variant=\"outline\" color=\"error\">Error</Badge>\n  <Badge variant=\"dot\" color=\"info\" dotLabel=\"info status\" />\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">solid</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Badge variant="solid" color="default">Default</Badge>
+        <Badge variant="solid" color="success">Success</Badge>
+        <Badge variant="solid" color="warning">Warning</Badge>
+        <Badge variant="solid" color="error">Error</Badge>
+        <Badge variant="solid" color="info">Info</Badge>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">soft</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Badge variant="soft" color="default">Default</Badge>
+        <Badge variant="soft" color="success">Success</Badge>
+        <Badge variant="soft" color="warning">Warning</Badge>
+        <Badge variant="soft" color="error">Error</Badge>
+        <Badge variant="soft" color="info">Info</Badge>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">outline</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Badge variant="outline" color="default">Default</Badge>
+        <Badge variant="outline" color="success">Success</Badge>
+        <Badge variant="outline" color="warning">Warning</Badge>
+        <Badge variant="outline" color="error">Error</Badge>
+        <Badge variant="outline" color="info">Info</Badge>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">dot</span>
+      <div className="flex items-center gap-3">
+        <Badge variant="dot" color="default" dotLabel="default status" />
+        <Badge variant="dot" color="success" dotLabel="success status" />
+        <Badge variant="dot" color="warning" dotLabel="warning status" />
+        <Badge variant="dot" color="error" dotLabel="error status" />
+        <Badge variant="dot" color="info" dotLabel="info status" />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Badge } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3\">\n  <Badge size=\"sm\" variant=\"solid\" color=\"info\">Small</Badge>\n  <Badge size=\"md\" variant=\"solid\" color=\"info\">Medium</Badge>\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">sm</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Badge size="sm" variant="solid" color="info">Solid</Badge>
+        <Badge size="sm" variant="soft" color="success">Soft</Badge>
+        <Badge size="sm" variant="outline" color="warning">Outline</Badge>
+        <Badge size="sm" variant="dot" color="error" dotLabel="error indicator" />
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">md</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Badge size="md" variant="solid" color="info">Solid</Badge>
+        <Badge size="md" variant="soft" color="success">Soft</Badge>
+        <Badge size="md" variant="outline" color="warning">Outline</Badge>
+        <Badge size="md" variant="dot" color="error" dotLabel="error indicator" />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## With Icon Placeholder
+
+<ComponentPreview code={"import { Badge } from \"@geeklego/ui\"\n\n<Badge variant=\"soft\" color=\"success\">\n  <span aria-hidden=\"true\" className=\"inline-block w-[6px] h-[6px] rounded-full bg-current\" />\n  Active\n</Badge>"}>
+  <div className="flex items-center gap-3">
+    <Badge variant="soft" color="success">
+      <span aria-hidden="true" className="inline-block w-[6px] h-[6px] rounded-full bg-current" />
+      Active
+    </Badge>
+    <Badge variant="soft" color="warning">
+      <span aria-hidden="true" className="inline-block w-[6px] h-[6px] rounded-full bg-current" />
+      Pending
+    </Badge>
+    <Badge variant="soft" color="error">
+      <span aria-hidden="true" className="inline-block w-[6px] h-[6px] rounded-full bg-current" />
+      Failed
+    </Badge>
+  </div>
+</ComponentPreview>
+
+## Numeric Counts
+
+<ComponentPreview code={"import { Badge } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3\">\n  <Badge variant=\"solid\" color=\"error\">3</Badge>\n  <Badge variant=\"solid\" color=\"info\">12</Badge>\n  <Badge variant=\"solid\" color=\"default\">99+</Badge>\n</div>"}>
+  <div className="flex items-center gap-3">
+    <Badge variant="solid" color="error">3</Badge>
+    <Badge variant="solid" color="info">12</Badge>
+    <Badge variant="solid" color="default">99+</Badge>
+  </div>
+</ComponentPreview>
+
+## Rounded Shape
+
+<ComponentPreview code={"import { Badge } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3\">\n  <Badge variant=\"solid\" color=\"success\" shape=\"rounded\">Beta</Badge>\n  <Badge variant=\"soft\" color=\"info\" shape=\"rounded\">New</Badge>\n  <Badge variant=\"outline\" color=\"default\" shape=\"rounded\">v2.0</Badge>\n</div>"}>
+  <div className="flex items-center gap-3">
+    <Badge variant="solid" color="success" shape="rounded">Beta</Badge>
+    <Badge variant="soft" color="info" shape="rounded">New</Badge>
+    <Badge variant="outline" color="default" shape="rounded">v2.0</Badge>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Badge variant=\"solid\" color=\"success\">Success</Badge>\n    <Badge variant=\"soft\" color=\"warning\">Warning</Badge>\n    <Badge variant=\"dot\" color=\"error\" dotLabel=\"offline\" />\n  </div>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">solid</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Badge variant="solid" color="default">Default</Badge>
+          <Badge variant="solid" color="success">Success</Badge>
+          <Badge variant="solid" color="warning">Warning</Badge>
+          <Badge variant="solid" color="error">Error</Badge>
+          <Badge variant="solid" color="info">Info</Badge>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">soft</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Badge variant="soft" color="default">Default</Badge>
+          <Badge variant="soft" color="success">Success</Badge>
+          <Badge variant="soft" color="warning">Warning</Badge>
+          <Badge variant="soft" color="error">Error</Badge>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">dot</span>
+        <div className="flex items-center gap-3">
+          <Badge variant="dot" color="success" dotLabel="online" />
+          <Badge variant="dot" color="warning" dotLabel="away" />
+          <Badge variant="dot" color="error" dotLabel="offline" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'solid' | 'soft' | 'outline' | 'dot'", defaultValue: "'solid'", description: "Visual treatment. `dot` renders a circle with no text." },
+    { name: "color", type: "'default' | 'success' | 'warning' | 'error' | 'info'", defaultValue: "'default'", description: "Semantic color intent." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "shape", type: "'pill' | 'rounded'", defaultValue: "'pill'", description: "Border-radius style." },
+    { name: "dotLabel", type: "string", defaultValue: "—", description: "Accessible label for dot badges. Required when variant='dot' — screen readers need a description." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Badge text or inner content. Ignored when variant='dot'." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Text badge content is announced by screen readers inline with surrounding content
+- `variant="dot"` renders no visible text — `dotLabel` is required to provide an accessible name via `aria-label`
+- Add `role="status"` to dot badges that represent live or dynamic states (e.g. online/offline)
+- Numeric count badges should include `aria-label` when used without surrounding context (e.g. `aria-label="12 unread messages"`)
+- Color alone is never the sole indicator — variant shape and label together convey state
+- No keyboard interaction — Badge is a display-only component

@@ -1,0 +1,145 @@
+---
+title: Toggle
+description: Press/unpress button with aria-pressed, three visual variants, and text or icon content.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Toggle } from \"@geeklego/ui\"\n\n<Toggle variant=\"default\">Default</Toggle>\n<Toggle variant=\"outline\">Outline</Toggle>\n<Toggle variant=\"ghost\">Ghost</Toggle>"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-tertiary)] mb-3">Default — muted fill at rest, brand tint when pressed</p>
+      <div className="flex items-center gap-3">
+        <Toggle variant="default">Unpressed</Toggle>
+        <Toggle variant="default" pressed>Pressed</Toggle>
+      </div>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-tertiary)] mb-3">Outline — border always visible, fill appears on press</p>
+      <div className="flex items-center gap-3">
+        <Toggle variant="outline">Unpressed</Toggle>
+        <Toggle variant="outline" pressed>Pressed</Toggle>
+      </div>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-tertiary)] mb-3">Ghost — invisible at rest, fill only on hover/press</p>
+      <div className="flex items-center gap-3">
+        <Toggle variant="ghost">Unpressed</Toggle>
+        <Toggle variant="ghost" pressed>Pressed</Toggle>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Toggle } from \"@geeklego/ui\"\n\n<Toggle size=\"sm\">Small</Toggle>\n<Toggle size=\"md\">Medium</Toggle>\n<Toggle size=\"lg\">Large</Toggle>"}>
+  <div className="flex items-center gap-4">
+    <Toggle size="sm" variant="outline">Small</Toggle>
+    <Toggle size="md" variant="outline">Medium</Toggle>
+    <Toggle size="lg" variant="outline">Large</Toggle>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Toggle } from \"@geeklego/ui\"\n\n<Toggle disabled>Disabled</Toggle>\n<Toggle pressed disabled>Pressed + Disabled</Toggle>"}>
+  <div className="flex items-center gap-3">
+    <Toggle variant="outline" disabled>Disabled</Toggle>
+    <Toggle variant="outline" pressed disabled>Pressed + Disabled</Toggle>
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { Toggle } from \"@geeklego/ui\"\nimport { Edit, Grid, List } from \"lucide-react\"\n\n{/* Icon-only — aria-label required */}\n<Toggle variant=\"outline\" aria-label=\"Edit\">\n  <span aria-hidden=\"true\"><Edit size={14} /></span>\n</Toggle>\n\n{/* Icon + text */}\n<Toggle variant=\"outline\">\n  <span aria-hidden=\"true\"><Grid size={14} /></span>\n  Grid\n</Toggle>\n<Toggle variant=\"outline\" pressed>\n  <span aria-hidden=\"true\"><List size={14} /></span>\n  List\n</Toggle>"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-tertiary)] mb-3">Icon-only (aria-label required)</p>
+      <div className="flex items-center gap-3">
+        <Toggle variant="outline" aria-label="Edit">
+          <span aria-hidden="true"><Edit size={14} /></span>
+        </Toggle>
+        <Toggle variant="outline" pressed aria-label="Edit (active)">
+          <span aria-hidden="true"><Edit size={14} /></span>
+        </Toggle>
+        <Toggle variant="outline" disabled aria-label="Edit (disabled)">
+          <span aria-hidden="true"><Edit size={14} /></span>
+        </Toggle>
+      </div>
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-tertiary)] mb-3">Icon + text</p>
+      <div className="flex items-center gap-3">
+        <Toggle variant="outline">
+          <span aria-hidden="true"><Grid size={14} /></span>
+          Grid
+        </Toggle>
+        <Toggle variant="outline" pressed>
+          <span aria-hidden="true"><List size={14} /></span>
+          List
+        </Toggle>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <Toggle variant=\"default\">Default</Toggle>\n  <Toggle variant=\"default\" pressed>Pressed</Toggle>\n  <Toggle variant=\"outline\" pressed>Outline Pressed</Toggle>\n  <Toggle variant=\"outline\" disabled>Disabled</Toggle>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-wrap items-center gap-3 mb-4">
+      <Toggle variant="default">Default</Toggle>
+      <Toggle variant="default" pressed>Default Pressed</Toggle>
+      <Toggle variant="outline">Outline</Toggle>
+      <Toggle variant="outline" pressed>Outline Pressed</Toggle>
+      <Toggle variant="ghost">Ghost</Toggle>
+      <Toggle variant="ghost" pressed>Ghost Pressed</Toggle>
+      <Toggle variant="outline" disabled>Disabled</Toggle>
+    </div>
+    <div className="flex items-center gap-3">
+      <Toggle variant="outline" aria-label="Edit">
+        <span aria-hidden="true"><Edit size={14} /></span>
+      </Toggle>
+      <Toggle variant="outline" pressed aria-label="Save (active)">
+        <span aria-hidden="true"><Save size={14} /></span>
+      </Toggle>
+      <Toggle variant="outline" aria-label="Copy">
+        <span aria-hidden="true"><Copy size={14} /></span>
+      </Toggle>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "pressed", type: "boolean", defaultValue: "—", description: "Whether the toggle is pressed (active). Use for controlled mode." },
+    { name: "defaultPressed", type: "boolean", defaultValue: "false", description: "Initial pressed state in uncontrolled mode." },
+    { name: "onPressedChange", type: "(pressed: boolean) => void", defaultValue: "—", description: "Called when the pressed state changes, with the new boolean value." },
+    { name: "variant", type: "'default' | 'outline' | 'ghost'", defaultValue: "'default'", description: "Visual treatment strategy. default — muted fill at rest. outline — border always visible. ghost — invisible until hovered/pressed." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography size." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction and visual response." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Button content — text, icon, or both. Icon-only usage requires aria-label." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<button role="button">` with `aria-pressed` set to `"true"` or `"false"`
+- Screen readers announce: `"[label], toggle button, pressed"` or `"[label], toggle button, not pressed"`
+- `children` provides the accessible name; for icon-only usage, pass `aria-label`
+- Wrap toolbar groups of toggles in `<div role="toolbar" aria-label="...">` for grouped context
+- `disabled` sets both HTML `disabled` and `aria-disabled`
+- Focus ring applied on keyboard navigation via `focus-visible`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the toggle |
+| Space | Toggles pressed state |
+| Enter | Toggles pressed state |

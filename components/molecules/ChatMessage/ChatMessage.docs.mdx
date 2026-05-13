@@ -1,0 +1,78 @@
+---
+title: ChatMessage
+description: A single message row in a chat thread, composing Avatar and ChatBubble with sent/received alignment.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { ChatMessage } from \"@geeklego/ui\"\n\n<ul className=\"flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg\">\n  <ChatMessage alignment=\"received\" avatarInitials=\"SR\" senderName=\"Sarah\" timestamp=\"9:01 AM\">Good morning! Did you get a chance to review the proposal?</ChatMessage>\n  <ChatMessage alignment=\"sent\" timestamp=\"9:04 AM\">Yes, I went through it last night. Overall it looks great!</ChatMessage>\n</ul>"}>
+  <ul className="flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg">
+    <ChatMessage alignment="received" avatarInitials="SR" senderName="Sarah" timestamp="9:01 AM">Good morning! Did you get a chance to review the proposal?</ChatMessage>
+    <ChatMessage alignment="sent" timestamp="9:04 AM">Yes, I went through it last night. Overall it looks great!</ChatMessage>
+  </ul>
+</ComponentPreview>
+
+## Thread
+
+<ComponentPreview code={"import { ChatMessage } from \"@geeklego/ui\"\n\n<ul className=\"flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg\">\n  <ChatMessage alignment=\"received\" avatarInitials=\"SR\" senderName=\"Sarah\" showName timestamp=\"9:01 AM\">Good morning! Did you get a chance to review the proposal?</ChatMessage>\n  <ChatMessage alignment=\"sent\" timestamp=\"9:04 AM\">Yes, I went through it last night. Overall it looks great!</ChatMessage>\n  <ChatMessage alignment=\"received\" avatarInitials=\"SR\" senderName=\"Sarah\" timestamp=\"9:05 AM\">Awesome. Any sections you'd like to discuss in more detail?</ChatMessage>\n  <ChatMessage alignment=\"sent\" timestamp=\"9:07 AM\">The pricing section on page 4 — I think we can be more competitive.</ChatMessage>\n</ul>"}>
+  <ul className="flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg">
+    <ChatMessage alignment="received" avatarInitials="SR" senderName="Sarah" showName timestamp="9:01 AM">Good morning! Did you get a chance to review the proposal?</ChatMessage>
+    <ChatMessage alignment="sent" timestamp="9:04 AM">Yes, I went through it last night. Overall it looks great!</ChatMessage>
+    <ChatMessage alignment="received" avatarInitials="SR" senderName="Sarah" timestamp="9:05 AM">Awesome. Any sections you'd like to discuss in more detail?</ChatMessage>
+    <ChatMessage alignment="sent" timestamp="9:07 AM">The pricing section on page 4 — I think we can be more competitive.</ChatMessage>
+  </ul>
+</ComponentPreview>
+
+## With Sender Name
+
+<ComponentPreview code={"import { ChatMessage } from \"@geeklego/ui\"\n\n<ul className=\"flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg\">\n  <ChatMessage alignment=\"received\" avatarInitials=\"JD\" senderName=\"John\" showName timestamp=\"10:00 AM\">With sender name shown above bubble</ChatMessage>\n  <ChatMessage alignment=\"received\" avatarInitials=\"JD\" senderName=\"John\" timestamp=\"10:01 AM\">Without sender name (consecutive messages)</ChatMessage>\n</ul>"}>
+  <ul className="flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg">
+    <ChatMessage alignment="received" avatarInitials="JD" senderName="John" showName timestamp="10:00 AM">With sender name shown above bubble</ChatMessage>
+    <ChatMessage alignment="received" avatarInitials="JD" senderName="John" timestamp="10:01 AM">Without sender name (consecutive messages)</ChatMessage>
+  </ul>
+</ComponentPreview>
+
+## Sent — No Avatar
+
+<ComponentPreview code={"import { ChatMessage } from \"@geeklego/ui\"\n\n<ul className=\"flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg\">\n  <ChatMessage alignment=\"sent\" timestamp=\"10:02 AM\">Sent — right-aligned, no avatar</ChatMessage>\n  <ChatMessage alignment=\"sent\">Sent — no timestamp</ChatMessage>\n</ul>"}>
+  <ul className="flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0 max-w-lg">
+    <ChatMessage alignment="sent" timestamp="10:02 AM">Sent — right-aligned, no avatar</ChatMessage>
+    <ChatMessage alignment="sent">Sent — no timestamp</ChatMessage>
+  </ul>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ChatMessage } from \"@geeklego/ui\"\n\n<div data-theme=\"dark\" className=\"p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <ul className=\"flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0\">\n    <ChatMessage alignment=\"received\" avatarInitials=\"SR\" senderName=\"Sarah\" showName timestamp=\"9:01 AM\">Good morning! Did you get a chance to review the proposal?</ChatMessage>\n    <ChatMessage alignment=\"sent\" timestamp=\"9:04 AM\">Yes! Looks great overall.</ChatMessage>\n  </ul>\n</div>"}>
+  <div data-theme="dark" className="p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl">
+    <ul className="flex flex-col gap-[var(--chat-message-row-gap)] list-none p-0 m-0">
+      <ChatMessage alignment="received" avatarInitials="SR" senderName="Sarah" showName timestamp="9:01 AM">Good morning! Did you get a chance to review the proposal?</ChatMessage>
+      <ChatMessage alignment="sent" timestamp="9:04 AM">Yes! Looks great overall.</ChatMessage>
+    </ul>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "alignment", type: "'sent' | 'received'", defaultValue: "'received'", description: "Visual alignment. 'sent' = right-aligned, no avatar. 'received' = left-aligned with avatar." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Required. Message body text." },
+    { name: "timestamp", type: "string", defaultValue: "—", description: "Display-ready timestamp string (e.g. '3:45 PM')." },
+    { name: "senderName", type: "string", defaultValue: "—", description: "Sender's display name. Only rendered for 'received' messages when showName is true." },
+    { name: "showName", type: "boolean", defaultValue: "false", description: "Whether to show the sender name above the bubble (received only)." },
+    { name: "avatarSrc", type: "string", defaultValue: "—", description: "URL for the sender avatar image (received messages only). Takes precedence over avatarInitials." },
+    { name: "avatarInitials", type: "string", defaultValue: "—", description: "Initials for fallback avatar (received messages only)." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the root <li> element." },
+  ]}
+/>
+
+## Accessibility
+
+- `<li>` element — must be placed inside a `<ul>` or `<ol>` parent
+- Avatar receives `alt=[senderName]` — providing the sender's name to screen readers
+- Sender name span is `aria-hidden="true"` — same information conveyed via avatar `alt`
+- When `showName` is `false`, avatar receives `aria-hidden={true}` to avoid double-announcement
+- Bubble content read by screen readers in natural DOM order (name, bubble text, timestamp)
+- No keyboard interaction — display-only component

@@ -1,0 +1,75 @@
+{
+  "default": {
+    "placeholder": "Select a framework…",
+    "options": [
+      { "id": "react", "label": "React" },
+      { "id": "vue", "label": "Vue" },
+      { "id": "angular", "label": "Angular" },
+      { "id": "svelte", "label": "Svelte" },
+      { "id": "solid", "label": "Solid" }
+    ]
+  },
+  "with_descriptions": {
+    "placeholder": "Choose a plan…",
+    "options": [
+      { "id": "free", "label": "Free", "description": "Up to 3 projects, 5 users" },
+      { "id": "pro", "label": "Pro", "description": "Unlimited projects, 50 users" },
+      { "id": "team", "label": "Team", "description": "Unlimited everything + priority support" },
+      { "id": "enterprise", "label": "Enterprise", "description": "Custom SLA, SSO, dedicated infra" }
+    ]
+  },
+  "grouped": {
+    "placeholder": "Select a country…",
+    "options": [
+      { "id": "us",  "label": "United States",  "group": "Americas" },
+      { "id": "ca",  "label": "Canada",          "group": "Americas" },
+      { "id": "br",  "label": "Brazil",          "group": "Americas" },
+      { "id": "gb",  "label": "United Kingdom",  "group": "Europe" },
+      { "id": "de",  "label": "Germany",         "group": "Europe" },
+      { "id": "fr",  "label": "France",          "group": "Europe" },
+      { "id": "jp",  "label": "Japan",           "group": "Asia Pacific" },
+      { "id": "au",  "label": "Australia",       "group": "Asia Pacific" }
+    ]
+  },
+  "variants": [
+    { "id": "default", "label": "default", "placeholder": "Default variant…" },
+    { "id": "filled",  "label": "filled",  "placeholder": "Filled variant…" },
+    { "id": "flushed", "label": "flushed", "placeholder": "Flushed variant…" }
+  ],
+  "sizes": ["sm", "md", "lg"],
+  "states": {
+    "loading": { "isLoading": true, "placeholder": "Loading…" },
+    "disabled": { "disabled": true, "placeholder": "Disabled combobox" },
+    "error":    { "error": true,    "placeholder": "Select a value" },
+    "with_value": { "defaultValue": "react", "placeholder": "Select a framework…" }
+  },
+  "edge_cases": {
+    "empty_options": { "options": [], "placeholder": "No options available" },
+    "single_option": {
+      "placeholder": "Select…",
+      "options": [{ "id": "only", "label": "The only option" }]
+    },
+    "long_label": {
+      "placeholder": "Select…",
+      "options": [
+        { "id": "long", "label": "This is a very long option label that should be truncated gracefully at the edge of the container" }
+      ]
+    },
+    "with_disabled_option": {
+      "placeholder": "Select a tier…",
+      "options": [
+        { "id": "basic",    "label": "Basic" },
+        { "id": "standard", "label": "Standard", "disabled": true },
+        { "id": "premium",  "label": "Premium" }
+      ]
+    },
+    "not_clearable": {
+      "clearable": false,
+      "placeholder": "Required selection…",
+      "options": [
+        { "id": "a", "label": "Option A" },
+        { "id": "b", "label": "Option B" }
+      ]
+    }
+  }
+}

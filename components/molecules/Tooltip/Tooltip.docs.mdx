@@ -1,0 +1,132 @@
+---
+title: Tooltip
+description: A floating label anchored to a trigger element, shown on hover and focus, with 4 placement options and support for rich ReactNode content.
+level: molecule
+---
+
+## Placements
+
+<ComponentPreview code={"import { Tooltip, Button } from \"@geeklego/ui\"\n\n<div className=\"grid grid-cols-2 gap-16 p-16\">\n  <div className=\"flex items-center justify-center\">\n    <Tooltip content=\"Placement: top\" placement=\"top\" delayMs={0}>\n      <Button variant=\"outline\" size=\"sm\">top</Button>\n    </Tooltip>\n  </div>\n  <div className=\"flex items-center justify-center\">\n    <Tooltip content=\"Placement: bottom\" placement=\"bottom\" delayMs={0}>\n      <Button variant=\"outline\" size=\"sm\">bottom</Button>\n    </Tooltip>\n  </div>\n  <div className=\"flex items-center justify-center\">\n    <Tooltip content=\"Placement: left\" placement=\"left\" delayMs={0}>\n      <Button variant=\"outline\" size=\"sm\">left</Button>\n    </Tooltip>\n  </div>\n  <div className=\"flex items-center justify-center\">\n    <Tooltip content=\"Placement: right\" placement=\"right\" delayMs={0}>\n      <Button variant=\"outline\" size=\"sm\">right</Button>\n    </Tooltip>\n  </div>\n</div>"}>
+  <div className="grid grid-cols-2 gap-16 p-16">
+    <div className="flex items-center justify-center">
+      <Tooltip content="Placement: top" placement="top" delayMs={0}>
+        <Button variant="outline" size="sm">top</Button>
+      </Tooltip>
+    </div>
+    <div className="flex items-center justify-center">
+      <Tooltip content="Placement: bottom" placement="bottom" delayMs={0}>
+        <Button variant="outline" size="sm">bottom</Button>
+      </Tooltip>
+    </div>
+    <div className="flex items-center justify-center">
+      <Tooltip content="Placement: left" placement="left" delayMs={0}>
+        <Button variant="outline" size="sm">left</Button>
+      </Tooltip>
+    </div>
+    <div className="flex items-center justify-center">
+      <Tooltip content="Placement: right" placement="right" delayMs={0}>
+        <Button variant="outline" size="sm">right</Button>
+      </Tooltip>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Content Types
+
+<ComponentPreview code={"import { Tooltip, Button } from \"@geeklego/ui\"\nimport { Star, Info } from \"lucide-react\"\n\n<div className=\"flex flex-wrap items-center gap-6 p-8\">\n  <Tooltip content=\"Plain text tooltip\" delayMs={0}>\n    <Button variant=\"secondary\" size=\"sm\">Plain text</Button>\n  </Tooltip>\n\n  <Tooltip content=\"This tooltip contains a longer description that demonstrates text wrapping within the max-width constraint.\" delayMs={0}>\n    <Button variant=\"secondary\" size=\"sm\">Long text</Button>\n  </Tooltip>\n\n  <Tooltip content=\"More information about this field\" delayMs={0}>\n    <Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Info size={16} />}>Help</Button>\n  </Tooltip>\n\n  <Tooltip\n    content={<span className=\"flex items-center gap-1\"><span aria-hidden=\"true\"><Star size={12} /></span>Pro feature</span>}\n    delayMs={0}\n  >\n    <Button variant=\"secondary\" size=\"sm\">Rich content</Button>\n  </Tooltip>\n</div>"}>
+  <div className="flex flex-wrap items-center gap-6 p-8">
+    <Tooltip content="Plain text tooltip" delayMs={0}>
+      <Button variant="secondary" size="sm">Plain text</Button>
+    </Tooltip>
+
+    <Tooltip content="This tooltip contains a longer description that demonstrates text wrapping within the max-width constraint." delayMs={0}>
+      <Button variant="secondary" size="sm">Long text</Button>
+    </Tooltip>
+
+    <Tooltip content="More information about this field" delayMs={0}>
+      <Button variant="ghost" size="sm" iconOnly leftIcon={<Info size={16} />}>Help</Button>
+    </Tooltip>
+
+    <Tooltip
+      content={<span className="flex items-center gap-1"><span aria-hidden="true"><Star size={12} /></span>Pro feature</span>}
+      delayMs={0}
+    >
+      <Button variant="secondary" size="sm">Rich content</Button>
+    </Tooltip>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Tooltip, Button } from \"@geeklego/ui\"\nimport { Info } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 p-4\">\n  <div className=\"flex items-center gap-6\">\n    <span className=\"text-body-sm text-[var(--color-text-secondary)] w-28\">Default</span>\n    <Tooltip content=\"Hover or focus this button\" delayMs={0}>\n      <Button variant=\"primary\" size=\"sm\">Hover me</Button>\n    </Tooltip>\n  </div>\n  <div className=\"flex items-center gap-6\">\n    <span className=\"text-body-sm text-[var(--color-text-secondary)] w-28\">Disabled</span>\n    <Tooltip content=\"This tooltip is suppressed\" disabled delayMs={0}>\n      <Button variant=\"secondary\" size=\"sm\" disabled>No tooltip</Button>\n    </Tooltip>\n  </div>\n  <div className=\"flex items-center gap-6\">\n    <span className=\"text-body-sm text-[var(--color-text-secondary)] w-28\">Icon trigger</span>\n    <Tooltip content=\"Additional context for screen readers and keyboard users\" delayMs={0}>\n      <Button variant=\"ghost\" size=\"sm\" iconOnly leftIcon={<Info size={16} />}>Information</Button>\n    </Tooltip>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-4 p-4">
+    <div className="flex items-center gap-6">
+      <span className="text-body-sm text-[var(--color-text-secondary)] w-28">Default</span>
+      <Tooltip content="Hover or focus this button" delayMs={0}>
+        <Button variant="primary" size="sm">Hover me</Button>
+      </Tooltip>
+    </div>
+    <div className="flex items-center gap-6">
+      <span className="text-body-sm text-[var(--color-text-secondary)] w-28">Disabled</span>
+      <Tooltip content="This tooltip is suppressed" disabled delayMs={0}>
+        <Button variant="secondary" size="sm" disabled>No tooltip</Button>
+      </Tooltip>
+    </div>
+    <div className="flex items-center gap-6">
+      <span className="text-body-sm text-[var(--color-text-secondary)] w-28">Icon trigger</span>
+      <Tooltip content="Additional context for screen readers and keyboard users" delayMs={0}>
+        <Button variant="ghost" size="sm" iconOnly leftIcon={<Info size={16} />}>Information</Button>
+      </Tooltip>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Tooltip, Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex items-center gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Tooltip content=\"Dark mode tooltip — panel inverts against the dark surface\" delayMs={0}>\n    <Button variant=\"primary\">Hover me</Button>\n  </Tooltip>\n  <Tooltip content=\"Bottom placement in dark mode\" placement=\"bottom\" delayMs={0}>\n    <Button variant=\"secondary\">Bottom</Button>\n  </Tooltip>\n  <Tooltip content=\"Right placement in dark mode\" placement=\"right\" delayMs={0}>\n    <Button variant=\"outline\">Right</Button>\n  </Tooltip>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex items-center gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Tooltip content="Dark mode tooltip — panel inverts against the dark surface" delayMs={0}>
+      <Button variant="primary">Hover me</Button>
+    </Tooltip>
+    <Tooltip content="Bottom placement in dark mode" placement="bottom" delayMs={0}>
+      <Button variant="secondary">Bottom</Button>
+    </Tooltip>
+    <Tooltip content="Right placement in dark mode" placement="right" delayMs={0}>
+      <Button variant="outline">Right</Button>
+    </Tooltip>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "content", type: "ReactNode", defaultValue: "—", description: "Tooltip panel content. Strings are most common; ReactNode allows icon + text or formatted content. Required." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "The trigger element. Should be a single focusable element. aria-describedby is injected automatically via cloneElement. Required." },
+    { name: "placement", type: "'top' | 'bottom' | 'left' | 'right'", defaultValue: "'top'", description: "Position of the panel relative to the trigger element." },
+    { name: "delayMs", type: "number", defaultValue: "300", description: "Delay in milliseconds before the tooltip appears on mouse hover. Focus-triggered tooltips always appear immediately." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "When true, the tooltip is never shown. Use to suppress tooltips on elements that are already labelled." },
+    { name: "i18nStrings", type: "TooltipI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides. panelLabel sets an aria-label on the tooltip panel for non-textual content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names applied to the outer wrapper span." },
+  ]}
+/>
+
+## Accessibility
+
+- Trigger receives `aria-describedby` pointing to the tooltip panel via `cloneElement` — screen readers read it as supplementary description
+- Panel has `role="tooltip"` — announced as a tooltip by screen readers
+- Panel is always in the DOM (never removed), so the `aria-describedby` reference is always valid
+- `aria-hidden` toggles on the panel to hide it from assistive technology when not visible
+- Focus-triggered tooltips appear immediately regardless of `delayMs`
+- `disabled={true}` completely suppresses the tooltip — use when the trigger already has a sufficient visible label
+- `i18nStrings.panelLabel` sets an `aria-label` on the panel for rich or non-textual content
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the trigger element |
+| Escape | Dismisses the tooltip |

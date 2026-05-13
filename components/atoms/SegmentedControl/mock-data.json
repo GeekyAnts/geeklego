@@ -1,0 +1,105 @@
+{
+  "default": {
+    "options": [
+      { "value": "grid", "label": "Grid" },
+      { "value": "list", "label": "List" },
+      { "value": "map", "label": "Map" }
+    ],
+    "defaultValue": "grid",
+    "aria-label": "View mode"
+  },
+  "variants": [
+    {
+      "variant": "default",
+      "label": "Surface-pop selection",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "list", "label": "List" },
+        { "value": "map", "label": "Map" }
+      ],
+      "defaultValue": "grid",
+      "aria-label": "View mode"
+    },
+    {
+      "variant": "outline",
+      "label": "Brand-fill selection",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "list", "label": "List" },
+        { "value": "map", "label": "Map" }
+      ],
+      "defaultValue": "list",
+      "aria-label": "View mode"
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "defaultValue": "7d", "options": [{ "value": "7d", "label": "7d" }, { "value": "30d", "label": "30d" }, { "value": "90d", "label": "90d" }], "aria-label": "Time range" },
+    { "size": "md", "defaultValue": "30d", "options": [{ "value": "7d", "label": "7d" }, { "value": "30d", "label": "30d" }, { "value": "90d", "label": "90d" }], "aria-label": "Time range" },
+    { "size": "lg", "defaultValue": "90d", "options": [{ "value": "7d", "label": "7d" }, { "value": "30d", "label": "30d" }, { "value": "90d", "label": "90d" }], "aria-label": "Time range" }
+  ],
+  "states": {
+    "default": {
+      "options": [{ "value": "a", "label": "Alpha" }, { "value": "b", "label": "Beta" }],
+      "defaultValue": "a",
+      "aria-label": "State example"
+    },
+    "disabled_group": {
+      "options": [{ "value": "a", "label": "Alpha" }, { "value": "b", "label": "Beta" }],
+      "defaultValue": "a",
+      "disabled": true,
+      "aria-label": "State example"
+    },
+    "disabled_option": {
+      "options": [
+        { "value": "a", "label": "Alpha" },
+        { "value": "b", "label": "Beta", "disabled": true },
+        { "value": "c", "label": "Gamma" }
+      ],
+      "defaultValue": "a",
+      "aria-label": "State example"
+    },
+    "full_width": {
+      "options": [{ "value": "a", "label": "Alpha" }, { "value": "b", "label": "Beta" }, { "value": "c", "label": "Gamma" }],
+      "defaultValue": "b",
+      "fullWidth": true,
+      "aria-label": "State example"
+    }
+  },
+  "edge_cases": {
+    "two_segments": {
+      "options": [{ "value": "on", "label": "On" }, { "value": "off", "label": "Off" }],
+      "defaultValue": "on",
+      "aria-label": "Feature toggle"
+    },
+    "icon_only": {
+      "options": [
+        { "value": "grid", "aria-label": "Grid view" },
+        { "value": "list", "aria-label": "List view" },
+        { "value": "map", "aria-label": "Map view" }
+      ],
+      "defaultValue": "grid",
+      "aria-label": "View mode"
+    },
+    "many_segments": {
+      "options": [
+        { "value": "1h", "label": "1h" },
+        { "value": "6h", "label": "6h" },
+        { "value": "12h", "label": "12h" },
+        { "value": "1d", "label": "1d" },
+        { "value": "7d", "label": "7d" },
+        { "value": "30d", "label": "30d" }
+      ],
+      "defaultValue": "1d",
+      "aria-label": "Time range"
+    },
+    "long_labels": {
+      "options": [
+        { "value": "week", "label": "This Week" },
+        { "value": "month", "label": "This Month" },
+        { "value": "quarter", "label": "This Quarter" }
+      ],
+      "defaultValue": "week",
+      "aria-label": "Period"
+    }
+  }
+}

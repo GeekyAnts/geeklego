@@ -1,0 +1,65 @@
+{
+  "default": {
+    "children": "Email notifications",
+    "variant": "default",
+    "size": "md",
+    "labelPosition": "right",
+    "defaultChecked": false
+  },
+  "variants": [
+    {
+      "variant": "default",
+      "children": "Default (brand blue when on)",
+      "defaultChecked": true
+    },
+    {
+      "variant": "success",
+      "children": "Success (green when on)",
+      "defaultChecked": true
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "children": "Small — 28×16px track", "defaultChecked": true },
+    { "size": "md", "children": "Medium — 44×24px track", "defaultChecked": true },
+    { "size": "lg", "children": "Large — 56×32px track", "defaultChecked": true }
+  ],
+  "states": {
+    "off": { "children": "Off state", "defaultChecked": false },
+    "on": { "children": "On state", "defaultChecked": true },
+    "disabled_off": { "children": "Disabled off", "disabled": true, "defaultChecked": false },
+    "disabled_on": { "children": "Disabled on", "disabled": true, "defaultChecked": true },
+    "with_description": {
+      "children": "Morning digest",
+      "description": "Sent once a day at 9 AM.",
+      "defaultChecked": true
+    }
+  },
+  "label_positions": [
+    { "labelPosition": "right", "children": "Label right (default)", "defaultChecked": true },
+    { "labelPosition": "left", "children": "Label left", "defaultChecked": true }
+  ],
+  "edge_cases": {
+    "no_label": {
+      "aria-label": "Toggle dark mode",
+      "defaultChecked": false
+    },
+    "long_label": {
+      "children": "This is a very long label that should truncate when it exceeds the available width in a constrained layout container",
+      "defaultChecked": true
+    },
+    "long_description": {
+      "children": "Feature flag",
+      "description": "Enabling this feature may affect performance in some edge cases. Consult the documentation before enabling in production environments.",
+      "defaultChecked": true
+    },
+    "emoji_label": {
+      "children": "Dark mode 🌙",
+      "defaultChecked": true
+    },
+    "all_sizes_disabled": [
+      { "size": "sm", "children": "Small disabled", "disabled": true, "defaultChecked": true },
+      { "size": "md", "children": "Medium disabled", "disabled": true, "defaultChecked": true },
+      { "size": "lg", "children": "Large disabled", "disabled": true, "defaultChecked": true }
+    ]
+  }
+}

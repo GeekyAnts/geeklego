@@ -1,0 +1,95 @@
+{
+  "default": {
+    "label": "Search",
+    "placeholder": "Search…",
+    "variant": "default",
+    "size": "md"
+  },
+
+  "variants": [
+    {
+      "id": "outlined",
+      "label": "Search",
+      "labelHidden": true,
+      "placeholder": "Outlined input…",
+      "variant": "default"
+    },
+    {
+      "id": "filled",
+      "label": "Search",
+      "labelHidden": true,
+      "placeholder": "Filled input…",
+      "variant": "filled"
+    }
+  ],
+
+  "sizes": [
+    { "id": "sm", "label": "Search", "labelHidden": true, "placeholder": "Small…", "size": "sm" },
+    { "id": "md", "label": "Search", "labelHidden": true, "placeholder": "Medium…", "size": "md" },
+    { "id": "lg", "label": "Search", "labelHidden": true, "placeholder": "Large…", "size": "lg" }
+  ],
+
+  "states": {
+    "empty": {
+      "label": "Search",
+      "labelHidden": true,
+      "placeholder": "Start typing…"
+    },
+    "withValue": {
+      "label": "Search",
+      "labelHidden": true,
+      "defaultValue": "design system"
+    },
+    "loading": {
+      "label": "Search",
+      "labelHidden": true,
+      "defaultValue": "loading state",
+      "isLoading": true
+    },
+    "error": {
+      "label": "Search",
+      "labelHidden": true,
+      "defaultValue": "invalid query",
+      "error": true
+    },
+    "disabled": {
+      "label": "Search",
+      "labelHidden": true,
+      "placeholder": "Disabled…",
+      "disabled": true
+    }
+  },
+
+  "edge_cases": {
+    "empty_string_value": {
+      "label": "Search",
+      "labelHidden": true,
+      "defaultValue": ""
+    },
+    "very_long_query": {
+      "label": "Search",
+      "labelHidden": true,
+      "defaultValue": "This is a very long search query that should truncate gracefully when it overflows the available input width"
+    },
+    "with_visible_label": {
+      "label": "Search documentation and guides",
+      "placeholder": "Find articles, tutorials, and API references…"
+    },
+    "with_schema": {
+      "label": "Search",
+      "labelHidden": true,
+      "placeholder": "Search…",
+      "schema": true,
+      "searchUrl": "https://example.com/search?q={search_term_string}"
+    },
+    "i18n_override": {
+      "label": "Rechercher",
+      "labelHidden": true,
+      "placeholder": "Rechercher…",
+      "i18nStrings": {
+        "searchLabel": "Rechercher",
+        "clearLabel": "Effacer la recherche"
+      }
+    }
+  }
+}

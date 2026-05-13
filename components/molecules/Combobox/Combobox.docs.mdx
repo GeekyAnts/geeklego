@@ -1,0 +1,250 @@
+---
+title: Combobox
+description: A searchable dropdown input with live filtering, keyboard navigation via active-descendant, grouped options, and async loading support.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\nconst options = [\n  { id: \"react\", label: \"React\" },\n  { id: \"vue\", label: \"Vue\" },\n  { id: \"angular\", label: \"Angular\" },\n  { id: \"svelte\", label: \"Svelte\" },\n]\n\n<div className=\"flex flex-col gap-6 max-w-xs\">\n  <Combobox options={options} variant=\"default\" placeholder=\"Default variant…\" />\n  <Combobox options={options} variant=\"filled\" placeholder=\"Filled variant…\" />\n  <Combobox options={options} variant=\"flushed\" placeholder=\"Flushed variant…\" />\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-xs">
+    <Combobox
+      options={[
+        { id: "react", label: "React" },
+        { id: "vue", label: "Vue" },
+        { id: "angular", label: "Angular" },
+        { id: "svelte", label: "Svelte" },
+      ]}
+      variant="default"
+      placeholder="Default variant…"
+    />
+    <Combobox
+      options={[
+        { id: "react", label: "React" },
+        { id: "vue", label: "Vue" },
+        { id: "angular", label: "Angular" },
+        { id: "svelte", label: "Svelte" },
+      ]}
+      variant="filled"
+      placeholder="Filled variant…"
+    />
+    <Combobox
+      options={[
+        { id: "react", label: "React" },
+        { id: "vue", label: "Vue" },
+        { id: "angular", label: "Angular" },
+        { id: "svelte", label: "Svelte" },
+      ]}
+      variant="flushed"
+      placeholder="Flushed variant…"
+    />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\nconst options = [\n  { id: \"react\", label: \"React\" },\n  { id: \"vue\", label: \"Vue\" },\n  { id: \"angular\", label: \"Angular\" },\n]\n\n<div className=\"flex flex-col gap-4 max-w-xs\">\n  <Combobox options={options} size=\"sm\" placeholder=\"Small…\" />\n  <Combobox options={options} size=\"md\" placeholder=\"Medium (default)…\" />\n  <Combobox options={options} size=\"lg\" placeholder=\"Large…\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+    <Combobox
+      options={[{ id: "react", label: "React" }, { id: "vue", label: "Vue" }, { id: "angular", label: "Angular" }]}
+      size="sm"
+      placeholder="Small…"
+    />
+    <Combobox
+      options={[{ id: "react", label: "React" }, { id: "vue", label: "Vue" }, { id: "angular", label: "Angular" }]}
+      size="md"
+      placeholder="Medium (default)…"
+    />
+    <Combobox
+      options={[{ id: "react", label: "React" }, { id: "vue", label: "Vue" }, { id: "angular", label: "Angular" }]}
+      size="lg"
+      placeholder="Large…"
+    />
+  </div>
+</ComponentPreview>
+
+## With Value
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[\n    { id: \"react\", label: \"React\" },\n    { id: \"vue\", label: \"Vue\" },\n    { id: \"angular\", label: \"Angular\" },\n    { id: \"svelte\", label: \"Svelte\" },\n  ]}\n  defaultValue=\"react\"\n  placeholder=\"Select a framework…\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[
+      { id: "react", label: "React" },
+      { id: "vue", label: "Vue" },
+      { id: "angular", label: "Angular" },
+      { id: "svelte", label: "Svelte" },
+    ]}
+    defaultValue="react"
+    placeholder="Select a framework…"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## With Descriptions
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[\n    { id: \"free\", label: \"Free\", description: \"Up to 3 projects, 5 users\" },\n    { id: \"pro\", label: \"Pro\", description: \"Unlimited projects, 50 users\" },\n    { id: \"team\", label: \"Team\", description: \"Unlimited everything + priority support\" },\n    { id: \"enterprise\", label: \"Enterprise\", description: \"Custom SLA, SSO, dedicated infra\" },\n  ]}\n  placeholder=\"Choose a plan…\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[
+      { id: "free", label: "Free", description: "Up to 3 projects, 5 users" },
+      { id: "pro", label: "Pro", description: "Unlimited projects, 50 users" },
+      { id: "team", label: "Team", description: "Unlimited everything + priority support" },
+      { id: "enterprise", label: "Enterprise", description: "Custom SLA, SSO, dedicated infra" },
+    ]}
+    placeholder="Choose a plan…"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## Grouped Options
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[\n    { id: \"us\", label: \"United States\", group: \"Americas\" },\n    { id: \"ca\", label: \"Canada\", group: \"Americas\" },\n    { id: \"br\", label: \"Brazil\", group: \"Americas\" },\n    { id: \"gb\", label: \"United Kingdom\", group: \"Europe\" },\n    { id: \"de\", label: \"Germany\", group: \"Europe\" },\n    { id: \"jp\", label: \"Japan\", group: \"Asia Pacific\" },\n    { id: \"au\", label: \"Australia\", group: \"Asia Pacific\" },\n  ]}\n  placeholder=\"Select a country…\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[
+      { id: "us", label: "United States", group: "Americas" },
+      { id: "ca", label: "Canada", group: "Americas" },
+      { id: "br", label: "Brazil", group: "Americas" },
+      { id: "gb", label: "United Kingdom", group: "Europe" },
+      { id: "de", label: "Germany", group: "Europe" },
+      { id: "jp", label: "Japan", group: "Asia Pacific" },
+      { id: "au", label: "Australia", group: "Asia Pacific" },
+    ]}
+    placeholder="Select a country…"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[]}\n  isLoading\n  placeholder=\"Loading options…\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[]}
+    isLoading
+    placeholder="Loading options…"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[\n    { id: \"react\", label: \"React\" },\n    { id: \"vue\", label: \"Vue\" },\n    { id: \"angular\", label: \"Angular\" },\n  ]}\n  error\n  placeholder=\"Select a value (required)\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[
+      { id: "react", label: "React" },
+      { id: "vue", label: "Vue" },
+      { id: "angular", label: "Angular" },
+    ]}
+    error
+    placeholder="Select a value (required)"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<Combobox\n  options={[\n    { id: \"react\", label: \"React\" },\n    { id: \"vue\", label: \"Vue\" },\n  ]}\n  disabled\n  defaultValue=\"react\"\n  placeholder=\"Disabled combobox\"\n  className=\"max-w-xs\"\n/>"}>
+  <Combobox
+    options={[
+      { id: "react", label: "React" },
+      { id: "vue", label: "Vue" },
+    ]}
+    disabled
+    defaultValue="react"
+    placeholder="Disabled combobox"
+    className="max-w-xs"
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Combobox } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"flex flex-col gap-4 max-w-xs\">\n    <Combobox options={[{ id: \"react\", label: \"React\" }, { id: \"vue\", label: \"Vue\" }, { id: \"svelte\", label: \"Svelte\" }]} placeholder=\"Select a framework…\" />\n    <Combobox options={[{ id: \"react\", label: \"React\" }, { id: \"vue\", label: \"Vue\" }, { id: \"svelte\", label: \"Svelte\" }]} defaultValue=\"svelte\" placeholder=\"With selection…\" />\n    <Combobox options={[{ id: \"free\", label: \"Free\", description: \"Up to 3 projects\" }, { id: \"pro\", label: \"Pro\", description: \"Unlimited projects\" }]} variant=\"filled\" placeholder=\"Filled variant…\" />\n    <Combobox options={[{ id: \"react\", label: \"React\" }]} error placeholder=\"Error state…\" />\n    <Combobox options={[{ id: \"react\", label: \"React\" }]} disabled placeholder=\"Disabled…\" />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="flex flex-col gap-4 max-w-xs">
+      <Combobox
+        options={[{ id: "react", label: "React" }, { id: "vue", label: "Vue" }, { id: "svelte", label: "Svelte" }]}
+        placeholder="Select a framework…"
+      />
+      <Combobox
+        options={[{ id: "react", label: "React" }, { id: "vue", label: "Vue" }, { id: "svelte", label: "Svelte" }]}
+        defaultValue="svelte"
+        placeholder="With selection…"
+      />
+      <Combobox
+        options={[{ id: "free", label: "Free", description: "Up to 3 projects" }, { id: "pro", label: "Pro", description: "Unlimited projects" }]}
+        variant="filled"
+        placeholder="Filled variant…"
+      />
+      <Combobox
+        options={[{ id: "react", label: "React" }]}
+        error
+        placeholder="Error state…"
+      />
+      <Combobox
+        options={[{ id: "react", label: "React" }]}
+        disabled
+        placeholder="Disabled…"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Combobox
+
+<PropsTable
+  rows={[
+    { name: "options", type: "ComboboxOption[]", defaultValue: "—", description: "Full list of options to display and filter. Required." },
+    { name: "defaultValue", type: "string", defaultValue: "—", description: "Initial selected option id for uncontrolled usage." },
+    { name: "value", type: "string | null", defaultValue: "—", description: "Controlled selected option id. Pass null for explicit empty selection." },
+    { name: "onChange", type: "(id: string | null) => void", defaultValue: "—", description: "Called when the user selects or clears an option." },
+    { name: "onQueryChange", type: "(query: string) => void", defaultValue: "—", description: "Called on every keystroke. Use for async option loading — pass fresh options each time." },
+    { name: "placeholder", type: "string", defaultValue: "—", description: "Placeholder text shown in the input when no value is selected." },
+    { name: "variant", type: "'default' | 'filled' | 'flushed'", defaultValue: "'default'", description: "Visual style variant of the trigger input." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography size of the input and options." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Prevents opening, typing, and selection." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Shows error border on the input." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Shows a spinner in the input and a loading message in the panel." },
+    { name: "clearable", type: "boolean", defaultValue: "true", description: "Shows a clear (×) button when a value is selected. Set to false for required fields." },
+    { name: "id", type: "string", defaultValue: "—", description: "ID forwarded to the underlying input element." },
+    { name: "name", type: "string", defaultValue: "—", description: "Name forwarded to the underlying input for form participation." },
+    { name: "required", type: "boolean", defaultValue: "—", description: "Marks the field as required — forwarded as aria-required." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Accessible label when no visible label element is associated." },
+    { name: "wrapperClassName", type: "string", defaultValue: "—", description: "Class names applied to the outer wrapper div — use to control width." },
+    { name: "i18nStrings", type: "ComboboxI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the clear button label, listbox label, empty state, and loading message." },
+  ]}
+/>
+
+### ComboboxOption
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Unique identifier — used as React key and selection value. Required. |
+| `label` | `string` | Visible label shown in the input and option list. Required. |
+| `description` | `string` | Optional secondary text rendered below the label. |
+| `disabled` | `boolean` | Option is visible but cannot be selected. |
+| `group` | `string` | Group name — options with the same value are visually grouped with a heading. |
+
+## Accessibility
+
+- Trigger input has `role="combobox"` with `aria-expanded`, `aria-controls`, `aria-autocomplete="list"`, and `aria-haspopup="listbox"`
+- Active option is communicated via `aria-activedescendant` — no focus moves to the list
+- Each option has `role="option"` with `aria-selected` and `aria-disabled` when applicable
+- Option list has `role="listbox"` with a localised `aria-label`
+- Groups use `role="group"` with `aria-label` matching the group name
+- Loading and empty states are announced as `role="option"` with `aria-disabled="true"`
+- Clear button has a localised `aria-label` via `i18nStrings.clearLabel`
+- Escape dismisses the panel without selecting
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Arrow Down | Opens the panel or moves focus to the next option |
+| Arrow Up | Moves focus to the previous option |
+| Home | Moves focus to the first option |
+| End | Moves focus to the last option |
+| Enter | Selects the focused option |
+| Escape | Closes the panel without selecting |
+| Tab | Closes the panel and moves focus to the next element |

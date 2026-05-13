@@ -1,0 +1,50 @@
+{
+  "default": {
+    "defaultValue": "#6366f1",
+    "variant": "default",
+    "size": "md",
+    "showAlpha": false,
+    "presets": [
+      { "color": "#ef4444", "label": "Red — #ef4444" },
+      { "color": "#f97316", "label": "Orange — #f97316" },
+      { "color": "#22c55e", "label": "Green — #22c55e" },
+      { "color": "#3b82f6", "label": "Blue — #3b82f6" },
+      { "color": "#8b5cf6", "label": "Purple — #8b5cf6" },
+      { "color": "#000000", "label": "Black — #000000" },
+      { "color": "#ffffff", "label": "White — #ffffff" }
+    ]
+  },
+  "variants": [
+    { "variant": "default",  "defaultValue": "#6366f1" },
+    { "variant": "compact",  "defaultValue": "#22c55e" },
+    { "variant": "minimal",  "defaultValue": "#f97316" }
+  ],
+  "sizes": [
+    { "size": "sm", "defaultValue": "#3b82f6" },
+    { "size": "md", "defaultValue": "#3b82f6" },
+    { "size": "lg", "defaultValue": "#3b82f6" }
+  ],
+  "states": {
+    "default":  { "defaultValue": "#6366f1" },
+    "withAlpha":{ "defaultValue": "#6366f180", "showAlpha": true },
+    "disabled": { "defaultValue": "#6366f1", "disabled": true },
+    "loading":  { "defaultValue": "#6366f1", "loading": true }
+  },
+  "edge_cases": {
+    "black":        { "defaultValue": "#000000" },
+    "white":        { "defaultValue": "#ffffff" },
+    "fullRed":      { "defaultValue": "#ff0000" },
+    "fullGreen":    { "defaultValue": "#00ff00" },
+    "fullBlue":     { "defaultValue": "#0000ff" },
+    "lowSaturation":{ "defaultValue": "#c0c0c0" },
+    "withPresets":  {
+      "defaultValue": "#ef4444",
+      "presets": [
+        { "color": "#ef4444", "label": "Danger red" },
+        { "color": "#22c55e", "label": "Success green" },
+        { "color": "#3b82f6", "label": "Info blue" },
+        { "color": "#f59e0b", "label": "Warning amber" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,130 @@
+---
+title: FileInput
+description: A styled file input atom that wraps the native input[type="file"]. Consumers associate an accessible label via aria-label or an external label element. Selected filenames are displayed inline.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n<FileInput variant=\"default\" aria-label=\"Upload document\" />\n<FileInput variant=\"filled\" aria-label=\"Upload document\" />\n<FileInput variant=\"ghost\" aria-label=\"Upload document\" />"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">default</span>
+      <FileInput variant="default" aria-label="Upload — default variant" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">filled</span>
+      <FileInput variant="filled" aria-label="Upload — filled variant" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">ghost</span>
+      <FileInput variant="ghost" aria-label="Upload — ghost variant" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n<FileInput size=\"sm\" aria-label=\"Upload document\" />\n<FileInput size=\"md\" aria-label=\"Upload document\" />\n<FileInput size=\"lg\" aria-label=\"Upload document\" />"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">sm</span>
+      <FileInput size="sm" aria-label="Upload — small" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">md</span>
+      <FileInput size="md" aria-label="Upload — medium" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">lg</span>
+      <FileInput size="lg" aria-label="Upload — large" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n<FileInput error aria-label=\"Upload document\" aria-describedby=\"file-error\" />\n<span id=\"file-error\" className=\"text-body-sm text-[var(--color-text-error)]\">\n  Please select a valid file.\n</span>"}>
+  <div className="flex flex-col gap-2 max-w-sm">
+    <FileInput error aria-label="Upload document" aria-describedby="file-error-hint" />
+    <span id="file-error-hint" className="text-body-sm text-[var(--color-text-error)]">Please select a valid file.</span>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n<FileInput isLoading aria-label=\"Uploading document\" />"}>
+  <div className="max-w-sm">
+    <FileInput isLoading aria-label="Uploading document" />
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n<FileInput disabled aria-label=\"Upload document\" />"}>
+  <div className="max-w-sm">
+    <FileInput disabled aria-label="Upload document" />
+  </div>
+</ComponentPreview>
+
+## Multiple Files
+
+<ComponentPreview code={"import { FileInput } from \"@geeklego/ui\"\n\n{/* Multiple file selection */}\n<FileInput multiple aria-label=\"Upload images\" accept=\"image/*\" />\n\n{/* Accept filter */}\n<FileInput accept=\".pdf\" aria-label=\"Upload PDF\" />"}>
+  <div className="flex flex-col gap-3 max-w-sm">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">Multiple files</span>
+      <FileInput multiple aria-label="Upload images" accept="image/*" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">PDF only</span>
+      <FileInput accept=".pdf" aria-label="Upload PDF" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-[var(--radius-component-lg)]\">\n  <FileInput variant=\"default\" aria-label=\"Upload document\" />\n  <FileInput variant=\"filled\" aria-label=\"Upload document\" />\n  <FileInput variant=\"ghost\" aria-label=\"Upload document\" />\n  <FileInput error aria-label=\"Upload document\" />\n  <FileInput disabled aria-label=\"Upload document\" />\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-[var(--radius-component-lg)] max-w-2xl">
+    <div className="flex flex-col gap-4">
+      <FileInput variant="default" aria-label="Upload — default dark" />
+      <FileInput variant="filled" aria-label="Upload — filled dark" />
+      <FileInput variant="ghost" aria-label="Upload — ghost dark" />
+      <FileInput error aria-label="Upload with error — dark" />
+      <FileInput isLoading aria-label="Upload loading — dark" />
+      <FileInput disabled aria-label="Upload disabled — dark" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'default' | 'filled' | 'ghost'", defaultValue: "'default'", description: "Visual style variant." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Error state — shows error border and sets aria-invalid." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Loading state — shows spinner in browse area and disables interaction." },
+    { name: "i18nStrings", type: "FileInputI18nStrings", defaultValue: "—", description: "i18n string overrides for placeholder, browse label, and multi-file label." },
+    { name: "wrapperClassName", type: "string", defaultValue: "—", description: "Additional class names applied to the outer wrapper element." },
+    { name: "multiple", type: "boolean", defaultValue: "false", description: "Allow multiple file selection (native HTML attribute)." },
+    { name: "accept", type: "string", defaultValue: "—", description: "Accepted file types (e.g. 'image/*' or '.pdf,.doc')." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+  ]}
+/>
+
+## Accessibility
+
+- Wraps a native `<input type="file">` — fully keyboard accessible without ARIA scaffolding
+- Always provide an accessible label via `aria-label` or an external `<label htmlFor>`
+- Error state sets `aria-invalid="true"` automatically; link to the error message with `aria-describedby`
+- Loading state sets `aria-busy="true"` and disables the input
+- For multiple file selection, describe multi-select in the label (e.g. "Upload images, multiple allowed")
+- `accept` is a browser hint only — always validate file types server-side as well
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the file input |
+| Enter / Space | Opens the system file picker |

@@ -1,0 +1,82 @@
+---
+title: Label
+description: Form label with required/optional indicators and error color state.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Label } from \"@geeklego/ui\"\n\n<Label htmlFor=\"email\">Email address</Label>\n<Label htmlFor=\"name\" required>Full name</Label>\n<Label htmlFor=\"bio\" optional>Bio</Label>"}>
+  <div className="flex flex-col gap-4">
+    <Label htmlFor="v1">Default label</Label>
+    <Label htmlFor="v2" required>Required label</Label>
+    <Label htmlFor="v3" optional>Optional label</Label>
+    <Label htmlFor="v4" required optional>Required and optional</Label>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Label } from \"@geeklego/ui\"\n\n<Label htmlFor=\"field1\" size=\"md\">Medium (14px)</Label>\n<Label htmlFor=\"field2\" size=\"sm\">Small (12px)</Label>"}>
+  <div className="flex flex-col gap-4">
+    <Label htmlFor="size-md" size="md">Medium label (default)</Label>
+    <Label htmlFor="size-sm" size="sm">Small label</Label>
+    <Label htmlFor="size-md-req" size="md" required>Medium required</Label>
+    <Label htmlFor="size-sm-req" size="sm" required>Small required</Label>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Label } from \"@geeklego/ui\"\n\n{/* Mirror the associated input's disabled state */}\n<Label htmlFor=\"field\" disabled>Disabled label</Label>"}>
+  <div className="flex flex-col gap-4">
+    <Label htmlFor="s1" disabled>Disabled label</Label>
+    <Label htmlFor="s2" required disabled>Required + Disabled</Label>
+  </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Label } from \"@geeklego/ui\"\n\n{/* Mirror the associated input's error state */}\n<Label htmlFor=\"email\" hasError required>Email address</Label>\n<input id=\"email\" aria-invalid=\"true\" />"}>
+  <div className="flex flex-col gap-4">
+    <Label htmlFor="e1" hasError>Error label</Label>
+    <Label htmlFor="e2" required hasError>Required + Error</Label>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <Label htmlFor=\"d1\">Default</Label>\n  <Label htmlFor=\"d2\" required>Required</Label>\n  <Label htmlFor=\"d3\" hasError>Error</Label>\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <Label htmlFor="d1">Default label</Label>
+    <Label htmlFor="d2" required>Required label</Label>
+    <Label htmlFor="d3" optional>Optional label</Label>
+    <Label htmlFor="d4" disabled>Disabled label</Label>
+    <Label htmlFor="d5" hasError>Error label</Label>
+    <Label htmlFor="d6" required hasError>Required + Error</Label>
+    <Label htmlFor="d7" size="sm" required>Small required</Label>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "htmlFor", type: "string", defaultValue: "—", description: "Associates this label with a form control by its id." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Typography scale. md = 14px, sm = 12px." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Shows red asterisk (aria-hidden) + sr-only '(required)' text for screen readers." },
+    { name: "optional", type: "boolean", defaultValue: "false", description: "Shows '(Optional)' in secondary color. Readable directly by screen readers." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Applies disabled text color. Mirror the associated control's disabled state." },
+    { name: "hasError", type: "boolean", defaultValue: "false", description: "Applies error text color when the associated field has a validation error." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Label text. Truncates to one line with ellipsis." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a native `<label>` element — associates with an input via `htmlFor` + matching `id`
+- The red asterisk for `required` is `aria-hidden="true"` — screen readers hear `"(required)"` via a `sr-only` span instead
+- The `optional` text is rendered as visible text and read directly by screen readers
+- `hasError` changes label color only — `aria-invalid` belongs on the associated input element
+- No keyboard interaction — Label is a display-only element that improves input click/touch targets

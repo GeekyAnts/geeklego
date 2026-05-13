@@ -1,0 +1,264 @@
+---
+title: TreeView
+description: A hierarchical tree with expand/collapse, single and multi-select, roving tabindex keyboard navigation, loading and disabled node states, and accessible ARIA tree semantics.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { TreeView } from \"@geeklego/ui\"\nimport { Grid, Settings, Users, Home, Info, Copy, Bell, Lock } from \"lucide-react\"\n\n<div className=\"flex gap-12\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">File explorer</p>\n    <div className=\"w-64\">\n      <TreeView\n        aria-label=\"File explorer\"\n        defaultExpanded={[\"src\", \"components\"]}\n        defaultSelected={[\"button\"]}\n        items={[\n          {\n            id: \"src\",\n            label: \"src\",\n            children: [\n              {\n                id: \"components\",\n                label: \"components\",\n                children: [\n                  { id: \"button\", label: \"Button.tsx\", icon: <Info size={14} /> },\n                  { id: \"input\", label: \"Input.tsx\", icon: <Info size={14} /> },\n                ],\n              },\n              {\n                id: \"assets\",\n                label: \"assets\",\n                children: [\n                  { id: \"images\", label: \"images\", icon: <Copy size={14} />, children: [] },\n                  { id: \"audio\", label: \"audio\", icon: <Bell size={14} />, children: [] },\n                ],\n              },\n            ],\n          },\n          { id: \"pkg\", label: \"package.json\", icon: <Info size={14} /> },\n        ]}\n      />\n    </div>\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Navigation</p>\n    <div className=\"w-56\">\n      <TreeView\n        aria-label=\"App navigation\"\n        defaultExpanded={[\"settings\", \"files\"]}\n        defaultSelected={[\"dashboard\"]}\n        items={[\n          { id: \"dashboard\", label: \"Dashboard\", icon: <Grid size={14} /> },\n          {\n            id: \"settings\",\n            label: \"Settings\",\n            icon: <Settings size={14} />,\n            children: [\n              { id: \"profile\", label: \"Profile\", icon: <Users size={14} /> },\n              { id: \"security\", label: \"Security\", icon: <Lock size={14} /> },\n              { id: \"team\", label: \"Team\", icon: <Users size={14} /> },\n            ],\n          },\n          {\n            id: \"files\",\n            label: \"Files\",\n            icon: <Home size={14} />,\n            badge: 24,\n            children: [\n              { id: \"recent\", label: \"Recent\", badge: 5 },\n              { id: \"starred\", label: \"Starred\" },\n              { id: \"shared\", label: \"Shared\", badge: 3 },\n              { id: \"trash\", label: \"Trash\", disabled: true },\n            ],\n          },\n        ]}\n      />\n    </div>\n  </div>\n</div>"}>
+  <div className="flex gap-12">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">File explorer</p>
+      <div className="w-64">
+        <TreeView
+          aria-label="File explorer"
+          defaultExpanded={["src", "components"]}
+          defaultSelected={["button"]}
+          items={[
+            {
+              id: "src",
+              label: "src",
+              children: [
+                {
+                  id: "components",
+                  label: "components",
+                  children: [
+                    { id: "button", label: "Button.tsx", icon: <Info size={14} /> },
+                    { id: "input", label: "Input.tsx", icon: <Info size={14} /> },
+                  ],
+                },
+                {
+                  id: "assets",
+                  label: "assets",
+                  children: [
+                    { id: "images", label: "images", icon: <Copy size={14} />, children: [] },
+                    { id: "audio", label: "audio", icon: <Bell size={14} />, children: [] },
+                  ],
+                },
+              ],
+            },
+            { id: "pkg", label: "package.json", icon: <Info size={14} /> },
+          ]}
+        />
+      </div>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Navigation</p>
+      <div className="w-56">
+        <TreeView
+          aria-label="App navigation"
+          defaultExpanded={["settings", "files"]}
+          defaultSelected={["dashboard"]}
+          items={[
+            { id: "dashboard", label: "Dashboard", icon: <Grid size={14} /> },
+            {
+              id: "settings",
+              label: "Settings",
+              icon: <Settings size={14} />,
+              children: [
+                { id: "profile", label: "Profile", icon: <Users size={14} /> },
+                { id: "security", label: "Security", icon: <Lock size={14} /> },
+                { id: "team", label: "Team", icon: <Users size={14} /> },
+              ],
+            },
+            {
+              id: "files",
+              label: "Files",
+              icon: <Home size={14} />,
+              badge: 24,
+              children: [
+                { id: "recent", label: "Recent", badge: 5 },
+                { id: "starred", label: "Starred" },
+                { id: "shared", label: "Shared", badge: 3 },
+                { id: "trash", label: "Trash", disabled: true },
+              ],
+            },
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { TreeView } from \"@geeklego/ui\"\nimport { Grid, Settings, Users } from \"lucide-react\"\n\n<div className=\"flex gap-8\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">sm</p>\n    <div className=\"w-48\">\n      <TreeView\n        size=\"sm\"\n        aria-label=\"Small tree\"\n        defaultExpanded={[\"settings\"]}\n        items={[\n          { id: \"dashboard\", label: \"Dashboard\", icon: <Grid size={14} /> },\n          { id: \"settings\", label: \"Settings\", icon: <Settings size={14} />, children: [\n            { id: \"profile\", label: \"Profile\", icon: <Users size={14} /> },\n            { id: \"security\", label: \"Security\" },\n          ]},\n        ]}\n      />\n    </div>\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">md</p>\n    <div className=\"w-48\">\n      <TreeView\n        size=\"md\"\n        aria-label=\"Medium tree\"\n        defaultExpanded={[\"settings\"]}\n        items={[\n          { id: \"dashboard2\", label: \"Dashboard\", icon: <Grid size={14} /> },\n          { id: \"settings2\", label: \"Settings\", icon: <Settings size={14} />, children: [\n            { id: \"profile2\", label: \"Profile\", icon: <Users size={14} /> },\n            { id: \"security2\", label: \"Security\" },\n          ]},\n        ]}\n      />\n    </div>\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">lg</p>\n    <div className=\"w-48\">\n      <TreeView\n        size=\"lg\"\n        aria-label=\"Large tree\"\n        defaultExpanded={[\"settings\"]}\n        items={[\n          { id: \"dashboard3\", label: \"Dashboard\", icon: <Grid size={14} /> },\n          { id: \"settings3\", label: \"Settings\", icon: <Settings size={14} />, children: [\n            { id: \"profile3\", label: \"Profile\", icon: <Users size={14} /> },\n            { id: \"security3\", label: \"Security\" },\n          ]},\n        ]}\n      />\n    </div>\n  </div>\n</div>"}>
+  <div className="flex gap-8">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">sm</p>
+      <div className="w-48">
+        <TreeView
+          size="sm"
+          aria-label="Small tree"
+          defaultExpanded={["settings"]}
+          items={[
+            { id: "dashboard", label: "Dashboard", icon: <Grid size={14} /> },
+            { id: "settings", label: "Settings", icon: <Settings size={14} />, children: [
+              { id: "profile", label: "Profile", icon: <Users size={14} /> },
+              { id: "security", label: "Security" },
+            ]},
+          ]}
+        />
+      </div>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">md</p>
+      <div className="w-48">
+        <TreeView
+          size="md"
+          aria-label="Medium tree"
+          defaultExpanded={["settings"]}
+          items={[
+            { id: "dashboard2", label: "Dashboard", icon: <Grid size={14} /> },
+            { id: "settings2", label: "Settings", icon: <Settings size={14} />, children: [
+              { id: "profile2", label: "Profile", icon: <Users size={14} /> },
+              { id: "security2", label: "Security" },
+            ]},
+          ]}
+        />
+      </div>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">lg</p>
+      <div className="w-48">
+        <TreeView
+          size="lg"
+          aria-label="Large tree"
+          defaultExpanded={["settings"]}
+          items={[
+            { id: "dashboard3", label: "Dashboard", icon: <Grid size={14} /> },
+            { id: "settings3", label: "Settings", icon: <Settings size={14} />, children: [
+              { id: "profile3", label: "Profile", icon: <Users size={14} /> },
+              { id: "security3", label: "Security" },
+            ]},
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { TreeView } from \"@geeklego/ui\"\n\n<div className=\"w-64\">\n  <TreeView\n    aria-label=\"State examples\"\n    defaultExpanded={[\"root\", \"normal\"]}\n    defaultSelected={[\"normal-a\"]}\n    items={[\n      { id: \"root\", label: \"Loading children\", children: [], loading: true },\n      {\n        id: \"disabled-parent\",\n        label: \"Disabled folder\",\n        disabled: true,\n        children: [{ id: \"child-1\", label: \"Child A\" }],\n      },\n      {\n        id: \"normal\",\n        label: \"Normal folder\",\n        children: [\n          { id: \"normal-a\", label: \"Item A\" },\n          { id: \"normal-b\", label: \"Item B\", disabled: true },\n        ],\n      },\n    ]}\n  />\n</div>"}>
+  <div className="w-64">
+    <TreeView
+      aria-label="State examples"
+      defaultExpanded={["root", "normal"]}
+      defaultSelected={["normal-a"]}
+      items={[
+        { id: "root", label: "Loading children", children: [], loading: true },
+        {
+          id: "disabled-parent",
+          label: "Disabled folder",
+          disabled: true,
+          children: [{ id: "child-1", label: "Child A" }],
+        },
+        {
+          id: "normal",
+          label: "Normal folder",
+          children: [
+            { id: "normal-a", label: "Item A" },
+            { id: "normal-b", label: "Item B", disabled: true },
+          ],
+        },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { TreeView } from \"@geeklego/ui\"\nimport { Grid, Settings, Users, Home, Lock } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"w-72\">\n    <TreeView\n      aria-label=\"App navigation\"\n      defaultExpanded={[\"settings\", \"files\"]}\n      defaultSelected={[\"dashboard\"]}\n      items={[\n        { id: \"dashboard\", label: \"Dashboard\", icon: <Grid size={14} /> },\n        {\n          id: \"settings\",\n          label: \"Settings\",\n          icon: <Settings size={14} />,\n          children: [\n            { id: \"profile\", label: \"Profile\", icon: <Users size={14} /> },\n            { id: \"security\", label: \"Security\", icon: <Lock size={14} /> },\n          ],\n        },\n        {\n          id: \"files\",\n          label: \"Files\",\n          icon: <Home size={14} />,\n          badge: 24,\n          children: [\n            { id: \"recent\", label: \"Recent\", badge: 5 },\n            { id: \"starred\", label: \"Starred\" },\n            { id: \"trash\", label: \"Trash\", disabled: true },\n          ],\n        },\n      ]}\n    />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="w-72">
+      <TreeView
+        aria-label="App navigation"
+        defaultExpanded={["settings", "files"]}
+        defaultSelected={["dashboard"]}
+        items={[
+          { id: "dashboard", label: "Dashboard", icon: <Grid size={14} /> },
+          {
+            id: "settings",
+            label: "Settings",
+            icon: <Settings size={14} />,
+            children: [
+              { id: "profile", label: "Profile", icon: <Users size={14} /> },
+              { id: "security", label: "Security", icon: <Lock size={14} /> },
+            ],
+          },
+          {
+            id: "files",
+            label: "Files",
+            icon: <Home size={14} />,
+            badge: 24,
+            children: [
+              { id: "recent", label: "Recent", badge: 5 },
+              { id: "starred", label: "Starred" },
+              { id: "trash", label: "Trash", disabled: true },
+            ],
+          },
+        ]}
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### TreeView
+
+<PropsTable
+  rows={[
+    { name: "items", type: "TreeNode[]", defaultValue: "—", description: "The tree data. Nodes with a children array will show an expand toggle. Required." },
+    { name: "defaultExpanded", type: "string[]", defaultValue: "—", description: "Initially expanded node IDs (uncontrolled)." },
+    { name: "expanded", type: "string[]", defaultValue: "—", description: "Controlled set of expanded node IDs. Pair with onExpand." },
+    { name: "onExpand", type: "(id: string, isExpanded: boolean) => void", defaultValue: "—", description: "Called when a node is expanded or collapsed." },
+    { name: "defaultSelected", type: "string | string[]", defaultValue: "—", description: "Initially selected node ID(s) (uncontrolled)." },
+    { name: "selected", type: "string | string[]", defaultValue: "—", description: "Controlled selected ID(s). Pass a string for single-select, string[] for multi-select." },
+    { name: "onSelect", type: "(id: string | string[]) => void", defaultValue: "—", description: "Called when selection changes. Receives the newly selected ID(s)." },
+    { name: "multiSelect", type: "boolean", defaultValue: "false", description: "Allow multiple nodes to be selected simultaneously." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Row height and typography scale applied to all nodes." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Accessible label for the tree. Required when there is no visible heading adjacent to the tree." },
+    { name: "aria-labelledby", type: "string", defaultValue: "—", description: "ID of an external element that labels the tree. Use instead of aria-label when a visible heading is present." },
+  ]}
+/>
+
+### TreeNode
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Unique stable identifier. Used as React key. Required. |
+| `label` | `string` | Display label. Truncated with ellipsis on overflow. Required. |
+| `icon` | `ReactNode` | Optional leading icon — lucide-react icons recommended. |
+| `children` | `TreeNode[]` | Child nodes. Presence of this array (even empty) determines whether the node has an expand toggle. |
+| `disabled` | `boolean` | Prevents interaction with this node. |
+| `loading` | `boolean` | Shows a spinner on this node while async children are loading. |
+| `badge` | `string \| number` | Trailing badge count or label. |
+
+## Accessibility
+
+- Rendered as `<ul role="tree">` — announced as a tree widget by screen readers
+- `aria-label` or `aria-labelledby` is required to give the tree an accessible name
+- Roving `tabindex` pattern — exactly one node has `tabIndex={0}` at a time; all others are `-1`
+- Selected node has `aria-selected="true"`
+- Disabled nodes have `aria-disabled="true"` and cannot receive focus
+- Loading nodes render a spinner — the node row carries accessibility hints for the loading state
+- `multiSelect={true}` sets `aria-multiselectable="true"` on the tree root
+- Expand toggle button has `aria-expanded` and `aria-controls` pointing to the subtree
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the tree (resumes at the last focused node) |
+| Arrow Up / Arrow Down | Moves focus between visible nodes |
+| Arrow Right | Expands a collapsed node; moves focus to the first child if already expanded |
+| Arrow Left | Collapses an expanded node; moves focus to the parent if already collapsed |
+| Enter / Space | Selects the focused node |
+| Home | Moves focus to the first node |
+| End | Moves focus to the last visible node |

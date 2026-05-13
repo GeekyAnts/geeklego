@@ -1,0 +1,83 @@
+---
+title: ChatBubble
+description: Message bubble for chat interfaces with sent, received, and system variants.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-md)] max-w-lg\">\n  <ChatBubble variant=\"received\" timestamp=\"2:30 PM\">Hey! Are you free for a call later today?</ChatBubble>\n  <ChatBubble variant=\"sent\" timestamp=\"2:31 PM\">Sure, I'm available after 3pm!</ChatBubble>\n  <ChatBubble variant=\"system\">You are now connected</ChatBubble>\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-md)] max-w-lg">
+    <ChatBubble variant="received" timestamp="2:30 PM">Hey! Are you free for a call later today?</ChatBubble>
+    <ChatBubble variant="sent" timestamp="2:31 PM">Sure, I'm available after 3pm!</ChatBubble>
+    <ChatBubble variant="system">You are now connected</ChatBubble>
+  </div>
+</ComponentPreview>
+
+## Message Thread
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-sm)] max-w-lg w-full\">\n  <ChatBubble variant=\"received\" timestamp=\"9:01 AM\">Good morning! Did you get a chance to review the proposal?</ChatBubble>\n  <ChatBubble variant=\"sent\" timestamp=\"9:04 AM\">Yes, I went through it last night. Overall it looks great!</ChatBubble>\n  <ChatBubble variant=\"received\" timestamp=\"9:05 AM\">Awesome. Any sections you'd like to discuss in more detail?</ChatBubble>\n  <ChatBubble variant=\"sent\" timestamp=\"9:07 AM\">The pricing section on page 4 — I think we can be more competitive.</ChatBubble>\n  <ChatBubble variant=\"system\">Maria left the conversation</ChatBubble>\n  <ChatBubble variant=\"received\" timestamp=\"9:12 AM\">This is a very long message that should wrap to multiple lines without breaking the layout.</ChatBubble>\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-sm)] max-w-lg w-full">
+    <ChatBubble variant="received" timestamp="9:01 AM">Good morning! Did you get a chance to review the proposal?</ChatBubble>
+    <ChatBubble variant="sent" timestamp="9:04 AM">Yes, I went through it last night. Overall it looks great!</ChatBubble>
+    <ChatBubble variant="received" timestamp="9:05 AM">Awesome. Any sections you'd like to discuss in more detail?</ChatBubble>
+    <ChatBubble variant="sent" timestamp="9:07 AM">The pricing section on page 4 — I think we can be more competitive.</ChatBubble>
+    <ChatBubble variant="system">Maria left the conversation</ChatBubble>
+    <ChatBubble variant="received" timestamp="9:12 AM">This is a very long message that should wrap to multiple lines without breaking the layout.</ChatBubble>
+  </div>
+</ComponentPreview>
+
+## Default
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<ChatBubble variant=\"received\">Hello there!</ChatBubble>"}>
+  <ChatBubble variant="received">Hello there!</ChatBubble>
+</ComponentPreview>
+
+## With Timestamp
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<ChatBubble variant=\"sent\" timestamp=\"3:45 PM\">See you tomorrow!</ChatBubble>"}>
+  <ChatBubble variant="sent" timestamp="3:45 PM">See you tomorrow!</ChatBubble>
+</ComponentPreview>
+
+## Long Content
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<ChatBubble variant=\"received\" timestamp=\"4:00 PM\">This message contains a lot of text to verify that the bubble wraps correctly and respects the maximum width constraint while remaining visually comfortable to read.</ChatBubble>"}>
+  <ChatBubble variant="received" timestamp="4:00 PM">This message contains a lot of text to verify that the bubble wraps correctly and respects the maximum width constraint while remaining visually comfortable to read.</ChatBubble>
+</ComponentPreview>
+
+## System Message
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<ChatBubble variant=\"system\">Encryption enabled — messages are end-to-end encrypted</ChatBubble>"}>
+  <ChatBubble variant="system">Encryption enabled — messages are end-to-end encrypted</ChatBubble>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ChatBubble } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-[var(--spacing-component-sm)] p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <ChatBubble variant=\"received\" timestamp=\"9:01 AM\">Good morning! Did you get a chance to review the proposal?</ChatBubble>\n  <ChatBubble variant=\"sent\" timestamp=\"9:04 AM\">Yes, I went through it last night.</ChatBubble>\n  <ChatBubble variant=\"system\">Maria joined the conversation</ChatBubble>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-[var(--spacing-component-sm)] p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <ChatBubble variant="received" timestamp="9:01 AM">Good morning! Did you get a chance to review the proposal?</ChatBubble>
+    <ChatBubble variant="sent" timestamp="9:04 AM">Yes, I went through it last night.</ChatBubble>
+    <ChatBubble variant="system">Maria joined the conversation</ChatBubble>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'sent' | 'received' | 'system'", defaultValue: "'received'", description: "Visual style and alignment. 'sent' = current user (inline-end), 'received' = other party (inline-start), 'system' = centered notice." },
+    { name: "timestamp", type: "string", defaultValue: "—", description: "Display-ready string shown below the message. Rendered as a <time> element." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Message content — plain text or rich inline nodes." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes merged onto the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- `<div>` element — no native interactive semantics, no keyboard interaction
+- Timestamp rendered as `<time>` element for semantic date/time meaning
+- Reading order conveyed by DOM order — use appropriate ordering in the parent container
+- Variant communicated by background colour AND alignment AND border treatment — not colour alone

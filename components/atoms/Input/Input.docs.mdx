@@ -1,0 +1,137 @@
+---
+title: Input
+description: A text input field with multiple visual variants, icon slots, and error/loading states.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\n\n<Input variant=\"default\" placeholder=\"Default input\" />\n<Input variant=\"filled\" placeholder=\"Filled input\" />\n<Input variant=\"flushed\" placeholder=\"Flushed input\" />\n<Input variant=\"unstyled\" placeholder=\"Unstyled input\" />"}>
+  <div className="flex flex-col gap-4 w-72">
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Default — outlined border</p>
+      <Input variant="default" placeholder="Default input" />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Filled — muted bg, no border</p>
+      <Input variant="filled" placeholder="Filled input" />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Flushed — border-bottom only</p>
+      <Input variant="flushed" placeholder="Flushed input" />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Unstyled — blank slate</p>
+      <Input variant="unstyled" placeholder="Unstyled input" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\n\n<Input size=\"sm\" placeholder=\"Small\" />\n<Input size=\"md\" placeholder=\"Medium\" />\n<Input size=\"lg\" placeholder=\"Large\" />"}>
+  <div className="flex flex-col gap-4 w-72">
+    <div>
+      <p className="text-label-sm text-secondary mb-2">SM</p>
+      <Input size="sm" placeholder="Size sm" />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">MD</p>
+      <Input size="md" placeholder="Size md" />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">LG</p>
+      <Input size="lg" placeholder="Size lg" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\n\n<Input placeholder=\"Cannot edit\" disabled />"}>
+  <div className="w-80">
+    <Input placeholder="Cannot edit" disabled />
+  </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\n\n<Input\n  id=\"email\"\n  type=\"email\"\n  defaultValue=\"not-an-email\"\n  error\n  aria-describedby=\"email-error\"\n/>\n<p id=\"email-error\" role=\"alert\" className=\"text-body-sm text-[var(--color-status-error)]\">\n  Please enter a valid email address.\n</p>"}>
+  <div className="w-80">
+    <Input placeholder="Invalid email" defaultValue="not-an-email" error />
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\n\n<Input placeholder=\"Validating…\" isLoading />"}>
+  <div className="w-80">
+    <Input placeholder="Validating…" isLoading />
+  </div>
+</ComponentPreview>
+
+## With Icon
+
+<ComponentPreview code={"import { Input } from \"@geeklego/ui\"\nimport { Search, Eye, User, Check } from \"lucide-react\"\n\n<Input placeholder=\"Search…\" leftIcon={<Search size={16} />} />\n<Input type=\"password\" placeholder=\"Password\" rightIcon={<Eye size={16} />} />\n<Input placeholder=\"Username\" leftIcon={<User size={16} />} rightIcon={<Check size={16} />} />"}>
+  <div className="flex flex-col gap-4 w-80">
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Left icon</p>
+      <Input placeholder="Search…" leftIcon={<Search size={16} />} />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Right icon</p>
+      <Input placeholder="Password" type="password" rightIcon={<Eye size={16} />} />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Both icons</p>
+      <Input placeholder="Username" leftIcon={<User size={16} />} rightIcon={<Check size={16} />} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl w-96\">\n  <Input variant=\"default\" placeholder=\"Default\" />\n  <Input variant=\"filled\" placeholder=\"Filled\" />\n  <Input placeholder=\"With icon\" leftIcon={<Search size={16} />} />\n  <Input placeholder=\"Error\" error />\n  <Input placeholder=\"Disabled\" disabled />\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl w-96">
+    <Input variant="default" placeholder="Default" />
+    <Input variant="filled" placeholder="Filled" />
+    <Input variant="flushed" placeholder="Flushed" />
+    <Input variant="default" placeholder="With icon" leftIcon={<Search size={16} />} />
+    <Input variant="default" placeholder="Error state" error />
+    <Input variant="default" placeholder="Loading…" isLoading />
+    <Input variant="default" placeholder="Disabled" disabled />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'default' | 'filled' | 'flushed' | 'unstyled'", defaultValue: "'default'", description: "Visual style variant." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Error state — shows error border and sets aria-invalid." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Loading state — shows spinner and disables interaction." },
+    { name: "leftIcon", type: "ReactNode", defaultValue: "—", description: "Icon displayed on the left side. Decorative; aria-hidden." },
+    { name: "rightIcon", type: "ReactNode", defaultValue: "—", description: "Icon displayed on the right side. Replaced by spinner when isLoading." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "placeholder", type: "string", defaultValue: "—", description: "Placeholder text." },
+    { name: "wrapperClassName", type: "string", defaultValue: "—", description: "Additional class names for the outer wrapper element." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names for the input element." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders a native `<input>` — full browser and assistive technology support
+- Always associate with a `<label>` via `htmlFor` + `id`, or pass `aria-label` for unlabeled inputs
+- `aria-invalid="true"` set when `error` is true — pair with `aria-describedby` pointing to an error message
+- `aria-busy="true"` set when `isLoading` is true
+- Icon slots are `aria-hidden="true"` — they are decorative
+- `disabled` sets both the HTML `disabled` attribute and `aria-disabled`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the input |
+| Any key | Types into the field |

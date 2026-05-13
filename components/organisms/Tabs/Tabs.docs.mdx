@@ -1,0 +1,274 @@
+---
+title: Tabs
+description: A WAI-ARIA-compliant tabs organism with four visual variants, three sizes, horizontal and vertical orientation, and a compound-component API.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8\">\n  <Tabs defaultValue=\"tab1\" variant=\"line\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Account</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Billing</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\">Security</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Account settings and profile details.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Manage your subscription and payment methods.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Two-factor authentication and login history.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"enclosed\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Account</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Billing</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\">Security</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Account settings and profile details.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Manage your subscription and payment methods.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Two-factor authentication and login history.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"soft-rounded\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Account</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Billing</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\">Security</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Account settings and profile details.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Manage your subscription and payment methods.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Two-factor authentication and login history.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"solid-rounded\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Account</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Billing</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\">Security</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Account settings and profile details.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Manage your subscription and payment methods.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Two-factor authentication and login history.</p></Tabs.Panel>\n  </Tabs>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <Tabs defaultValue="tab1" variant="line">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Account</Tabs.Tab>
+        <Tabs.Tab value="tab2">Billing</Tabs.Tab>
+        <Tabs.Tab value="tab3">Security</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Account settings and profile details.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Manage your subscription and payment methods.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Two-factor authentication and login history.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="enclosed">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Account</Tabs.Tab>
+        <Tabs.Tab value="tab2">Billing</Tabs.Tab>
+        <Tabs.Tab value="tab3">Security</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Account settings and profile details.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Manage your subscription and payment methods.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Two-factor authentication and login history.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="soft-rounded">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Account</Tabs.Tab>
+        <Tabs.Tab value="tab2">Billing</Tabs.Tab>
+        <Tabs.Tab value="tab3">Security</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Account settings and profile details.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Manage your subscription and payment methods.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Two-factor authentication and login history.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="solid-rounded">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Account</Tabs.Tab>
+        <Tabs.Tab value="tab2">Billing</Tabs.Tab>
+        <Tabs.Tab value="tab3">Security</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Account settings and profile details.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Manage your subscription and payment methods.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Two-factor authentication and login history.</p></Tabs.Panel>
+    </Tabs>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8\">\n  <Tabs defaultValue=\"profile\" size=\"sm\">\n    <Tabs.List>\n      <Tabs.Tab value=\"profile\">Profile</Tabs.Tab>\n      <Tabs.Tab value=\"notifications\">Notifications</Tabs.Tab>\n      <Tabs.Tab value=\"privacy\">Privacy</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"profile\"><p>Edit your public profile information.</p></Tabs.Panel>\n    <Tabs.Panel value=\"notifications\"><p>Control how and when you receive notifications.</p></Tabs.Panel>\n    <Tabs.Panel value=\"privacy\"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"profile\" size=\"md\">\n    <Tabs.List>\n      <Tabs.Tab value=\"profile\">Profile</Tabs.Tab>\n      <Tabs.Tab value=\"notifications\">Notifications</Tabs.Tab>\n      <Tabs.Tab value=\"privacy\">Privacy</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"profile\"><p>Edit your public profile information.</p></Tabs.Panel>\n    <Tabs.Panel value=\"notifications\"><p>Control how and when you receive notifications.</p></Tabs.Panel>\n    <Tabs.Panel value=\"privacy\"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"profile\" size=\"lg\">\n    <Tabs.List>\n      <Tabs.Tab value=\"profile\">Profile</Tabs.Tab>\n      <Tabs.Tab value=\"notifications\">Notifications</Tabs.Tab>\n      <Tabs.Tab value=\"privacy\">Privacy</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"profile\"><p>Edit your public profile information.</p></Tabs.Panel>\n    <Tabs.Panel value=\"notifications\"><p>Control how and when you receive notifications.</p></Tabs.Panel>\n    <Tabs.Panel value=\"privacy\"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>\n  </Tabs>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <Tabs defaultValue="profile" size="sm">
+      <Tabs.List>
+        <Tabs.Tab value="profile">Profile</Tabs.Tab>
+        <Tabs.Tab value="notifications">Notifications</Tabs.Tab>
+        <Tabs.Tab value="privacy">Privacy</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="profile"><p>Edit your public profile information.</p></Tabs.Panel>
+      <Tabs.Panel value="notifications"><p>Control how and when you receive notifications.</p></Tabs.Panel>
+      <Tabs.Panel value="privacy"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="profile" size="md">
+      <Tabs.List>
+        <Tabs.Tab value="profile">Profile</Tabs.Tab>
+        <Tabs.Tab value="notifications">Notifications</Tabs.Tab>
+        <Tabs.Tab value="privacy">Privacy</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="profile"><p>Edit your public profile information.</p></Tabs.Panel>
+      <Tabs.Panel value="notifications"><p>Control how and when you receive notifications.</p></Tabs.Panel>
+      <Tabs.Panel value="privacy"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="profile" size="lg">
+      <Tabs.List>
+        <Tabs.Tab value="profile">Profile</Tabs.Tab>
+        <Tabs.Tab value="notifications">Notifications</Tabs.Tab>
+        <Tabs.Tab value="privacy">Privacy</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="profile"><p>Edit your public profile information.</p></Tabs.Panel>
+      <Tabs.Panel value="notifications"><p>Control how and when you receive notifications.</p></Tabs.Panel>
+      <Tabs.Panel value="privacy"><p>Manage data sharing and privacy settings.</p></Tabs.Panel>
+    </Tabs>
+  </div>
+</ComponentPreview>
+
+## With Disabled Tab
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\n\n<Tabs defaultValue=\"active\">\n  <Tabs.List>\n    <Tabs.Tab value=\"active\">Active</Tabs.Tab>\n    <Tabs.Tab value=\"disabled\" disabled>Disabled</Tabs.Tab>\n    <Tabs.Tab value=\"another\">Another</Tabs.Tab>\n  </Tabs.List>\n  <Tabs.Panel value=\"active\"><p>This tab is active and selectable.</p></Tabs.Panel>\n  <Tabs.Panel value=\"disabled\"><p>This content is not reachable.</p></Tabs.Panel>\n  <Tabs.Panel value=\"another\"><p>Another reachable panel.</p></Tabs.Panel>\n</Tabs>"}>
+  <Tabs defaultValue="active">
+    <Tabs.List>
+      <Tabs.Tab value="active">Active</Tabs.Tab>
+      <Tabs.Tab value="disabled" disabled>Disabled</Tabs.Tab>
+      <Tabs.Tab value="another">Another</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Panel value="active"><p>This tab is active and selectable.</p></Tabs.Panel>
+    <Tabs.Panel value="disabled"><p>This content is not reachable.</p></Tabs.Panel>
+    <Tabs.Panel value="another"><p>Another reachable panel.</p></Tabs.Panel>
+  </Tabs>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\nimport { Home, Grid, User, Settings } from \"lucide-react\"\n\n<Tabs defaultValue=\"home\">\n  <Tabs.List>\n    <Tabs.Tab value=\"home\" icon={<Home size={14} />}>Home</Tabs.Tab>\n    <Tabs.Tab value=\"analytics\" icon={<Grid size={14} />}>Analytics</Tabs.Tab>\n    <Tabs.Tab value=\"profile\" icon={<User size={14} />}>Profile</Tabs.Tab>\n    <Tabs.Tab value=\"settings\" icon={<Settings size={14} />}>Settings</Tabs.Tab>\n  </Tabs.List>\n  <Tabs.Panel value=\"home\"><p>Home dashboard with an overview of your workspace.</p></Tabs.Panel>\n  <Tabs.Panel value=\"analytics\"><p>Analytics and reporting across your projects.</p></Tabs.Panel>\n  <Tabs.Panel value=\"profile\"><p>Your profile, avatar, and personal information.</p></Tabs.Panel>\n  <Tabs.Panel value=\"settings\"><p>Application-wide settings and configuration.</p></Tabs.Panel>\n</Tabs>"}>
+  <Tabs defaultValue="home">
+    <Tabs.List>
+      <Tabs.Tab value="home" icon={<Home size={14} />}>Home</Tabs.Tab>
+      <Tabs.Tab value="analytics" icon={<Grid size={14} />}>Analytics</Tabs.Tab>
+      <Tabs.Tab value="profile" icon={<User size={14} />}>Profile</Tabs.Tab>
+      <Tabs.Tab value="settings" icon={<Settings size={14} />}>Settings</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Panel value="home"><p>Home dashboard with an overview of your workspace.</p></Tabs.Panel>
+    <Tabs.Panel value="analytics"><p>Analytics and reporting across your projects.</p></Tabs.Panel>
+    <Tabs.Panel value="profile"><p>Your profile, avatar, and personal information.</p></Tabs.Panel>
+    <Tabs.Panel value="settings"><p>Application-wide settings and configuration.</p></Tabs.Panel>
+  </Tabs>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\n\n<Tabs defaultValue=\"tab1\" loading loadingCount={4} />"}>
+  <Tabs defaultValue="tab1" loading loadingCount={4} />
+</ComponentPreview>
+
+## Vertical
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\nimport { Settings, Bell, List, Lock } from \"lucide-react\"\n\n<Tabs defaultValue=\"general\" orientation=\"vertical\">\n  <Tabs.List>\n    <Tabs.Tab value=\"general\" icon={<Settings size={14} />}>General</Tabs.Tab>\n    <Tabs.Tab value=\"notifications\" icon={<Bell size={14} />}>Notifications</Tabs.Tab>\n    <Tabs.Tab value=\"documents\" icon={<List size={14} />}>Documents</Tabs.Tab>\n    <Tabs.Tab value=\"security\" icon={<Lock size={14} />}>Security</Tabs.Tab>\n  </Tabs.List>\n  <Tabs.Panel value=\"general\"><p>General preferences — locale, timezone, and display options.</p></Tabs.Panel>\n  <Tabs.Panel value=\"notifications\"><p>Email, push, and in-app notification preferences.</p></Tabs.Panel>\n  <Tabs.Panel value=\"documents\"><p>Document storage, sharing permissions, and export settings.</p></Tabs.Panel>\n  <Tabs.Panel value=\"security\"><p>Two-factor authentication, active sessions, and login activity.</p></Tabs.Panel>\n</Tabs>"}>
+  <Tabs defaultValue="general" orientation="vertical">
+    <Tabs.List>
+      <Tabs.Tab value="general" icon={<Settings size={14} />}>General</Tabs.Tab>
+      <Tabs.Tab value="notifications" icon={<Bell size={14} />}>Notifications</Tabs.Tab>
+      <Tabs.Tab value="documents" icon={<List size={14} />}>Documents</Tabs.Tab>
+      <Tabs.Tab value="security" icon={<Lock size={14} />}>Security</Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Panel value="general"><p>General preferences — locale, timezone, and display options.</p></Tabs.Panel>
+    <Tabs.Panel value="notifications"><p>Email, push, and in-app notification preferences.</p></Tabs.Panel>
+    <Tabs.Panel value="documents"><p>Document storage, sharing permissions, and export settings.</p></Tabs.Panel>
+    <Tabs.Panel value="security"><p>Two-factor authentication, active sessions, and login activity.</p></Tabs.Panel>
+  </Tabs>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Tabs } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Tabs defaultValue=\"tab1\" variant=\"line\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Overview</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Analytics</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\" disabled>Locked</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Dark mode panel — line variant.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Analytics data visualisation.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Locked content.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"enclosed\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Overview</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Analytics</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\" disabled>Locked</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Dark mode panel — enclosed variant.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Analytics data visualisation.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Locked content.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"soft-rounded\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Overview</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Analytics</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\" disabled>Locked</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Dark mode panel — soft-rounded variant.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Analytics data visualisation.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Locked content.</p></Tabs.Panel>\n  </Tabs>\n\n  <Tabs defaultValue=\"tab1\" variant=\"solid-rounded\">\n    <Tabs.List>\n      <Tabs.Tab value=\"tab1\">Overview</Tabs.Tab>\n      <Tabs.Tab value=\"tab2\">Analytics</Tabs.Tab>\n      <Tabs.Tab value=\"tab3\" disabled>Locked</Tabs.Tab>\n    </Tabs.List>\n    <Tabs.Panel value=\"tab1\"><p>Dark mode panel — solid-rounded variant.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab2\"><p>Analytics data visualisation.</p></Tabs.Panel>\n    <Tabs.Panel value=\"tab3\"><p>Locked content.</p></Tabs.Panel>\n  </Tabs>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Tabs defaultValue="tab1" variant="line">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Overview</Tabs.Tab>
+        <Tabs.Tab value="tab2">Analytics</Tabs.Tab>
+        <Tabs.Tab value="tab3" disabled>Locked</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Dark mode panel — line variant.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Analytics data visualisation.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Locked content.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="enclosed">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Overview</Tabs.Tab>
+        <Tabs.Tab value="tab2">Analytics</Tabs.Tab>
+        <Tabs.Tab value="tab3" disabled>Locked</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Dark mode panel — enclosed variant.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Analytics data visualisation.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Locked content.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="soft-rounded">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Overview</Tabs.Tab>
+        <Tabs.Tab value="tab2">Analytics</Tabs.Tab>
+        <Tabs.Tab value="tab3" disabled>Locked</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Dark mode panel — soft-rounded variant.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Analytics data visualisation.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Locked content.</p></Tabs.Panel>
+    </Tabs>
+
+    <Tabs defaultValue="tab1" variant="solid-rounded">
+      <Tabs.List>
+        <Tabs.Tab value="tab1">Overview</Tabs.Tab>
+        <Tabs.Tab value="tab2">Analytics</Tabs.Tab>
+        <Tabs.Tab value="tab3" disabled>Locked</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="tab1"><p>Dark mode panel — solid-rounded variant.</p></Tabs.Panel>
+      <Tabs.Panel value="tab2"><p>Analytics data visualisation.</p></Tabs.Panel>
+      <Tabs.Panel value="tab3"><p>Locked content.</p></Tabs.Panel>
+    </Tabs>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Tabs (root)
+
+<PropsTable
+  rows={[
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled selected tab value. Pair with onChange for a fully controlled component." },
+    { name: "defaultValue", type: "string", defaultValue: "''", description: "Initially selected tab value for uncontrolled usage." },
+    { name: "onChange", type: "(value: string) => void", defaultValue: "—", description: "Called with the new value whenever the selected tab changes." },
+    { name: "variant", type: "'line' | 'enclosed' | 'soft-rounded' | 'solid-rounded'", defaultValue: "'line'", description: "Visual style of the tab list. line uses an underline indicator; enclosed adds a filled card background; soft-rounded and solid-rounded use pill shapes." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale of the tab triggers." },
+    { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Direction of the tab list. Vertical arranges tabs in a column with a start-side indicator." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Renders skeleton placeholder tabs and panel instead of children." },
+    { name: "loadingCount", type: "number", defaultValue: "3", description: "Number of skeleton tab buttons to render when loading is true." },
+    { name: "i18nStrings", type: "TabsI18nStrings", defaultValue: "—", description: "Overrides system-managed strings. Currently supports listLabel, which sets the aria-label on the tab list." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the root element." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Must contain Tabs.List and one or more Tabs.Panel elements." },
+  ]}
+/>
+
+### Tabs.List
+
+<PropsTable
+  rows={[
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the tablist container." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Must contain Tabs.Tab elements." },
+  ]}
+/>
+
+### Tabs.Tab
+
+<PropsTable
+  rows={[
+    { name: "value", type: "string", defaultValue: "—", description: "Required. Unique identifier that must match a Tabs.Panel value." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the tab trigger. Disabled tabs are skipped by keyboard arrow-key navigation." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon element rendered before the tab label with aria-hidden applied automatically." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the tab button." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Required. Tab label text." },
+  ]}
+/>
+
+### Tabs.Panel
+
+<PropsTable
+  rows={[
+    { name: "value", type: "string", defaultValue: "—", description: "Required. Unique identifier that must match a Tabs.Tab value." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the tabpanel element." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Required. Panel content shown when the associated tab is selected." },
+  ]}
+/>
+
+## Accessibility
+
+- Root: `<div>` container
+- Tab list: `<div role="tablist">` with `aria-label` (resolved from `i18nStrings.listLabel`, default `"Tabs"`) and `aria-orientation`
+- Tab trigger: `<button role="tab">` with `aria-selected` and `aria-controls` pointing to its panel
+- Panel: `<div role="tabpanel">` with `aria-labelledby` pointing to its tab, and `tabIndex={0}` so the panel is focusable
+- Disabled tabs receive `aria-disabled="true"` and are skipped during arrow-key navigation
+- Icons inside tab triggers are wrapped with `aria-hidden="true"`
+- Loading skeleton carries `aria-busy="true"` via `getLoadingProps`
+- Roving tabindex pattern: exactly one tab has `tabIndex={0}` at a time; all others are `-1`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the tab list as a single unit, then into the active panel |
+| ArrowRight / ArrowLeft | Move focus between tabs (horizontal orientation); selection follows focus |
+| ArrowDown / ArrowUp | Move focus between tabs (vertical orientation); selection follows focus |
+| Home | Move focus to the first non-disabled tab |
+| End | Move focus to the last non-disabled tab |

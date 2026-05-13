@@ -1,0 +1,155 @@
+---
+title: Fieldset
+description: A labeled group container for related form controls with hint text, validation error state, layout options, and native disabled propagation.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Fieldset, Checkbox } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-md\">\n  <Fieldset legend=\"Default (no border)\" variant=\"default\">\n    <Checkbox label=\"Email notifications\" defaultChecked />\n    <Checkbox label=\"SMS notifications\" />\n    <Checkbox label=\"Push notifications\" />\n  </Fieldset>\n  <Fieldset legend=\"Boxed (bordered)\" variant=\"boxed\">\n    <Checkbox label=\"Email notifications\" defaultChecked />\n    <Checkbox label=\"SMS notifications\" />\n    <Checkbox label=\"Push notifications\" />\n  </Fieldset>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-md">
+    <Fieldset legend="Default (no border)" variant="default">
+      <Checkbox label="Email notifications" defaultChecked />
+      <Checkbox label="SMS notifications" />
+      <Checkbox label="Push notifications" />
+    </Fieldset>
+    <Fieldset legend="Boxed (bordered)" variant="boxed">
+      <Checkbox label="Email notifications" defaultChecked />
+      <Checkbox label="SMS notifications" />
+      <Checkbox label="Push notifications" />
+    </Fieldset>
+  </div>
+</ComponentPreview>
+
+## Layout
+
+<ComponentPreview code={"import { Fieldset, Radio } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-md\">\n  <Fieldset legend=\"Column layout (default)\" layout=\"column\">\n    <Radio name=\"plan-col\" value=\"free\" label=\"Free\" defaultChecked />\n    <Radio name=\"plan-col\" value=\"pro\" label=\"Pro\" />\n    <Radio name=\"plan-col\" value=\"enterprise\" label=\"Enterprise\" />\n  </Fieldset>\n  <Fieldset legend=\"Row layout\" layout=\"row\">\n    <Radio name=\"plan-row\" value=\"free\" label=\"Free\" defaultChecked />\n    <Radio name=\"plan-row\" value=\"pro\" label=\"Pro\" />\n    <Radio name=\"plan-row\" value=\"enterprise\" label=\"Enterprise\" />\n  </Fieldset>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-md">
+    <Fieldset legend="Column layout (default)" layout="column">
+      <Radio name="plan-col" value="free" label="Free" defaultChecked />
+      <Radio name="plan-col" value="pro" label="Pro" />
+      <Radio name="plan-col" value="enterprise" label="Enterprise" />
+    </Fieldset>
+    <Fieldset legend="Row layout" layout="row">
+      <Radio name="plan-row" value="free" label="Free" defaultChecked />
+      <Radio name="plan-row" value="pro" label="Pro" />
+      <Radio name="plan-row" value="enterprise" label="Enterprise" />
+    </Fieldset>
+  </div>
+</ComponentPreview>
+
+## With Hint
+
+<ComponentPreview code={"import { Fieldset, Checkbox } from \"@geeklego/ui\"\n\n<Fieldset\n  legend=\"Communication preferences\"\n  hint=\"You can update these settings at any time.\"\n  className=\"max-w-md\"\n>\n  <Checkbox label=\"Email notifications\" defaultChecked />\n  <Checkbox label=\"Weekly digest\" />\n  <Checkbox label=\"Product announcements\" />\n</Fieldset>"}>
+  <Fieldset
+    legend="Communication preferences"
+    hint="You can update these settings at any time."
+    className="max-w-md"
+  >
+    <Checkbox label="Email notifications" defaultChecked />
+    <Checkbox label="Weekly digest" />
+    <Checkbox label="Product announcements" />
+  </Fieldset>
+</ComponentPreview>
+
+## Required
+
+<ComponentPreview code={"import { Fieldset, Radio } from \"@geeklego/ui\"\n\n<Fieldset legend=\"Subscription plan\" required hint=\"Select one plan to continue.\" className=\"max-w-md\">\n  <Radio name=\"plan-req\" value=\"free\" label=\"Free\" defaultChecked />\n  <Radio name=\"plan-req\" value=\"pro\" label=\"Pro\" />\n  <Radio name=\"plan-req\" value=\"enterprise\" label=\"Enterprise\" />\n</Fieldset>"}>
+  <Fieldset legend="Subscription plan" required hint="Select one plan to continue." className="max-w-md">
+    <Radio name="plan-req" value="free" label="Free" defaultChecked />
+    <Radio name="plan-req" value="pro" label="Pro" />
+    <Radio name="plan-req" value="enterprise" label="Enterprise" />
+  </Fieldset>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Fieldset, Checkbox } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-md\">\n  <Fieldset\n    legend=\"Terms and conditions\"\n    error=\"You must accept at least one term to continue.\"\n  >\n    <Checkbox label=\"I agree to the terms of service\" />\n    <Checkbox label=\"I agree to the privacy policy\" />\n  </Fieldset>\n  <Fieldset\n    legend=\"Notification channels\"\n    variant=\"boxed\"\n    error=\"Please select at least one channel.\"\n  >\n    <Checkbox label=\"Email\" />\n    <Checkbox label=\"SMS\" />\n  </Fieldset>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-md">
+    <Fieldset
+      legend="Terms and conditions"
+      error="You must accept at least one term to continue."
+    >
+      <Checkbox label="I agree to the terms of service" />
+      <Checkbox label="I agree to the privacy policy" />
+    </Fieldset>
+    <Fieldset
+      legend="Notification channels"
+      variant="boxed"
+      error="Please select at least one channel."
+    >
+      <Checkbox label="Email" />
+      <Checkbox label="SMS" />
+    </Fieldset>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Fieldset, Checkbox, Radio } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-md\">\n  <Fieldset legend=\"Disabled group\" disabled hint=\"These options are currently unavailable.\">\n    <Checkbox label=\"Email notifications\" defaultChecked />\n    <Checkbox label=\"SMS notifications\" />\n  </Fieldset>\n  <Fieldset legend=\"Locked plan\" variant=\"boxed\" disabled>\n    <Radio name=\"locked-plan\" value=\"free\" label=\"Free\" defaultChecked />\n    <Radio name=\"locked-plan\" value=\"pro\" label=\"Pro\" />\n  </Fieldset>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-md">
+    <Fieldset legend="Disabled group" disabled hint="These options are currently unavailable.">
+      <Checkbox label="Email notifications" defaultChecked />
+      <Checkbox label="SMS notifications" />
+    </Fieldset>
+    <Fieldset legend="Locked plan" variant="boxed" disabled>
+      <Radio name="locked-plan" value="free" label="Free" defaultChecked />
+      <Radio name="locked-plan" value="pro" label="Pro" />
+    </Fieldset>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Fieldset, Checkbox, Radio } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Fieldset legend=\"Communication preferences\" hint=\"Choose how we contact you.\">\n    <Checkbox label=\"Email notifications\" defaultChecked />\n    <Checkbox label=\"Weekly digest\" />\n  </Fieldset>\n  <Fieldset legend=\"Subscription plan\" variant=\"boxed\" required>\n    <Radio name=\"dm-plan\" value=\"free\" label=\"Free\" defaultChecked />\n    <Radio name=\"dm-plan\" value=\"pro\" label=\"Pro\" />\n  </Fieldset>\n  <Fieldset legend=\"Notification channels\" error=\"Please select at least one channel.\">\n    <Checkbox label=\"Email\" />\n    <Checkbox label=\"SMS\" />\n  </Fieldset>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Fieldset legend="Communication preferences" hint="Choose how we contact you.">
+      <Checkbox label="Email notifications" defaultChecked />
+      <Checkbox label="Weekly digest" />
+    </Fieldset>
+    <Fieldset legend="Subscription plan" variant="boxed" required>
+      <Radio name="dm-plan" value="free" label="Free" defaultChecked />
+      <Radio name="dm-plan" value="pro" label="Pro" />
+    </Fieldset>
+    <Fieldset legend="Notification channels" error="Please select at least one channel.">
+      <Checkbox label="Email" />
+      <Checkbox label="SMS" />
+    </Fieldset>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "legend", type: "string", defaultValue: "—", description: "Text rendered as the fieldset legend. Required for accessibility." },
+    { name: "variant", type: "'default' | 'boxed'", defaultValue: "'default'", description: "default — no border. boxed — adds a visible border around the group." },
+    { name: "layout", type: "'column' | 'row'", defaultValue: "'column'", description: "Stacking direction for child controls." },
+    { name: "gap", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Spacing between child controls." },
+    { name: "hint", type: "string", defaultValue: "—", description: "Helper text shown below the controls when no error is present." },
+    { name: "error", type: "string", defaultValue: "—", description: "Validation error message. Replaces hint text and is announced immediately via role='alert'." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Marks the group as required — renders a visual indicator on the legend." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the native fieldset element, propagating the disabled state to all descendant controls." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Form controls to render inside the group. Required." },
+    { name: "i18nStrings", type: "FieldsetI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides (e.g. the required indicator label)." },
+  ]}
+/>
+
+## Accessibility
+
+- Rendered as a native `<fieldset>` with `<legend>` — screen readers announce the group name when entering the group
+- `disabled` on the `<fieldset>` natively propagates to all descendant controls — no JavaScript required
+- Error message uses `role="alert"` — announced immediately by screen readers when it appears
+- Hint text is linked via `aria-describedby` on the fieldset
+- Required indicator uses `aria-hidden` on the visual asterisk with a screen-reader-only text fallback
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between controls inside the group |
+| Space | Toggles checkboxes or selects the focused radio |
+| Arrow keys | Moves selection between radio buttons in the group |

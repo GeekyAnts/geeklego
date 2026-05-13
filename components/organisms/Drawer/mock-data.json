@@ -1,0 +1,53 @@
+{
+  "default": {
+    "isOpen": false,
+    "placement": "right",
+    "size": "md",
+    "title": "Settings",
+    "loading": false,
+    "closeOnBackdropClick": true
+  },
+  "placements": [
+    { "placement": "right", "title": "Right drawer", "label": "right (open)" },
+    { "placement": "left",  "title": "Left drawer",  "label": "left (open)" },
+    { "placement": "top",   "title": "Top drawer",   "label": "top (open)" },
+    { "placement": "bottom","title": "Bottom drawer", "label": "bottom (open)" }
+  ],
+  "sizes": [
+    { "size": "sm",   "label": "sm (open)",   "title": "SM Drawer" },
+    { "size": "md",   "label": "md (open)",   "title": "MD Drawer" },
+    { "size": "lg",   "label": "lg (open)",   "title": "LG Drawer" },
+    { "size": "xl",   "label": "xl (open)",   "title": "XL Drawer" },
+    { "size": "full", "label": "full (open)", "title": "Full Drawer" }
+  ],
+  "states": {
+    "loading": {
+      "isOpen": false,
+      "loading": true,
+      "title": "Loading content"
+    },
+    "noTitle": {
+      "isOpen": false,
+      "title": null
+    },
+    "backdropDisabled": {
+      "isOpen": false,
+      "closeOnBackdropClick": false,
+      "title": "Backdrop disabled"
+    }
+  },
+  "edge_cases": {
+    "longTitle": "This is a very long drawer title that should truncate gracefully without breaking the header layout",
+    "noFooter": {
+      "title": "No footer drawer",
+      "description": "Drawer.Footer is optional — the body grows to fill remaining height"
+    },
+    "emptyBody": {
+      "title": "Empty drawer",
+      "description": "Drawer with no body content"
+    },
+    "noTitle": {
+      "description": "When title is omitted, aria-label fallback is used for screen reader announcement"
+    }
+  }
+}

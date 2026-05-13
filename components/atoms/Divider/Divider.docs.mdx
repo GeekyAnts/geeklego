@@ -1,0 +1,67 @@
+---
+title: Divider
+description: A horizontal or vertical rule for separating content sections.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Divider } from \"@geeklego/ui\"\n\n<Divider variant=\"solid\" />\n<Divider variant=\"dashed\" />\n<Divider variant=\"dotted\" />"}>
+  <div className="flex flex-col gap-6 w-full max-w-xs">
+    <div>
+      <span className="text-label-sm text-secondary mb-2 block">Solid</span>
+      <Divider variant="solid" />
+    </div>
+    <div>
+      <span className="text-label-sm text-secondary mb-2 block">Dashed</span>
+      <Divider variant="dashed" />
+    </div>
+    <div>
+      <span className="text-label-sm text-secondary mb-2 block">Dotted</span>
+      <Divider variant="dotted" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Orientations
+
+<ComponentPreview code={"import { Divider } from \"@geeklego/ui\"\n\n{/* Horizontal (default) */}\n<Divider orientation=\"horizontal\" />\n\n{/* Vertical — requires a height context */}\n<div className=\"flex items-center gap-4 h-8\">\n  <span>Left</span>\n  <Divider orientation=\"vertical\" />\n  <span>Right</span>\n</div>"}>
+  <div className="flex gap-8 items-stretch h-24">
+    <div className="flex flex-col justify-center w-48">
+      <span className="text-label-sm text-secondary mb-2">Horizontal</span>
+      <Divider orientation="horizontal" />
+    </div>
+    <div className="flex items-center gap-4">
+      <span className="text-label-sm text-secondary">Vertical</span>
+      <Divider orientation="vertical" />
+      <span className="text-body-sm text-primary">Content</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"p-8 bg-primary rounded-[var(--radius-component-lg)]\">\n  <Divider variant=\"solid\" />\n  <Divider variant=\"dashed\" />\n  <Divider variant=\"dotted\" />\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-6 w-full max-w-2xl p-8 bg-primary rounded-[var(--radius-component-lg)]">
+    <Divider variant="solid" />
+    <Divider variant="dashed" />
+    <Divider variant="dotted" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Orientation of the divider." },
+    { name: "variant", type: "'solid' | 'dashed' | 'dotted'", defaultValue: "'solid'", description: "Border style." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<hr role="separator">` with `aria-orientation` matching the `orientation` prop
+- Screen readers announce it as a thematic break between sections
+- Purely decorative dividers within already-separated regions can pass `aria-hidden="true"`
+- No keyboard interaction — Divider is a display-only component

@@ -1,0 +1,115 @@
+---
+title: InputGroup
+description: Wrap an input with start or end addon elements — icons, text labels, or buttons — in a unified bordered container.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Search, Globe, Mail } from \"lucide-react\"\nimport { Button } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup variant=\"default\" placeholder=\"Default — icon prefix\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Search default\" />\n  <InputGroup variant=\"filled\" placeholder=\"Filled — icon prefix\" prefix={<Mail size={14} aria-hidden=\"true\" />} aria-label=\"Email filled\" />\n  <InputGroup variant=\"flushed\" placeholder=\"Flushed — icon prefix\" prefix={<Globe size={14} aria-hidden=\"true\" />} aria-label=\"URL flushed\" />\n  <InputGroup placeholder=\"Button suffix\" prefix={<Search size={14} aria-hidden=\"true\" />} suffix={<Button variant=\"primary\" size=\"sm\">Search</Button>} aria-label=\"Docs search\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup variant="default" placeholder="Default — icon prefix" prefix={<Search size={14} aria-hidden="true" />} aria-label="Search default" />
+    <InputGroup variant="filled" placeholder="Filled — icon prefix" prefix={<Mail size={14} aria-hidden="true" />} aria-label="Email filled" />
+    <InputGroup variant="flushed" placeholder="Flushed — icon prefix" prefix={<Globe size={14} aria-hidden="true" />} aria-label="URL flushed" />
+    <InputGroup placeholder="Button suffix" prefix={<Search size={14} aria-hidden="true" />} suffix={<Button variant="primary" size="sm">Search</Button>} aria-label="Docs search" />
+  </div>
+</ComponentPreview>
+
+## Text Addons
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Phone } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup placeholder=\"0.00\" type=\"number\" prefix={<span aria-hidden=\"true\">$</span>} suffix={<span aria-hidden=\"true\">USD</span>} aria-label=\"Amount in USD\" />\n  <InputGroup placeholder=\"username\" prefix={<span aria-hidden=\"true\">@</span>} aria-label=\"Username\" />\n  <InputGroup type=\"tel\" placeholder=\"(555) 000-0000\" prefix={<span className=\"content-nowrap text-body-sm\">+1</span>} aria-label=\"Phone number\" />\n  <InputGroup placeholder=\"yourdomain.com\" suffix={<span aria-hidden=\"true\">.com</span>} aria-label=\"Domain\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup placeholder="0.00" type="number" prefix={<span aria-hidden="true">$</span>} suffix={<span aria-hidden="true">USD</span>} aria-label="Amount in USD" />
+    <InputGroup placeholder="username" prefix={<span aria-hidden="true">@</span>} aria-label="Username" />
+    <InputGroup type="tel" placeholder="(555) 000-0000" prefix={<span className="content-nowrap text-body-sm">+1</span>} aria-label="Phone number" />
+    <InputGroup placeholder="yourdomain.com" suffix={<span aria-hidden="true">.com</span>} aria-label="Domain" />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Search } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup size=\"sm\" placeholder=\"Small\" prefix={<Search size={12} aria-hidden=\"true\" />} aria-label=\"Search small\" />\n  <InputGroup size=\"md\" placeholder=\"Medium\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Search medium\" />\n  <InputGroup size=\"lg\" placeholder=\"Large\" prefix={<Search size={16} aria-hidden=\"true\" />} aria-label=\"Search large\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup size="sm" placeholder="Small" prefix={<Search size={12} aria-hidden="true" />} aria-label="Search small" />
+    <InputGroup size="md" placeholder="Medium" prefix={<Search size={14} aria-hidden="true" />} aria-label="Search medium" />
+    <InputGroup size="lg" placeholder="Large" prefix={<Search size={16} aria-hidden="true" />} aria-label="Search large" />
+  </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Mail, Lock } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup error placeholder=\"Invalid email\" prefix={<Mail size={14} aria-hidden=\"true\" />} type=\"email\" aria-label=\"Email error\" aria-describedby=\"email-err\" />\n  <span id=\"email-err\" className=\"text-body-sm text-[var(--color-text-error)]\">Enter a valid email address.</span>\n  <InputGroup error placeholder=\"Required field\" prefix={<Lock size={14} aria-hidden=\"true\" />} aria-label=\"Password error\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup error placeholder="Invalid email" prefix={<Mail size={14} aria-hidden="true" />} type="email" aria-label="Email error" aria-describedby="email-err" />
+    <span id="email-err" className="text-body-sm text-[var(--color-text-error)]">Enter a valid email address.</span>
+    <InputGroup error placeholder="Required field" prefix={<Lock size={14} aria-hidden="true" />} aria-label="Password error" />
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Search, Lock } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup disabled placeholder=\"Search disabled\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Search disabled\" />\n  <InputGroup disabled placeholder=\"Read-only field\" prefix={<Lock size={14} aria-hidden=\"true\" />} suffix={<span aria-hidden=\"true\">USD</span>} aria-label=\"Amount disabled\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup disabled placeholder="Search disabled" prefix={<Search size={14} aria-hidden="true" />} aria-label="Search disabled" />
+    <InputGroup disabled placeholder="Read-only field" prefix={<Lock size={14} aria-hidden="true" />} suffix={<span aria-hidden="true">USD</span>} aria-label="Amount disabled" />
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Search, Mail } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <InputGroup isLoading placeholder=\"Searching…\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Search loading\" />\n  <InputGroup isLoading placeholder=\"Sending…\" prefix={<Mail size={14} aria-hidden=\"true\" />} aria-label=\"Email loading\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <InputGroup isLoading placeholder="Searching…" prefix={<Search size={14} aria-hidden="true" />} aria-label="Search loading" />
+    <InputGroup isLoading placeholder="Sending…" prefix={<Mail size={14} aria-hidden="true" />} aria-label="Email loading" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { InputGroup } from \"@geeklego/ui\"\nimport { Search, Mail } from \"lucide-react\"\nimport { Button } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <InputGroup placeholder=\"Search…\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Search dark\" />\n  <InputGroup variant=\"filled\" placeholder=\"Email address\" prefix={<Mail size={14} aria-hidden=\"true\" />} aria-label=\"Email dark\" />\n  <InputGroup placeholder=\"0.00\" type=\"number\" prefix={<span aria-hidden=\"true\">$</span>} suffix={<span aria-hidden=\"true\">USD</span>} aria-label=\"Amount dark\" />\n  <InputGroup error placeholder=\"Invalid input\" prefix={<Search size={14} aria-hidden=\"true\" />} aria-label=\"Error dark\" />\n  <InputGroup placeholder=\"Search the docs…\" prefix={<Search size={14} aria-hidden=\"true\" />} suffix={<Button variant=\"primary\" size=\"sm\">Search</Button>} aria-label=\"Docs search dark\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <InputGroup placeholder="Search…" prefix={<Search size={14} aria-hidden="true" />} aria-label="Search dark" />
+    <InputGroup variant="filled" placeholder="Email address" prefix={<Mail size={14} aria-hidden="true" />} aria-label="Email dark" />
+    <InputGroup placeholder="0.00" type="number" prefix={<span aria-hidden="true">$</span>} suffix={<span aria-hidden="true">USD</span>} aria-label="Amount dark" />
+    <InputGroup error placeholder="Invalid input" prefix={<Search size={14} aria-hidden="true" />} aria-label="Error dark" />
+    <InputGroup placeholder="Search the docs…" prefix={<Search size={14} aria-hidden="true" />} suffix={<Button variant="primary" size="sm">Search</Button>} aria-label="Docs search dark" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "prefix", type: "ReactNode", defaultValue: "—", description: "Node shown in the start addon slot (icon, text, or any ReactNode)." },
+    { name: "suffix", type: "ReactNode", defaultValue: "—", description: "Node shown in the end addon slot (icon, text, Button, or any ReactNode)." },
+    { name: "variant", type: "'default' | 'filled' | 'flushed' | 'unstyled'", defaultValue: "'default'", description: "Visual style applied to the group container." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Error state — shows error border; passed through to the inner Input." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Loading state — shows spinner and disables interaction; passed through to the inner Input." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the group. Mutes addon appearance and input interaction." },
+    { name: "wrapperClassName", type: "string", defaultValue: "—", description: "Extra class names for the outer group wrapper element." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Accessible label for the role=group element. Recommended when no visible label is present." },
+    { name: "...rest", type: "InputHTMLAttributes", defaultValue: "—", description: "All standard input attributes (value, onChange, placeholder, name, id, type, etc.) passed to the inner Input." },
+  ]}
+/>
+
+## Accessibility
+
+- `<div role="group">` wraps the addon elements and inner `<input>` as one logical unit
+- `aria-label` on the group is recommended when no visible `<label>` is present; pass it directly to `InputGroup`
+- `aria-disabled`, `aria-invalid`, and `aria-busy` are managed by the inner Input atom and set on the `<input>` element
+- Pass `aria-describedby` via `...rest` to connect an external hint or error message to the inner `<input>`
+- Decorative addon content (icons, short text labels) should have `aria-hidden="true"` applied directly to the content node
+- Semantic addon content (e.g., country code `+1` that helps users understand what to type) should remain visible to screen readers — omit `aria-hidden` and rely on the group `aria-label` to provide context
+- Interactive suffix elements (e.g., a `Button`) retain their own accessible name and keyboard behaviour
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the inner input |
+| Standard input keys | Character input, selection, deletion |
+| Tab (with interactive suffix) | Continues focus to the Button or other interactive element in the suffix slot |

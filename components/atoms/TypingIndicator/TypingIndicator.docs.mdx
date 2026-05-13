@@ -1,0 +1,65 @@
+---
+title: TypingIndicator
+description: Three-dot bounce animation indicating someone is composing a message, with screen-reader support.
+level: atom
+---
+
+## With Name
+
+<ComponentPreview code={"import { TypingIndicator } from \"@geeklego/ui\"\n\n<TypingIndicator name=\"Sarah\" />"}>
+  <TypingIndicator name="Sarah" />
+</ComponentPreview>
+
+## In Context
+
+<ComponentPreview code={"import { TypingIndicator } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-sm)] max-w-xs\">\n  <div className=\"flex justify-end\">\n    <div className=\"bg-[var(--color-action-primary)] text-[var(--color-text-on-primary)] rounded-[var(--radius-component-lg)] px-[var(--spacing-component-lg)] py-[var(--spacing-component-sm)] text-body-sm ms-auto max-w-[80%]\">Sounds great, I will send the file now!</div>\n  </div>\n  <TypingIndicator name=\"Sarah\" />\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-sm)] max-w-xs">
+    <div className="flex justify-end">
+      <div className="bg-[var(--color-action-primary)] text-[var(--color-text-on-primary)] rounded-[var(--radius-component-lg)] px-[var(--spacing-component-lg)] py-[var(--spacing-component-sm)] text-body-sm ms-auto max-w-[80%]">Sounds great, I will send the file now!</div>
+    </div>
+    <TypingIndicator name="Sarah" />
+  </div>
+</ComponentPreview>
+
+## Visible — Dots Animating
+
+<ComponentPreview code={"import { TypingIndicator } from \"@geeklego/ui\"\n\n<TypingIndicator />"}>
+  <TypingIndicator />
+</ComponentPreview>
+
+## With Sender Name
+
+<ComponentPreview code={"import { TypingIndicator } from \"@geeklego/ui\"\n\n<TypingIndicator name=\"Alice\" />"}>
+  <TypingIndicator name="Alice" />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { TypingIndicator } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-[var(--spacing-component-md)] p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <TypingIndicator />\n  <TypingIndicator name=\"Sarah\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-[var(--spacing-component-md)] p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <TypingIndicator />
+    <TypingIndicator name="Sarah" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "name", type: "string", defaultValue: "—", description: "Name of the person currently typing. Used in the sr-only accessible label." },
+    { name: "i18nStrings", type: "TypingIndicatorI18nStrings", defaultValue: "—", description: "Override localised system strings. Key: typingLabel (default: 'is typing…')." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes merged onto the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="status"` marks the element as a live region status container
+- `aria-live="polite"` — screen reader announces politely when the component mounts
+- Dots use `aria-hidden="true"` — hidden from the accessibility tree
+- sr-only text: "[name] is typing…" when `name` provided, or "Typing…" when omitted
+- `typingLabel` i18n string allows overriding the "is typing…" portion for non-English locales
+- No keyboard interactions — purely visual/auditory indicator

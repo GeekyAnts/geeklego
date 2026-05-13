@@ -1,0 +1,41 @@
+{
+  "default": {
+    "href": "#main-content",
+    "size": "md",
+    "forceVisible": true,
+    "children": "Skip to main content"
+  },
+  "sizes": [
+    { "href": "#main-content", "size": "sm", "children": "Skip to main content" },
+    { "href": "#main-content", "size": "md", "children": "Skip to main content" }
+  ],
+  "destinations": [
+    { "href": "#main-content", "children": "Skip to main content" },
+    { "href": "#main-nav",     "children": "Skip to navigation" },
+    { "href": "#search",       "children": "Skip to search" },
+    { "href": "#footer",       "children": "Skip to footer" }
+  ],
+  "edge_cases": {
+    "long_label": {
+      "href": "#main-content",
+      "forceVisible": true,
+      "children": "Skip to the primary main content area of this page"
+    },
+    "custom_target": {
+      "href": "#dashboard-content",
+      "forceVisible": true,
+      "children": "Skip to dashboard"
+    },
+    "force_visible": {
+      "href": "#main-content",
+      "forceVisible": true,
+      "children": "Skip to main content"
+    },
+    "sm_force_visible": {
+      "href": "#main-content",
+      "size": "sm",
+      "forceVisible": true,
+      "children": "Skip to main content"
+    }
+  }
+}

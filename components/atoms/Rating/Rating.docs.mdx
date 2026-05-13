@@ -1,0 +1,116 @@
+---
+title: Rating
+description: Star rating component with interactive radio-group pattern, read-only display, and Schema.org support.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Rating } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\n{/* Interactive */}\nfunction RatingDemo() {\n  const [value, setValue] = useState(0)\n  return <Rating value={value} onChange={setValue} label=\"Rate this product\" showLabel />\n}\n\n{/* Read-only */}\n<Rating value={4} readOnly label=\"Product rating\" />"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <p className="text-label-sm text-secondary">Interactive — radio group pattern</p>
+      <Rating value={3} label="Rate this product" showLabel />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-label-sm text-secondary">Read-only — display only</p>
+      <Rating value={4} readOnly label="Product rating" />
+      <p className="text-body-xs text-tertiary">No hover, no selection — SR reads "4 out of 5 stars"</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-label-sm text-secondary">Unrated (value=0)</p>
+      <Rating value={0} label="Not yet rated" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Rating } from \"@geeklego/ui\"\n\n<Rating value={3} readOnly size=\"sm\" label=\"Small\" />\n<Rating value={3} readOnly size=\"md\" label=\"Medium\" />\n<Rating value={3} readOnly size=\"lg\" label=\"Large\" />"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-1">
+      <p className="text-label-sm text-secondary">sm — 16px stars</p>
+      <Rating value={3} readOnly size="sm" label="Small rating" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <p className="text-label-sm text-secondary">md — 20px stars (default)</p>
+      <Rating value={3} readOnly size="md" label="Medium rating" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <p className="text-label-sm text-secondary">lg — 24px stars</p>
+      <Rating value={3} readOnly size="lg" label="Large rating" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Rating } from \"@geeklego/ui\"\n\n<Rating value={3} disabled label=\"Disabled rating\" showLabel />"}>
+  <Rating value={3} disabled label="Disabled rating" showLabel />
+</ComponentPreview>
+
+## With Label
+
+<ComponentPreview code={"import { Rating } from \"@geeklego/ui\"\n\n{/* Visible label above stars */}\n<Rating value={4} label=\"How satisfied were you?\" showLabel />\n\n{/* Label for screen readers only (default) */}\n<Rating value={3} readOnly label=\"Average customer rating\" />"}>
+  <div className="flex flex-col gap-4">
+    <Rating value={4} label="How satisfied were you?" showLabel />
+    <Rating value={3} readOnly label="Average customer rating" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-[var(--radius-component-xl)] max-w-2xl\">\n  <Rating value={3} label=\"Rate your experience\" showLabel />\n  <Rating value={4} readOnly label=\"Product rating\" />\n  <Rating value={2} disabled label=\"Disabled\" />\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-[var(--radius-component-xl)] max-w-2xl">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <p className="text-label-sm text-secondary">Interactive in dark mode</p>
+        <Rating value={3} label="Rate your experience" showLabel />
+      </div>
+      <div className="flex flex-col gap-1">
+        <p className="text-label-sm text-secondary">Read-only in dark mode</p>
+        <Rating value={4} readOnly label="Product rating" />
+      </div>
+      <div className="flex flex-col gap-1">
+        <p className="text-label-sm text-secondary">Disabled in dark mode</p>
+        <Rating value={2} disabled label="Disabled" />
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "number", defaultValue: "0", description: "Current rating value (1–max). Pass 0 to indicate no rating selected." },
+    { name: "onChange", type: "(value: number) => void", defaultValue: "—", description: "Called when the user selects a star. Required for interactive mode; ignored when readOnly." },
+    { name: "max", type: "number", defaultValue: "5", description: "Total number of stars." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Star icon size." },
+    { name: "readOnly", type: "boolean", defaultValue: "false", description: "Renders a static display (span role='img') instead of a radio-group control." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables all interaction. Stars are muted." },
+    { name: "label", type: "string", defaultValue: "'Rating'", description: "Accessible label for the radio group legend. Always present for screen readers." },
+    { name: "showLabel", type: "boolean", defaultValue: "false", description: "Renders the legend visibly above the stars. When false, legend is sr-only." },
+    { name: "name", type: "string", defaultValue: "auto", description: "Name attribute for the radio group. Auto-generated via useId() when omitted." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org AggregateRating Microdata. Only active when readOnly=true." },
+    { name: "i18nStrings", type: "RatingI18nStrings", defaultValue: "—", description: "Override localised strings for this instance." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Interactive mode renders as `<fieldset>` + `<legend>` with radio inputs — full radio-group semantics
+- Screen readers announce each star as "N out of M stars, radio button"
+- `label` provides the group accessible name via `<legend>` (visually hidden by default)
+- Read-only mode renders `<span role="img" aria-label="N out of M stars">` — purely informational
+- `disabled` sets `fieldset disabled` which disables all contained radio inputs at the browser level
+- `schema` adds Schema.org `AggregateRating` Microdata when `readOnly={true}`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the rating group |
+| Arrow Left / Right | Moves selection between stars |
+| Space / Enter | Selects the focused star |

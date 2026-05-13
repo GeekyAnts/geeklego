@@ -1,0 +1,14 @@
+{
+  "default": { "showAttach": true },
+  "variants": [
+    { "label": "With attachment", "showAttach": true },
+    { "label": "Without attachment", "showAttach": false }
+  ],
+  "states": {
+    "disabled": { "showAttach": true, "disabled": true },
+    "maxLength": { "showAttach": true, "maxLength": 160 }
+  },
+  "edge_cases": [
+    { "label": "Custom placeholder via i18nStrings", "showAttach": true, "i18nStrings": { "placeholder": "Send a message..." } }
+  ]
+}

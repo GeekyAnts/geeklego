@@ -1,0 +1,41 @@
+{
+  "default": {
+    "name": "default-group",
+    "value": "option-a",
+    "checked": false,
+    "size": "md",
+    "children": "Accept notifications"
+  },
+  "sizes": [
+    { "size": "sm", "label": "Small (14 px indicator)" },
+    { "size": "md", "label": "Medium (16 px indicator)" },
+    { "size": "lg", "label": "Large (20 px indicator)" }
+  ],
+  "states": {
+    "unselected": { "checked": false, "children": "Unselected option" },
+    "selected": { "checked": true, "children": "Selected option" },
+    "disabled_unselected": { "checked": false, "disabled": true, "children": "Disabled unselected" },
+    "disabled_selected": { "checked": true, "disabled": true, "children": "Disabled selected" },
+    "error_unselected": { "checked": false, "error": true, "children": "Error unselected" },
+    "error_selected": { "checked": true, "error": true, "children": "Error selected" },
+    "required": { "checked": false, "required": true, "children": "Required option" }
+  },
+  "group_example": {
+    "name": "subscription",
+    "options": [
+      { "value": "free", "label": "Free — up to 3 projects" },
+      { "value": "pro", "label": "Pro — unlimited projects" },
+      { "value": "enterprise", "label": "Enterprise — custom pricing" }
+    ],
+    "defaultValue": "pro"
+  },
+  "edge_cases": {
+    "no_label": { "aria-label": "Select all", "checked": false },
+    "long_label": {
+      "children": "This is a very long radio button label that should truncate gracefully when it reaches the maximum width of its container without causing layout breaks",
+      "checked": false
+    },
+    "short_label": { "children": "Yes", "checked": true },
+    "emoji_label": { "children": "🚀 Launch project", "checked": false }
+  }
+}

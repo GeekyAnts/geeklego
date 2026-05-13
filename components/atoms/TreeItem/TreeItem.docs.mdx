@@ -1,0 +1,125 @@
+---
+title: TreeItem
+description: Individual node in a hierarchical tree structure with expand, select, loading, and disabled state support.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { TreeItem } from \"@geeklego/ui\"\nimport { Home, Info, Grid } from \"lucide-react\"\n\n<ul role=\"tree\" aria-label=\"Variant examples\" className=\"list-none p-0 m-0 w-72 flex flex-col gap-[var(--tree-view-gap)]\">\n  <TreeItem id=\"default\" label=\"Default (resting)\" icon={<Home size={14} />} hasChildren />\n  <TreeItem id=\"expanded\" label=\"Expanded\" icon={<Home size={14} />} hasChildren isExpanded />\n  <TreeItem id=\"selected\" label=\"Selected\" icon={<Home size={14} />} isSelected />\n  <TreeItem id=\"leaf\" label=\"Leaf node (no children)\" icon={<Info size={14} />} />\n  <TreeItem id=\"badge\" label=\"With badge\" icon={<Grid size={14} />} hasChildren badge={12} />\n  <TreeItem id=\"no-icon\" label=\"No icon\" hasChildren />\n</ul>"}>
+  <ul role="tree" aria-label="Variant examples" className="list-none p-0 m-0 w-72 flex flex-col gap-[var(--tree-view-gap)]">
+    <TreeItem id="default" label="Default (resting)" icon={<Home size={14} />} hasChildren />
+    <TreeItem id="expanded" label="Expanded" icon={<Home size={14} />} hasChildren isExpanded />
+    <TreeItem id="selected" label="Selected" icon={<Home size={14} />} isSelected />
+    <TreeItem id="leaf" label="Leaf node (no children)" icon={<Info size={14} />} />
+    <TreeItem id="badge" label="With badge" icon={<Grid size={14} />} hasChildren badge={12} />
+    <TreeItem id="no-icon" label="No icon" hasChildren />
+  </ul>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { TreeItem } from \"@geeklego/ui\"\nimport { Home } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-[var(--spacing-layout-sm)]\">\n  <div>\n    <p className=\"text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider\">sm</p>\n    <ul role=\"tree\" aria-label=\"sm size tree\" className=\"list-none p-0 m-0 w-72\">\n      <TreeItem id=\"size-sm\" label=\"Design Files - Client\" icon={<Home size={14} />} hasChildren size=\"sm\" />\n    </ul>\n  </div>\n  <div>\n    <p className=\"text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider\">md</p>\n    <ul role=\"tree\" aria-label=\"md size tree\" className=\"list-none p-0 m-0 w-72\">\n      <TreeItem id=\"size-md\" label=\"Design Files - Client\" icon={<Home size={14} />} hasChildren size=\"md\" />\n    </ul>\n  </div>\n  <div>\n    <p className=\"text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider\">lg</p>\n    <ul role=\"tree\" aria-label=\"lg size tree\" className=\"list-none p-0 m-0 w-72\">\n      <TreeItem id=\"size-lg\" label=\"Design Files - Client\" icon={<Home size={16} />} hasChildren size=\"lg\" />\n    </ul>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-layout-sm)]">
+    <div>
+      <p className="text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider">sm</p>
+      <ul role="tree" aria-label="sm size tree" className="list-none p-0 m-0 w-72">
+        <TreeItem id="size-sm" label="Design Files - Client" icon={<Home size={14} />} hasChildren size="sm" />
+      </ul>
+    </div>
+    <div>
+      <p className="text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider">md</p>
+      <ul role="tree" aria-label="md size tree" className="list-none p-0 m-0 w-72">
+        <TreeItem id="size-md" label="Design Files - Client" icon={<Home size={14} />} hasChildren size="md" />
+      </ul>
+    </div>
+    <div>
+      <p className="text-label-xs text-[var(--color-text-tertiary)] mb-1 uppercase tracking-wider">lg</p>
+      <ul role="tree" aria-label="lg size tree" className="list-none p-0 m-0 w-72">
+        <TreeItem id="size-lg" label="Design Files - Client" icon={<Home size={16} />} hasChildren size="lg" />
+      </ul>
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { TreeItem } from \"@geeklego/ui\"\nimport { Home } from \"lucide-react\"\n\n<ul role=\"tree\" aria-label=\"State examples\" className=\"list-none p-0 m-0 w-80 flex flex-col gap-[var(--tree-view-gap)]\">\n  <TreeItem id=\"s-default\" label=\"Default\" icon={<Home size={14} />} hasChildren />\n  <TreeItem id=\"s-expanded\" label=\"Expanded\" icon={<Home size={14} />} hasChildren isExpanded />\n  <TreeItem id=\"s-selected\" label=\"Selected\" icon={<Home size={14} />} isSelected />\n  <TreeItem id=\"s-sel-exp\" label=\"Selected + expanded\" icon={<Home size={14} />} hasChildren isExpanded isSelected />\n  <TreeItem id=\"s-loading\" label=\"Loading children...\" icon={<Home size={14} />} hasChildren isLoading />\n  <TreeItem id=\"s-disabled\" label=\"Disabled\" icon={<Home size={14} />} hasChildren isDisabled />\n  <TreeItem id=\"s-dis-sel\" label=\"Disabled + selected\" icon={<Home size={14} />} isSelected isDisabled />\n</ul>"}>
+  <ul role="tree" aria-label="State examples" className="list-none p-0 m-0 w-80 flex flex-col gap-[var(--tree-view-gap)]">
+    <TreeItem id="s-default" label="Default" icon={<Home size={14} />} hasChildren />
+    <TreeItem id="s-expanded" label="Expanded" icon={<Home size={14} />} hasChildren isExpanded />
+    <TreeItem id="s-selected" label="Selected" icon={<Home size={14} />} isSelected />
+    <TreeItem id="s-sel-exp" label="Selected + expanded" icon={<Home size={14} />} hasChildren isExpanded isSelected />
+    <TreeItem id="s-loading" label="Loading children..." icon={<Home size={14} />} hasChildren isLoading />
+    <TreeItem id="s-disabled" label="Disabled" icon={<Home size={14} />} hasChildren isDisabled />
+    <TreeItem id="s-dis-sel" label="Disabled + selected" icon={<Home size={14} />} isSelected isDisabled />
+  </ul>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { TreeItem } from \"@geeklego/ui\"\nimport { Menu, Home } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <ul role=\"tree\" aria-label=\"Dark mode tree\" className=\"list-none p-0 m-0 w-72 flex flex-col gap-[var(--tree-view-gap)]\">\n    <TreeItem id=\"d-folder\" label=\"Design Files - Client\" icon={<Menu size={14} />} hasChildren isExpanded>\n      <TreeItem id=\"d-sub\" label=\"ABB\" icon={<Home size={14} />} hasChildren level={2} setsize={3} posinset={1} />\n      <TreeItem id=\"d-sub2\" label=\"Aerobrief\" icon={<Home size={14} />} level={2} setsize={3} posinset={2} />\n      <TreeItem id=\"d-sub3\" label=\"AirOps\" icon={<Home size={14} />} level={2} setsize={3} posinset={3} isSelected />\n    </TreeItem>\n  </ul>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <ul role="tree" aria-label="Dark mode tree" className="list-none p-0 m-0 w-72 flex flex-col gap-[var(--tree-view-gap)]">
+      <TreeItem id="d-folder" label="Design Files - Client" icon={<Menu size={14} />} hasChildren isExpanded>
+        <TreeItem id="d-sub" label="ABB" icon={<Home size={14} />} hasChildren level={2} setsize={3} posinset={1} />
+        <TreeItem id="d-sub2" label="Aerobrief" icon={<Home size={14} />} level={2} setsize={3} posinset={2} />
+        <TreeItem id="d-sub3" label="AirOps" icon={<Home size={14} />} level={2} setsize={3} posinset={3} isSelected />
+      </TreeItem>
+    </ul>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "id", type: "string", defaultValue: "—", description: "Unique identifier for this node — used for ARIA and keyboard navigation." },
+    { name: "label", type: "string", defaultValue: "—", description: "Display text for the node." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon rendered before the label. Any ReactNode (e.g. a lucide-react icon)." },
+    { name: "level", type: "number", defaultValue: "1", description: "Nesting depth, 1-based. Used for aria-level and indentation." },
+    { name: "setsize", type: "number", defaultValue: "1", description: "Total number of siblings in the current group. Used for aria-setsize." },
+    { name: "posinset", type: "number", defaultValue: "1", description: "1-based position within the current sibling group. Used for aria-posinset." },
+    { name: "isExpanded", type: "boolean", defaultValue: "false", description: "Whether this node's children are currently visible." },
+    { name: "isSelected", type: "boolean", defaultValue: "false", description: "Whether this node is the active/selected item." },
+    { name: "isDisabled", type: "boolean", defaultValue: "false", description: "Whether this node is non-interactive." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Shows a spinner — use while async children are loading." },
+    { name: "hasChildren", type: "boolean", defaultValue: "false", description: "Whether this node has children (shows the expand toggle)." },
+    { name: "badge", type: "string | number", defaultValue: "—", description: "Optional badge count or label rendered at the trailing edge." },
+    { name: "tabIndex", type: "0 | -1", defaultValue: "-1", description: "Roving tabindex value — managed by the parent TreeView. Exactly one item in the tree has tabIndex={0}; all others are -1." },
+    { name: "onToggle", type: "() => void", defaultValue: "—", description: "Called when the expand/collapse toggle is clicked." },
+    { name: "onSelect", type: "() => void", defaultValue: "—", description: "Called when this node is selected (click or Enter/Space)." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Row height and typography scale." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "The expanded subtree — a <ul role=\"group\"> rendered by TreeView." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the <li> element." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<li role="treeitem">` — must be placed inside a `<ul role="tree">` container
+- `aria-expanded` reflects expanded state on nodes with children
+- `aria-selected` reflects whether the node is the active selection
+- `aria-level`, `aria-setsize`, and `aria-posinset` communicate tree position to assistive technologies
+- `aria-disabled` set when `isDisabled` is true
+- Expand toggle has a contextual `aria-label` ("Expand [label]" / "Collapse [label]") and is `aria-hidden` when the node has no children
+- All decorative icons carry `aria-hidden="true"`
+- Supports roving tabindex — exactly one item holds `tabIndex={0}` at any time; the parent `TreeView` manages this
+- `focus-visible` focus ring on the selection button for keyboard navigation
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into and out of the tree (roving tabindex) |
+| ArrowDown | Moves focus to the next visible tree node |
+| ArrowUp | Moves focus to the previous visible tree node |
+| ArrowRight | Expands a collapsed node; moves to first child if already expanded |
+| ArrowLeft | Collapses an expanded node; moves to parent if already collapsed |
+| Enter | Selects the focused node |
+| Space | Selects the focused node |
+| Home | Moves focus to the first node in the tree |
+| End | Moves focus to the last visible node in the tree |

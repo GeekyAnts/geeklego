@@ -1,0 +1,57 @@
+{
+  "default": {
+    "as": "h2",
+    "color": "primary",
+    "responsive": false,
+    "children": "Build better products"
+  },
+  "levels": [
+    { "as": "h1", "children": "H1 — Page title (36px bold)" },
+    { "as": "h2", "children": "H2 — Section heading (32px bold)" },
+    { "as": "h3", "children": "H3 — Sub-section (28px semibold)" },
+    { "as": "h4", "children": "H4 — Card title (24px semibold)" },
+    { "as": "h5", "children": "H5 — Label heading (20px semibold)" },
+    { "as": "h6", "children": "H6 — Caption heading (20px semibold, shares h5 scale)" }
+  ],
+  "sizes": [
+    { "as": "h3", "size": "h1", "children": "H3 element, H1 visual size" },
+    { "as": "h3", "size": "h2", "children": "H3 element, H2 visual size" },
+    { "as": "h3", "size": "h3", "children": "H3 element, H3 visual size (default)" },
+    { "as": "h3", "size": "h4", "children": "H3 element, H4 visual size" },
+    { "as": "h3", "size": "h5", "children": "H3 element, H5 visual size" }
+  ],
+  "colors": [
+    { "as": "h3", "color": "primary",   "children": "Primary — high-contrast default" },
+    { "as": "h3", "color": "secondary", "children": "Secondary — subdued, supporting text" },
+    { "as": "h3", "color": "tertiary",  "children": "Tertiary — muted, least prominent" },
+    { "as": "h3", "color": "accent",            "children": "Accent — calls out key content" },
+    { "as": "h3", "color": "accent",    "children": "Accent — complementary highlight" },
+    { "as": "h3", "color": "inverse",   "children": "Inverse — for dark or coloured backgrounds" }
+  ],
+  "edge_cases": [
+    {
+      "as": "h2",
+      "children": "Very long heading text that demonstrates the text-wrap balance behaviour available in modern browsers for excellent typographic rhythm across multiple lines"
+    },
+    {
+      "as": "h2",
+      "size": "h5",
+      "children": "Semantically h2, visually compact h5"
+    },
+    {
+      "as": "h6",
+      "children": "Semantic h6 renders with h5 visual scale"
+    },
+    {
+      "as": "h2",
+      "responsive": true,
+      "children": "Responsive heading — scales with viewport width"
+    },
+    {
+      "as": "h1",
+      "size": "h3",
+      "color": "accent",
+      "children": "Hero-level semantics, compact visual weight"
+    }
+  ]
+}

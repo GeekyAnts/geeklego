@@ -1,0 +1,37 @@
+{
+  "default": {
+    "variant": "default",
+    "size": "md",
+    "aria-label": "Upload document"
+  },
+  "variants": [
+    { "variant": "default", "aria-label": "Upload — default" },
+    { "variant": "filled",  "aria-label": "Upload — filled" },
+    { "variant": "ghost",   "aria-label": "Upload — ghost" }
+  ],
+  "sizes": [
+    { "size": "sm", "aria-label": "Upload — small" },
+    { "size": "md", "aria-label": "Upload — medium" },
+    { "size": "lg", "aria-label": "Upload — large" }
+  ],
+  "states": {
+    "default":  { "aria-label": "Upload document" },
+    "error":    { "error": true, "aria-label": "Upload document" },
+    "loading":  { "isLoading": true, "aria-label": "Upload document" },
+    "disabled": { "disabled": true, "aria-label": "Upload document" }
+  },
+  "edge_cases": {
+    "multiple":       { "multiple": true, "aria-label": "Upload images", "accept": "image/*" },
+    "pdf_only":       { "accept": ".pdf", "aria-label": "Upload PDF" },
+    "long_label":     { "aria-label": "Upload your curriculum vitae or résumé in PDF, DOC, or DOCX format" },
+    "required":       { "required": true, "aria-label": "Profile photo (required)" },
+    "custom_i18n": {
+      "aria-label": "Hochladen",
+      "i18nStrings": {
+        "placeholder": "Keine Datei ausgewählt",
+        "browseLabel": "Durchsuchen",
+        "filesSelectedLabel": "{{count}} Dateien ausgewählt"
+      }
+    }
+  }
+}

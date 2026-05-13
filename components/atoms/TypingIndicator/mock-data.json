@@ -1,0 +1,11 @@
+{
+  "default": {},
+  "withName": { "name": "Sarah" },
+  "variants": [
+    { "label": "No name", "name": null },
+    { "label": "With name", "name": "Alice" }
+  ],
+  "edge_cases": [
+    { "label": "Long name", "name": "Alexandra Pemberton-Hughes" }
+  ]
+}

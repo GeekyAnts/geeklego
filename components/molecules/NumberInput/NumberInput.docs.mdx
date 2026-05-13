@@ -1,0 +1,125 @@
+---
+title: NumberInput
+description: A numeric entry control that wraps an Input atom between decrement and increment stepper buttons.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-xs\">\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">default</span>\n    <NumberInput variant=\"default\" value={5} min={0} max={100} aria-label=\"Default variant\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">filled</span>\n    <NumberInput variant=\"filled\" value={5} min={0} max={100} aria-label=\"Filled variant\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">flushed</span>\n    <NumberInput variant=\"flushed\" value={5} min={0} max={100} aria-label=\"Flushed variant\" />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">default</span>
+      <NumberInput variant="default" value={5} min={0} max={100} aria-label="Default variant" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">filled</span>
+      <NumberInput variant="filled" value={5} min={0} max={100} aria-label="Filled variant" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">flushed</span>
+      <NumberInput variant="flushed" value={5} min={0} max={100} aria-label="Flushed variant" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-xs\">\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">sm</span>\n    <NumberInput size=\"sm\" value={3} min={0} max={10} aria-label=\"Small size\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">md</span>\n    <NumberInput size=\"md\" value={3} min={0} max={10} aria-label=\"Medium size\" />\n  </div>\n  <div className=\"flex flex-col gap-1\">\n    <span className=\"text-body-sm text-[var(--color-text-tertiary)]\">lg</span>\n    <NumberInput size=\"lg\" value={3} min={0} max={10} aria-label=\"Large size\" />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">sm</span>
+      <NumberInput size="sm" value={3} min={0} max={10} aria-label="Small size" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">md</span>
+      <NumberInput size="md" value={3} min={0} max={10} aria-label="Medium size" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">lg</span>
+      <NumberInput size="lg" value={3} min={0} max={10} aria-label="Large size" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## At Minimum
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"max-w-xs\">\n  <NumberInput value={0} min={0} max={10} aria-label=\"At minimum — decrement disabled\" />\n</div>"}>
+  <div className="max-w-xs">
+    <NumberInput value={0} min={0} max={10} aria-label="At minimum — decrement disabled" />
+  </div>
+</ComponentPreview>
+
+## At Maximum
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"max-w-xs\">\n  <NumberInput value={10} min={0} max={10} aria-label=\"At maximum — increment disabled\" />\n</div>"}>
+  <div className="max-w-xs">
+    <NumberInput value={10} min={0} max={10} aria-label="At maximum — increment disabled" />
+  </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-2 max-w-xs\">\n  <NumberInput value={-1} min={0} error aria-label=\"Error state\" aria-describedby=\"ni-err\" />\n  <span id=\"ni-err\" className=\"text-body-sm text-[var(--color-text-error)]\">Value must be 0 or above.</span>\n</div>"}>
+  <div className="flex flex-col gap-2 max-w-xs">
+    <NumberInput value={-1} min={0} error aria-label="Error state" aria-describedby="ni-err" />
+    <span id="ni-err" className="text-body-sm text-[var(--color-text-error)]">Value must be 0 or above.</span>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div className=\"max-w-xs\">\n  <NumberInput value={5} disabled aria-label=\"Disabled number input\" />\n</div>"}>
+  <div className="max-w-xs">
+    <NumberInput value={5} disabled aria-label="Disabled number input" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { NumberInput } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <NumberInput value={5} min={0} max={100} aria-label=\"Dark default\" />\n  <NumberInput variant=\"filled\" value={3} min={0} max={10} aria-label=\"Dark filled\" />\n  <NumberInput value={0} min={0} max={10} aria-label=\"Dark at minimum\" />\n  <NumberInput error value={-1} aria-label=\"Dark error\" />\n  <NumberInput disabled value={5} aria-label=\"Dark disabled\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <NumberInput value={5} min={0} max={100} aria-label="Dark default" />
+    <NumberInput variant="filled" value={3} min={0} max={10} aria-label="Dark filled" />
+    <NumberInput value={0} min={0} max={10} aria-label="Dark at minimum" />
+    <NumberInput error value={-1} aria-label="Dark error" />
+    <NumberInput disabled value={5} aria-label="Dark disabled" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "number | string", defaultValue: "—", description: "Controlled numeric value." },
+    { name: "min", type: "number", defaultValue: "—", description: "Minimum allowed value. Disables the decrement button at boundary." },
+    { name: "max", type: "number", defaultValue: "—", description: "Maximum allowed value. Disables the increment button at boundary." },
+    { name: "step", type: "number", defaultValue: "1", description: "Amount to increment or decrement per button press." },
+    { name: "variant", type: "'default' | 'filled' | 'flushed' | 'unstyled'", defaultValue: "'default'", description: "Visual style variant. The container adopts the same visual strategy as InputGroup." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Error state — red border and aria-invalid on the inner input." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables both the input and both stepper buttons." },
+    { name: "wrapperClassName", type: "string", defaultValue: "—", description: "Additional class names for the outer container." },
+    { name: "i18nStrings", type: "NumberInputI18nStrings", defaultValue: "—", description: "Per-instance string overrides for stepper button labels." },
+  ]}
+/>
+
+## Accessibility
+
+- `<div>` container with two `<button>` stepper controls flanking a native `<input type="number">`
+- Decrement button `aria-label` defaults to "Decrease value" (i18n-configurable via `i18nStrings.decrementLabel`)
+- Increment button `aria-label` defaults to "Increase value" (i18n-configurable via `i18nStrings.incrementLabel`)
+- Both buttons include `aria-controls` pointing to the inner input's id
+- Boundary buttons get `disabled` and `aria-disabled="true"` when value is at `min` or `max`
+- Error state sets `aria-invalid="true"` on the inner input; pair with `aria-describedby` for the error message
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to decrement button → input → increment button |
+| Enter / Space | Activates the focused stepper button |
+| Arrow Up / Down | Browser-native increment/decrement on the focused input |

@@ -1,0 +1,135 @@
+---
+title: Image
+description: Responsive image with aspect ratio presets, loading shimmer, error fallback, and optional caption support.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Image } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap gap-4\">\n  <div className=\"flex flex-col gap-2 items-center\">\n    <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"none radius\" aspectRatio=\"square\" radius=\"none\" fit=\"cover\" loading=\"eager\" className=\"w-24\" />\n    <span>none</span>\n  </div>\n  <div className=\"flex flex-col gap-2 items-center\">\n    <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"md radius\" aspectRatio=\"square\" radius=\"md\" fit=\"cover\" loading=\"eager\" className=\"w-24\" />\n    <span>md</span>\n  </div>\n  <div className=\"flex flex-col gap-2 items-center\">\n    <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"full radius\" aspectRatio=\"square\" radius=\"full\" fit=\"cover\" loading=\"eager\" className=\"w-24\" />\n    <span>full</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap gap-4">
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="none radius" aspectRatio="square" radius="none" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">none</span>
+    </div>
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="sm radius" aspectRatio="square" radius="sm" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">sm</span>
+    </div>
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="md radius" aspectRatio="square" radius="md" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">md</span>
+    </div>
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="lg radius" aspectRatio="square" radius="lg" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">lg</span>
+    </div>
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="xl radius" aspectRatio="square" radius="xl" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">xl</span>
+    </div>
+    <div className="flex flex-col gap-2 items-center">
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="full radius" aspectRatio="square" radius="full" fit="cover" loading="eager" className="w-24" />
+      <span className="text-body-xs text-[var(--color-text-secondary)]">full</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Image } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <Image src=\"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80\" alt=\"square\" aspectRatio=\"square\" radius=\"md\" loading=\"eager\" />\n  <Image src=\"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80\" alt=\"video\" aspectRatio=\"video\" radius=\"md\" loading=\"eager\" />\n  <Image src=\"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80\" alt=\"landscape\" aspectRatio=\"landscape\" radius=\"md\" loading=\"eager\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">square</span>
+      <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="square aspect ratio" aspectRatio="square" radius="md" loading="eager" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">video</span>
+      <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="video aspect ratio" aspectRatio="video" radius="md" loading="eager" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">portrait</span>
+      <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="portrait aspect ratio" aspectRatio="portrait" radius="md" loading="eager" className="w-40" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">landscape</span>
+      <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="landscape aspect ratio" aspectRatio="landscape" radius="md" loading="eager" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">wide</span>
+      <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="wide aspect ratio" aspectRatio="wide" radius="md" loading="eager" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Image } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap gap-6 items-start\">\n  {/* Loaded */}\n  <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"Loaded image\" aspectRatio=\"square\" radius=\"md\" loading=\"eager\" className=\"w-40\" />\n  {/* Error — broken URL shows fallback icon */}\n  <Image src=\"https://this-url-does-not-exist.invalid/image.jpg\" alt=\"Broken image\" aspectRatio=\"square\" radius=\"md\" className=\"w-40\" />\n  {/* With caption */}\n  <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"Mountain peak\" aspectRatio=\"square\" radius=\"md\" loading=\"eager\" caption=\"Mountain peak at sunrise\" className=\"w-40\" />\n  {/* Bordered */}\n  <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"Bordered image\" aspectRatio=\"square\" radius=\"md\" loading=\"eager\" bordered className=\"w-40\" />\n</div>"}>
+  <div className="flex flex-wrap gap-6 items-start">
+    <div className="flex flex-col gap-2 w-40">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">Loaded</span>
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Loaded image example" aspectRatio="square" radius="md" loading="eager" />
+    </div>
+    <div className="flex flex-col gap-2 w-40">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">Error</span>
+      <Image src="https://this-url-does-not-exist.invalid/image.jpg" alt="Broken image example" aspectRatio="square" radius="md" />
+    </div>
+    <div className="flex flex-col gap-2 w-40">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">With caption</span>
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Mountain peak at sunrise" aspectRatio="square" radius="md" loading="eager" caption="Mountain peak at sunrise" />
+    </div>
+    <div className="flex flex-col gap-2 w-40">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">Bordered</span>
+      <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Bordered image example" aspectRatio="square" radius="md" loading="eager" bordered />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Image } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-wrap gap-4 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Image src=\"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80\" alt=\"Mountain landscape\" aspectRatio=\"video\" radius=\"md\" loading=\"eager\" className=\"w-full\" />\n  <Image src=\"https://this-url-does-not-exist.invalid/image.jpg\" alt=\"Error in dark mode\" aspectRatio=\"square\" radius=\"md\" className=\"w-32\" />\n  <Image src=\"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80\" alt=\"Captioned image\" aspectRatio=\"landscape\" radius=\"md\" loading=\"eager\" caption=\"Scenic mountain view\" className=\"w-64\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-wrap gap-4 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Mountain landscape" aspectRatio="video" radius="md" loading="eager" className="w-full" />
+    <Image src="https://this-url-does-not-exist.invalid/image.jpg" alt="Error in dark mode" aspectRatio="square" radius="md" className="w-32" />
+    <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Captioned image" aspectRatio="landscape" radius="md" loading="eager" caption="Scenic mountain view — dark theme" className="w-64" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "src", type: "string", defaultValue: "—", description: "Image source URL. Required." },
+    { name: "alt", type: "string", defaultValue: "—", description: "Alt text. Required — pass empty string \"\" for purely decorative images." },
+    { name: "caption", type: "ReactNode", defaultValue: "—", description: "Optional caption rendered below the image in a figcaption. Wraps the image in a figure element." },
+    { name: "radius", type: "'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'", defaultValue: "'none'", description: "Border radius shape." },
+    { name: "fit", type: "'cover' | 'contain' | 'fill' | 'none'", defaultValue: "'cover'", description: "CSS object-fit behaviour." },
+    { name: "aspectRatio", type: "'auto' | 'square' | 'video' | 'portrait' | 'landscape' | 'wide'", defaultValue: "'auto'", description: "Container aspect ratio. 'auto' uses natural image dimensions." },
+    { name: "bordered", type: "boolean", defaultValue: "false", description: "Show a 1px decorative border around the image." },
+    { name: "fallback", type: "ReactNode", defaultValue: "—", description: "Content rendered in the error fallback slot. Defaults to an ImageOff icon." },
+    { name: "loading", type: "'lazy' | 'eager'", defaultValue: "'lazy'", description: "Native lazy loading hint." },
+    { name: "onLoad", type: "() => void", defaultValue: "—", description: "Called when the image loads successfully." },
+    { name: "onError", type: "() => void", defaultValue: "—", description: "Called when the image fails to load." },
+  ]}
+/>
+
+## Accessibility
+
+**Semantic element:** `<img>` inside `<div>` (standalone) or `<figure>` (with caption)
+
+| Scenario | Element | Notes |
+|---|---|---|
+| Meaningful image | `<img alt="descriptive text">` | `alt` is required and must describe the content |
+| Decorative image | `<img alt="">` + `aria-hidden="true"` | Empty alt collapses the element for screen readers |
+| Captioned image | `<figure>` + `<figcaption>` | Native association — no extra ARIA needed |
+| Error state | `<span class="sr-only">{alt} — failed to load</span>` | Announced when the image fails to load |
+
+**Keyboard interaction:** No keyboard interaction — `Image` is a non-interactive display element.
+
+**WCAG 2.2 compliance:**
+- 1.1.1 Non-text Content (A) — meaningful alt text required; decorative images use `alt=""`
+- 1.4.5 Images of Text (AA) — use text, not images of text
+- Error state announced to screen readers via visually-hidden text

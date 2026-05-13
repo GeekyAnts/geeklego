@@ -1,0 +1,84 @@
+{
+  "default": {
+    "variant": "info",
+    "appearance": "subtle",
+    "size": "md",
+    "title": "Your session expires in 10 minutes",
+    "description": "Save your work to avoid losing any unsaved changes.",
+    "showIcon": true,
+    "dismissible": true
+  },
+  "variants": [
+    {
+      "variant": "info",
+      "title": "New feature available",
+      "description": "Explore the updated dashboard for a faster workflow."
+    },
+    {
+      "variant": "success",
+      "title": "Changes saved",
+      "description": "Your profile has been updated successfully."
+    },
+    {
+      "variant": "warning",
+      "title": "Storage limit approaching",
+      "description": "You have used 90% of your available storage."
+    },
+    {
+      "variant": "error",
+      "title": "Payment failed",
+      "description": "We could not process your card. Please update your billing details."
+    }
+  ],
+  "appearances": [
+    { "appearance": "solid",       "label": "Filled background with inverse text — maximum prominence" },
+    { "appearance": "subtle",      "label": "Muted tinted background with status border — balanced" },
+    { "appearance": "outline",     "label": "Transparent background with full status border — lightweight" },
+    { "appearance": "left-accent", "label": "Tinted background with bold inline-start bar — contextual" }
+  ],
+  "sizes": [
+    { "size": "md", "label": "Standard — default padding and icon size" },
+    { "size": "sm", "label": "Compact — reduced padding for dense layouts" }
+  ],
+  "states": {
+    "withIcon":       { "showIcon": true,  "title": "With icon" },
+    "withoutIcon":    { "showIcon": false, "title": "No icon"   },
+    "titleOnly":      { "title": "Title only — no description" },
+    "descriptionOnly": { "description": "Description only — no title." },
+    "dismissible":    { "dismissible": true, "title": "Dismissible", "description": "A dismiss button appears on the trailing edge." },
+    "withActions":    { "title": "Subscription expiring", "description": "Your plan expires in 3 days." }
+  },
+  "edge_cases": {
+    "longTitle": {
+      "title": "This is a very long alert title that may span multiple lines depending on the available container width and the typography scale in use",
+      "description": "Description following a long title."
+    },
+    "longDescription": {
+      "title": "Extended description",
+      "description": "This description contains a lot of text to verify that the alert banner handles multi-line body content correctly without truncating or clipping any important information that the user needs to see."
+    },
+    "noContent": {
+      "title": "",
+      "description": "",
+      "showIcon": true
+    },
+    "allAppearancesAllVariants": [
+      { "variant": "info",    "appearance": "solid"       },
+      { "variant": "info",    "appearance": "subtle"      },
+      { "variant": "info",    "appearance": "outline"     },
+      { "variant": "info",    "appearance": "left-accent" },
+      { "variant": "success", "appearance": "solid"       },
+      { "variant": "success", "appearance": "subtle"      },
+      { "variant": "success", "appearance": "outline"     },
+      { "variant": "success", "appearance": "left-accent" },
+      { "variant": "warning", "appearance": "solid"       },
+      { "variant": "warning", "appearance": "subtle"      },
+      { "variant": "warning", "appearance": "outline"     },
+      { "variant": "warning", "appearance": "left-accent" },
+      { "variant": "error",   "appearance": "solid"       },
+      { "variant": "error",   "appearance": "subtle"      },
+      { "variant": "error",   "appearance": "outline"     },
+      { "variant": "error",   "appearance": "left-accent" }
+    ]
+  }
+}

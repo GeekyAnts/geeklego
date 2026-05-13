@@ -1,0 +1,225 @@
+---
+title: RadioGroup
+description: A single-select group of radio buttons rendered inside a semantic fieldset and legend pair, with controlled and uncontrolled modes, vertical or horizontal layout, and optional boxed container styling.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8 max-w-sm\">\n  <RadioGroup\n    legend=\"Default variant\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    value=\"pro\"\n  />\n  <RadioGroup\n    legend=\"Boxed variant\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    value=\"enterprise\"\n    variant=\"boxed\"\n  />\n</div>"}>
+  <div className="flex flex-col gap-8 max-w-sm">
+    <RadioGroup
+      legend="Default variant"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      value="pro"
+    />
+    <RadioGroup
+      legend="Boxed variant"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      value="enterprise"
+      variant="boxed"
+    />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8 max-w-sm\">\n  <RadioGroup\n    legend=\"Small\"\n    options={[{ value: \"a\", label: \"Option A\" }, { value: \"b\", label: \"Option B\" }]}\n    value=\"a\"\n    size=\"sm\"\n  />\n  <RadioGroup\n    legend=\"Medium\"\n    options={[{ value: \"a\", label: \"Option A\" }, { value: \"b\", label: \"Option B\" }]}\n    value=\"a\"\n    size=\"md\"\n  />\n  <RadioGroup\n    legend=\"Large\"\n    options={[{ value: \"a\", label: \"Option A\" }, { value: \"b\", label: \"Option B\" }]}\n    value=\"a\"\n    size=\"lg\"\n  />\n</div>"}>
+  <div className="flex flex-col gap-8 max-w-sm">
+    <RadioGroup
+      legend="Small"
+      options={[{ value: "a", label: "Option A" }, { value: "b", label: "Option B" }]}
+      value="a"
+      size="sm"
+    />
+    <RadioGroup
+      legend="Medium"
+      options={[{ value: "a", label: "Option A" }, { value: "b", label: "Option B" }]}
+      value="a"
+      size="md"
+    />
+    <RadioGroup
+      legend="Large"
+      options={[{ value: "a", label: "Option A" }, { value: "b", label: "Option B" }]}
+      value="a"
+      size="lg"
+    />
+  </div>
+</ComponentPreview>
+
+## Horizontal Layout
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<RadioGroup\n  legend=\"Notification frequency\"\n  options={[\n    { value: \"daily\", label: \"Daily\" },\n    { value: \"weekly\", label: \"Weekly\" },\n    { value: \"never\", label: \"Never\" },\n  ]}\n  value=\"weekly\"\n  orientation=\"horizontal\"\n/>"}>
+  <RadioGroup
+    legend="Notification frequency"
+    options={[
+      { value: "daily", label: "Daily" },
+      { value: "weekly", label: "Weekly" },
+      { value: "never", label: "Never" },
+    ]}
+    value="weekly"
+    orientation="horizontal"
+  />
+</ComponentPreview>
+
+## With Hint
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<RadioGroup\n  legend=\"Plan\"\n  options={[\n    { value: \"starter\", label: \"Starter\" },\n    { value: \"pro\", label: \"Pro\" },\n    { value: \"enterprise\", label: \"Enterprise\" },\n  ]}\n  value=\"pro\"\n  hint=\"You can change your plan at any time.\"\n/>"}>
+  <RadioGroup
+    legend="Plan"
+    options={[
+      { value: "starter", label: "Starter" },
+      { value: "pro", label: "Pro" },
+      { value: "enterprise", label: "Enterprise" },
+    ]}
+    value="pro"
+    hint="You can change your plan at any time."
+  />
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<RadioGroup\n  legend=\"Plan\"\n  options={[\n    { value: \"starter\", label: \"Starter\" },\n    { value: \"pro\", label: \"Pro\" },\n    { value: \"enterprise\", label: \"Enterprise\" },\n  ]}\n  error\n  errorMessage=\"Please select a plan to continue.\"\n  variant=\"boxed\"\n/>"}>
+  <RadioGroup
+    legend="Plan"
+    options={[
+      { value: "starter", label: "Starter" },
+      { value: "pro", label: "Pro" },
+      { value: "enterprise", label: "Enterprise" },
+    ]}
+    error
+    errorMessage="Please select a plan to continue."
+    variant="boxed"
+  />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8 max-w-sm\">\n  <RadioGroup\n    legend=\"Group disabled\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    value=\"pro\"\n    disabled\n  />\n  <RadioGroup\n    legend=\"Partial disable\"\n    options={[\n      { value: \"us\", label: \"United States\" },\n      { value: \"eu\", label: \"Europe\" },\n      { value: \"ap\", label: \"Asia Pacific\", disabled: true },\n    ]}\n    value=\"us\"\n  />\n</div>"}>
+  <div className="flex flex-col gap-8 max-w-sm">
+    <RadioGroup
+      legend="Group disabled"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      value="pro"
+      disabled
+    />
+    <RadioGroup
+      legend="Partial disable"
+      options={[
+        { value: "us", label: "United States" },
+        { value: "eu", label: "Europe" },
+        { value: "ap", label: "Asia Pacific", disabled: true },
+      ]}
+      value="us"
+    />
+  </div>
+</ComponentPreview>
+
+## Required
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<RadioGroup\n  legend=\"Billing cycle\"\n  options={[\n    { value: \"monthly\", label: \"Monthly\" },\n    { value: \"annual\", label: \"Annual (save 20%)\" },\n  ]}\n  value=\"monthly\"\n  required\n  variant=\"boxed\"\n/>"}>
+  <RadioGroup
+    legend="Billing cycle"
+    options={[
+      { value: "monthly", label: "Monthly" },
+      { value: "annual", label: "Annual (save 20%)" },
+    ]}
+    value="monthly"
+    required
+    variant="boxed"
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { RadioGroup } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <RadioGroup\n    legend=\"Select a plan\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    value=\"pro\"\n  />\n  <RadioGroup\n    legend=\"Select a plan\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    value=\"enterprise\"\n    variant=\"boxed\"\n  />\n  <RadioGroup\n    legend=\"Plan\"\n    options={[\n      { value: \"starter\", label: \"Starter\" },\n      { value: \"pro\", label: \"Pro\" },\n      { value: \"enterprise\", label: \"Enterprise\" },\n    ]}\n    error\n    errorMessage=\"Please select a plan to continue.\"\n    variant=\"boxed\"\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-8 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <RadioGroup
+      legend="Select a plan"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      value="pro"
+    />
+    <RadioGroup
+      legend="Select a plan"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      value="enterprise"
+      variant="boxed"
+    />
+    <RadioGroup
+      legend="Plan"
+      options={[
+        { value: "starter", label: "Starter" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise" },
+      ]}
+      error
+      errorMessage="Please select a plan to continue."
+      variant="boxed"
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "options", type: "RadioGroupOption[]", defaultValue: "—", description: "Required. Radio options to render. Each option has value, label, and optional disabled." },
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled selected value. Omit for uncontrolled use with defaultValue." },
+    { name: "defaultValue", type: "string", defaultValue: "—", description: "Initial value for uncontrolled mode." },
+    { name: "onChange", type: "(value: string) => void", defaultValue: "—", description: "Called with the selected option value when selection changes." },
+    { name: "name", type: "string", defaultValue: "auto", description: "Shared name attribute for all radios. Auto-generated when omitted." },
+    { name: "legend", type: "ReactNode", defaultValue: "—", description: "Group label rendered inside a legend element. Strongly recommended for accessibility." },
+    { name: "orientation", type: "'vertical' | 'horizontal'", defaultValue: "'vertical'", description: "Direction the options are laid out." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Size of each Radio indicator and label." },
+    { name: "variant", type: "'default' | 'boxed'", defaultValue: "'default'", description: "Visual container style. boxed draws a bordered container around the group." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Error state — shifts Radio indicators to error colour." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Marks all options as required. Appends SR-only text to the legend." },
+    { name: "hint", type: "string", defaultValue: "—", description: "Helper text shown below the options. Hidden when errorMessage is visible." },
+    { name: "errorMessage", type: "string", defaultValue: "—", description: "Error message shown below the options when error is true." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables all options via the native fieldset disabled attribute." },
+    { name: "i18nStrings", type: "RadioGroupI18nStrings", defaultValue: "—", description: "Per-instance string overrides. Supports required (SR-only required label)." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<fieldset>` element with `<legend>` — provides correct group semantics natively (implicit `role="group"`)
+- No explicit `role` needed — `<fieldset>` carries it natively
+- `aria-required` set on the `<fieldset>` when `required` is true; SR-only text appended to the legend
+- `aria-describedby` wired to the hint or error paragraph id
+- Error paragraph uses `role="alert"` — announced live by screen readers when it appears
+- `disabled` attribute on `<fieldset>` disables all child inputs natively
+- Individual options accept `disabled` for per-option disable without affecting the group
+- Decorative `*` required marker has `aria-hidden="true"`; accessible text is SR-only
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the radio group (to the first or selected option) |
+| Arrow Down / Arrow Right | Moves to the next radio option and selects it |
+| Arrow Up / Arrow Left | Moves to the previous radio option and selects it |
+| Tab (out) | Moves focus out of the group to the next focusable element |

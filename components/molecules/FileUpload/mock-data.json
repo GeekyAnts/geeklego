@@ -1,0 +1,115 @@
+{
+  "default": {
+    "variant": "dropzone",
+    "size": "md",
+    "hint": "PNG, JPG, PDF up to 10 MB",
+    "multiple": true
+  },
+  "variants": [
+    {
+      "variant": "dropzone",
+      "label": "Dropzone — large drag-and-drop area",
+      "hint": "PNG, JPG up to 5 MB"
+    },
+    {
+      "variant": "compact",
+      "label": "Compact — single-row drop target",
+      "hint": "PNG, JPG up to 5 MB"
+    },
+    {
+      "variant": "button",
+      "label": "Button — no zone, just a trigger"
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "hint": "PNG, JPG up to 5 MB" },
+    { "size": "md", "hint": "PNG, JPG up to 5 MB" },
+    { "size": "lg", "hint": "PNG, JPG up to 5 MB" }
+  ],
+  "file_statuses": {
+    "idle": {
+      "id": "f1",
+      "fileName": "presentation.pdf",
+      "fileSizeBytes": 2457600,
+      "status": "idle"
+    },
+    "uploading_with_progress": {
+      "id": "f2",
+      "fileName": "banner.png",
+      "fileSizeBytes": 512000,
+      "status": "uploading",
+      "progress": 62
+    },
+    "uploading_indeterminate": {
+      "id": "f3",
+      "fileName": "report.xlsx",
+      "fileSizeBytes": 98304,
+      "status": "uploading"
+    },
+    "done": {
+      "id": "f4",
+      "fileName": "logo.svg",
+      "fileSizeBytes": 14336,
+      "status": "done"
+    },
+    "error": {
+      "id": "f5",
+      "fileName": "video.mp4",
+      "fileSizeBytes": 52428800,
+      "status": "error",
+      "error": "File exceeds 10 MB limit"
+    }
+  },
+  "states": {
+    "disabled": {
+      "disabled": true,
+      "hint": "Uploads are disabled"
+    },
+    "zone_error": {
+      "error": true,
+      "errorMessage": "Only PNG and JPG files are accepted.",
+      "hint": "PNG, JPG up to 10 MB"
+    },
+    "with_max_file_size": {
+      "maxFileSize": 10485760,
+      "hint": "Max 10 MB per file"
+    },
+    "with_max_files": {
+      "multiple": true,
+      "maxFiles": 3,
+      "hint": "Up to 3 files"
+    }
+  },
+  "i18n_overrides": {
+    "dropzoneTitle": "Drop files here",
+    "dragActiveTitle": "Release to drop",
+    "dropzoneHint": "or click to",
+    "browseText": "browse",
+    "inputLabel": "Upload files",
+    "removeFileLabel": "Remove file",
+    "uploadingText": "Uploading…",
+    "doneText": "Done"
+  },
+  "edge_cases": {
+    "long_filename": {
+      "fileName": "very-long-filename-that-should-truncate-gracefully-in-the-file-item-row.pdf",
+      "fileSizeBytes": 1048576
+    },
+    "zero_byte_file": {
+      "fileName": "empty.txt",
+      "fileSizeBytes": 0
+    },
+    "large_file": {
+      "fileName": "database-backup.zip",
+      "fileSizeBytes": 1073741824
+    },
+    "many_files": {
+      "count": 10,
+      "description": "Ten files to test list overflow and scroll"
+    },
+    "accept_images_only": {
+      "accept": "image/*",
+      "hint": "Images only (PNG, JPG, GIF, WebP)"
+    }
+  }
+}

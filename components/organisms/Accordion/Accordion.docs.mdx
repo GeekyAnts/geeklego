@@ -1,0 +1,152 @@
+---
+title: Accordion
+description: An accessible, animated accordion for revealing or hiding sections of related content with single or multi-expand modes.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\nconst items = [\n  { id: \"item-1\", title: \"Getting started\", content: \"Install via npm and import components.\" },\n  { id: \"item-2\", title: \"Configuration\", content: \"Configure your design tokens in geeklego.css.\" },\n  { id: \"item-3\", title: \"Customisation\", content: \"Override any token to match your brand.\" },\n]\n\n<div className=\"flex flex-col gap-8\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Default \u2014 bottom borders, transparent background</p>\n    <Accordion items={items} variant=\"default\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Bordered \u2014 each item in an outlined card</p>\n    <Accordion items={items} variant=\"bordered\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Flush \u2014 no borders, minimal chrome</p>\n    <Accordion items={items} variant=\"flush\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Default -- bottom borders, transparent background</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="default" defaultOpenItems={["item-1"]} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Bordered -- each item in an outlined card</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="bordered" defaultOpenItems={["item-1"]} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Flush -- no borders, minimal chrome</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="flush" defaultOpenItems={["item-1"]} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\nconst items = [\n  { id: \"item-1\", title: \"Getting started\", content: \"Install via npm and import components.\" },\n  { id: \"item-2\", title: \"Configuration\", content: \"Configure your design tokens in geeklego.css.\" },\n  { id: \"item-3\", title: \"Customisation\", content: \"Override any token to match your brand.\" },\n]\n\n<div className=\"flex flex-col gap-8\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Size: sm</p>\n    <Accordion items={items} variant=\"bordered\" size=\"sm\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Size: md</p>\n    <Accordion items={items} variant=\"bordered\" size=\"md\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-3\">Size: lg</p>\n    <Accordion items={items} variant=\"bordered\" size=\"lg\" defaultOpenItems={[\"item-1\"]} />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Size: sm</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="bordered" size="sm" defaultOpenItems={["item-1"]} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Size: md</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="bordered" size="md" defaultOpenItems={["item-1"]} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-tertiary)] mb-3">Size: lg</p>
+      <Accordion items={[{ id: "item-1", title: "Getting started", content: "Install via npm and import components." }, { id: "item-2", title: "Configuration", content: "Configure your design tokens in geeklego.css." }, { id: "item-3", title: "Customisation", content: "Override any token to match your brand." }]} variant="bordered" size="lg" defaultOpenItems={["item-1"]} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Uncontrolled (defaultOpenItems)
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\n<Accordion\n  items={[\n    { id: \"item-1\", title: \"Open by default\", content: \"This item starts open.\" },\n    { id: \"item-2\", title: \"Closed by default\", content: \"This item starts closed.\" },\n    { id: \"item-disabled\", title: \"Disabled \u2014 cannot be opened\", content: \"This content is not reachable.\", disabled: true },\n  ]}\n  defaultOpenItems={[\"item-1\"]}\n/>"}>
+  <Accordion
+    items={[
+      { id: "item-1", title: "Open by default", content: "This item starts open." },
+      { id: "item-2", title: "Closed by default", content: "This item starts closed." },
+      { id: "item-disabled", title: "Disabled -- cannot be opened", content: "This content is not reachable.", disabled: true }
+    ]}
+    defaultOpenItems={["item-1"]}
+  />
+</ComponentPreview>
+
+## Multiple Expand Mode
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\n<Accordion\n  items={[\n    { id: \"what-is-geeklego\", title: \"What is Geeklego?\", content: \"An open-source, design-system-first React component library built on Tailwind CSS v4.\" },\n    { id: \"how-tokens-work\", title: \"How does the token system work?\", content: \"A two-tier system: primitives define raw values, semantics provide purpose-driven aliases.\" },\n    { id: \"tailwind-v4\", title: \"Why Tailwind CSS v4?\", content: \"Tailwind v4 introduces CSS-first configuration with @theme blocks.\" },\n    { id: \"accessibility\", title: \"Is Geeklego accessible?\", content: \"Yes. Every component targets WCAG 2.2 AA compliance.\" },\n  ]}\n  mode=\"multiple\"\n  defaultOpenItems={[\"what-is-geeklego\", \"accessibility\"]}\n/>"}>
+  <Accordion
+    items={[
+      { id: "what-is-geeklego", title: "What is Geeklego?", content: "An open-source, design-system-first React component library built on Tailwind CSS v4." },
+      { id: "how-tokens-work", title: "How does the token system work?", content: "A two-tier system: primitives define raw values, semantics provide purpose-driven aliases." },
+      { id: "tailwind-v4", title: "Why Tailwind CSS v4?", content: "Tailwind v4 introduces CSS-first configuration with @theme blocks." },
+      { id: "accessibility", title: "Is Geeklego accessible?", content: "Yes. Every component targets WCAG 2.2 AA compliance." }
+    ]}
+    mode="multiple"
+    defaultOpenItems={["what-is-geeklego", "accessibility"]}
+  />
+</ComponentPreview>
+
+## Loading State
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\n<Accordion items={[]} loading loadingCount={4} />"}>
+  <Accordion items={[]} loading loadingCount={4} />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Accordion } from \"@geeklego/ui\"\n\n<div data-theme=\"dark\" className=\"bg-[var(--color-bg-primary)] p-8 rounded-lg max-w-2xl\">\n  <p className=\"text-label-sm text-[var(--color-text-tertiary)] mb-4\">Default variant</p>\n  <Accordion\n    items={[\n      { id: \"q1\", title: \"What is Geeklego?\", content: \"An open-source React component library.\" },\n      { id: \"q2\", title: \"How does the token system work?\", content: \"Primitives, semantics, and component tokens.\" },\n      { id: \"q3\", title: \"Why Tailwind CSS v4?\", content: \"CSS-first configuration with @theme blocks.\" },\n    ]}\n    defaultOpenItems={[\"q1\"]}\n  />\n  <p className=\"text-label-sm text-[var(--color-text-tertiary)] mt-6 mb-4\">Bordered variant</p>\n  <Accordion\n    items={[\n      { id: \"b1\", title: \"Getting started\", content: \"Install via npm and import components.\" },\n      { id: \"b2\", title: \"Configuration\", content: \"Configure your design tokens.\" },\n    ]}\n    variant=\"bordered\"\n    defaultOpenItems={[\"b1\"]}\n  />\n</div>"}>
+  <div data-theme="dark" className="bg-[var(--color-bg-primary)] p-8 rounded-lg max-w-2xl">
+    <p className="text-label-sm text-[var(--color-text-tertiary)] mb-4">Default variant</p>
+    <Accordion
+      items={[
+        { id: "q1", title: "What is Geeklego?", content: "An open-source React component library." },
+        { id: "q2", title: "How does the token system work?", content: "Primitives, semantics, and component tokens." },
+        { id: "q3", title: "Why Tailwind CSS v4?", content: "CSS-first configuration with @theme blocks." }
+      ]}
+      defaultOpenItems={["q1"]}
+    />
+    <p className="text-label-sm text-[var(--color-text-tertiary)] mt-6 mb-4">Bordered variant</p>
+    <Accordion
+      items={[
+        { id: "b1", title: "Getting started", content: "Install via npm and import components." },
+        { id: "b2", title: "Configuration", content: "Configure your design tokens." }
+      ]}
+      variant="bordered"
+      defaultOpenItems={["b1"]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "items", type: "AccordionItem[]", defaultValue: "required", description: "Items to render. Each produces a heading + trigger + panel triple." },
+    { name: "variant", type: "'default' | 'bordered' | 'flush'", defaultValue: "'default'", description: "Visual style variant." },
+    { name: "mode", type: "'single' | 'multiple'", defaultValue: "'single'", description: "Whether one or many items can be open simultaneously." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Spacing and icon scale." },
+    { name: "openItems", type: "string[]", defaultValue: "\u2014", description: "Controlled open state \u2014 array of open item ids." },
+    { name: "defaultOpenItems", type: "string[]", defaultValue: "[]", description: "Initially open items for uncontrolled usage." },
+    { name: "onChange", type: "(openItems: string[]) => void", defaultValue: "\u2014", description: "Fires when open state changes. Receives the new array of open item ids." },
+    { name: "headingLevel", type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'", defaultValue: "'h3'", description: "HTML heading element wrapping each trigger button." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Enable Schema.org FAQPage + Question/Answer Microdata." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Renders skeleton placeholder items instead of content." },
+    { name: "loadingCount", type: "number", defaultValue: "3", description: "Number of skeleton items to show when loading is true." },
+    { name: "i18nStrings", type: "AccordionI18nStrings", defaultValue: "\u2014", description: "Override system strings (sr-only expand/collapse hints)." },
+    { name: "className", type: "string", defaultValue: "\u2014", description: "Additional CSS class on the outer container." },
+  ]}
+/>
+
+### AccordionItem
+
+<PropsTable
+  rows={[
+    { name: "id", type: "string", defaultValue: "required", description: "Unique identifier used as key and open-state reference." },
+    { name: "title", type: "string", defaultValue: "required", description: "Visible title rendered inside the trigger button." },
+    { name: "content", type: "ReactNode", defaultValue: "required", description: "Panel body content. Can be any ReactNode." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Prevents expand/collapse interaction." },
+  ]}
+/>
+
+## Accessibility
+
+- Each trigger is a `<button type="button">` wrapped in an HTML heading (configurable via `headingLevel`, default `h3`)
+- Panel has `role="region"` and `aria-labelledby` pointing to its trigger id
+- `aria-expanded` on each trigger reflects the open/closed state
+- `aria-controls` links each trigger to its panel by id
+- Disabled items use `aria-disabled` and `disabled` attributes together
+- Collapsed panels receive `inert` to prevent Tab focus into hidden content
+- A screen-reader-only hint ("Expand" / "Collapse") supplements `aria-expanded` for older assistive technology
+- Panel expand/collapse uses CSS grid transition, which respects `prefers-reduced-motion` automatically
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Move focus between accordion triggers and other focusable elements |
+| Shift + Tab | Move focus in reverse |
+| Enter / Space | Expand or collapse the focused trigger's panel |

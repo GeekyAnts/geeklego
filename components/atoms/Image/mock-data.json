@@ -1,0 +1,96 @@
+{
+  "default": {
+    "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    "alt": "Snow-capped mountain peaks reflecting in an alpine lake at sunset",
+    "aspectRatio": "video",
+    "radius": "md",
+    "fit": "cover"
+  },
+  "variants": {
+    "radius": [
+      { "radius": "none", "label": "No radius" },
+      { "radius": "sm", "label": "Small" },
+      { "radius": "md", "label": "Medium" },
+      { "radius": "lg", "label": "Large" },
+      { "radius": "xl", "label": "Extra large" },
+      { "radius": "full", "label": "Full (circle)" }
+    ],
+    "fit": [
+      { "fit": "cover", "label": "Cover (default)" },
+      { "fit": "contain", "label": "Contain" },
+      { "fit": "fill", "label": "Fill" },
+      { "fit": "none", "label": "None" }
+    ]
+  },
+  "aspectRatios": [
+    { "aspectRatio": "auto", "label": "Auto (natural size)" },
+    { "aspectRatio": "square", "label": "Square (1:1)" },
+    { "aspectRatio": "video", "label": "Video (16:9)" },
+    { "aspectRatio": "portrait", "label": "Portrait (3:4)" },
+    { "aspectRatio": "landscape", "label": "Landscape (4:3)" },
+    { "aspectRatio": "wide", "label": "Wide (21:9)" }
+  ],
+  "states": {
+    "loading": {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "alt": "Loading image",
+      "loading": "lazy",
+      "note": "Shows skeleton shimmer before image loads"
+    },
+    "loaded": {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "alt": "Loaded image",
+      "loading": "eager"
+    },
+    "error": {
+      "src": "https://this-url-does-not-exist.invalid/image.jpg",
+      "alt": "Broken image — mountain scene",
+      "note": "Shows ImageOff fallback icon; screen readers hear alt + '— failed to load'"
+    }
+  },
+  "captions": [
+    {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "alt": "Mountain lake at sunset",
+      "caption": "Königssee, Bavaria — photographed at dusk",
+      "radius": "md",
+      "aspectRatio": "landscape"
+    }
+  ],
+  "edge_cases": {
+    "decorative": {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "alt": "",
+      "note": "Decorative image — empty alt, should be invisible to screen readers"
+    },
+    "long_caption": {
+      "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "alt": "Image with long caption",
+      "caption": "This is an intentionally very long caption that demonstrates how the figcaption handles overflow when the text content exceeds two lines — it should clamp gracefully using the content-lines-description token.",
+      "radius": "md",
+      "aspectRatio": "video"
+    },
+    "circular_avatar": {
+      "src": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+      "alt": "User avatar — Jane Smith",
+      "aspectRatio": "square",
+      "radius": "full",
+      "className": "w-16 h-16",
+      "note": "Square aspect + full radius = circle"
+    },
+    "custom_fallback": {
+      "src": "https://this-url-does-not-exist.invalid/image.jpg",
+      "alt": "Product image",
+      "aspectRatio": "square",
+      "radius": "md",
+      "fallback": "ReactNode: <span>No image available</span>"
+    },
+    "bordered": {
+      "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80",
+      "alt": "Bordered image",
+      "aspectRatio": "landscape",
+      "radius": "md",
+      "bordered": true
+    }
+  }
+}

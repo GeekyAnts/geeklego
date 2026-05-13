@@ -1,0 +1,16 @@
+{
+  "default": { "name": "Sarah Reynolds", "status": "online", "avatarInitials": "SR" },
+  "variants": [
+    { "name": "Sarah Reynolds", "status": "online", "avatarInitials": "SR" },
+    { "name": "John Doe", "status": "away", "avatarInitials": "JD" },
+    { "name": "Mike Chen", "status": "offline", "avatarInitials": "MC" }
+  ],
+  "states": {
+    "withActions": { "name": "Sarah Reynolds", "status": "online", "avatarInitials": "SR" },
+    "longName": { "name": "Alexandra Pemberton-Hughes de Villeneuve", "status": "online", "avatarInitials": "AP" }
+  },
+  "edge_cases": [
+    { "label": "No avatar", "name": "Ghost User", "status": "offline" },
+    { "label": "Single initial", "name": "Z", "status": "online", "avatarInitials": "Z" }
+  ]
+}

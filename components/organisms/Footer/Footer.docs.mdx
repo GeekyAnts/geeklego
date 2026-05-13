@@ -1,0 +1,264 @@
+---
+title: Footer
+description: Page-level footer landmark with compound slots for brand, navigation columns, and legal bar. Responsive by default — brand stacks full-width on mobile, columns fill available space on larger viewports.
+level: organism
+---
+
+## Minimal
+
+<ComponentPreview code={"import { Footer } from \"@geeklego/ui\"\nimport { Link } from \"@geeklego/ui\"\n\n<Footer>\n  <Footer.Brand href=\"/\">\n    <span\n      className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n      aria-hidden=\"true\"\n    >GL</span>\n    <span>Geeklego</span>\n  </Footer.Brand>\n\n  <Footer.Legal>\n    <p>© 2026 Geeklego. All rights reserved.</p>\n    <div className=\"flex items-center gap-[var(--footer-legal-gap)]\">\n      <Link href=\"/privacy\" variant=\"subtle\" size=\"sm\">Privacy</Link>\n      <Link href=\"/terms\" variant=\"subtle\" size=\"sm\">Terms</Link>\n    </div>\n  </Footer.Legal>\n</Footer>"}>
+  <Footer>
+    <Footer.Brand href="/">
+      <span
+        className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+        aria-hidden="true"
+      >GL</span>
+      <span>Geeklego</span>
+    </Footer.Brand>
+
+    <Footer.Legal>
+      <p>© 2026 Geeklego. All rights reserved.</p>
+      <div className="flex items-center gap-[var(--footer-legal-gap)]">
+        <Link href="/privacy" variant="subtle" size="sm">Privacy</Link>
+        <Link href="/terms" variant="subtle" size="sm">Terms</Link>
+      </div>
+    </Footer.Legal>
+  </Footer>
+</ComponentPreview>
+
+## Multi-Column
+
+<ComponentPreview code={"import { Footer } from \"@geeklego/ui\"\nimport { Link } from \"@geeklego/ui\"\n\n<Footer>\n  <Footer.Brand href=\"/\" tagline=\"Open-source design system built on Tailwind CSS v4.\">\n    <span\n      className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n      aria-hidden=\"true\"\n    >GL</span>\n    <span>Geeklego</span>\n  </Footer.Brand>\n\n  <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation\">\n    <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n    <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n    <Link href=\"/changelog\" variant=\"subtle\" size=\"sm\">Changelog</Link>\n    <Link href=\"/roadmap\" variant=\"subtle\" size=\"sm\">Roadmap</Link>\n    <Link href=\"/status\" variant=\"subtle\" size=\"sm\">Status</Link>\n  </Footer.Nav>\n\n  <Footer.Nav heading=\"Developers\" navAriaLabel=\"Developer resources navigation\">\n    <Link href=\"/docs\" variant=\"subtle\" size=\"sm\">Documentation</Link>\n    <Link href=\"/api\" variant=\"subtle\" size=\"sm\">API Reference</Link>\n    <Link href=\"/components\" variant=\"subtle\" size=\"sm\">Components</Link>\n    <Link href=\"https://github.com/geeklego\" external variant=\"subtle\" size=\"sm\">GitHub</Link>\n  </Footer.Nav>\n\n  <Footer.Nav heading=\"Company\" navAriaLabel=\"Company navigation\">\n    <Link href=\"/about\" variant=\"subtle\" size=\"sm\">About</Link>\n    <Link href=\"/careers\" variant=\"subtle\" size=\"sm\">Careers</Link>\n    <Link href=\"/contact\" variant=\"subtle\" size=\"sm\">Contact</Link>\n  </Footer.Nav>\n\n  <Footer.Legal>\n    <p>© 2026 Geeklego, Inc. All rights reserved.</p>\n    <div className=\"flex items-center gap-[var(--footer-legal-gap)]\">\n      <Link href=\"/privacy\" variant=\"subtle\" size=\"sm\">Privacy Policy</Link>\n      <Link href=\"/terms\" variant=\"subtle\" size=\"sm\">Terms of Service</Link>\n    </div>\n  </Footer.Legal>\n</Footer>"}>
+  <Footer>
+    <Footer.Brand href="/" tagline="Open-source design system built on Tailwind CSS v4.">
+      <span
+        className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+        aria-hidden="true"
+      >GL</span>
+      <span>Geeklego</span>
+    </Footer.Brand>
+
+    <Footer.Nav heading="Product" navAriaLabel="Product navigation">
+      <Link href="/features" variant="subtle" size="sm">Features</Link>
+      <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+      <Link href="/changelog" variant="subtle" size="sm">Changelog</Link>
+      <Link href="/roadmap" variant="subtle" size="sm">Roadmap</Link>
+      <Link href="/status" variant="subtle" size="sm">Status</Link>
+    </Footer.Nav>
+
+    <Footer.Nav heading="Developers" navAriaLabel="Developer resources navigation">
+      <Link href="/docs" variant="subtle" size="sm">Documentation</Link>
+      <Link href="/api" variant="subtle" size="sm">API Reference</Link>
+      <Link href="/components" variant="subtle" size="sm">Components</Link>
+      <Link href="https://github.com/geeklego" external variant="subtle" size="sm">GitHub</Link>
+    </Footer.Nav>
+
+    <Footer.Nav heading="Company" navAriaLabel="Company navigation">
+      <Link href="/about" variant="subtle" size="sm">About</Link>
+      <Link href="/careers" variant="subtle" size="sm">Careers</Link>
+      <Link href="/contact" variant="subtle" size="sm">Contact</Link>
+    </Footer.Nav>
+
+    <Footer.Legal>
+      <p>© 2026 Geeklego, Inc. All rights reserved.</p>
+      <div className="flex items-center gap-[var(--footer-legal-gap)]">
+        <Link href="/privacy" variant="subtle" size="sm">Privacy Policy</Link>
+        <Link href="/terms" variant="subtle" size="sm">Terms of Service</Link>
+      </div>
+    </Footer.Legal>
+  </Footer>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Footer } from \"@geeklego/ui\"\nimport { Link } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8\">\n  <Footer size=\"sm\">\n    <Footer.Brand href=\"/\">\n      <span\n        className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n        aria-hidden=\"true\"\n      >GL</span>\n      <span>Geeklego</span>\n    </Footer.Brand>\n    <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation (sm)\">\n      <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n      <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n    </Footer.Nav>\n    <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>\n  </Footer>\n\n  <Footer size=\"md\">\n    <Footer.Brand href=\"/\">\n      <span\n        className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n        aria-hidden=\"true\"\n      >GL</span>\n      <span>Geeklego</span>\n    </Footer.Brand>\n    <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation (md)\">\n      <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n      <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n    </Footer.Nav>\n    <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>\n  </Footer>\n\n  <Footer size=\"lg\">\n    <Footer.Brand href=\"/\">\n      <span\n        className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n        aria-hidden=\"true\"\n      >GL</span>\n      <span>Geeklego</span>\n    </Footer.Brand>\n    <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation (lg)\">\n      <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n      <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n    </Footer.Nav>\n    <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>\n  </Footer>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <Footer size="sm">
+      <Footer.Brand href="/">
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+          aria-hidden="true"
+        >GL</span>
+        <span>Geeklego</span>
+      </Footer.Brand>
+      <Footer.Nav heading="Product" navAriaLabel="Product navigation (sm)">
+        <Link href="/features" variant="subtle" size="sm">Features</Link>
+        <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+      </Footer.Nav>
+      <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>
+    </Footer>
+
+    <Footer size="md">
+      <Footer.Brand href="/">
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+          aria-hidden="true"
+        >GL</span>
+        <span>Geeklego</span>
+      </Footer.Brand>
+      <Footer.Nav heading="Product" navAriaLabel="Product navigation (md)">
+        <Link href="/features" variant="subtle" size="sm">Features</Link>
+        <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+      </Footer.Nav>
+      <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>
+    </Footer>
+
+    <Footer size="lg">
+      <Footer.Brand href="/">
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+          aria-hidden="true"
+        >GL</span>
+        <span>Geeklego</span>
+      </Footer.Brand>
+      <Footer.Nav heading="Product" navAriaLabel="Product navigation (lg)">
+        <Link href="/features" variant="subtle" size="sm">Features</Link>
+        <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+      </Footer.Nav>
+      <Footer.Legal><p>© 2026 Geeklego. All rights reserved.</p></Footer.Legal>
+    </Footer>
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { Footer } from \"@geeklego/ui\"\nimport { Link } from \"@geeklego/ui\"\nimport { Grid, ExternalLink, Mail } from \"lucide-react\"\n\n<Footer>\n  <Footer.Brand href=\"/\" tagline=\"Design system for the modern web.\">\n    <Grid size={24} aria-hidden=\"true\" />\n    <span>Geeklego</span>\n  </Footer.Brand>\n\n  <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation\">\n    <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n    <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n    <Link href=\"/changelog\" variant=\"subtle\" size=\"sm\">Changelog</Link>\n  </Footer.Nav>\n\n  <Footer.Nav heading=\"Connect\" navAriaLabel=\"Social links navigation\">\n    <Link href=\"https://github.com/geeklego\" external variant=\"subtle\" size=\"sm\">\n      <span className=\"flex items-center gap-[var(--footer-brand-gap)]\">\n        <ExternalLink size={14} aria-hidden=\"true\" />\n        GitHub\n      </span>\n    </Link>\n    <Link href=\"mailto:hello@geeklego.dev\" variant=\"subtle\" size=\"sm\">\n      <span className=\"flex items-center gap-[var(--footer-brand-gap)]\">\n        <Mail size={14} aria-hidden=\"true\" />\n        Email us\n      </span>\n    </Link>\n  </Footer.Nav>\n\n  <Footer.Legal>\n    <p>© 2026 Geeklego. Open source under MIT license.</p>\n    <div className=\"flex items-center gap-[var(--footer-legal-gap)]\">\n      <Link href=\"/privacy\" variant=\"subtle\" size=\"sm\">Privacy</Link>\n      <Link href=\"/terms\" variant=\"subtle\" size=\"sm\">Terms</Link>\n    </div>\n  </Footer.Legal>\n</Footer>"}>
+  <Footer>
+    <Footer.Brand href="/" tagline="Design system for the modern web.">
+      <Grid size={24} aria-hidden="true" />
+      <span>Geeklego</span>
+    </Footer.Brand>
+
+    <Footer.Nav heading="Product" navAriaLabel="Product navigation">
+      <Link href="/features" variant="subtle" size="sm">Features</Link>
+      <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+      <Link href="/changelog" variant="subtle" size="sm">Changelog</Link>
+    </Footer.Nav>
+
+    <Footer.Nav heading="Connect" navAriaLabel="Social links navigation">
+      <Link href="https://github.com/geeklego" external variant="subtle" size="sm">
+        <span className="flex items-center gap-[var(--footer-brand-gap)]">
+          <ExternalLink size={14} aria-hidden="true" />
+          GitHub
+        </span>
+      </Link>
+      <Link href="mailto:hello@geeklego.dev" variant="subtle" size="sm">
+        <span className="flex items-center gap-[var(--footer-brand-gap)]">
+          <Mail size={14} aria-hidden="true" />
+          Email us
+        </span>
+      </Link>
+    </Footer.Nav>
+
+    <Footer.Legal>
+      <p>© 2026 Geeklego. Open source under MIT license.</p>
+      <div className="flex items-center gap-[var(--footer-legal-gap)]">
+        <Link href="/privacy" variant="subtle" size="sm">Privacy</Link>
+        <Link href="/terms" variant="subtle" size="sm">Terms</Link>
+      </div>
+    </Footer.Legal>
+  </Footer>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Footer } from \"@geeklego/ui\"\nimport { Link } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Footer>\n    <Footer.Brand href=\"/\" tagline=\"Design system for humans.\">\n      <span\n        className=\"flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold\"\n        aria-hidden=\"true\"\n      >GL</span>\n      <span>Geeklego</span>\n    </Footer.Brand>\n\n    <Footer.Nav heading=\"Product\" navAriaLabel=\"Product navigation\">\n      <Link href=\"/features\" variant=\"subtle\" size=\"sm\">Features</Link>\n      <Link href=\"/pricing\" variant=\"subtle\" size=\"sm\">Pricing</Link>\n      <Link href=\"/changelog\" variant=\"subtle\" size=\"sm\">Changelog</Link>\n    </Footer.Nav>\n\n    <Footer.Nav heading=\"Company\" navAriaLabel=\"Company navigation\">\n      <Link href=\"/about\" variant=\"subtle\" size=\"sm\">About</Link>\n      <Link href=\"/careers\" variant=\"subtle\" size=\"sm\">Careers</Link>\n      <Link href=\"/contact\" variant=\"subtle\" size=\"sm\">Contact</Link>\n    </Footer.Nav>\n\n    <Footer.Legal>\n      <p>© 2026 Geeklego. All rights reserved.</p>\n      <div className=\"flex items-center gap-[var(--footer-legal-gap)]\">\n        <Link href=\"/privacy\" variant=\"subtle\" size=\"sm\">Privacy</Link>\n        <Link href=\"/terms\" variant=\"subtle\" size=\"sm\">Terms</Link>\n      </div>\n    </Footer.Legal>\n  </Footer>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Footer>
+      <Footer.Brand href="/" tagline="Design system for humans.">
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-[var(--radius-component-md)] bg-[var(--color-action-primary)] text-[var(--color-text-inverse)] text-label-md font-bold"
+          aria-hidden="true"
+        >GL</span>
+        <span>Geeklego</span>
+      </Footer.Brand>
+
+      <Footer.Nav heading="Product" navAriaLabel="Product navigation">
+        <Link href="/features" variant="subtle" size="sm">Features</Link>
+        <Link href="/pricing" variant="subtle" size="sm">Pricing</Link>
+        <Link href="/changelog" variant="subtle" size="sm">Changelog</Link>
+      </Footer.Nav>
+
+      <Footer.Nav heading="Company" navAriaLabel="Company navigation">
+        <Link href="/about" variant="subtle" size="sm">About</Link>
+        <Link href="/careers" variant="subtle" size="sm">Careers</Link>
+        <Link href="/contact" variant="subtle" size="sm">Contact</Link>
+      </Footer.Nav>
+
+      <Footer.Legal>
+        <p>© 2026 Geeklego. All rights reserved.</p>
+        <div className="flex items-center gap-[var(--footer-legal-gap)]">
+          <Link href="/privacy" variant="subtle" size="sm">Privacy</Link>
+          <Link href="/terms" variant="subtle" size="sm">Terms</Link>
+        </div>
+      </Footer.Legal>
+    </Footer>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### Footer (root)
+
+<PropsTable
+  rows={[
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Padding and vertical rhythm scale. sm = compact, md = standard, lg = spacious." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Enable Schema.org WPFooter Microdata. Adds itemScope and itemType to the footer element." },
+    { name: "i18nStrings", type: "FooterI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for footerLabel and navLabel." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Footer.Brand, one or more Footer.Nav columns, and optionally Footer.Legal." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the footer element." },
+  ]}
+/>
+
+### Footer.Brand
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "'#'", description: "URL for the brand name/logo link. Passed through sanitizeHref automatically." },
+    { name: "tagline", type: "string", defaultValue: "—", description: "Optional tagline displayed below the brand content." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Brand name, logo image, or icon to render as the clickable link content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the wrapper div." },
+  ]}
+/>
+
+### Footer.Nav
+
+<PropsTable
+  rows={[
+    { name: "heading", type: "string", defaultValue: "—", description: "Column heading text. Required — rendered as a heading element." },
+    { name: "headingLevel", type: "'h2' | 'h3' | 'h4' | 'h5'", defaultValue: "'h3'", description: "HTML heading level for the column title. Override when the page structure requires a different level." },
+    { name: "navAriaLabel", type: "string", defaultValue: "i18n navLabel", description: "Custom aria-label for the nav landmark. Provide a unique label when rendering multiple Footer.Nav columns." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Link items to render inside the nav list. Each child is automatically wrapped in li." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the nav element." },
+  ]}
+/>
+
+### Footer.Legal
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Copyright text, legal links, or any inline content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the wrapper div." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<footer>` element — implicit `contentinfo` landmark role when a direct child of `<body>`
+- `aria-label` on `<footer>` set from i18n `footerLabel` (default: `"Footer"`)
+- Each `Footer.Nav` column renders a `<nav>` landmark with `aria-label` from the `navAriaLabel` prop or i18n `navLabel`
+- When rendering multiple `Footer.Nav` columns, always provide a unique `navAriaLabel` to each one — otherwise all nav landmarks share the same accessible name, making them indistinguishable in landmark navigation
+- `Footer.Nav` renders a heading (`h3` by default) for each column — override `headingLevel` when the page structure requires a different level
+- All `href` values in `Footer.Brand` are passed through `sanitizeHref()` automatically, stripping `javascript:`, `vbscript:`, and `data:text/html` protocols
+- External links (via `Link` with `external={true}`) receive `rel="noopener noreferrer"` and a visually-hidden "(opens in new tab)" cue automatically
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves through all focusable links in document order |
+| Enter | Follows the focused link |
+| Space | Follows the focused link |

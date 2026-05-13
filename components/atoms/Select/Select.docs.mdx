@@ -1,0 +1,123 @@
+---
+title: Select
+description: Native-styled dropdown select with three visual variants, optional label, and error/disabled states.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Select } from \"@geeklego/ui\"\n\nconst options = [\n  { value: \"apple\", label: \"Apple\" },\n  { value: \"banana\", label: \"Banana\" },\n  { value: \"cherry\", label: \"Cherry\" },\n]\n\n<Select options={options} placeholder=\"Choose\u2026\" variant=\"default\" />\n<Select options={options} placeholder=\"Choose\u2026\" variant=\"filled\" />\n<Select options={options} placeholder=\"Choose\u2026\" variant=\"ghost\" />"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+      <div>
+        <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Default — outlined border</p>
+        <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} placeholder="Choose…" variant="default" />
+      </div>
+      <div>
+        <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Filled — muted surface, no border</p>
+        <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} placeholder="Choose…" variant="filled" />
+      </div>
+      <div>
+        <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Ghost — transparent until hover</p>
+        <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} placeholder="Choose…" variant="ghost" />
+      </div>
+    </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Select } from \"@geeklego/ui\"\n\n<Select options={options} size=\"sm\" label=\"Small\" />\n<Select options={options} size=\"md\" label=\"Medium\" />\n<Select options={options} size=\"lg\" label=\"Large\" />"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+      <Select options={[{value:"daily",label:"Daily"},{value:"weekly",label:"Weekly"},{value:"monthly",label:"Monthly"}]} defaultValue="weekly" size="sm" label="Small (sm)" />
+      <Select options={[{value:"daily",label:"Daily"},{value:"weekly",label:"Weekly"},{value:"monthly",label:"Monthly"}]} defaultValue="weekly" size="md" label="Medium (md)" />
+      <Select options={[{value:"daily",label:"Daily"},{value:"weekly",label:"Weekly"},{value:"monthly",label:"Monthly"}]} defaultValue="weekly" size="lg" label="Large (lg)" />
+    </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Select } from \"@geeklego/ui\"\n\n<Select options={options} defaultValue=\"apple\" disabled label=\"Disabled field\" />"}>
+  <div className="max-w-xs">
+      <Select
+        options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"}]}
+        defaultValue="apple"
+        disabled
+        label="Disabled field"
+      />
+    </div>
+</ComponentPreview>
+
+## Error
+
+<ComponentPreview code={"import { Select } from \"@geeklego/ui\"\n\n<Select\n  options={options}\n  placeholder=\"Required field\"\n  error\n  label=\"Favourite fruit\"\n  id=\"fruit\"\n  aria-describedby=\"fruit-error\"\n/>\n<p id=\"fruit-error\" role=\"alert\">Please select a fruit.</p>"}>
+  <div className="max-w-xs">
+      <Select
+        options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"}]}
+        placeholder="Required field"
+        error
+        label="Favourite fruit"
+      />
+    </div>
+</ComponentPreview>
+
+## With Label
+
+<ComponentPreview code={"import { Select } from \"@geeklego/ui\"\n\n<Select\n  options={[\n    { value: \"daily\", label: \"Daily\" },\n    { value: \"weekly\", label: \"Weekly\" },\n    { value: \"monthly\", label: \"Monthly\" },\n  ]}\n  defaultValue=\"weekly\"\n  label=\"Time period\"\n/>"}>
+  <div className="flex flex-col gap-4 max-w-xs">
+      <Select
+        options={[{value:"daily",label:"Daily"},{value:"weekly",label:"Weekly"},{value:"monthly",label:"Monthly"}]}
+        defaultValue="weekly"
+        label="Time period"
+      />
+    </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-xl)] max-w-2xl\">\n  <Select options={options} placeholder=\"Choose\u2026\" label=\"Default\" />\n  <Select options={options} defaultValue=\"banana\" variant=\"filled\" label=\"Filled\" />\n  <Select options={options} placeholder=\"Error\" error label=\"Error\" />\n  <Select options={options} defaultValue=\"apple\" disabled label=\"Disabled\" />\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-xl)] max-w-2xl">
+      <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} placeholder="Choose…" variant="default" label="Default" />
+      <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} defaultValue="banana" variant="filled" label="Filled" />
+      <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} placeholder="Error state" error label="Error" />
+      <Select options={[{value:"apple",label:"Apple"},{value:"banana",label:"Banana"},{value:"cherry",label:"Cherry"}]} defaultValue="apple" disabled label="Disabled" />
+    </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "options", type: "SelectOption[]", defaultValue: "—", description: "Available options shown in the dropdown panel. Each option has value, label, and optional disabled." },
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled selected value. Pair with onChange." },
+    { name: "defaultValue", type: "string", defaultValue: "—", description: "Initial selected value for uncontrolled usage." },
+    { name: "onChange", type: "(value: string) => void", defaultValue: "—", description: "Called with the new value when the user makes a selection." },
+    { name: "placeholder", type: "string", defaultValue: "—", description: "Placeholder text shown when no option is selected." },
+    { name: "variant", type: "'default' | 'filled' | 'ghost'", defaultValue: "'default'", description: "Visual style of the trigger." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and font size tier." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the trigger and all options." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Applies error border to the trigger." },
+    { name: "label", type: "string", defaultValue: "—", description: "Optional visible label rendered above the trigger." },
+    { name: "id", type: "string", defaultValue: "—", description: "Forwarded to the trigger button — required when using an external label." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a custom ARIA combobox (`role="combobox"`) with a listbox dropdown (`role="listbox"`) and individual options (`role="option"`) — not a native `<select>`
+- The trigger is a `<button>` element; keyboard navigation is implemented manually via the component
+- When `label` is provided, it is linked via `htmlFor`/`id` — provides the accessible name for the trigger button
+- Without `label`, pass `aria-label` directly to the component
+- `aria-expanded` reflects the open/closed state of the dropdown on the trigger button
+- `aria-controls` links the trigger to the listbox panel
+- `aria-activedescendant` tracks the currently focused option within the open listbox
+- `error` sets `aria-invalid="true"` on the trigger — pair with `aria-describedby` pointing to an error message
+- `disabled` sets both HTML `disabled` and `aria-disabled` on the trigger button
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the select |
+| Space / Enter | Opens the dropdown |
+| Arrow Up / Down | Navigates between options |
+| Escape | Closes the dropdown |

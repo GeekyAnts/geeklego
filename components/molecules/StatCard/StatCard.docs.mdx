@@ -1,0 +1,78 @@
+---
+title: StatCard
+description: A single KPI metric card built on article and dl semantics with optional trend delta, context label, and icon.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { StatCard } from \"@geeklego/ui\"\nimport { Zap, Users, Home, ArrowUp } from \"lucide-react\"\n\n<div className=\"grid grid-cols-2 gap-4 max-w-2xl\">\n  <StatCard label=\"Elevated\" value=\"$12,450\" delta={12.5} deltaLabel=\"vs last month\" variant=\"elevated\" icon={<Zap size={16} />} />\n  <StatCard label=\"Outlined\" value=\"3,218\" delta={-2.1} deltaLabel=\"vs last week\" variant=\"outlined\" icon={<Users size={16} />} />\n  <StatCard label=\"Filled\" value=\"845\" delta={0} deltaLabel=\"no change\" variant=\"filled\" icon={<Home size={16} />} />\n  <StatCard label=\"Ghost\" value=\"99.8%\" delta={0.3} deltaLabel=\"this week\" variant=\"ghost\" icon={<ArrowUp size={16} />} />\n</div>"}>
+  <div className="grid grid-cols-2 gap-4 max-w-2xl">
+    <StatCard label="Elevated" value="$12,450" delta={12.5} deltaLabel="vs last month" variant="elevated" icon={<Zap size={16} />} />
+    <StatCard label="Outlined" value="3,218" delta={-2.1} deltaLabel="vs last week" variant="outlined" icon={<Users size={16} />} />
+    <StatCard label="Filled" value="845" delta={0} deltaLabel="no change" variant="filled" icon={<Home size={16} />} />
+    <StatCard label="Ghost" value="99.8%" delta={0.3} deltaLabel="this week" variant="ghost" icon={<ArrowUp size={16} />} />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { StatCard } from \"@geeklego/ui\"\nimport { Users } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 max-w-sm\">\n  <StatCard label=\"Monthly Active Users — sm\" value=\"24,891\" delta={8.4} deltaLabel=\"vs last month\" size=\"sm\" icon={<Users size={16} />} />\n  <StatCard label=\"Monthly Active Users — md\" value=\"24,891\" delta={8.4} deltaLabel=\"vs last month\" size=\"md\" icon={<Users size={16} />} />\n  <StatCard label=\"Monthly Active Users — lg\" value=\"24,891\" delta={8.4} deltaLabel=\"vs last month\" size=\"lg\" icon={<Users size={16} />} />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-sm">
+    <StatCard label="Monthly Active Users — sm" value="24,891" delta={8.4} deltaLabel="vs last month" size="sm" icon={<Users size={16} />} />
+    <StatCard label="Monthly Active Users — md" value="24,891" delta={8.4} deltaLabel="vs last month" size="md" icon={<Users size={16} />} />
+    <StatCard label="Monthly Active Users — lg" value="24,891" delta={8.4} deltaLabel="vs last month" size="lg" icon={<Users size={16} />} />
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { StatCard } from \"@geeklego/ui\"\nimport { SortAsc, ArrowUp } from \"lucide-react\"\n\n<div className=\"grid grid-cols-2 gap-4 max-w-2xl\">\n  <StatCard label=\"Trend up\" value=\"$8,320\" delta={14.2} deltaLabel=\"vs last month\" />\n  <StatCard label=\"Trend down\" value=\"142\" delta={-6.8} deltaLabel=\"vs last week\" />\n  <StatCard label=\"Neutral (zero delta)\" value=\"1,500\" delta={0} deltaLabel=\"no change\" />\n  <StatCard label=\"No delta\" value=\"$99/mo\" />\n  <StatCard label=\"Loading\" value=\"\u2014\" isLoading />\n  <StatCard label=\"With icon\" value=\"4.9 / 5.0\" delta={0.2} deltaLabel=\"this quarter\" icon={<SortAsc size={16} />} />\n</div>"}>
+  <div className="grid grid-cols-2 gap-4 max-w-2xl">
+    <StatCard label="Trend up" value="$8,320" delta={14.2} deltaLabel="vs last month" />
+    <StatCard label="Trend down" value="142" delta={-6.8} deltaLabel="vs last week" />
+    <StatCard label="Neutral (zero delta)" value="1,500" delta={0} deltaLabel="no change" />
+    <StatCard label="No delta" value="$99/mo" />
+    <StatCard label="Loading" value="—" isLoading />
+    <StatCard label="With icon" value="4.9 / 5.0" delta={0.2} deltaLabel="this quarter" icon={<SortAsc size={16} />} />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { StatCard } from \"@geeklego/ui\"\nimport { Zap, Users } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"grid grid-cols-2 gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <StatCard label=\"Total Revenue\" value=\"$12,450\" delta={12.5} deltaLabel=\"vs last month\" icon={<Zap size={16} />} />\n  <StatCard label=\"Active Users\" value=\"3,218\" delta={-2.1} deltaLabel=\"vs last week\" icon={<Users size={16} />} />\n  <StatCard label=\"Orders\" value=\"845\" delta={0} deltaLabel=\"no change\" variant=\"outlined\" />\n  <StatCard label=\"Uptime\" value=\"99.8%\" delta={0.3} deltaLabel=\"this week\" variant=\"filled\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="grid grid-cols-2 gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <StatCard label="Total Revenue" value="$12,450" delta={12.5} deltaLabel="vs last month" icon={<Zap size={16} />} />
+    <StatCard label="Active Users" value="3,218" delta={-2.1} deltaLabel="vs last week" icon={<Users size={16} />} />
+    <StatCard label="Orders" value="845" delta={0} deltaLabel="no change" variant="outlined" />
+    <StatCard label="Uptime" value="99.8%" delta={0.3} deltaLabel="this week" variant="filled" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "label", type: "string", defaultValue: "—", description: "Required. Metric name (e.g. \"Total Revenue\")." },
+    { name: "value", type: "ReactNode", defaultValue: "—", description: "Required. Primary metric value (e.g. \"$12,450\")." },
+    { name: "delta", type: "number", defaultValue: "—", description: "Percentage change as a number (e.g. 12.5 for +12.5%). Determines trend colour and icon automatically." },
+    { name: "deltaLabel", type: "string", defaultValue: "—", description: "Context label shown after the delta badge (e.g. \"vs last month\")." },
+    { name: "trend", type: "'up' | 'down' | 'neutral'", defaultValue: "derived", description: "Override trend direction. Defaults to the sign of delta." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Optional icon displayed in the top-right corner. Pass a Lucide icon node." },
+    { name: "variant", type: "'elevated' | 'outlined' | 'filled' | 'ghost'", defaultValue: "'elevated'", description: "Visual container style." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Typography and spacing scale." },
+    { name: "isLoading", type: "boolean", defaultValue: "false", description: "Replaces card content with a spinner loading state." },
+    { name: "i18nStrings", type: "StatCardI18nStrings", defaultValue: "—", description: "Per-instance string overrides for screen reader trend labels and loading label." },
+  ]}
+/>
+
+## Accessibility
+
+- `<article>` element for a self-contained content unit
+- `<dl>` + `<dt>` (label) + `<dd>` (value + delta) — definition list semantics
+- Screen-reader-only trend prefix ("Trending up: " / "Trending down: ") prepended to the delta badge content
+- Icon wrapper has `aria-hidden="true"` — decorative
+- Loading state sets `aria-busy="true"` with `aria-label` on the article element

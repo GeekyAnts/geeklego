@@ -1,0 +1,107 @@
+{
+  "default": {
+    "gap": "md",
+    "loading": false,
+    "noValidate": true,
+    "fields": [
+      {
+        "label": "Full name",
+        "htmlFor": "name",
+        "required": true,
+        "hint": "As it appears on your ID.",
+        "placeholder": "Jane Smith"
+      },
+      {
+        "label": "Email address",
+        "htmlFor": "email",
+        "required": true,
+        "placeholder": "jane@example.com"
+      },
+      {
+        "label": "Message",
+        "htmlFor": "message",
+        "optional": true,
+        "hint": "Up to 500 characters.",
+        "placeholder": "Tell us about your project…"
+      }
+    ],
+    "actions": {
+      "align": "end",
+      "separator": true,
+      "buttons": [
+        { "label": "Cancel", "variant": "outline", "type": "button" },
+        { "label": "Send message", "variant": "primary", "type": "submit" }
+      ]
+    }
+  },
+  "variants": [
+    {
+      "name": "Stacked",
+      "labelPosition": "top",
+      "description": "Default layout — label sits above the control."
+    },
+    {
+      "name": "Inline",
+      "labelPosition": "left",
+      "description": "Label beside the control. Responsive: stacks on mobile (<sm breakpoint)."
+    }
+  ],
+  "sizes": [
+    {
+      "gap": "sm",
+      "description": "Compact — suitable for toolbar or inline edit forms."
+    },
+    {
+      "gap": "md",
+      "description": "Standard — default for most forms."
+    },
+    {
+      "gap": "lg",
+      "description": "Spacious — suitable for onboarding or checkout flows."
+    }
+  ],
+  "states": {
+    "loading": {
+      "loading": true,
+      "description": "Form is aria-busy. Controls should be disabled via Fieldset disabled prop."
+    },
+    "error": {
+      "fields": [
+        {
+          "label": "Email",
+          "htmlFor": "email-err",
+          "error": "Please enter a valid email address.",
+          "value": "not-an-email"
+        },
+        {
+          "label": "Password",
+          "htmlFor": "password-err",
+          "error": "Password must be at least 8 characters."
+        }
+      ]
+    },
+    "disabled": {
+      "description": "Wrap fields in <Fieldset disabled> to propagate disabled state to all controls natively."
+    }
+  },
+  "edge_cases": {
+    "long_label": "Subscription and billing address information — primary account holder",
+    "long_error": "The value you entered does not meet the complexity requirements: must include uppercase, lowercase, number, and special character.",
+    "long_hint": "This email will be used as your login and for account recovery. Use an email address you have regular access to.",
+    "empty_label": "",
+    "all_fields_error": "State where every field in the form has a validation error simultaneously.",
+    "single_field": "Form with only one field and one submit button — minimal usage.",
+    "no_actions_separator": {
+      "separator": false,
+      "description": "Actions row without separator border — for compact forms."
+    },
+    "actions_align_start": {
+      "align": "start",
+      "description": "Left-aligned submit button — uncommon but valid for RTL or branded layouts."
+    },
+    "actions_align_between": {
+      "align": "between",
+      "description": "Secondary action on left, primary on right — useful for multi-step forms with Back/Next."
+    }
+  }
+}

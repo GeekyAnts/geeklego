@@ -1,0 +1,87 @@
+{
+  "default": {
+    "label": "Email address",
+    "htmlFor": "email",
+    "hint": "We will never share your email with anyone.",
+    "children": "Input"
+  },
+  "sizes": [
+    {
+      "size": "sm",
+      "label": "API key",
+      "htmlFor": "api-key-sm"
+    },
+    {
+      "size": "md",
+      "label": "API key",
+      "htmlFor": "api-key-md"
+    }
+  ],
+  "label_positions": [
+    {
+      "labelPosition": "top",
+      "label": "Full name",
+      "htmlFor": "name-top"
+    },
+    {
+      "labelPosition": "left",
+      "label": "Full name",
+      "htmlFor": "name-left"
+    }
+  ],
+  "states": {
+    "required": {
+      "label": "Email",
+      "htmlFor": "email-req",
+      "required": true,
+      "hint": "This field is mandatory."
+    },
+    "optional": {
+      "label": "Phone",
+      "htmlFor": "phone-opt",
+      "optional": true
+    },
+    "disabled": {
+      "label": "Organization",
+      "htmlFor": "org-dis",
+      "disabled": true,
+      "hint": "This field is locked."
+    },
+    "error": {
+      "label": "Username",
+      "htmlFor": "username-err",
+      "error": "Username is already taken.",
+      "required": true
+    }
+  },
+  "edge_cases": {
+    "empty_hint": {
+      "label": "Name",
+      "htmlFor": "name-empty",
+      "hint": ""
+    },
+    "long_label": {
+      "label": "Please enter your full legal name as it appears on your government-issued identification document",
+      "htmlFor": "long-label"
+    },
+    "long_error": {
+      "label": "Password",
+      "htmlFor": "password-long-err",
+      "error": "Password must be at least 12 characters, include one uppercase letter, one lowercase letter, one number, and one special character."
+    },
+    "long_hint": {
+      "label": "Bio",
+      "htmlFor": "bio-long-hint",
+      "hint": "Tell us about yourself. This will be displayed on your public profile and visible to all users. Keep it concise but informative."
+    },
+    "no_htmlFor": {
+      "label": "Unlabeled field"
+    },
+    "both_hint_and_error": {
+      "label": "Email",
+      "htmlFor": "email-both",
+      "hint": "This hint is hidden when error is present.",
+      "error": "Invalid email format."
+    }
+  }
+}

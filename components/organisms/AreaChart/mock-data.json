@@ -1,0 +1,128 @@
+{
+  "default": {
+    "title": "Revenue Overview",
+    "infoLabel": "Monthly revenue and profit trend",
+    "metric": "$75,100",
+    "delta": 12.4,
+    "deltaLabel": "from last year",
+    "dateStart": "Jan 2026",
+    "dateEnd": "Dec 2026",
+    "data": [
+      { "label": "Jan", "revenue": 4000, "profit": 2400 },
+      { "label": "Feb", "revenue": 3200, "profit": 1398 },
+      { "label": "Mar", "revenue": 5100, "profit": 3800 },
+      { "label": "Apr", "revenue": 4800, "profit": 2908 },
+      { "label": "May", "revenue": 6200, "profit": 4800 },
+      { "label": "Jun", "revenue": 5800, "profit": 3200 },
+      { "label": "Jul", "revenue": 7100, "profit": 5100 },
+      { "label": "Aug", "revenue": 6500, "profit": 4300 },
+      { "label": "Sep", "revenue": 7800, "profit": 5600 },
+      { "label": "Oct", "revenue": 7200, "profit": 4900 },
+      { "label": "Nov", "revenue": 8100, "profit": 5800 },
+      { "label": "Dec", "revenue": 9200, "profit": 6800 }
+    ],
+    "series": [
+      { "name": "Revenue", "dataKey": "revenue" },
+      { "name": "Profit", "dataKey": "profit" }
+    ],
+    "period": "monthly"
+  },
+  "variants": [
+    {
+      "label": "overlay",
+      "stacked": false,
+      "curveType": "monotone"
+    },
+    {
+      "label": "stacked",
+      "stacked": true,
+      "curveType": "monotone"
+    },
+    {
+      "label": "linear",
+      "stacked": false,
+      "curveType": "linear"
+    },
+    {
+      "label": "stacked-linear",
+      "stacked": true,
+      "curveType": "linear"
+    }
+  ],
+  "sizes": [
+    {
+      "label": "single-series",
+      "series": [{ "name": "Revenue", "dataKey": "revenue" }]
+    },
+    {
+      "label": "multi-series",
+      "series": [
+        { "name": "Revenue", "dataKey": "revenue" },
+        { "name": "Profit", "dataKey": "profit" },
+        { "name": "Expenses", "dataKey": "expenses" }
+      ]
+    }
+  ],
+  "states": {
+    "loading": {
+      "title": "Loading Chart",
+      "data": [],
+      "series": []
+    },
+    "disabled": {
+      "title": "Chart with no data",
+      "data": [],
+      "series": [{ "name": "Revenue", "dataKey": "revenue" }]
+    },
+    "error": {
+      "title": "Error State",
+      "data": [],
+      "series": []
+    }
+  },
+  "edge_cases": {
+    "single_point": {
+      "title": "Single Data Point",
+      "data": [{ "label": "Jan", "revenue": 5000 }],
+      "series": [{ "name": "Revenue", "dataKey": "revenue" }]
+    },
+    "large_values": {
+      "title": "Large Values",
+      "data": [
+        { "label": "Q1", "sales": 12500000 },
+        { "label": "Q2", "sales": 15800000 },
+        { "label": "Q3", "sales": 11200000 },
+        { "label": "Q4", "sales": 18900000 }
+      ],
+      "series": [{ "name": "Sales", "dataKey": "sales" }]
+    },
+    "zero_values": {
+      "title": "Zero Values",
+      "data": [
+        { "label": "Mon", "visits": 0 },
+        { "label": "Tue", "visits": 0 },
+        { "label": "Wed", "visits": 120 },
+        { "label": "Thu", "visits": 0 },
+        { "label": "Fri", "visits": 80 }
+      ],
+      "series": [{ "name": "Visits", "dataKey": "visits" }]
+    },
+    "many_series": {
+      "title": "Seven Series",
+      "data": [
+        { "label": "Jan", "a": 100, "b": 200, "c": 150, "d": 80, "e": 120, "f": 90, "g": 110 },
+        { "label": "Feb", "a": 120, "b": 180, "c": 170, "d": 90, "e": 100, "f": 110, "g": 130 },
+        { "label": "Mar", "a": 140, "b": 220, "c": 130, "d": 100, "e": 140, "f": 80, "g": 150 }
+      ],
+      "series": [
+        { "name": "Series A", "dataKey": "a" },
+        { "name": "Series B", "dataKey": "b" },
+        { "name": "Series C", "dataKey": "c" },
+        { "name": "Series D", "dataKey": "d" },
+        { "name": "Series E", "dataKey": "e" },
+        { "name": "Series F", "dataKey": "f" },
+        { "name": "Series G", "dataKey": "g" }
+      ]
+    }
+  }
+}

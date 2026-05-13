@@ -1,0 +1,129 @@
+---
+title: NavItem
+description: Navigation list item with icon, active state, expandable children, and badge/action slots.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { NavItem } from \"@geeklego/ui\"\nimport { Grid, Star, List, Menu, Settings } from \"lucide-react\"\n\n<ul role=\"tree\" className=\"flex flex-col gap-1\">\n  <NavItem label=\"With icon\" icon={<Grid size={14} />} />\n  <NavItem label=\"Without icon\" />\n  <NavItem label=\"Active item\" icon={<Star size={14} />} isActive />\n  <NavItem label=\"As link\" icon={<List size={14} />} href=\"/docs\" />\n  <NavItem label=\"Expandable\" icon={<Menu size={14} />} isExpandable isExpanded={false} />\n  <NavItem label=\"Disabled\" icon={<Settings size={14} />} disabled />\n</ul>"}>
+  <div className="flex flex-col gap-1 w-full max-w-[240px]">
+    <ul role="tree" className="flex flex-col gap-1">
+      <NavItem label="With icon" icon={<Grid size={14} />} />
+      <NavItem label="Without icon" />
+      <NavItem label="Active item" icon={<Star size={14} />} isActive />
+      <NavItem label="As link" icon={<List size={14} />} href="#" />
+      <NavItem label="Expandable" icon={<Menu size={14} />} isExpandable isExpanded={false} />
+      <NavItem label="Disabled" icon={<Settings size={14} />} disabled />
+    </ul>
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { NavItem } from \"@geeklego/ui\"\nimport { Grid, Menu, List } from \"lucide-react\"\n\n{/* With icons */}\n<ul role=\"tree\" className=\"flex flex-col gap-1\">\n  <NavItem label=\"Dashboard\" icon={<Grid size={14} />} />\n  <NavItem label=\"Components\" icon={<Menu size={14} />} />\n  <NavItem label=\"Documentation\" icon={<List size={14} />} />\n</ul>\n\n{/* Without icons */}\n<ul role=\"tree\" className=\"flex flex-col gap-1\">\n  <NavItem label=\"Overview\" />\n  <NavItem label=\"Getting started\" />\n</ul>"}>
+  <div className="flex flex-col gap-6 w-full max-w-[240px]">
+    <div>
+      <p className="text-label-sm text-secondary mb-2">With icons</p>
+      <ul role="tree" className="flex flex-col gap-1">
+        <NavItem label="Dashboard" icon={<Grid size={14} />} />
+        <NavItem label="Components" icon={<Menu size={14} />} />
+        <NavItem label="Documentation" icon={<List size={14} />} />
+      </ul>
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Without icons</p>
+      <ul role="tree" className="flex flex-col gap-1">
+        <NavItem label="Overview" />
+        <NavItem label="Getting started" />
+        <NavItem label="Tokens" />
+      </ul>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Active
+
+<ComponentPreview code={"import { NavItem } from \"@geeklego/ui\"\nimport { Grid } from \"lucide-react\"\n\n<ul role=\"tree\">\n  <NavItem label=\"Dashboard\" icon={<Grid size={14} />} isActive />\n</ul>"}>
+  <ul role="tree" className="flex flex-col gap-1 w-full max-w-[240px]">
+    <NavItem label="Active" icon={<Grid size={14} />} isActive />
+  </ul>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { NavItem } from \"@geeklego/ui\"\nimport { Settings } from \"lucide-react\"\n\n<ul role=\"tree\">\n  <NavItem label=\"Settings\" icon={<Settings size={14} />} disabled />\n</ul>"}>
+  <ul role="tree" className="flex flex-col gap-1 w-full max-w-[240px]">
+    <NavItem label="Disabled" icon={<Settings size={14} />} disabled />
+  </ul>
+</ComponentPreview>
+
+## Expandable
+
+<ComponentPreview code={"import { NavItem } from \"@geeklego/ui\"\nimport { Menu } from \"lucide-react\"\nimport { useState } from \"react\"\n\nfunction ExpandableNav() {\n  const [expanded, setExpanded] = useState(true)\n  return (\n    <ul role=\"tree\">\n      <NavItem\n        label=\"Components\"\n        icon={<Menu size={14} />}\n        isExpandable\n        isExpanded={expanded}\n        onToggle={() => setExpanded(!expanded)}\n      >\n        <NavItem label=\"Button\" />\n        <NavItem label=\"Input\" />\n        <NavItem label=\"NavItem\" isActive />\n      </NavItem>\n    </ul>\n  )\n}"}>
+  <ul role="tree" className="flex flex-col gap-1 w-full max-w-[240px]">
+    <NavItem
+      label="Components"
+      icon={<Menu size={14} />}
+      isExpandable
+      isExpanded={true}
+    >
+      <NavItem label="Button" />
+      <NavItem label="Input" />
+      <NavItem label="NavItem" isActive />
+    </NavItem>
+  </ul>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <ul role=\"tree\" className=\"flex flex-col gap-1\">\n    <NavItem label=\"Dashboard\" icon={<Grid size={14} />} isActive />\n    <NavItem label=\"Components\" icon={<Menu size={14} />} />\n    <NavItem label=\"Settings\" icon={<Settings size={14} />} disabled />\n  </ul>\n</div>"}>
+  <div data-theme="dark" className="p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <ul role="tree" className="flex flex-col gap-1">
+      <NavItem label="Dashboard" icon={<Grid size={14} />} isActive />
+      <NavItem label="Components" icon={<Menu size={14} />} />
+      <NavItem label="Documentation" icon={<List size={14} />} />
+      <NavItem label="Settings" icon={<Settings size={14} />} disabled />
+    </ul>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "label", type: "string", defaultValue: "—", description: "Text label for the nav item. Omit for icon-only or collapsed mode." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon element displayed before the label." },
+    { name: "isActive", type: "boolean", defaultValue: "false", description: "Whether this item is currently active/selected." },
+    { name: "isExpandable", type: "boolean", defaultValue: "false", description: "Whether this item is expandable (has children)." },
+    { name: "isExpanded", type: "boolean", defaultValue: "false", description: "Whether this expandable item is currently expanded. Controlled." },
+    { name: "onToggle", type: "() => void", defaultValue: "—", description: "Callback when the item is clicked." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Sub-items rendered when expanded." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Whether the item is disabled." },
+    { name: "href", type: "string", defaultValue: "—", description: "Href for navigation — renders as anchor if provided." },
+    { name: "badge", type: "ReactNode", defaultValue: "—", description: "Badge slot — displays a count or status indicator to the right of the label." },
+    { name: "action", type: "ReactNode", defaultValue: "—", description: "Hover-reveal action slot — displays a secondary action that fades in on group-hover." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org SiteNavigationElement Microdata on link items." },
+    { name: "innerTabIndex", type: "number", defaultValue: "—", description: "Override tabIndex on the inner focusable element. Used by useRovingTabindex in parent containers." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a `<li>` inside a `role="tree"` container — must always be wrapped in `<ul role="tree">`
+- When `href` is provided, renders as `<a>` — announces as a link; `isActive` sets `aria-current="page"`
+- When no `href`, renders as `<button>` — announces as a button
+- `isExpandable` adds `aria-expanded` and `aria-controls` on the trigger; sub-items have `role="group"`
+- `disabled` sets `aria-disabled="true"` on the inner element; the item is visually muted but may remain focusable
+- Icons are `aria-hidden="true"` — decorative, not announced by screen readers
+- Supports roving tabindex via `innerTabIndex` for arrow-key navigation in parent containers (e.g. Sidebar)
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the item (or use arrow keys with roving tabindex) |
+| Enter | Activates the link or toggles expansion |
+| Space | Toggles expansion on expandable items |
+| Arrow Down / Up | Navigates between items when roving tabindex is active |

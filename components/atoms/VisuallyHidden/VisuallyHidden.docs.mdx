@@ -1,0 +1,195 @@
+---
+title: VisuallyHidden
+description: Renders content that is invisible to sighted users but announced by screen readers and assistive technologies.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { VisuallyHidden } from \"@geeklego/ui\"\nimport { Search, Settings } from \"lucide-react\"\n\n{/* as=\"span\" (default) — safe in inline and block contexts */}\n<button type=\"button\" className=\"inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] transition-default focus-visible:outline-none focus-visible:focus-ring cursor-pointer\">\n  <Search size={16} aria-hidden=\"true\" />\n  <VisuallyHidden>Search</VisuallyHidden>\n</button>\n\n{/* as=\"div\" — block-level context */}\n<div>\n  <VisuallyHidden as=\"div\">Chart showing monthly revenue. Use the table below for details.</VisuallyHidden>\n</div>\n\n{/* as=\"p\" — paragraph in block container */}\n<nav aria-label=\"Primary\">\n  <VisuallyHidden as=\"p\">Primary navigation — 4 sections</VisuallyHidden>\n</nav>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">as="span" (default) — icon-only button</span>
+      <div className="flex items-center gap-3">
+        <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] transition-default focus-visible:outline-none focus-visible:focus-ring cursor-pointer">
+          <Search size={16} aria-hidden="true" />
+          <VisuallyHidden>Search</VisuallyHidden>
+        </button>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Search, button"</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">as="div" — block-level announcement</span>
+      <div className="flex items-center gap-3">
+        <div className="relative w-48 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] overflow-hidden">
+          <div className="absolute inset-y-0 start-0 bg-[var(--color-action-primary)] opacity-20 rounded-[var(--radius-component-md)]" style={{ width: '72%' }} />
+          <span className="absolute inset-0 flex items-center justify-center text-body-sm text-[var(--color-text-secondary)]">Chart (72%)</span>
+          <VisuallyHidden as="div">Chart showing monthly revenue. Use the data table below for details.</VisuallyHidden>
+        </div>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: chart description</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">as="p" — navigation landmark description</span>
+      <nav aria-label="Primary">
+        <VisuallyHidden as="p">Primary navigation — 5 links to main areas of the application.</VisuallyHidden>
+        <ul className="flex gap-3 text-body-sm text-[var(--color-text-secondary)]">
+          <li><a href="#" className="hover:text-[var(--color-text-primary)] transition-default">Home</a></li>
+          <li><a href="#" className="hover:text-[var(--color-text-primary)] transition-default">Docs</a></li>
+          <li><a href="#" className="hover:text-[var(--color-text-primary)] transition-default">API</a></li>
+          <li><a href="#" className="hover:text-[var(--color-text-primary)] transition-default">Blog</a></li>
+          <li><a href="#" className="hover:text-[var(--color-text-primary)] transition-default">Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Without VisuallyHidden
+
+<ComponentPreview code={"import { VisuallyHidden } from \"@geeklego/ui\"\nimport { Search } from \"lucide-react\"\n\n{/* ❌ Without — screen reader announces \"button\" only */}\n<button type=\"button\">\n  <Search size={16} aria-hidden=\"true\" />\n</button>\n\n{/* ✓ With — screen reader announces \"Search, button\" */}\n<button type=\"button\">\n  <Search size={16} aria-hidden=\"true\" />\n  <VisuallyHidden>Search</VisuallyHidden>\n</button>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border-2 border-[var(--color-status-error)] text-[var(--color-text-secondary)] cursor-pointer">
+        <Search size={16} aria-hidden="true" />
+      </button>
+      <div className="flex flex-col gap-1">
+        <span className="text-body-xs font-semibold text-[var(--color-status-error)]">Without VisuallyHidden</span>
+        <span className="text-body-xs font-mono text-[var(--color-status-error)] bg-[var(--color-bg-secondary)] border border-[var(--color-status-error)] rounded px-2 py-1">SR: "button"</span>
+      </div>
+    </div>
+    <div className="flex items-center gap-3">
+      <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border-2 border-[var(--color-status-success)] text-[var(--color-text-secondary)] cursor-pointer">
+        <Search size={16} aria-hidden="true" />
+        <VisuallyHidden>Search</VisuallyHidden>
+      </button>
+      <div className="flex flex-col gap-1">
+        <span className="text-body-xs font-semibold text-[var(--color-status-success)]">With VisuallyHidden</span>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Search, button"</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Use Cases
+
+<ComponentPreview code={"import { VisuallyHidden } from \"@geeklego/ui\"\nimport { Settings, Bell } from \"lucide-react\"\n\n{/* Short label — icon button */}\n<button type=\"button\" className=\"inline-flex items-center justify-center w-10 h-10 ...\">\n  <Settings size={16} aria-hidden=\"true\" />\n  <VisuallyHidden>Open settings</VisuallyHidden>\n</button>\n\n{/* Status phrase — live region */}\n<div role=\"status\" aria-live=\"polite\">\n  <span className=\"skeleton w-4 h-4 rounded-full\" />\n  <VisuallyHidden>Loading results, please wait…</VisuallyHidden>\n</div>\n\n{/* Count — notification badge */}\n<button type=\"button\">\n  <Bell size={16} aria-hidden=\"true\" />\n  <VisuallyHidden>Notifications, 3 unread</VisuallyHidden>\n</button>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">Short label</span>
+      <div className="flex items-center gap-3">
+        <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] transition-default focus-visible:outline-none focus-visible:focus-ring cursor-pointer">
+          <Settings size={16} aria-hidden="true" />
+          <VisuallyHidden>Open settings</VisuallyHidden>
+        </button>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Open settings, button"</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">Status phrase</span>
+      <div className="flex items-center gap-3">
+        <div role="status" aria-live="polite" className="inline-flex items-center gap-2 text-body-sm text-[var(--color-text-secondary)]">
+          <span className="skeleton w-4 h-4 rounded-full flex-shrink-0" />
+          <VisuallyHidden>Loading results, please wait…</VisuallyHidden>
+        </div>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Loading results, please wait…"</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">Count announcement</span>
+      <div className="flex items-center gap-3">
+        <span className="relative inline-block">
+          <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] transition-default focus-visible:outline-none focus-visible:focus-ring cursor-pointer">
+            <Bell size={16} aria-hidden="true" />
+            <VisuallyHidden>Notifications, 3 unread</VisuallyHidden>
+          </button>
+          <span aria-hidden="true" className="absolute -top-1 -end-1 inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold rounded-full bg-[var(--color-status-error)] text-[var(--color-text-on-status)]">3</span>
+        </span>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Notifications, 3 unread, button"</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Live Regions
+
+<ComponentPreview code={"import { VisuallyHidden } from \"@geeklego/ui\"\n\n{/* Polite — announced after current speech */}\n<div role=\"status\" aria-live=\"polite\" aria-atomic=\"true\">\n  <span aria-hidden=\"true\" className=\"w-2 h-2 rounded-full bg-[var(--color-status-success)]\" />\n  Saved\n  <VisuallyHidden>Changes saved successfully</VisuallyHidden>\n</div>\n\n{/* Assertive — interrupts current speech */}\n<div role=\"alert\" aria-live=\"assertive\">\n  <span aria-hidden=\"true\">⚠</span>\n  Session expiring\n  <VisuallyHidden>Warning: Your session will expire in 2 minutes. Save your work.</VisuallyHidden>\n</div>\n\n{/* Static — read in document order */}\n<div>\n  <span aria-hidden=\"true\">42</span>\n  <span aria-hidden=\"true\"> issues</span>\n  <VisuallyHidden>42 open issues in this repository</VisuallyHidden>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">aria-live="polite" — status update</span>
+      <div className="flex items-center gap-3">
+        <div role="status" aria-live="polite" aria-atomic="true" className="inline-flex items-center gap-2 px-3 py-2 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-body-sm text-[var(--color-text-secondary)] w-fit">
+          <span aria-hidden="true" className="w-2 h-2 rounded-full bg-[var(--color-status-success)] flex-shrink-0" />Saved<VisuallyHidden>Changes saved successfully</VisuallyHidden>
+        </div>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "Changes saved successfully"</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">aria-live="assertive" — urgent alert</span>
+      <div className="flex items-center gap-3">
+        <div role="alert" aria-live="assertive" className="inline-flex items-center gap-2 px-3 py-2 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-status-error)] text-body-sm text-[var(--color-status-error)] w-fit">
+          <span aria-hidden="true">⚠</span>Session expiring<VisuallyHidden>Warning: Your session will expire in 2 minutes. Save your work.</VisuallyHidden>
+        </div>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: warning announcement</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)] font-semibold">Static — read in document order</span>
+      <div className="flex items-center gap-3">
+        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-body-sm w-fit">
+          <span aria-hidden="true" className="font-bold text-[var(--color-text-primary)]">42</span><span aria-hidden="true" className="text-[var(--color-text-secondary)]"> issues</span><VisuallyHidden>42 open issues in this repository</VisuallyHidden>
+        </div>
+        <span className="text-body-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded px-2 py-1">SR: "42 open issues in this repository"</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { VisuallyHidden } from \"@geeklego/ui\"\nimport { Search } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <button type=\"button\" className=\"inline-flex items-center justify-center w-10 h-10 ...\">\n    <Search size={16} aria-hidden=\"true\" />\n    <VisuallyHidden>Search</VisuallyHidden>\n  </button>\n  <div role=\"status\" aria-live=\"polite\">\n    <VisuallyHidden>Syncing data…</VisuallyHidden>\n    <span aria-hidden=\"true\">Syncing…</span>\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <p className="text-body-sm text-[var(--color-text-secondary)]">VisuallyHidden is theme-agnostic — it has no visual presence.</p>
+    <div className="flex items-center gap-3">
+      <button type="button" className="inline-flex items-center justify-center w-10 h-10 rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)] transition-default focus-visible:outline-none focus-visible:focus-ring cursor-pointer">
+        <Search size={16} aria-hidden="true" />
+        <VisuallyHidden>Search</VisuallyHidden>
+      </button>
+      <div role="status" aria-live="polite" className="flex items-center gap-2 text-body-sm text-[var(--color-text-secondary)]">
+        <span className="skeleton w-4 h-4 rounded-full flex-shrink-0" />
+        <VisuallyHidden>Syncing data…</VisuallyHidden>
+        <span aria-hidden="true">Syncing…</span>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "as", type: "'span' | 'div' | 'p'", defaultValue: "'span'", description: "HTML element to render. Use 'span' for inline contexts, 'div' for block contexts, 'p' when the content is a paragraph." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Content hidden from sighted users but announced by assistive technology. Required." },
+  ]}
+/>
+
+## Accessibility
+
+VisuallyHidden implements the `.sr-only` technique (position: absolute; 1×1px; clip: rect(0,0,0,0)) — content is fully present in the accessibility tree and read in document order.
+
+| WCAG Criterion | Level | How VisuallyHidden helps |
+|---|---|---|
+| SC 1.1.1 Non-text Content | A | Provides text alternative for icon-only controls |
+| SC 1.3.1 Info and Relationships | A | Makes visually implicit information available programmatically |
+| SC 4.1.3 Status Messages | AA | Text placed in `role="status"` / `aria-live` regions is announced without focus change |
+
+### Keyboard Interaction
+
+VisuallyHidden is a non-interactive element — no keyboard interaction.
+
+| Key | Effect |
+|-----|--------|
+| — | No keyboard interaction. Content is read in document order. |

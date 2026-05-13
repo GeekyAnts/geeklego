@@ -1,0 +1,132 @@
+---
+title: ProgressBar
+description: Accessible progress indicator with determinate and indeterminate states, color variants, and label display.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { ProgressBar } from \"@geeklego/ui\"\n\n<ProgressBar value={65} label=\"Default\" />\n<ProgressBar value={65} variant=\"success\" label=\"Success\" />\n<ProgressBar value={65} variant=\"warning\" label=\"Warning\" />\n<ProgressBar value={65} variant=\"error\" label=\"Error\" />\n<ProgressBar value={65} variant=\"neutral\" label=\"Neutral\" />"}>
+  <div className="w-80 flex flex-col gap-4">
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">default</span>
+      <ProgressBar value={65} label="Default progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">success</span>
+      <ProgressBar value={65} variant="success" label="Success progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">warning</span>
+      <ProgressBar value={65} variant="warning" label="Warning progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">error</span>
+      <ProgressBar value={65} variant="error" label="Error progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">neutral</span>
+      <ProgressBar value={65} variant="neutral" label="Neutral progress" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { ProgressBar } from \"@geeklego/ui\"\n\n<ProgressBar value={55} size=\"xs\" label=\"Extra small\" />\n<ProgressBar value={55} size=\"sm\" label=\"Small\" />\n<ProgressBar value={55} size=\"md\" label=\"Medium\" />\n<ProgressBar value={55} size=\"lg\" label=\"Large\" />"}>
+  <div className="w-80 flex flex-col gap-5">
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">xs</span>
+      <ProgressBar value={55} size="xs" label="XS size progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">sm</span>
+      <ProgressBar value={55} size="sm" label="SM size progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">md</span>
+      <ProgressBar value={55} size="md" label="MD size progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">lg</span>
+      <ProgressBar value={55} size="lg" label="LG size progress" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Indeterminate
+
+<ComponentPreview code={"import { ProgressBar } from \"@geeklego/ui\"\n\n{/* Omit value for indeterminate/loading state */}\n<ProgressBar label=\"Loading\u2026\" showLabel />"}>
+  <div className="w-80">
+    <ProgressBar label="Loading…" showLabel />
+  </div>
+</ComponentPreview>
+
+## With Label
+
+<ComponentPreview code={"import { ProgressBar } from \"@geeklego/ui\"\n\n<ProgressBar value={68} showLabel showValue label=\"Upload progress\" />\n<ProgressBar value={100} variant=\"success\" showLabel showValue label=\"Upload complete\" />\n<ProgressBar value={45} variant=\"error\" showLabel showValue label=\"Upload failed\" />"}>
+  <div className="w-80 flex flex-col gap-4">
+    <ProgressBar value={68} showLabel showValue label="Upload progress" />
+    <ProgressBar value={100} variant="success" showLabel showValue label="Upload complete" />
+    <ProgressBar value={45} variant="error" showLabel showValue label="Upload failed" />
+  </div>
+</ComponentPreview>
+
+## Rounded
+
+<ComponentPreview code={"import { ProgressBar } from \"@geeklego/ui\"\n\n{/* Rounded — default, pill-shaped ends */}\n<ProgressBar value={55} label=\"Rounded\" />\n\n{/* Squared — flush ends, for full-width page loaders */}\n<ProgressBar value={55} rounded={false} label=\"Squared\" />"}>
+  <div className="w-80 flex flex-col gap-4">
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">rounded (default)</span>
+      <ProgressBar value={55} label="Rounded progress" />
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">squared</span>
+      <ProgressBar value={55} rounded={false} label="Squared progress" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-[var(--color-bg-primary)] p-8 rounded-xl max-w-2xl\">\n  <ProgressBar value={65} label=\"Default\" showLabel showValue />\n  <ProgressBar value={65} variant=\"success\" label=\"Success\" showLabel showValue />\n  <ProgressBar label=\"Indeterminate\" showLabel />\n</div>"}>
+  <div data-theme="dark" className="bg-[var(--color-bg-primary)] p-8 rounded-xl max-w-2xl w-full">
+    <div className="w-80 flex flex-col gap-5">
+      <ProgressBar value={65} label="Default progress" showLabel showValue />
+      <ProgressBar value={65} variant="success" label="Success progress" showLabel showValue />
+      <ProgressBar value={65} variant="warning" label="Warning progress" showLabel showValue />
+      <ProgressBar value={65} variant="error" label="Error progress" showLabel showValue />
+      <ProgressBar label="Indeterminate loading" showLabel />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "number", defaultValue: "—", description: "Current progress value (0–max). Omit for indeterminate/loading state." },
+    { name: "max", type: "number", defaultValue: "100", description: "Maximum value the progress can reach." },
+    { name: "variant", type: "'default' | 'success' | 'warning' | 'error' | 'neutral'", defaultValue: "'default'", description: "Visual color variant signalling the semantic meaning of the progress." },
+    { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Track height — controls the visual weight of the bar." },
+    { name: "rounded", type: "boolean", defaultValue: "true", description: "Pill-shaped track and fill ends. Set to false for flush/squared bars (e.g. page loaders)." },
+    { name: "label", type: "string", defaultValue: "—", description: "Human-readable label. Always used as aria-label. Also rendered visually when showLabel is true." },
+    { name: "showLabel", type: "boolean", defaultValue: "false", description: "Render the label string as visible text above the bar." },
+    { name: "showValue", type: "boolean", defaultValue: "false", description: "Render the computed percentage to the right of the label row. Hidden in indeterminate state." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `role="progressbar"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and `aria-valuetext`
+- `label` is used as `aria-label` — always provide a descriptive label
+- Indeterminate state (no `value`) sets `aria-busy="true"` and omits `aria-valuenow`
+- For page-level loading, consider placing in a `role="status"` live region so changes are announced
+- Purely visual — no keyboard interaction
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| — | No keyboard interaction — display-only component |

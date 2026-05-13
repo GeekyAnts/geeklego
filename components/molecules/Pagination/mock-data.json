@@ -1,0 +1,41 @@
+{
+  "default": {
+    "totalPages": 10,
+    "currentPage": 5
+  },
+  "variants": [
+    { "variant": "default", "totalPages": 10, "currentPage": 5, "label": "Default — numbered pages with ellipsis" },
+    { "variant": "simple",  "totalPages": 10, "currentPage": 5, "label": "Simple — prev/next with page info" }
+  ],
+  "sizes": [
+    { "size": "sm", "totalPages": 7, "currentPage": 3 },
+    { "size": "md", "totalPages": 7, "currentPage": 3 },
+    { "size": "lg", "totalPages": 7, "currentPage": 3 }
+  ],
+  "states": {
+    "first_page":       { "totalPages": 10, "currentPage": 1,  "note": "prev button disabled" },
+    "middle_page":      { "totalPages": 10, "currentPage": 5,  "note": "both directions active" },
+    "last_page":        { "totalPages": 10, "currentPage": 10, "note": "next button disabled" },
+    "few_pages":        { "totalPages": 4,  "currentPage": 2,  "note": "no ellipsis needed" },
+    "single_page":      { "totalPages": 1,  "currentPage": 1,  "note": "both nav buttons disabled" },
+    "with_first_last":  { "totalPages": 20, "currentPage": 10, "showFirstLast": true }
+  },
+  "edge_cases": {
+    "no_siblings":      { "totalPages": 20, "currentPage": 10, "siblingCount": 0, "note": "minimal range — only current page shown between dots" },
+    "two_siblings":     { "totalPages": 20, "currentPage": 10, "siblingCount": 2, "note": "wider range before ellipsis appears" },
+    "custom_i18n":      {
+      "totalPages": 10,
+      "currentPage": 5,
+      "i18nStrings": {
+        "navLabel":   "Seitennavigation",
+        "prevLabel":  "Vorherige Seite",
+        "nextLabel":  "Nächste Seite",
+        "firstLabel": "Erste Seite",
+        "lastLabel":  "Letzte Seite"
+      }
+    },
+    "ellipsis_left":    { "totalPages": 20, "currentPage": 18, "note": "current near end — ellipsis on left only" },
+    "ellipsis_right":   { "totalPages": 20, "currentPage": 2,  "note": "current near start — ellipsis on right only" },
+    "ellipsis_both":    { "totalPages": 50, "currentPage": 25, "note": "current in middle — ellipsis on both sides" }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "default": {
+    "orientation": "horizontal",
+    "variant": "solid"
+  },
+  "variants": [
+    { "variant": "solid" },
+    { "variant": "dashed" },
+    { "variant": "dotted" }
+  ],
+  "sizes": [
+    { "orientation": "horizontal" },
+    { "orientation": "vertical" }
+  ],
+  "states": {},
+  "edge_cases": {
+    "verticalDashed": { "orientation": "vertical", "variant": "dashed" },
+    "verticalDotted": { "orientation": "vertical", "variant": "dotted" }
+  }
+}

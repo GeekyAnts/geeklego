@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geeklego — Token Editor</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><circle cx='90' cy='90' r='90' fill='%23f97316'/><text x='90' y='120' text-anchor='middle' font-size='80' font-family='sans-serif' fill='white'>G</text></svg>" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Geeklego Token Editor",
+    "description": "Visual editor for the Geeklego design system — edit colors, typography, spacing, and export geeklego.css.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern browser with JavaScript enabled.",
+    "url": "https://github.com/nicobailon/geeklego",
+    "author": {
+      "@type": "Organization",
+      "name": "Geeklego"
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'system-ui', 'sans-serif'],
+            mono: ['Geist Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --surface-0: #f9fafb;
+      --surface-1: #ffffff;
+      --surface-2: #f3f4f6;
+      --surface-3: #ffffff;
+      --border-subtle: #f3f4f6;
+      --border-default: #e5e5e5;
+      --border-strong: #d1d5db;
+      --text-primary: #0a0a0a;
+      --text-secondary: #171717;
+      --text-tertiary: #737373;
+      --primary: #155dfc;
+      --brand: #f97316;
+    }
+
+    [data-theme="dark"] {
+      --surface-0: #030712;
+      --surface-1: #0a0a0a;
+      --surface-2: #111111;
+      --surface-3: #1e1e1e;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.16);
+      --text-primary: #f9fafb;
+      --text-secondary: #e5e7eb;
+      --text-tertiary: #a0a0a0;
+    }
+
+    html { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Geist', system-ui, sans-serif;
+      background: var(--surface-0);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      height: 100%;
+    }
+
+    /* Accessibility — self-contained, no geeklego.css dependency */
+    nav button:focus-visible,
+    aside button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+    [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2e2e2e; }
+    [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+    /* Selection */
+    ::selection { background: rgba(21,93,252,0.15); color: var(--text-primary); }
+
+    /* Range inputs */
+    input[type=range] { accent-color: var(--primary); }
+
+    /* Color inputs */
+    input[type=color] { -webkit-appearance: none; padding: 0; border: none; cursor: pointer; }
+    input[type=color]::-webkit-color-swatch-wrapper { padding: 0; }
+    input[type=color]::-webkit-color-swatch { border: none; border-radius: 6px; }
+
+    /* Shared input style */
+    .gl-input {
+      background: var(--surface-3);
+      border: 1px solid var(--border-default);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--text-primary);
+      font-size: 12px;
+      font-family: 'Geist Mono', monospace;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .gl-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(21,93,252,0.12);
+    }
+
+    /* Shared select style */
+    select.gl-select {
+      background: var(--surface-3);
+      border: 1px solid var(--border-default);
+      border-radius: 8px;
+      padding: 5px 8px;
+      color: var(--text-primary);
+      font-size: 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    select.gl-select:focus { border-color: var(--primary); }
+
+    /* Card surface */
+    .gl-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-default);
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* Ghost button */
+    .gl-btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border-default);
+      border-radius: 8px;
+      padding: 5px 12px;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .gl-btn-ghost:hover {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+    }
+
+    /* Primary button */
+    .gl-btn-primary {
+      background: linear-gradient(to bottom, #1a68fd, #155dfc);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 16px;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 3px 8px rgba(21,93,252,0.3);
+      transition: opacity 0.15s, box-shadow 0.15s;
+    }
+    .gl-btn-primary:hover {
+      opacity: 0.92;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(21,93,252,0.4);
+    }
+    .gl-btn-primary:disabled { opacity: 0.5; cursor: wait; }
+  </style>
+</head>
+<body>
+  <a
+    href="#main-content"
+    style="position:absolute;top:8px;left:8px;z-index:9999;padding:6px 14px;border-radius:6px;background:var(--surface-1);color:var(--text-primary);border:2px solid var(--primary);text-decoration:none;font-size:13px;font-weight:500;transform:translateY(-120%);transition:transform 0.1s;"
+    onfocus="this.style.transform='translateY(0)'"
+    onblur="this.style.transform='translateY(-120%)'"
+  >Skip to main content</a>
+  <div id="root"></div>
+  <script type="module" src="/main.tsx"></script>
+</body>
+</html>

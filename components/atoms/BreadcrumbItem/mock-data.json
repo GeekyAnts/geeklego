@@ -1,0 +1,26 @@
+{
+  "default": {
+    "href": "#",
+    "children": "Products"
+  },
+  "variants": [
+    { "href": "#", "children": "Home" },
+    { "current": true, "children": "Dashboard" },
+    { "href": "#", "disabled": true, "children": "Settings" }
+  ],
+  "sizes": [
+    { "size": "sm", "href": "#", "children": "Small" },
+    { "size": "md", "href": "#", "children": "Medium" },
+    { "size": "lg", "href": "#", "children": "Large" }
+  ],
+  "states": {
+    "default": { "href": "#", "children": "Home" },
+    "current": { "current": true, "children": "Dashboard" },
+    "disabled": { "href": "#", "disabled": true, "children": "Settings" }
+  },
+  "edge_cases": [
+    { "href": "#", "children": "A" },
+    { "href": "#", "children": "Very Long Breadcrumb Item Label That May Wrap" },
+    { "current": true, "children": "Current with no href" }
+  ]
+}

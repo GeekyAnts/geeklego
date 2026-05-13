@@ -1,0 +1,47 @@
+{
+  "default": {
+    "value": 65,
+    "max": 100,
+    "variant": "default",
+    "size": "md",
+    "showValue": true,
+    "label": "Upload progress"
+  },
+
+  "variants": [
+    { "variant": "default", "value": 65, "size": "lg", "showValue": true, "label": "Default" },
+    { "variant": "success", "value": 80, "size": "lg", "showValue": true, "label": "Success" },
+    { "variant": "warning", "value": 45, "size": "lg", "showValue": true, "label": "Warning" },
+    { "variant": "error",   "value": 20, "size": "lg", "showValue": true, "label": "Error" }
+  ],
+
+  "sizes": [
+    { "size": "xs", "value": 65, "label": "Extra small 16px" },
+    { "size": "sm", "value": 65, "label": "Small 24px" },
+    { "size": "md", "value": 65, "showValue": true, "label": "Medium 40px" },
+    { "size": "lg", "value": 65, "showValue": true, "label": "Large 64px" },
+    { "size": "xl", "value": 65, "showValue": true, "label": "Extra large 80px" }
+  ],
+
+  "states": {
+    "zero":                 { "value": 0,   "size": "lg", "showValue": true, "label": "Empty" },
+    "in_progress":          { "value": 65,  "size": "lg", "showValue": true, "label": "In progress" },
+    "complete":             { "value": 100, "size": "lg", "variant": "success", "showValue": true, "label": "Complete" },
+    "indeterminate":        { "size": "lg", "label": "Loading" },
+    "disabled_determinate": { "value": 40,  "size": "lg", "showValue": true, "disabled": true, "label": "Paused" },
+    "disabled_indeterminate":{ "size": "lg", "disabled": true, "label": "Paused loading" }
+  },
+
+  "edge_cases": [
+    { "value": 0,   "size": "md", "showValue": true, "label": "Zero — empty ring" },
+    { "value": 1,   "size": "md", "showValue": true, "label": "1% — minimal arc visible" },
+    { "value": 50,  "size": "md", "showValue": true, "label": "Exactly half" },
+    { "value": 99,  "size": "md", "showValue": true, "label": "Near complete" },
+    { "value": 100, "size": "md", "showValue": true, "label": "Full ring" },
+    { "value": 150, "size": "md", "showValue": true, "label": "Over max — clamped to 100%" },
+    { "value": -10, "size": "md", "showValue": true, "label": "Negative — clamped to 0%" },
+    { "value": 33.7,"size": "lg", "showValue": true, "label": "Fractional value rounded to 34%" },
+    { "size": "xs", "label": "Indeterminate xs — no center label at this size" },
+    { "size": "sm", "label": "Indeterminate sm — no center label at this size" }
+  ]
+}

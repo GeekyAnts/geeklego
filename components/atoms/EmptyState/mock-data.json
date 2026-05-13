@@ -1,0 +1,76 @@
+{
+  "default": {
+    "title": "No messages yet",
+    "description": "When you receive messages, they'll appear here.",
+    "variant": "default",
+    "size": "md"
+  },
+  "variants": [
+    {
+      "variant": "default",
+      "title": "No results found",
+      "description": "Try adjusting your search or filters."
+    },
+    {
+      "variant": "ghost",
+      "title": "Your library is empty",
+      "description": "Add your first item to get started."
+    }
+  ],
+  "sizes": [
+    {
+      "size": "sm",
+      "title": "Nothing here yet",
+      "description": "Start by creating your first item."
+    },
+    {
+      "size": "md",
+      "title": "Nothing here yet",
+      "description": "Start by creating your first item."
+    },
+    {
+      "size": "lg",
+      "title": "Nothing here yet",
+      "description": "Start by creating your first item."
+    }
+  ],
+  "states": {
+    "titleOnly": {
+      "title": "No data available"
+    },
+    "titleAndDescription": {
+      "title": "No notifications",
+      "description": "You're all caught up! Check back later."
+    },
+    "withIcon": {
+      "title": "No projects yet",
+      "description": "Create a project to start collaborating with your team."
+    },
+    "full": {
+      "title": "No favourites saved",
+      "description": "Star items to find them quickly later."
+    },
+    "error": {
+      "title": "Unable to load content",
+      "description": "Check your internet connection and try again.",
+      "variant": "ghost"
+    }
+  },
+  "edge_cases": {
+    "longTitle": {
+      "title": "No items match your current search criteria and active filters",
+      "description": "Short description."
+    },
+    "longDescription": {
+      "title": "Nothing found",
+      "description": "We searched through all of your content and couldn't find anything that matches your query. Try a different keyword, or clear your filters to see everything."
+    },
+    "noDescription": {
+      "title": "Empty"
+    },
+    "noIcon": {
+      "title": "No records",
+      "description": "Records will appear here once they are added."
+    }
+  }
+}

@@ -1,0 +1,102 @@
+---
+title: Toast
+description: Floating transient notification with 4 severity variants, 4 appearance treatments, optional auto-dismiss countdown, and accessible live regions.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Toast } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <Toast variant=\"info\" appearance=\"subtle\" title=\"Info\" description=\"Your export has been queued and will be ready shortly.\" />\n  <Toast variant=\"success\" appearance=\"subtle\" title=\"Success\" description=\"Changes saved successfully. All data is up to date.\" />\n  <Toast variant=\"warning\" appearance=\"subtle\" title=\"Warning\" description=\"Your session expires in 5 minutes. Save your work.\" />\n  <Toast variant=\"error\" appearance=\"subtle\" title=\"Error\" description=\"Failed to connect. Check your connection and try again.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <Toast variant="info" appearance="subtle" title="Info" description="Your export has been queued and will be ready shortly." />
+    <Toast variant="success" appearance="subtle" title="Success" description="Changes saved successfully. All data is up to date." />
+    <Toast variant="warning" appearance="subtle" title="Warning" description="Your session expires in 5 minutes. Save your work." />
+    <Toast variant="error" appearance="subtle" title="Error" description="Failed to connect. Check your connection and try again." />
+  </div>
+</ComponentPreview>
+
+## Appearances
+
+<ComponentPreview code={"import { Toast } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <Toast variant=\"info\" appearance=\"solid\" title=\"Solid\" description=\"Filled status background with high-contrast inverse text.\" />\n  <Toast variant=\"info\" appearance=\"subtle\" title=\"Subtle\" description=\"Muted tinted background with a status border.\" />\n  <Toast variant=\"info\" appearance=\"outline\" title=\"Outline\" description=\"Surface-raised background with a full status border.\" />\n  <Toast variant=\"info\" appearance=\"left-accent\" title=\"Left accent\" description=\"Tinted background with a bold inline-start status bar.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <Toast variant="info" appearance="solid" title="Solid" description="Filled status background with high-contrast inverse text." />
+    <Toast variant="info" appearance="subtle" title="Subtle" description="Muted tinted background with a status border." />
+    <Toast variant="info" appearance="outline" title="Outline" description="Surface-raised background with a full status border." />
+    <Toast variant="info" appearance="left-accent" title="Left accent" description="Tinted background with a bold inline-start status bar." />
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Toast, Button } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <Toast variant=\"info\" appearance=\"subtle\" title=\"Dismissible\" description=\"Dismiss button is visible on the trailing edge.\" dismissible />\n  <Toast variant=\"success\" appearance=\"subtle\" title=\"Non-dismissible\" description=\"No dismiss button — consumer controls removal.\" dismissible={false} />\n  <Toast variant=\"info\" appearance=\"subtle\" title=\"No icon\" description=\"showIcon=false suppresses the leading status icon.\" showIcon={false} />\n  <Toast\n    variant=\"warning\"\n    appearance=\"subtle\"\n    title=\"With actions\"\n    description=\"Actions slot rendered below the description.\"\n    actions={<div className=\"flex gap-2\"><Button variant=\"ghost\" size=\"sm\">Dismiss</Button><Button variant=\"link\" size=\"sm\">Save now</Button></div>}\n  />\n  <Toast variant=\"error\" appearance=\"subtle\" description=\"Description only — no title, sits flush to the top of the content area.\" />\n  <Toast variant=\"success\" appearance=\"subtle\" description=\"Icon and description only, no title.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <Toast variant="info" appearance="subtle" title="Dismissible" description="Dismiss button is visible on the trailing edge." dismissible />
+    <Toast variant="success" appearance="subtle" title="Non-dismissible" description="No dismiss button — consumer controls removal." dismissible={false} />
+    <Toast variant="info" appearance="subtle" title="No icon" description="showIcon=false suppresses the leading status icon." showIcon={false} />
+    <Toast
+      variant="warning"
+      appearance="subtle"
+      title="With actions"
+      description="Actions slot rendered below the description."
+      actions={
+        <div className="flex gap-2">
+          <Button variant="ghost" size="sm">Dismiss</Button>
+          <Button variant="link" size="sm">Save now</Button>
+        </div>
+      }
+    />
+    <Toast variant="error" appearance="subtle" description="Description only — no title, sits flush to the top of the content area." />
+    <Toast variant="success" appearance="subtle" description="Icon and description only, no title." />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Toast } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Toast variant=\"info\" appearance=\"subtle\" title=\"Info — dark mode\" description=\"Tokens resolve to the dark-mode palette via semantic cascade.\" />\n  <Toast variant=\"success\" appearance=\"subtle\" title=\"Success — dark mode\" description=\"Tokens resolve to the dark-mode palette via semantic cascade.\" />\n  <Toast variant=\"warning\" appearance=\"subtle\" title=\"Warning — dark mode\" description=\"Tokens resolve to the dark-mode palette via semantic cascade.\" />\n  <Toast variant=\"error\" appearance=\"subtle\" title=\"Error — dark mode\" description=\"Tokens resolve to the dark-mode palette via semantic cascade.\" />\n  <Toast variant=\"info\" appearance=\"solid\" title=\"Solid in dark mode\" description=\"Solid appearance maintains contrast in dark mode.\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Toast variant="info" appearance="subtle" title="Info — dark mode" description="Tokens resolve to the dark-mode palette via semantic cascade." />
+    <Toast variant="success" appearance="subtle" title="Success — dark mode" description="Tokens resolve to the dark-mode palette via semantic cascade." />
+    <Toast variant="warning" appearance="subtle" title="Warning — dark mode" description="Tokens resolve to the dark-mode palette via semantic cascade." />
+    <Toast variant="error" appearance="subtle" title="Error — dark mode" description="Tokens resolve to the dark-mode palette via semantic cascade." />
+    <Toast variant="info" appearance="solid" title="Solid in dark mode" description="Solid appearance maintains contrast in dark mode." />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'info' | 'success' | 'warning' | 'error'", defaultValue: "'info'", description: "Semantic status intent. Controls colour palette, default icon, and ARIA live region assertiveness. error/warning use role='alert' (assertive); info/success use role='status' (polite)." },
+    { name: "appearance", type: "'solid' | 'subtle' | 'outline' | 'left-accent'", defaultValue: "'subtle'", description: "Visual treatment strategy. solid — filled status background. subtle — muted tinted background + status border. outline — surface-raised background + full border. left-accent — tinted background + bold inline-start bar." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Component scale." },
+    { name: "title", type: "string", defaultValue: "—", description: "Optional bold title line rendered above the description." },
+    { name: "description", type: "ReactNode", defaultValue: "—", description: "Toast body content. Accepts a string or any React node." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Override the leading status icon. Pass null to suppress the icon without affecting showIcon." },
+    { name: "showIcon", type: "boolean", defaultValue: "true", description: "Whether to render the leading status icon." },
+    { name: "dismissible", type: "boolean", defaultValue: "true", description: "Whether to render a dismiss button on the trailing edge." },
+    { name: "onDismiss", type: "() => void", defaultValue: "—", description: "Called when the toast is dismissed manually or via auto-timeout." },
+    { name: "duration", type: "number", defaultValue: "0", description: "Auto-dismiss delay in milliseconds. 0 or undefined disables auto-dismiss." },
+    { name: "showProgress", type: "boolean", defaultValue: "false", description: "Show a countdown progress bar at the bottom edge. Only visible when duration is greater than 0." },
+    { name: "actions", type: "ReactNode", defaultValue: "—", description: "Optional action slot rendered below the description. Intended for one or two Button or Link nodes." },
+    { name: "i18nStrings", type: "ToastI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the dismiss button aria-label." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="status"` for `info` and `success` variants — polite live region, screen reader waits for a reading pause before announcing
+- `role="alert"` for `error` and `warning` variants — assertive live region, interrupts the screen reader immediately
+- Dismiss button is icon-only with an accessible `aria-label` via `i18nStrings.dismissLabel`
+- Status icon and progress bar are `aria-hidden="true"` — decorative, not read by screen readers
+- When `dismissible={false}`, no interactive element is present and the toast has no Tab stop
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the dismiss button (when present) |
+| Enter | Activates the dismiss button |
+| Space | Activates the dismiss button |

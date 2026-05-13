@@ -1,0 +1,58 @@
+{
+  "default": {
+    "label": "Dashboard",
+    "icon": "LayoutGrid"
+  },
+  "variants": {
+    "with_icon": {
+      "label": "Components",
+      "icon": "Box"
+    },
+    "without_icon": {
+      "label": "Getting started"
+    },
+    "expandable": {
+      "label": "Documentation",
+      "icon": "BookOpen",
+      "isExpandable": true,
+      "isExpanded": false
+    },
+    "with_href": {
+      "label": "External docs",
+      "icon": "BookOpen",
+      "href": "/docs"
+    }
+  },
+  "states": {
+    "active": {
+      "label": "Dashboard",
+      "icon": "LayoutGrid",
+      "isActive": true
+    },
+    "disabled": {
+      "label": "Settings",
+      "icon": "Settings",
+      "disabled": true
+    },
+    "expanded": {
+      "label": "Components",
+      "icon": "Box",
+      "isExpandable": true,
+      "isExpanded": true,
+      "children": [
+        { "label": "Button" },
+        { "label": "Input" },
+        { "label": "NavItem", "isActive": true }
+      ]
+    }
+  },
+  "edge_cases": {
+    "long_label": {
+      "label": "This is a very long navigation item label that should truncate gracefully",
+      "icon": "Star"
+    },
+    "no_icon": {
+      "label": "Plain text item"
+    }
+  }
+}

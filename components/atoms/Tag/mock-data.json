@@ -1,0 +1,40 @@
+{
+  "default": {
+    "children": "Category",
+    "variant": "soft",
+    "color": "default",
+    "size": "md"
+  },
+  "variants": [
+    { "variant": "solid", "color": "brand", "children": "Solid Brand" },
+    { "variant": "soft", "color": "brand", "children": "Soft Brand" },
+    { "variant": "outline", "color": "brand", "children": "Outline Brand" },
+    { "variant": "solid", "color": "success", "children": "Published" },
+    { "variant": "soft", "color": "warning", "children": "Draft" },
+    { "variant": "outline", "color": "error", "children": "Deprecated" },
+    { "variant": "soft", "color": "info", "children": "Documentation" }
+  ],
+  "sizes": [
+    { "size": "sm", "children": "Small Tag" },
+    { "size": "md", "children": "Medium Tag" }
+  ],
+  "states": {
+    "static": { "children": "React", "color": "brand" },
+    "linked": { "children": "Design Systems", "color": "info", "href": "/topics/design-systems" },
+    "removable": { "children": "TypeScript", "color": "success" },
+    "withIcon": { "children": "Featured", "color": "brand" }
+  },
+  "edge_cases": {
+    "empty_string": { "children": "" },
+    "very_long_string": { "children": "This is an extremely long tag label that should be truncated by the content flexibility system to prevent layout breakage" },
+    "icon_only": { "children": "", "color": "brand" },
+    "all_colors_solid": [
+      { "variant": "solid", "color": "default", "children": "Default" },
+      { "variant": "solid", "color": "brand", "children": "Brand" },
+      { "variant": "solid", "color": "success", "children": "Success" },
+      { "variant": "solid", "color": "warning", "children": "Warning" },
+      { "variant": "solid", "color": "error", "children": "Error" },
+      { "variant": "solid", "color": "info", "children": "Info" }
+    ]
+  }
+}

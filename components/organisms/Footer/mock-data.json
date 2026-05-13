@@ -1,0 +1,84 @@
+{
+  "default": {
+    "size": "md",
+    "schema": false,
+    "brand": {
+      "href": "/",
+      "tagline": "Design system for humans."
+    },
+    "navColumns": [
+      {
+        "heading": "Product",
+        "navAriaLabel": "Product navigation",
+        "links": [
+          { "label": "Features", "href": "/features" },
+          { "label": "Pricing", "href": "/pricing" },
+          { "label": "Changelog", "href": "/changelog" },
+          { "label": "Roadmap", "href": "/roadmap" }
+        ]
+      },
+      {
+        "heading": "Resources",
+        "navAriaLabel": "Resources navigation",
+        "links": [
+          { "label": "Documentation", "href": "/docs" },
+          { "label": "Blog", "href": "/blog" },
+          { "label": "Community", "href": "/community" },
+          { "label": "Support", "href": "/support" }
+        ]
+      },
+      {
+        "heading": "Company",
+        "navAriaLabel": "Company navigation",
+        "links": [
+          { "label": "About", "href": "/about" },
+          { "label": "Careers", "href": "/careers" },
+          { "label": "Contact", "href": "/contact" }
+        ]
+      }
+    ],
+    "legal": {
+      "copyright": "© 2026 Geeklego. All rights reserved.",
+      "links": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Terms of Service", "href": "/terms" },
+        { "label": "Cookie Policy", "href": "/cookies" }
+      ]
+    }
+  },
+  "sizes": ["sm", "md", "lg"],
+  "configurations": {
+    "minimal": {
+      "description": "Brand + legal only — no navigation columns",
+      "navColumns": []
+    },
+    "standard": {
+      "description": "Brand + 3 nav columns + legal"
+    },
+    "expanded": {
+      "description": "Brand + 4 nav columns + legal + social links"
+    }
+  },
+  "edge_cases": {
+    "long_brand_name": "Geeklego Design System Enterprise Platform",
+    "long_tagline": "An opinionated, design-system-first React component library built on Tailwind CSS v4.2 with first-class accessibility.",
+    "many_links": {
+      "description": "Nav column with 8 links",
+      "count": 8
+    },
+    "empty_nav": {
+      "description": "Footer.Nav with no children"
+    },
+    "legal_only": {
+      "description": "Footer with only Footer.Legal — no brand or nav"
+    },
+    "xss_unsafe_href": "javascript:alert(1)",
+    "data_uri_href": "data:text/html,<script>alert(1)</script>",
+    "safe_relative_href": "/about",
+    "safe_external_href": "https://example.com"
+  },
+  "i18n_overrides": {
+    "footerLabel": "Pied de page",
+    "navLabel": "Navigation du pied de page"
+  }
+}

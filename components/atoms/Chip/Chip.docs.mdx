@@ -1,0 +1,166 @@
+---
+title: Chip
+description: Interactive filter chips and removable tag chips for selection and categorization.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Chip } from \"@geeklego/ui\"\n\n{/* Filter chip — interactive toggle */}\n<Chip variant=\"solid\">Design System</Chip>\n<Chip variant=\"solid\" selected>Selected</Chip>\n\n{/* Static tag — not interactive */}\n<Chip variant=\"soft\" interactive={false}>Tag</Chip>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Unselected</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip variant="solid">Solid</Chip>
+        <Chip variant="soft">Soft</Chip>
+        <Chip variant="outline">Outline</Chip>
+        <Chip variant="ghost">Ghost</Chip>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Selected (aria-pressed)</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip variant="solid" selected>Solid</Chip>
+        <Chip variant="soft" selected>Soft</Chip>
+        <Chip variant="outline" selected>Outline</Chip>
+        <Chip variant="ghost" selected>Ghost</Chip>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Static display (interactive=false)</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip variant="solid" interactive={false}>Solid</Chip>
+        <Chip variant="soft" interactive={false}>Soft</Chip>
+        <Chip variant="outline" interactive={false}>Outline</Chip>
+        <Chip variant="ghost" interactive={false}>Ghost</Chip>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Chip } from \"@geeklego/ui\"\n\n<Chip size=\"sm\">Small</Chip>\n<Chip size=\"md\">Medium</Chip>\n<Chip size=\"lg\">Large</Chip>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">sm</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip size="sm" variant="solid">Solid</Chip>
+        <Chip size="sm" variant="soft">Soft</Chip>
+        <Chip size="sm" variant="outline">Outline</Chip>
+        <Chip size="sm" variant="ghost">Ghost</Chip>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">md</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip size="md" variant="solid">Solid</Chip>
+        <Chip size="md" variant="soft">Soft</Chip>
+        <Chip size="md" variant="outline">Outline</Chip>
+        <Chip size="md" variant="ghost">Ghost</Chip>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">lg</span>
+      <div className="flex items-center gap-3 flex-wrap">
+        <Chip size="lg" variant="solid">Solid</Chip>
+        <Chip size="lg" variant="soft">Soft</Chip>
+        <Chip size="lg" variant="outline">Outline</Chip>
+        <Chip size="lg" variant="ghost">Ghost</Chip>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Chip } from \"@geeklego/ui\"\n\n<Chip disabled>Disabled</Chip>\n<Chip disabled selected>Disabled selected</Chip>"}>
+  <div className="flex items-center gap-3 flex-wrap">
+    <Chip disabled>Disabled</Chip>
+    <Chip disabled selected>Disabled selected</Chip>
+  </div>
+</ComponentPreview>
+
+## With Icon
+
+<ComponentPreview code={"import { Chip } from \"@geeklego/ui\"\nimport { Filter, Star, Zap } from \"lucide-react\"\n\n<Chip leftIcon={<Filter size={14} />}>Category</Chip>\n<Chip variant=\"soft\" selected leftIcon={<Star size={14} />}>Starred</Chip>\n<Chip variant=\"ghost\" leftIcon={<Zap size={14} />}>Action</Chip>"}>
+  <div className="flex items-center gap-3 flex-wrap">
+    <Chip leftIcon={<Filter size={14} />}>Category</Chip>
+    <Chip variant="soft" selected leftIcon={<Star size={14} />}>Starred</Chip>
+    <Chip variant="outline" leftIcon={<Filter size={14} />}>Filtered</Chip>
+    <Chip variant="ghost" leftIcon={<Zap size={14} />}>Action</Chip>
+  </div>
+</ComponentPreview>
+
+## Removable
+
+<ComponentPreview code={"import { useState } from \"react\"\nimport { Chip } from \"@geeklego/ui\"\n\nfunction RemovableTags() {\n  const [tags, setTags] = useState([\"React\", \"TypeScript\", \"Tailwind CSS\", \"Storybook\"])\n  return (\n    <div className=\"flex items-center gap-3 flex-wrap\">\n      {tags.map(tag => (\n        <Chip key={tag} interactive={false} onRemove={() => setTags(prev => prev.filter(t => t !== tag))}>\n          {tag}\n        </Chip>\n      ))}\n    </div>\n  )\n}"}>
+  <ChipRemovableDemo />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <Chip variant=\"solid\">Solid</Chip>\n  <Chip variant=\"solid\" selected>Selected</Chip>\n  <Chip interactive={false} onRemove={() => {}}>Removable</Chip>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">Unselected</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Chip variant="solid">Solid</Chip>
+          <Chip variant="soft">Soft</Chip>
+          <Chip variant="outline">Outline</Chip>
+          <Chip variant="ghost">Ghost</Chip>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">Selected</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Chip variant="solid" selected>Solid</Chip>
+          <Chip variant="soft" selected>Soft</Chip>
+          <Chip variant="outline" selected>Outline</Chip>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">Removable</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Chip interactive={false}>React</Chip>
+          <Chip variant="soft" interactive={false}>TypeScript</Chip>
+        </div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'solid' | 'soft' | 'outline' | 'ghost'", defaultValue: "'solid'", description: "Visual treatment." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "interactive", type: "boolean", defaultValue: "true", description: "When true, renders as a toggle button (aria-pressed). When false, renders as a span — use for removable tag chips." },
+    { name: "selected", type: "boolean", defaultValue: "—", description: "Toggled/selected state. Communicated via aria-pressed when interactive=true." },
+    { name: "leftIcon", type: "ReactNode", defaultValue: "—", description: "Optional leading icon node." },
+    { name: "onRemove", type: "(e: MouseEvent) => void", defaultValue: "—", description: "Callback for the remove × button. Only works when interactive=false." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Chip label text or content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Interactive chips render as `<button aria-pressed>` — screen readers announce toggle state
+- `interactive=false` chips render as `<span>` — use for removable tags where the × button handles interaction
+- Never set `interactive=true` with `onRemove` — nesting `<button>` inside `<button>` is invalid HTML
+- `aria-disabled="true"` set when `disabled` is true
+- Leading icon is `aria-hidden="true"` — the label carries full meaning
+- Wrap a group of filter chips in a container with `role="group"` and `aria-label`
+- Wrap removable tags in `role="list"` / `role="listitem"` for screen reader enumeration
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the chip |
+| Enter / Space | Toggles selected state (interactive mode) |
+| Enter | Activates remove button (when focused) |

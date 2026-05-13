@@ -1,0 +1,37 @@
+{
+  "default": {
+    "id": "item-1",
+    "label": "Design Files - Client",
+    "hasChildren": true,
+    "isExpanded": false,
+    "size": "md"
+  },
+  "variants": [
+    { "id": "v-default",   "label": "Default (resting)",      "hasChildren": true,  "isExpanded": false, "isSelected": false },
+    { "id": "v-expanded",  "label": "Expanded",                "hasChildren": true,  "isExpanded": true,  "isSelected": false },
+    { "id": "v-selected",  "label": "Selected",                "hasChildren": false, "isExpanded": false, "isSelected": true  },
+    { "id": "v-leaf",      "label": "Leaf node (no children)", "hasChildren": false, "isExpanded": false, "isSelected": false },
+    { "id": "v-badge",     "label": "With badge",              "hasChildren": true,  "badge": 12          },
+    { "id": "v-no-icon",   "label": "No icon",                 "hasChildren": true                       }
+  ],
+  "sizes": [
+    { "size": "sm", "label": "Small row height"  },
+    { "size": "md", "label": "Medium row height" },
+    { "size": "lg", "label": "Large row height"  }
+  ],
+  "states": {
+    "default":          { "id": "s-default",  "label": "Default"                              },
+    "expanded":         { "id": "s-exp",      "label": "Expanded",           "isExpanded": true, "hasChildren": true },
+    "selected":         { "id": "s-sel",      "label": "Selected",           "isSelected": true  },
+    "loading":          { "id": "s-load",     "label": "Loading children…",  "isLoading": true,  "hasChildren": true },
+    "disabled":         { "id": "s-dis",      "label": "Disabled",           "isDisabled": true  },
+    "disabledSelected": { "id": "s-dis-sel",  "label": "Disabled + selected","isDisabled": true, "isSelected": true  }
+  },
+  "edge_cases": {
+    "emptyLabel":     { "id": "ec-empty",   "label": ""                                                              },
+    "veryLongLabel":  { "id": "ec-long",    "label": "Adobe Old Account Users — Legacy Creative Suite Subscriptions" },
+    "badge0":         { "id": "ec-badge0",  "label": "Empty folder", "badge": 0                                      },
+    "deepNested":     { "id": "ec-deep",    "label": "Source file",  "level": 5, "setsize": 1, "posinset": 1         },
+    "unicodeLabel":   { "id": "ec-unicode", "label": "Übersicht — テスト файл ✓"                                     }
+  }
+}

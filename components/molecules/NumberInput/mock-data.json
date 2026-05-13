@@ -1,0 +1,33 @@
+{
+  "default": {
+    "value": 5,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "aria-label": "Quantity"
+  },
+  "variants": [
+    { "variant": "default", "value": 5 },
+    { "variant": "filled", "value": 5 },
+    { "variant": "flushed", "value": 5 }
+  ],
+  "sizes": [
+    { "size": "sm", "value": 3, "min": 0, "max": 10 },
+    { "size": "md", "value": 3, "min": 0, "max": 10 },
+    { "size": "lg", "value": 3, "min": 0, "max": 10 }
+  ],
+  "states": {
+    "default": { "value": 5, "min": 0, "max": 10 },
+    "at_minimum": { "value": 0, "min": 0, "max": 10 },
+    "at_maximum": { "value": 10, "min": 0, "max": 10 },
+    "error": { "value": -1, "error": true },
+    "disabled": { "value": 5, "disabled": true },
+    "custom_step": { "value": 1.5, "step": 0.5, "min": 0, "max": 5 }
+  },
+  "edge_cases": {
+    "no_bounds": { "value": 42 },
+    "large_step": { "value": 100, "step": 25, "min": 0, "max": 500 },
+    "decimal_step": { "value": 0.0, "step": 0.1, "min": 0.0, "max": 1.0 },
+    "negative_range": { "value": -5, "min": -10, "max": 0 }
+  }
+}

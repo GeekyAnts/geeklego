@@ -1,0 +1,97 @@
+{
+  "default": {
+    "label": "Featured content",
+    "variant": "default",
+    "navigation": "both",
+    "size": "md",
+    "slidesPerView": 1,
+    "autoPlay": false,
+    "autoPlayInterval": 4000,
+    "pauseOnHover": true,
+    "loading": false
+  },
+  "variants": [
+    {
+      "id": "default",
+      "variant": "default",
+      "label": "Default — stops at ends",
+      "navigation": "both"
+    },
+    {
+      "id": "loop",
+      "variant": "loop",
+      "label": "Loop — wraps at ends",
+      "navigation": "both"
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "label": "Small carousel" },
+    { "size": "md", "label": "Medium carousel" },
+    { "size": "lg", "label": "Large carousel" },
+    { "size": "full", "label": "Full-size carousel" }
+  ],
+  "navigation_types": [
+    { "navigation": "arrows", "label": "Arrows only" },
+    { "navigation": "dots",   "label": "Dots only" },
+    { "navigation": "both",   "label": "Arrows and dots" },
+    { "navigation": "none",   "label": "No controls" }
+  ],
+  "slides_per_view": [
+    { "slidesPerView": 1, "label": "Single slide" },
+    { "slidesPerView": 2, "label": "Two slides" },
+    { "slidesPerView": 3, "label": "Three slides" }
+  ],
+  "states": {
+    "loading": {
+      "label": "Loading carousel",
+      "loading": true
+    },
+    "autoplay": {
+      "label": "Auto-advancing carousel",
+      "autoPlay": true,
+      "autoPlayInterval": 3000,
+      "pauseOnHover": true
+    },
+    "loop": {
+      "label": "Looping carousel",
+      "variant": "loop"
+    }
+  },
+  "edge_cases": {
+    "single_slide": {
+      "label": "Single slide carousel",
+      "description": "Navigation controls hidden when only one slide"
+    },
+    "many_slides": {
+      "label": "Many slides",
+      "description": "Carousel with 8+ slides — dot indicators remain small",
+      "slide_count": 8
+    },
+    "long_label": {
+      "label": "A carousel with a very long accessible label for screen reader testing purposes",
+      "description": "Verifies aria-label on section does not affect layout"
+    }
+  },
+  "sample_slides": [
+    {
+      "id": "slide-1",
+      "bg": "from-brand-500 to-brand-800",
+      "label": "Slide 1 — Brand gradient"
+    },
+    {
+      "id": "slide-2",
+      "bg": "from-success to-brand-600",
+      "label": "Slide 2 — Success gradient"
+    },
+    {
+      "id": "slide-3",
+      "bg": "from-warning to-error",
+      "label": "Slide 3 — Warm gradient"
+    },
+    {
+      "id": "slide-4",
+      "bg": "from-neutral-400 to-neutral-900",
+      "label": "Slide 4 — Neutral gradient"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "default": {
+    "variant": "initials",
+    "initials": "GL",
+    "size": "md"
+  },
+  "variants": [
+    { "variant": "image", "src": "https://i.pravatar.cc/80?u=mock1", "alt": "Jane Doe" },
+    { "variant": "initials", "initials": "JD" },
+    { "variant": "icon" },
+    { "variant": "fallback" }
+  ],
+  "sizes": [
+    { "size": "xs", "variant": "initials", "initials": "GL" },
+    { "size": "sm", "variant": "initials", "initials": "GL" },
+    { "size": "md", "variant": "initials", "initials": "GL" },
+    { "size": "lg", "variant": "initials", "initials": "GL" },
+    { "size": "xl", "variant": "initials", "initials": "GL" },
+    { "size": "2xl", "variant": "initials", "initials": "GL" }
+  ],
+  "states": {
+    "bordered": { "variant": "initials", "initials": "BD", "bordered": true },
+    "imageError": { "variant": "image", "src": "https://broken-url.invalid/img.png", "alt": "Broken" }
+  },
+  "edge_cases": {
+    "singleInitial": { "variant": "initials", "initials": "A" },
+    "longInitials": { "variant": "initials", "initials": "ABCDE" },
+    "emptyAlt": { "variant": "image", "src": "https://i.pravatar.cc/80?u=mock2", "alt": "" },
+    "roundedShape": { "variant": "initials", "initials": "RS", "shape": "rounded" }
+  }
+}

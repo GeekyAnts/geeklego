@@ -1,0 +1,93 @@
+{
+  "default": {
+    "placement": "bottom-start",
+    "items": [
+      { "id": "profile",  "label": "View profile",      "shortcut": "⌘P" },
+      { "id": "settings", "label": "Account settings",  "shortcut": "⌘," },
+      { "id": "billing",  "label": "Billing" },
+      { "type": "separator", "id": "sep-1" },
+      { "id": "logout",   "label": "Sign out", "destructive": true }
+    ]
+  },
+  "variants": {
+    "plain": {
+      "description": "No icons or shortcuts — minimal dropdown",
+      "items": [
+        { "id": "v1", "label": "New file" },
+        { "id": "v2", "label": "Open file" },
+        { "id": "v3", "label": "Save file" },
+        { "type": "separator", "id": "vs" },
+        { "id": "v4", "label": "Exit", "destructive": true }
+      ]
+    },
+    "rich": {
+      "description": "Icons and shortcuts",
+      "items": [
+        { "id": "r1", "label": "Edit",     "shortcut": "⌘E" },
+        { "id": "r2", "label": "Copy",     "shortcut": "⌘C" },
+        { "id": "r3", "label": "Download", "shortcut": "⌘D" },
+        { "type": "separator", "id": "rs" },
+        { "id": "r4", "label": "Delete",   "shortcut": "…", "destructive": true }
+      ]
+    },
+    "grouped": {
+      "description": "Items organised into named groups",
+      "items": [
+        {
+          "type": "group",
+          "id": "g-account",
+          "label": "Account",
+          "items": [
+            { "id": "ga-1", "label": "Profile" },
+            { "id": "ga-2", "label": "Settings" }
+          ]
+        },
+        { "type": "separator", "id": "g-sep" },
+        {
+          "type": "group",
+          "id": "g-support",
+          "label": "Support",
+          "items": [
+            { "id": "gs-1", "label": "Notifications" },
+            { "id": "gs-2", "label": "Help centre" }
+          ]
+        },
+        { "type": "separator", "id": "g-sep2" },
+        { "id": "g-logout", "label": "Sign out", "destructive": true }
+      ]
+    }
+  },
+  "placements": ["bottom-start", "bottom-end", "top-start", "top-end"],
+  "states": {
+    "disabled_item": {
+      "description": "Mix of enabled and disabled items",
+      "items": [
+        { "id": "s1", "label": "Enabled action" },
+        { "id": "s2", "label": "Disabled action", "disabled": true },
+        { "id": "s3", "label": "Enabled action 2" },
+        { "type": "separator", "id": "ss" },
+        { "id": "s4", "label": "Destructive", "destructive": true }
+      ]
+    }
+  },
+  "edge_cases": {
+    "very_long_label": {
+      "items": [
+        { "id": "el1", "label": "This is an extremely long menu item label that should truncate cleanly" },
+        { "id": "el2", "label": "Another long label with an action",  "shortcut": "⌘⇧L" }
+      ]
+    },
+    "link_item": {
+      "description": "Item renders as <a> — href sanitized via getSafeExternalLinkProps",
+      "items": [
+        { "id": "li1", "label": "Open in new tab", "href": "https://geeklego.dev", "target": "_blank" },
+        { "id": "li2", "label": "Documentation",   "href": "/docs" }
+      ]
+    },
+    "single_item": {
+      "items": [
+        { "id": "si1", "label": "Only option", "onClick": {} }
+      ]
+    }
+  }
+}

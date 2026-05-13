@@ -1,0 +1,121 @@
+---
+title: Pagination
+description: A navigation control for paged data with numbered page buttons, ellipsis for large ranges, and a compact simple variant with prev/next arrows.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-8\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Default — numbered pages with ellipsis</p>\n    <Pagination variant=\"default\" totalPages={20} currentPage={5} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Simple — prev/next with page label</p>\n    <Pagination variant=\"simple\" totalPages={20} currentPage={5} />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-8">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Default — numbered pages with ellipsis</p>
+      <Pagination variant="default" totalPages={20} currentPage={5} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Simple — prev/next with page label</p>
+      <Pagination variant="simple" totalPages={20} currentPage={5} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <Pagination size=\"sm\" totalPages={7} currentPage={3} />\n  <Pagination size=\"md\" totalPages={7} currentPage={3} />\n  <Pagination size=\"lg\" totalPages={7} currentPage={3} />\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <Pagination size="sm" totalPages={7} currentPage={3} />
+    <Pagination size="md" totalPages={7} currentPage={3} />
+    <Pagination size="lg" totalPages={7} currentPage={3} />
+  </div>
+</ComponentPreview>
+
+## First Page
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<Pagination totalPages={10} currentPage={1} />"}>
+  <Pagination totalPages={10} currentPage={1} />
+</ComponentPreview>
+
+## Last Page
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<Pagination totalPages={10} currentPage={10} />"}>
+  <Pagination totalPages={10} currentPage={10} />
+</ComponentPreview>
+
+## Many Pages
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Ellipsis on right only</p>\n    <Pagination totalPages={20} currentPage={3} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Ellipsis on both sides</p>\n    <Pagination totalPages={50} currentPage={25} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Ellipsis on left only</p>\n    <Pagination totalPages={20} currentPage={18} />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Ellipsis on right only</p>
+      <Pagination totalPages={20} currentPage={3} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Ellipsis on both sides</p>
+      <Pagination totalPages={50} currentPage={25} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Ellipsis on left only</p>
+      <Pagination totalPages={20} currentPage={18} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## With First Last Buttons
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<Pagination totalPages={20} currentPage={10} showFirstLast />"}>
+  <Pagination totalPages={20} currentPage={10} showFirstLast />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Pagination } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Default variant</p>\n    <Pagination totalPages={10} currentPage={5} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">Simple variant</p>\n    <Pagination variant=\"simple\" totalPages={10} currentPage={5} />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-[var(--color-text-secondary)] mb-3\">First page (previous disabled)</p>\n    <Pagination totalPages={10} currentPage={1} />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Default variant</p>
+      <Pagination totalPages={10} currentPage={5} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">Simple variant</p>
+      <Pagination variant="simple" totalPages={10} currentPage={5} />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-3">First page (previous disabled)</p>
+      <Pagination totalPages={10} currentPage={1} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "totalPages", type: "number", defaultValue: "—", description: "Total number of pages. Must be ≥ 1. Required." },
+    { name: "currentPage", type: "number", defaultValue: "—", description: "Currently active page (1-indexed). Required." },
+    { name: "onPageChange", type: "(page: number) => void", defaultValue: "—", description: "Callback fired when a page change is requested. Receives the new page number (1-indexed)." },
+    { name: "variant", type: "'default' | 'simple'", defaultValue: "'default'", description: "default — numbered page buttons with ellipsis for large ranges. simple — prev/next arrows with a Page X of Y centre label." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography size of page item buttons." },
+    { name: "siblingCount", type: "number", defaultValue: "1", description: "Number of page buttons shown on each side of the current page in the default variant." },
+    { name: "showFirstLast", type: "boolean", defaultValue: "false", description: "Show jump-to-first and jump-to-last buttons flanking the prev/next controls." },
+    { name: "i18nStrings", type: "PaginationI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the nav aria-label, button labels, and page label template." },
+  ]}
+/>
+
+## Accessibility
+
+- Wrapped in `<nav aria-label="Pagination">` — announced as a navigation landmark
+- Current page button has `aria-current="page"`
+- Previous and next buttons are icon-only with accessible labels via `i18nStrings`
+- A screen-reader-only `aria-live="polite"` region announces the current page whenever it changes
+- Ellipsis elements are `aria-hidden="true"` — not read by screen readers
+- Disabled buttons use `aria-disabled` and cannot receive focus
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between prev, page number, and next buttons |
+| Enter | Activates the focused page button |
+| Space | Activates the focused page button |

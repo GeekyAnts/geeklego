@@ -1,0 +1,39 @@
+{
+  "default": {
+    "variant": "text",
+    "size": "md",
+    "animated": true
+  },
+  "variants": [
+    { "variant": "text",   "size": "md", "lines": 1, "label": "Single text line" },
+    { "variant": "text",   "size": "md", "lines": 4, "label": "Multi-line text" },
+    { "variant": "box",                              "label": "Box / media placeholder" },
+    { "variant": "circle", "circleSize": "md",       "label": "Circle / avatar placeholder" }
+  ],
+  "sizes": {
+    "text": [
+      { "size": "sm", "label": "sm — 12px / 0.75rem" },
+      { "size": "md", "label": "md — 16px / 1rem" },
+      { "size": "lg", "label": "lg — 20px / 1.25rem" }
+    ],
+    "circle": [
+      { "circleSize": "xs",  "label": "xs  — 24px / 1.5rem" },
+      { "circleSize": "sm",  "label": "sm  — 32px / 2rem" },
+      { "circleSize": "md",  "label": "md  — 40px / 2.5rem" },
+      { "circleSize": "lg",  "label": "lg  — 48px / 3rem" },
+      { "circleSize": "xl",  "label": "xl  — 56px / 3.5rem" },
+      { "circleSize": "2xl", "label": "2xl — 64px / 4rem" }
+    ]
+  },
+  "states": {
+    "animated": { "variant": "text", "size": "md", "animated": true },
+    "static":   { "variant": "text", "size": "md", "animated": false }
+  },
+  "edge_cases": [
+    { "variant": "text",   "size": "md", "width": "50%",  "label": "Custom 50% width" },
+    { "variant": "text",   "size": "md", "lines": 1,      "label": "Minimum lines (1)" },
+    { "variant": "text",   "size": "md", "lines": 10,     "label": "Maximum lines (10)" },
+    { "variant": "box",   "height": "var(--spacing-40)",   "label": "Tall box placeholder" },
+    { "variant": "circle", "circleSize": "xs",             "label": "Smallest circle (xs)" }
+  ]
+}

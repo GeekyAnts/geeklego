@@ -1,0 +1,98 @@
+{
+  "default": {
+    "variant": "default",
+    "mode": "single",
+    "size": "md",
+    "headingLevel": "h3",
+    "defaultOpenItems": ["what-is-geeklego"],
+    "items": [
+      {
+        "id": "what-is-geeklego",
+        "title": "What is Geeklego?",
+        "content": "Geeklego is an open-source, design-system-first React component library built on Tailwind CSS v4."
+      },
+      {
+        "id": "how-tokens-work",
+        "title": "How does the token system work?",
+        "content": "A two-tier system: primitives define raw values, semantics provide purpose-driven aliases, and generated component tokens sit on top."
+      },
+      {
+        "id": "tailwind-v4",
+        "title": "Why Tailwind CSS v4?",
+        "content": "Tailwind v4 introduces CSS-first configuration with @theme blocks, aligning with design-system-first principles."
+      }
+    ]
+  },
+  "variants": [
+    { "label": "default", "variant": "default" },
+    { "label": "bordered", "variant": "bordered" },
+    { "label": "flush", "variant": "flush" }
+  ],
+  "sizes": [
+    { "label": "sm", "size": "sm" },
+    { "label": "md", "size": "md" },
+    { "label": "lg", "size": "lg" }
+  ],
+  "modes": [
+    { "label": "single", "mode": "single" },
+    { "label": "multiple", "mode": "multiple" }
+  ],
+  "states": {
+    "default_open": {
+      "defaultOpenItems": ["item-1"]
+    },
+    "all_closed": {
+      "defaultOpenItems": []
+    },
+    "multiple_open": {
+      "mode": "multiple",
+      "defaultOpenItems": ["item-1", "item-3"]
+    },
+    "with_disabled": {
+      "items": [
+        { "id": "item-1", "title": "Normal item", "content": "This item is interactive." },
+        { "id": "item-disabled", "title": "Disabled item", "content": "This content is unreachable.", "disabled": true }
+      ]
+    }
+  },
+  "edge_cases": {
+    "long_title": {
+      "items": [
+        {
+          "id": "long-title",
+          "title": "This is a very long accordion item title that should be truncated gracefully when the container is narrow and cannot accommodate the full text",
+          "content": "Content for the long title item."
+        }
+      ]
+    },
+    "single_item": {
+      "items": [
+        { "id": "only-item", "title": "Single item accordion", "content": "Only one item." }
+      ]
+    },
+    "rich_content": {
+      "items": [
+        {
+          "id": "rich",
+          "title": "Rich panel content",
+          "content": "Panel content can be any ReactNode: lists, images, forms, nested components."
+        }
+      ]
+    },
+    "schema_faq": {
+      "schema": true,
+      "items": [
+        {
+          "id": "faq-1",
+          "title": "Question one?",
+          "content": "Answer one."
+        },
+        {
+          "id": "faq-2",
+          "title": "Question two?",
+          "content": "Answer two."
+        }
+      ]
+    }
+  }
+}

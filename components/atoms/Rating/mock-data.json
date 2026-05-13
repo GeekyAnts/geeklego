@@ -1,0 +1,78 @@
+{
+  "default": {
+    "value": 3,
+    "max": 5,
+    "size": "md",
+    "readOnly": false,
+    "disabled": false,
+    "label": "Rate your experience",
+    "showLabel": true
+  },
+  "variants": [
+    {
+      "label": "Interactive",
+      "value": 3,
+      "max": 5,
+      "readOnly": false,
+      "description": "Radio group — arrow keys navigate, click or Enter selects"
+    },
+    {
+      "label": "Read-only",
+      "value": 4,
+      "max": 5,
+      "readOnly": true,
+      "description": "span role=img — SR announces '4 out of 5 stars'"
+    },
+    {
+      "label": "Unrated",
+      "value": 0,
+      "max": 5,
+      "readOnly": false,
+      "description": "All stars empty at rest"
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "value": 3, "readOnly": true, "label": "Small (16px stars)" },
+    { "size": "md", "value": 3, "readOnly": true, "label": "Medium (20px stars)" },
+    { "size": "lg", "value": 3, "readOnly": true, "label": "Large (24px stars)" }
+  ],
+  "states": {
+    "unrated":   { "value": 0,  "disabled": false, "readOnly": false },
+    "partial":   { "value": 3,  "disabled": false, "readOnly": false },
+    "full":      { "value": 5,  "disabled": false, "readOnly": false },
+    "readOnly":  { "value": 4,  "disabled": false, "readOnly": true  },
+    "disabled":  { "value": 3,  "disabled": true,  "readOnly": false },
+    "showLabel": { "value": 4,  "disabled": false, "readOnly": false, "showLabel": true, "label": "How satisfied were you?" }
+  },
+  "edge_cases": [
+    {
+      "description": "max=3 — compact 3-star scale",
+      "value": 2,
+      "max": 3,
+      "readOnly": true,
+      "label": "3-star rating"
+    },
+    {
+      "description": "max=10 — extended 10-star scale",
+      "value": 7,
+      "max": 10,
+      "readOnly": true,
+      "label": "10-star rating"
+    },
+    {
+      "description": "Schema.org AggregateRating (readOnly + schema)",
+      "value": 4,
+      "max": 5,
+      "readOnly": true,
+      "schema": true,
+      "label": "Product rating"
+    },
+    {
+      "description": "value=0 disabled — no rating, not interactive",
+      "value": 0,
+      "disabled": true,
+      "readOnly": false,
+      "label": "Rating unavailable"
+    }
+  ]
+}

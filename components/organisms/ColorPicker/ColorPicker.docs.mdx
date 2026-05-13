@@ -1,0 +1,135 @@
+---
+title: ColorPicker
+description: A full-featured color picker with 2D spectrum, hue and alpha sliders, hex/RGB/HSL inputs, format switcher, and preset swatches.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-start gap-8\">\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">default</span>\n    <ColorPicker defaultValue=\"#6366f1\" presets={[\n      { color: \"#ef4444\", label: \"Red\" },\n      { color: \"#f97316\", label: \"Orange\" },\n      { color: \"#22c55e\", label: \"Green\" },\n      { color: \"#3b82f6\", label: \"Blue\" },\n      { color: \"#8b5cf6\", label: \"Purple\" },\n      { color: \"#ec4899\", label: \"Pink\" },\n    ]} />\n  </div>\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">compact</span>\n    <ColorPicker defaultValue=\"#22c55e\" variant=\"compact\" />\n  </div>\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">minimal</span>\n    <ColorPicker defaultValue=\"#f97316\" variant=\"minimal\" />\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-start gap-8">
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">default</span>
+      <ColorPicker defaultValue="#6366f1" presets={[
+        { color: "#ef4444", label: "Red" },
+        { color: "#f97316", label: "Orange" },
+        { color: "#22c55e", label: "Green" },
+        { color: "#3b82f6", label: "Blue" },
+        { color: "#8b5cf6", label: "Purple" },
+        { color: "#ec4899", label: "Pink" },
+      ]} />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">compact</span>
+      <ColorPicker defaultValue="#22c55e" variant="compact" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">minimal</span>
+      <ColorPicker defaultValue="#f97316" variant="minimal" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-start gap-8\">\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">sm</span>\n    <ColorPicker defaultValue=\"#3b82f6\" size=\"sm\" />\n  </div>\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">md</span>\n    <ColorPicker defaultValue=\"#3b82f6\" size=\"md\" />\n  </div>\n  <div className=\"flex flex-col gap-2\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">lg</span>\n    <ColorPicker defaultValue=\"#3b82f6\" size=\"lg\" />\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-start gap-8">
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">sm</span>
+      <ColorPicker defaultValue="#3b82f6" size="sm" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">md</span>
+      <ColorPicker defaultValue="#3b82f6" size="md" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">lg</span>
+      <ColorPicker defaultValue="#3b82f6" size="lg" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## With Alpha
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<ColorPicker defaultValue=\"#6366f1\" showAlpha />"}>
+  <ColorPicker defaultValue="#6366f1" showAlpha />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<ColorPicker\n  defaultValue=\"#6366f1\"\n  presets={[\n    { color: \"#ef4444\", label: \"Red\" },\n    { color: \"#3b82f6\", label: \"Blue\" },\n    { color: \"#22c55e\", label: \"Green\" },\n  ]}\n  disabled\n/>"}>
+  <ColorPicker
+    defaultValue="#6366f1"
+    presets={[
+      { color: "#ef4444", label: "Red" },
+      { color: "#3b82f6", label: "Blue" },
+      { color: "#22c55e", label: "Green" },
+    ]}
+    disabled
+  />
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<ColorPicker defaultValue=\"#6366f1\" loading />"}>
+  <ColorPicker defaultValue="#6366f1" loading />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ColorPicker } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <ColorPicker\n    defaultValue=\"#6366f1\"\n    presets={[\n      { color: \"#ef4444\", label: \"Red\" },\n      { color: \"#f97316\", label: \"Orange\" },\n      { color: \"#22c55e\", label: \"Green\" },\n      { color: \"#3b82f6\", label: \"Blue\" },\n      { color: \"#8b5cf6\", label: \"Purple\" },\n    ]}\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <ColorPicker
+      defaultValue="#6366f1"
+      presets={[
+        { color: "#ef4444", label: "Red" },
+        { color: "#f97316", label: "Orange" },
+        { color: "#22c55e", label: "Green" },
+        { color: "#3b82f6", label: "Blue" },
+        { color: "#8b5cf6", label: "Purple" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled hex color value (e.g. \"#ff0000\"). When provided the picker is controlled." },
+    { name: "defaultValue", type: "string", defaultValue: "'#6366f1'", description: "Uncontrolled initial hex color." },
+    { name: "onChange", type: "(color: ColorValue) => void", defaultValue: "—", description: "Called on every color change with a full ColorValue object containing hex, rgb, and hsl values." },
+    { name: "variant", type: "'default' | 'compact' | 'minimal'", defaultValue: "'default'", description: "Layout variant. default shows all controls; compact omits format switcher and presets; minimal shows only color preview and hex input." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Size scale affecting spectrum height and picker width." },
+    { name: "presets", type: "ColorPickerPreset[]", defaultValue: "—", description: "Array of preset colors shown in the swatches section. Each entry requires color and label." },
+    { name: "showAlpha", type: "boolean", defaultValue: "false", description: "Show the opacity/alpha slider and alpha channel input." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disable the entire picker." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Show skeleton loading state." },
+    { name: "i18nStrings", type: "ColorPickerI18nStrings", defaultValue: "—", description: "Per-instance string overrides for all accessible labels within the picker." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names for the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- Root element is `<div role="group">` labelled by a screen-reader-only heading
+- Spectrum is a 2D `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and `aria-label`
+- Hue and alpha sliders use `role="slider"` with full `aria-value*` attributes
+- Format buttons use `aria-pressed` to indicate the active format (HEX/RGB/HSL)
+- Preset swatches use `aria-pressed` for the selected color with required `aria-label`
+- Copy button `aria-label` switches between copy label and "Copied!" confirmation
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between all focusable controls |
+| Arrow keys | Adjust spectrum saturation (left/right) or brightness (up/down) by 1% |
+| Shift + Arrow keys | Adjust spectrum by 10% |
+| Arrow keys | Adjust hue/alpha slider value by 1 |
+| Shift + Arrow keys | Adjust hue/alpha slider by 10 |
+| Home / End | Jump to min/max on spectrum or slider |
+| Enter / Space | Switch format, select preset color, or copy hex |

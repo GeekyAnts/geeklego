@@ -1,0 +1,145 @@
+---
+title: SegmentedControl
+description: Mutually exclusive option selector with two visual variants, icon support, and roving tabindex navigation.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { SegmentedControl } from \"@geeklego/ui\"\n\nconst options = [\n  { value: \"grid\", label: \"Grid\" },\n  { value: \"list\", label: \"List\" },\n  { value: \"map\", label: \"Map\" },\n]\n\n<SegmentedControl options={options} defaultValue=\"grid\" variant=\"default\" aria-label=\"View mode\" />\n<SegmentedControl options={options} defaultValue=\"grid\" variant=\"outline\" aria-label=\"View mode\" />"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">default — surface-pop selection</p>
+      <SegmentedControl options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]} defaultValue="grid" aria-label="View mode" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">outline — brand-fill selection</p>
+      <SegmentedControl options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]} defaultValue="grid" variant="outline" aria-label="View mode" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { SegmentedControl } from \"@geeklego/ui\"\n\n<SegmentedControl options={timeOptions} defaultValue=\"30d\" size=\"sm\" aria-label=\"Time range\" />\n<SegmentedControl options={timeOptions} defaultValue=\"30d\" size=\"md\" aria-label=\"Time range\" />\n<SegmentedControl options={timeOptions} defaultValue=\"30d\" size=\"lg\" aria-label=\"Time range\" />"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">sm</p>
+      <SegmentedControl options={[{value:"7d",label:"7d"},{value:"30d",label:"30d"},{value:"90d",label:"90d"},{value:"1y",label:"1y"}]} defaultValue="30d" size="sm" aria-label="Time range" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">md</p>
+      <SegmentedControl options={[{value:"7d",label:"7d"},{value:"30d",label:"30d"},{value:"90d",label:"90d"},{value:"1y",label:"1y"}]} defaultValue="30d" size="md" aria-label="Time range" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">lg</p>
+      <SegmentedControl options={[{value:"7d",label:"7d"},{value:"30d",label:"30d"},{value:"90d",label:"90d"},{value:"1y",label:"1y"}]} defaultValue="30d" size="lg" aria-label="Time range" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { SegmentedControl } from \"@geeklego/ui\"\nimport { Grid, List, Filter } from \"lucide-react\"\n\n{/* Icon-only */}\n<SegmentedControl\n  options={[\n    { value: \"grid\", icon: <Grid size={14} />, \"aria-label\": \"Grid view\" },\n    { value: \"list\", icon: <List size={14} />, \"aria-label\": \"List view\" },\n    { value: \"filter\", icon: <Filter size={14} />, \"aria-label\": \"Filter view\" },\n  ]}\n  defaultValue=\"grid\"\n  aria-label=\"View mode\"\n/>\n\n{/* Icon + text */}\n<SegmentedControl\n  options={[\n    { value: \"grid\", label: \"Grid\", icon: <Grid size={14} /> },\n    { value: \"list\", label: \"List\", icon: <List size={14} /> },\n  ]}\n  defaultValue=\"grid\"\n  aria-label=\"View mode\"\n/>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Icon-only (aria-label required per segment)</p>
+      <SegmentedControl
+        options={[
+          {value:"grid",icon:<Grid size={14} />,"aria-label":"Grid view"},
+          {value:"list",icon:<List size={14} />,"aria-label":"List view"},
+          {value:"filter",icon:<Filter size={14} />,"aria-label":"Filter view"},
+        ]}
+        defaultValue="grid"
+        aria-label="View mode"
+      />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Icon + text</p>
+      <SegmentedControl
+        options={[
+          {value:"grid",label:"Grid",icon:<Grid size={14} />},
+          {value:"list",label:"List",icon:<List size={14} />},
+          {value:"filter",label:"Filter",icon:<Filter size={14} />},
+        ]}
+        defaultValue="grid"
+        aria-label="View mode"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { SegmentedControl } from \"@geeklego/ui\"\n\n{/* Individual option disabled */}\n<SegmentedControl\n  options={[\n    { value: \"grid\", label: \"Grid\" },\n    { value: \"list\", label: \"List\", disabled: true },\n    { value: \"map\", label: \"Map\" },\n  ]}\n  defaultValue=\"grid\"\n  aria-label=\"View mode\"\n/>\n\n{/* Entire group disabled */}\n<SegmentedControl options={options} defaultValue=\"grid\" disabled aria-label=\"View mode\" />"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Individual option disabled</p>
+      <SegmentedControl
+        options={[
+          {value:"grid",label:"Grid"},
+          {value:"list",label:"List",disabled:true},
+          {value:"map",label:"Map"},
+        ]}
+        defaultValue="grid"
+        aria-label="View mode"
+      />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Entire group disabled</p>
+      <SegmentedControl
+        options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]}
+        defaultValue="grid"
+        disabled
+        aria-label="View mode"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <SegmentedControl options={options} defaultValue=\"grid\" aria-label=\"View mode\" />\n  <SegmentedControl options={options} defaultValue=\"list\" variant=\"outline\" aria-label=\"View mode\" />\n  <SegmentedControl options={options} defaultValue=\"grid\" disabled aria-label=\"View mode\" />\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <SegmentedControl options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]} defaultValue="grid" aria-label="View mode" />
+    <SegmentedControl options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]} defaultValue="list" variant="outline" aria-label="View mode" />
+    <SegmentedControl options={[{value:"grid",icon:<Grid size={14} />,"aria-label":"Grid view"},{value:"list",icon:<List size={14} />,"aria-label":"List view"},{value:"filter",icon:<Filter size={14} />,"aria-label":"Filter view"}]} defaultValue="grid" aria-label="View mode" />
+    <SegmentedControl options={[{value:"grid",label:"Grid"},{value:"list",label:"List"},{value:"map",label:"Map"}]} defaultValue="grid" disabled aria-label="View mode" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "options", type: "SegmentOption[]", defaultValue: "—", description: "Array of segment options. Minimum 2. Each option has value, optional label, optional icon, optional disabled, and optional aria-label." },
+    { name: "value", type: "string", defaultValue: "—", description: "Controlled selected value. Pair with onChange." },
+    { name: "defaultValue", type: "string", defaultValue: "first option", description: "Initial selected value for uncontrolled usage." },
+    { name: "onChange", type: "(value: string) => void", defaultValue: "—", description: "Called when the selected segment changes." },
+    { name: "variant", type: "'default' | 'outline'", defaultValue: "'default'", description: "Visual style. default uses a surface-pop indicator; outline uses a brand fill." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and typography size of each segment." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables all segments in the group." },
+    { name: "fullWidth", type: "boolean", defaultValue: "false", description: "Stretches the control to fill its container." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Required accessible label describing what the control selects (e.g. 'View mode', 'Time range')." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a group of `<button>` elements — each button has `aria-pressed` for selection state
+- `aria-label` on the component is required — describes the group purpose (e.g. "View mode")
+- Icon-only segments require `aria-label` on the individual segment option object
+- Uses roving tabindex — Tab enters the group and focuses the selected segment; Arrow keys navigate within
+- Disabled segments have `aria-disabled="true"` and are skipped by the roving tabindex
+- Group `disabled` adds `aria-disabled` to the container and all segments
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Enters the group (focuses selected segment) |
+| Arrow Left / Right | Moves focus and selection between segments |
+| Home | Jumps to the first segment |
+| End | Jumps to the last segment |
+| Space / Enter | Selects the focused segment |

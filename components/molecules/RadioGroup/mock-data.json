@@ -1,0 +1,98 @@
+{
+  "default": {
+    "legend": "Select a plan",
+    "options": [
+      { "value": "starter", "label": "Starter" },
+      { "value": "pro", "label": "Pro" },
+      { "value": "enterprise", "label": "Enterprise" }
+    ],
+    "value": "pro"
+  },
+  "variants": [
+    {
+      "legend": "Default variant",
+      "variant": "default",
+      "options": [
+        { "value": "option-a", "label": "Option A" },
+        { "value": "option-b", "label": "Option B" }
+      ],
+      "value": "option-a"
+    },
+    {
+      "legend": "Boxed variant",
+      "variant": "boxed",
+      "options": [
+        { "value": "option-a", "label": "Option A" },
+        { "value": "option-b", "label": "Option B" }
+      ],
+      "value": "option-b"
+    }
+  ],
+  "sizes": ["sm", "md", "lg"],
+  "orientations": ["vertical", "horizontal"],
+  "states": {
+    "with_hint": {
+      "legend": "Plan",
+      "hint": "You can change your plan at any time.",
+      "value": "pro"
+    },
+    "error": {
+      "legend": "Plan",
+      "error": true,
+      "errorMessage": "Please select a plan to continue."
+    },
+    "disabled": {
+      "legend": "Plan",
+      "disabled": true,
+      "value": "pro"
+    },
+    "required": {
+      "legend": "Plan",
+      "required": true,
+      "value": "starter"
+    },
+    "option_disabled": {
+      "legend": "Region",
+      "options": [
+        { "value": "us", "label": "United States" },
+        { "value": "eu", "label": "Europe" },
+        { "value": "ap", "label": "Asia Pacific", "disabled": true }
+      ],
+      "value": "us"
+    }
+  },
+  "edge_cases": {
+    "no_legend": {
+      "options": [
+        { "value": "yes", "label": "Yes" },
+        { "value": "no", "label": "No" }
+      ],
+      "value": "yes"
+    },
+    "long_labels": {
+      "legend": "Subscription plan with very long legend text that should truncate gracefully",
+      "options": [
+        { "value": "a", "label": "A very long option label that tests truncation in horizontal layouts" },
+        { "value": "b", "label": "Another reasonably long option label" }
+      ],
+      "value": "a"
+    },
+    "single_option": {
+      "legend": "Confirm",
+      "options": [{ "value": "agree", "label": "I agree to the terms" }],
+      "value": "agree"
+    },
+    "many_options": {
+      "legend": "Country",
+      "options": [
+        { "value": "us", "label": "United States" },
+        { "value": "uk", "label": "United Kingdom" },
+        { "value": "de", "label": "Germany" },
+        { "value": "fr", "label": "France" },
+        { "value": "jp", "label": "Japan" },
+        { "value": "au", "label": "Australia" }
+      ],
+      "value": "us"
+    }
+  }
+}

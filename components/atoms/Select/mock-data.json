@@ -1,0 +1,70 @@
+{
+  "default": {
+    "options": [
+      { "value": "daily", "label": "Daily" },
+      { "value": "weekly", "label": "Weekly" },
+      { "value": "monthly", "label": "Monthly" },
+      { "value": "yearly", "label": "Yearly" }
+    ],
+    "placeholder": "Select period…",
+    "variant": "default",
+    "size": "md"
+  },
+  "variants": [
+    { "variant": "default", "options": [{ "value": "a", "label": "Option A" }, { "value": "b", "label": "Option B" }], "placeholder": "Default" },
+    { "variant": "filled", "options": [{ "value": "a", "label": "Option A" }, { "value": "b", "label": "Option B" }], "placeholder": "Filled" },
+    { "variant": "ghost", "options": [{ "value": "a", "label": "Option A" }, { "value": "b", "label": "Option B" }], "placeholder": "Ghost" }
+  ],
+  "sizes": [
+    { "size": "sm", "options": [{ "value": "a", "label": "Small" }], "defaultValue": "a" },
+    { "size": "md", "options": [{ "value": "a", "label": "Medium" }], "defaultValue": "a" },
+    { "size": "lg", "options": [{ "value": "a", "label": "Large" }], "defaultValue": "a" }
+  ],
+  "states": {
+    "default": { "options": [{ "value": "a", "label": "Option A" }], "placeholder": "Choose…" },
+    "with_selection": { "options": [{ "value": "a", "label": "Option A" }, { "value": "b", "label": "Option B" }], "defaultValue": "a" },
+    "disabled": { "options": [{ "value": "a", "label": "Option A" }], "defaultValue": "a", "disabled": true },
+    "error": { "options": [{ "value": "a", "label": "Option A" }], "placeholder": "Required", "error": true }
+  },
+  "edge_cases": {
+    "single_option": {
+      "options": [{ "value": "only", "label": "Only choice" }],
+      "placeholder": "Just one option"
+    },
+    "many_options": {
+      "options": [
+        { "value": "1", "label": "Alpha" },
+        { "value": "2", "label": "Beta" },
+        { "value": "3", "label": "Gamma" },
+        { "value": "4", "label": "Delta" },
+        { "value": "5", "label": "Epsilon" },
+        { "value": "6", "label": "Zeta" },
+        { "value": "7", "label": "Eta" },
+        { "value": "8", "label": "Theta" },
+        { "value": "9", "label": "Iota" },
+        { "value": "10", "label": "Kappa" }
+      ],
+      "placeholder": "Scrollable panel…"
+    },
+    "with_disabled_options": {
+      "options": [
+        { "value": "a", "label": "Available" },
+        { "value": "b", "label": "Unavailable", "disabled": true },
+        { "value": "c", "label": "Also available" }
+      ],
+      "placeholder": "Some options disabled"
+    },
+    "long_labels": {
+      "options": [
+        { "value": "short", "label": "Short" },
+        { "value": "long", "label": "This is a very long option label that tests overflow behaviour" }
+      ],
+      "placeholder": "Long label test"
+    },
+    "with_label": {
+      "options": [{ "value": "a", "label": "Option A" }],
+      "label": "Field label",
+      "placeholder": "Choose…"
+    }
+  }
+}

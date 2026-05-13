@@ -1,0 +1,39 @@
+{
+  "default": {
+    "href": "https://example.com",
+    "children": "Visit our website"
+  },
+  "variants": [
+    { "variant": "default", "href": "#", "children": "Default link" },
+    { "variant": "subtle",  "href": "#", "children": "Subtle link" },
+    { "variant": "inline",  "href": "#", "children": "Inline link" },
+    { "variant": "standalone", "href": "#", "children": "Standalone link" }
+  ],
+  "sizes": [
+    { "size": "sm", "href": "#", "children": "Small link" },
+    { "size": "md", "href": "#", "children": "Medium link" },
+    { "size": "lg", "href": "#", "children": "Large link" }
+  ],
+  "states": {
+    "default":  { "href": "#", "children": "Default link" },
+    "external": { "href": "https://example.com", "external": true, "children": "Opens in new tab" },
+    "disabled": { "href": "#", "disabled": true, "children": "Disabled link" },
+    "visited":  { "href": "#", "children": "Previously visited link" }
+  },
+  "edge_cases": {
+    "very_long_text": {
+      "href": "#",
+      "children": "This is an exceptionally long link label that tests how the component handles overflow in constrained containers"
+    },
+    "single_word": { "href": "#", "children": "Go" },
+    "emoji_in_label": { "href": "#", "children": "✨ What's new" },
+    "external_with_long_label": {
+      "href": "https://example.com",
+      "external": true,
+      "children": "Read the complete release notes on the project website"
+    },
+    "no_href_no_disabled": {
+      "children": "Anchor without href (non-interactive)"
+    }
+  }
+}

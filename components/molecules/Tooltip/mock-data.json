@@ -1,0 +1,36 @@
+{
+  "default": {
+    "content": "Save your progress before leaving.",
+    "placement": "top",
+    "delayMs": 300,
+    "disabled": false
+  },
+  "placements": [
+    { "placement": "top",    "content": "Placement: top" },
+    { "placement": "bottom", "content": "Placement: bottom" },
+    { "placement": "left",   "content": "Placement: left" },
+    { "placement": "right",  "content": "Placement: right" }
+  ],
+  "content_types": {
+    "short": "Plain text tooltip",
+    "long": "This tooltip contains a longer description that demonstrates text wrapping behaviour within the max-width constraint.",
+    "icon_trigger_label": "More information about this field"
+  },
+  "states": {
+    "default": { "content": "Hover or focus this button", "disabled": false },
+    "disabled": { "content": "This tooltip is suppressed", "disabled": true }
+  },
+  "i18n": {
+    "en": { "panelLabel": "Tooltip" },
+    "fr": { "panelLabel": "Info-bulle" },
+    "de": { "panelLabel": "Tooltip" },
+    "ar": { "panelLabel": "تلميح" }
+  },
+  "edge_cases": {
+    "empty_content": "",
+    "single_word": "Yes",
+    "very_long_word": "Supercalifragilisticexpialidocious",
+    "zero_delay": { "content": "Appears instantly", "delayMs": 0 },
+    "long_delay": { "content": "Appears after one second", "delayMs": 1000 }
+  }
+}

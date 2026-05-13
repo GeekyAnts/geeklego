@@ -1,0 +1,141 @@
+---
+title: BreadcrumbItem
+description: An individual crumb within a breadcrumb trail with link and separator.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { BreadcrumbItem } from \"@geeklego/ui\"\nimport { Home } from \"lucide-react\"\n\n<ol className=\"flex items-center\">\n  <BreadcrumbItem href=\"#\">Products</BreadcrumbItem>\n  <BreadcrumbItem current>Dashboard</BreadcrumbItem>\n  <BreadcrumbItem href=\"#\" disabled>Settings</BreadcrumbItem>\n  <BreadcrumbItem href=\"#\" leftIcon={<Home size={14} />}>Home</BreadcrumbItem>\n</ol>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Link</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#">Products</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Current</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem current>Dashboard</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Disabled</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" disabled>Settings</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">With icon</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" leftIcon={<Home size={14} />}>Home</BreadcrumbItem>
+      </ol>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { BreadcrumbItem } from \"@geeklego/ui\"\n\n<ol className=\"flex items-center\">\n  <BreadcrumbItem href=\"#\" size=\"sm\">Small</BreadcrumbItem>\n  <BreadcrumbItem href=\"#\" size=\"md\">Medium</BreadcrumbItem>\n  <BreadcrumbItem href=\"#\" size=\"lg\">Large</BreadcrumbItem>\n</ol>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-8 shrink-0">sm</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" size="sm">Products</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-8 shrink-0">md</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" size="md">Products</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-8 shrink-0">lg</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" size="lg">Products</BreadcrumbItem>
+      </ol>
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { BreadcrumbItem } from \"@geeklego/ui\"\n\n{/* Link — focusable anchor */}\n<BreadcrumbItem href=\"/home\">Home</BreadcrumbItem>\n\n{/* Current page — aria-current=\"page\", non-interactive */}\n<BreadcrumbItem current>Dashboard</BreadcrumbItem>\n\n{/* Disabled — non-interactive, visually muted */}\n<BreadcrumbItem href=\"#\" disabled>Settings</BreadcrumbItem>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Default</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#">Home</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Current</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem current>Dashboard</BreadcrumbItem>
+      </ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Disabled</span>
+      <ol className="flex items-center">
+        <BreadcrumbItem href="#" disabled>Settings</BreadcrumbItem>
+      </ol>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <ol className=\"flex items-center\">\n    <BreadcrumbItem href=\"#\">Products</BreadcrumbItem>\n    <BreadcrumbItem current>Dashboard</BreadcrumbItem>\n  </ol>\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Link</span>
+      <ol className="flex items-center"><BreadcrumbItem href="#">Products</BreadcrumbItem></ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Current</span>
+      <ol className="flex items-center"><BreadcrumbItem current>Dashboard</BreadcrumbItem></ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">Disabled</span>
+      <ol className="flex items-center"><BreadcrumbItem href="#" disabled>Settings</BreadcrumbItem></ol>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-body-sm text-secondary w-20 shrink-0">With icon</span>
+      <ol className="flex items-center"><BreadcrumbItem href="#" leftIcon={<Home size={14} />}>Home</BreadcrumbItem></ol>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "—", description: "URL this item links to. When provided (and not current/disabled), renders as an anchor." },
+    { name: "current", type: "boolean", defaultValue: "false", description: "Marks as the current page. Renders non-interactive text with aria-current='page'." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Non-interactive and visually muted." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Text size." },
+    { name: "leftIcon", type: "ReactNode", defaultValue: "—", description: "Optional icon displayed before the label." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "The visible label text." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org ListItem Microdata. Passed from parent Breadcrumb." },
+    { name: "schemaPosition", type: "number", defaultValue: "—", description: "Position in the breadcrumb list (1-based). Passed from parent Breadcrumb when schema is true." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Link items render as `<a>` — focusable, supports Enter key activation
+- `current` items render as non-interactive `<span>` with `aria-current="page"`
+- `disabled` items are non-interactive with `aria-disabled="true"` and visually muted
+- Icon nodes are `aria-hidden="true"` — the text label carries full meaning
+- Wrap multiple `BreadcrumbItem` components in an `<ol>` element for proper list semantics
+- The parent `<ol>` should be inside a `<nav aria-label="Breadcrumb">` landmark
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the next link item |
+| Enter | Activates the link |

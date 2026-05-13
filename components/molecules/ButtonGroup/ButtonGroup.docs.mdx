@@ -1,0 +1,147 @@
+---
+title: ButtonGroup
+description: Group related action buttons into attached or spaced horizontal and vertical arrangements.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 items-start\">\n  <div className=\"flex flex-col gap-2\">\n    <p className=\"text-label-sm text-secondary\">attached (default)</p>\n    <ButtonGroup aria-label=\"Primary actions\">\n      <Button variant=\"primary\">Save</Button>\n      <Button variant=\"primary\" leftIcon={<Copy size={14} />} iconOnly>Duplicate</Button>\n      <Button variant=\"primary\" leftIcon={<Trash2 size={14} />} iconOnly>Delete</Button>\n    </ButtonGroup>\n    <ButtonGroup aria-label=\"Outline actions\">\n      <Button variant=\"outline\">Cancel</Button>\n      <Button variant=\"outline\">Preview</Button>\n      <Button variant=\"outline\">Submit</Button>\n    </ButtonGroup>\n  </div>\n  <div className=\"flex flex-col gap-2\">\n    <p className=\"text-label-sm text-secondary\">spaced</p>\n    <ButtonGroup variant=\"spaced\" aria-label=\"Page actions\">\n      <Button variant=\"outline\">Back</Button>\n      <Button variant=\"primary\">Continue</Button>\n    </ButtonGroup>\n    <ButtonGroup variant=\"spaced\" aria-label=\"Destructive workflow\">\n      <Button variant=\"ghost\">Cancel</Button>\n      <Button variant=\"destructive\">Delete account</Button>\n    </ButtonGroup>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 items-start">
+    <div className="flex flex-col gap-2">
+      <p className="text-label-sm text-secondary">attached (default)</p>
+      <ButtonGroup aria-label="Primary actions">
+        <Button variant="primary">Save</Button>
+        <Button variant="primary" leftIcon={<Copy size={14} />} iconOnly>Duplicate</Button>
+        <Button variant="primary" leftIcon={<Trash2 size={14} />} iconOnly>Delete</Button>
+      </ButtonGroup>
+      <ButtonGroup aria-label="Outline actions">
+        <Button variant="outline">Cancel</Button>
+        <Button variant="outline">Preview</Button>
+        <Button variant="outline">Submit</Button>
+      </ButtonGroup>
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-label-sm text-secondary">spaced</p>
+      <ButtonGroup variant="spaced" aria-label="Page actions">
+        <Button variant="outline">Back</Button>
+        <Button variant="primary">Continue</Button>
+      </ButtonGroup>
+      <ButtonGroup variant="spaced" aria-label="Destructive workflow">
+        <Button variant="ghost">Cancel</Button>
+        <Button variant="destructive">Delete account</Button>
+      </ButtonGroup>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 items-start\">\n  <ButtonGroup aria-label=\"Extra small group\">\n    <Button variant=\"outline\" size=\"xs\">Option A</Button>\n    <Button variant=\"outline\" size=\"xs\">Option B</Button>\n    <Button variant=\"outline\" size=\"xs\">Option C</Button>\n  </ButtonGroup>\n  <ButtonGroup aria-label=\"Small group\">\n    <Button variant=\"outline\" size=\"sm\">Option A</Button>\n    <Button variant=\"outline\" size=\"sm\">Option B</Button>\n    <Button variant=\"outline\" size=\"sm\">Option C</Button>\n  </ButtonGroup>\n  <ButtonGroup aria-label=\"Medium group\">\n    <Button variant=\"outline\" size=\"md\">Option A</Button>\n    <Button variant=\"outline\" size=\"md\">Option B</Button>\n    <Button variant=\"outline\" size=\"md\">Option C</Button>\n  </ButtonGroup>\n  <ButtonGroup aria-label=\"Large group\">\n    <Button variant=\"outline\" size=\"lg\">Option A</Button>\n    <Button variant=\"outline\" size=\"lg\">Option B</Button>\n    <Button variant=\"outline\" size=\"lg\">Option C</Button>\n  </ButtonGroup>\n</div>"}>
+  <div className="flex flex-col gap-4 items-start">
+    <ButtonGroup aria-label="Extra small group">
+      <Button variant="outline" size="xs">Option A</Button>
+      <Button variant="outline" size="xs">Option B</Button>
+      <Button variant="outline" size="xs">Option C</Button>
+    </ButtonGroup>
+    <ButtonGroup aria-label="Small group">
+      <Button variant="outline" size="sm">Option A</Button>
+      <Button variant="outline" size="sm">Option B</Button>
+      <Button variant="outline" size="sm">Option C</Button>
+    </ButtonGroup>
+    <ButtonGroup aria-label="Medium group">
+      <Button variant="outline" size="md">Option A</Button>
+      <Button variant="outline" size="md">Option B</Button>
+      <Button variant="outline" size="md">Option C</Button>
+    </ButtonGroup>
+    <ButtonGroup aria-label="Large group">
+      <Button variant="outline" size="lg">Option A</Button>
+      <Button variant="outline" size="lg">Option B</Button>
+      <Button variant="outline" size="lg">Option C</Button>
+    </ButtonGroup>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 items-start\">\n  <ButtonGroup aria-label=\"Mixed disabled state\">\n    <Button variant=\"outline\">Bold</Button>\n    <Button variant=\"outline\" disabled>Italic (disabled)</Button>\n    <Button variant=\"outline\">Underline</Button>\n  </ButtonGroup>\n  <ButtonGroup aria-label=\"All disabled\">\n    <Button variant=\"outline\" disabled>Bold</Button>\n    <Button variant=\"outline\" disabled>Italic</Button>\n    <Button variant=\"outline\" disabled>Underline</Button>\n  </ButtonGroup>\n</div>"}>
+  <div className="flex flex-col gap-4 items-start">
+    <ButtonGroup aria-label="Mixed disabled state">
+      <Button variant="outline">Bold</Button>
+      <Button variant="outline" disabled>Italic (disabled)</Button>
+      <Button variant="outline">Underline</Button>
+    </ButtonGroup>
+    <ButtonGroup aria-label="All disabled">
+      <Button variant="outline" disabled>Bold</Button>
+      <Button variant="outline" disabled>Italic</Button>
+      <Button variant="outline" disabled>Underline</Button>
+    </ButtonGroup>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\n\n<ButtonGroup aria-label=\"Mixed loading state\">\n  <Button variant=\"primary\">Save</Button>\n  <Button variant=\"primary\" isLoading>Saving\u2026</Button>\n  <Button variant=\"primary\">Discard</Button>\n</ButtonGroup>"}>
+  <ButtonGroup aria-label="Mixed loading state">
+    <Button variant="primary">Save</Button>
+    <Button variant="primary" isLoading>Saving…</Button>
+    <Button variant="primary">Discard</Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+## Vertical
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\nimport { Download, Copy, Trash2 } from \"lucide-react\"\n\n<ButtonGroup orientation=\"vertical\" aria-label=\"Vertical actions\">\n  <Button variant=\"outline\" leftIcon={<Download size={16} />}>Download PDF</Button>\n  <Button variant=\"outline\" leftIcon={<Copy size={16} />}>Copy link</Button>\n  <Button variant=\"outline\" leftIcon={<Trash2 size={16} />}>Delete</Button>\n</ButtonGroup>"}>
+  <ButtonGroup orientation="vertical" aria-label="Vertical actions">
+    <Button variant="outline" leftIcon={<Download size={16} />}>Download PDF</Button>
+    <Button variant="outline" leftIcon={<Copy size={16} />}>Copy link</Button>
+    <Button variant="outline" leftIcon={<Trash2 size={16} />}>Delete</Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Button, ButtonGroup } from \"@geeklego/ui\"\nimport { Edit, Edit2, Save, Copy } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <ButtonGroup aria-label=\"Text formatting\">\n    <Button variant=\"outline\" leftIcon={<Edit size={16} />} iconOnly>Bold</Button>\n    <Button variant=\"outline\" leftIcon={<Edit2 size={16} />} iconOnly>Italic</Button>\n    <Button variant=\"outline\" leftIcon={<Save size={16} />} iconOnly>Underline</Button>\n    <Button variant=\"outline\" leftIcon={<Copy size={16} />} iconOnly>Strikethrough</Button>\n  </ButtonGroup>\n  <ButtonGroup variant=\"spaced\" aria-label=\"Page actions\">\n    <Button variant=\"ghost\">Cancel</Button>\n    <Button variant=\"primary\">Publish</Button>\n  </ButtonGroup>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <ButtonGroup aria-label="Text formatting">
+      <Button variant="outline" leftIcon={<Edit size={16} />} iconOnly>Bold</Button>
+      <Button variant="outline" leftIcon={<Edit2 size={16} />} iconOnly>Italic</Button>
+      <Button variant="outline" leftIcon={<Save size={16} />} iconOnly>Underline</Button>
+      <Button variant="outline" leftIcon={<Copy size={16} />} iconOnly>Strikethrough</Button>
+    </ButtonGroup>
+    <ButtonGroup variant="spaced" aria-label="Page actions">
+      <Button variant="ghost">Cancel</Button>
+      <Button variant="primary">Publish</Button>
+    </ButtonGroup>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'attached' | 'spaced'", defaultValue: "'attached'", description: "attached — buttons share borders and joined radii (fused look). spaced — buttons are separated by a gap with individual radii." },
+    { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Layout axis of the group." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Accessible label for the group. Required when no visible heading describes the group purpose." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Button atoms to render inside the group. Required." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="group"` on the container — screen readers announce the group name on entry
+- `aria-label` is required to give the group a meaningful name; use `aria-labelledby` when a visible heading already labels the group
+- Each button inside retains its own accessible name independently
+- Disabled buttons are announced as dimmed by VoiceOver
+- No arrow-key navigation — buttons are individually Tab-focusable
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between buttons in the group |
+| Enter | Activates the focused button |
+| Space | Activates the focused button |

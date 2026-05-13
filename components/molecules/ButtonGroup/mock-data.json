@@ -1,0 +1,37 @@
+{
+  "default": {
+    "variant": "attached",
+    "orientation": "horizontal",
+    "aria-label": "Text alignment"
+  },
+  "variants": [
+    { "label": "attached + outline buttons", "variant": "attached", "buttonVariant": "outline" },
+    { "label": "attached + primary buttons", "variant": "attached", "buttonVariant": "primary" },
+    { "label": "attached + secondary buttons", "variant": "attached", "buttonVariant": "secondary" },
+    { "label": "spaced + mixed buttons", "variant": "spaced", "buttonVariant": "mixed" }
+  ],
+  "sizes": [
+    { "size": "xs", "label": "Extra small" },
+    { "size": "sm", "label": "Small" },
+    { "size": "md", "label": "Medium (default)" },
+    { "size": "lg", "label": "Large" },
+    { "size": "xl", "label": "Extra large" }
+  ],
+  "orientations": [
+    { "orientation": "horizontal", "label": "Horizontal (default)" },
+    { "orientation": "vertical",   "label": "Vertical" }
+  ],
+  "states": {
+    "default":      { "note": "All buttons interactive" },
+    "oneDisabled":  { "note": "One button disabled — rest remain interactive" },
+    "allDisabled":  { "note": "All buttons disabled" },
+    "oneLoading":   { "note": "One button in loading state" }
+  },
+  "edge_cases": [
+    { "case": "single_child",   "note": "One button — no radius change, no border-collapse offset applied" },
+    { "case": "long_label",     "label": "Export all selected items as PDF" },
+    { "case": "icon_only",      "note": "Icon-only buttons; each needs iconOnly + aria-label" },
+    { "case": "mixed_states",   "note": "Some disabled, some loading, some default" },
+    { "case": "vertical_spaced","variant": "spaced", "orientation": "vertical" }
+  ]
+}

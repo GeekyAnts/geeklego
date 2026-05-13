@@ -1,0 +1,184 @@
+---
+title: List
+description: Semantic list component with bullet, ordered, check, dot, description, and none marker variants.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { List } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <List variant=\"bullet\">\n    <List.Item>Disc markers in muted tertiary colour</List.Item>\n    <List.Item>Default for unordered content</List.Item>\n    <List.Item>Indented with token-based left padding</List.Item>\n  </List>\n  <List variant=\"check\">\n    <List.Item>WCAG 2.2 AA colour contrast on all text</List.Item>\n    <List.Item>Keyboard navigation on every interactive element</List.Item>\n    <List.Item>Screen reader announcements for live regions</List.Item>\n  </List>\n  <List variant=\"dot\">\n    <List.Item>Accent-coloured dot markers</List.Item>\n    <List.Item>Smaller visual weight than bullets</List.Item>\n  </List>\n  <List variant=\"ordered\">\n    <List.Item>First step in the process</List.Item>\n    <List.Item>Second step follows naturally</List.Item>\n    <List.Item>Sequence matters here</List.Item>\n  </List>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">bullet</p>
+      <List variant="bullet">
+        <List.Item>Disc markers in muted tertiary colour</List.Item>
+        <List.Item>Default for unordered content</List.Item>
+        <List.Item>Indented with token-based left padding</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">ordered</p>
+      <List variant="ordered">
+        <List.Item>First step in the process</List.Item>
+        <List.Item>Second step follows naturally</List.Item>
+        <List.Item>Sequence matters here</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">check</p>
+      <List variant="check">
+        <List.Item>WCAG 2.2 AA colour contrast on all text</List.Item>
+        <List.Item>Keyboard navigation on every interactive element</List.Item>
+        <List.Item>Touch targets minimum 24 × 24 px CSS</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">dot</p>
+      <List variant="dot">
+        <List.Item>Accent-coloured dot markers</List.Item>
+        <List.Item>Smaller visual weight than bullets</List.Item>
+        <List.Item>Ideal for compact feature lists</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">none</p>
+      <List variant="none">
+        <List.Item>No visible marker</List.Item>
+        <List.Item>Pure layout list — items as flex children</List.Item>
+        <List.Item>Semantic list structure maintained</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">description</p>
+      <List variant="description">
+        <List.Item term="Version">4.2.1</List.Item>
+        <List.Item term="Licence">MIT</List.Item>
+        <List.Item term="Stack">React 19 · TypeScript 5.7 · Tailwind CSS v4</List.Item>
+      </List>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { List } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <List variant=\"check\" size=\"sm\">\n    <List.Item>Small — compact spacing and typography</List.Item>\n    <List.Item>Best for dense information lists</List.Item>\n  </List>\n  <List variant=\"check\" size=\"md\">\n    <List.Item>Medium — standard spacing (default)</List.Item>\n    <List.Item>Balanced for most content contexts</List.Item>\n  </List>\n  <List variant=\"check\" size=\"lg\">\n    <List.Item>Large — generous spacing and larger text</List.Item>\n    <List.Item>Ideal for marketing or feature lists</List.Item>\n  </List>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">size="sm"</p>
+      <List variant="check" size="sm">
+        <List.Item>Small — compact spacing and typography</List.Item>
+        <List.Item>Best for dense information lists</List.Item>
+        <List.Item>Third feature on the roadmap</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">size="md" (default)</p>
+      <List variant="check" size="md">
+        <List.Item>Medium — standard spacing</List.Item>
+        <List.Item>Balanced for most content contexts</List.Item>
+        <List.Item>Third feature on the roadmap</List.Item>
+      </List>
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">size="lg"</p>
+      <List variant="check" size="lg">
+        <List.Item>Large — generous spacing and larger text</List.Item>
+        <List.Item>Ideal for marketing or feature lists</List.Item>
+        <List.Item>Third feature on the roadmap</List.Item>
+      </List>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { List } from \"@geeklego/ui\"\n\n<List variant=\"check\">\n  <List.Item>Available feature — click to learn more</List.Item>\n  <List.Item disabled>Disabled item — not available in this plan</List.Item>\n  <List.Item>Another active feature</List.Item>\n  <List.Item disabled>Disabled item — requires upgrade</List.Item>\n</List>"}>
+  <List variant="check">
+    <List.Item>Available feature — click to learn more</List.Item>
+    <List.Item disabled>Disabled item — not available in this plan</List.Item>
+    <List.Item>Another active feature</List.Item>
+    <List.Item disabled>Disabled item — requires upgrade</List.Item>
+  </List>
+</ComponentPreview>
+
+## Horizontal
+
+<ComponentPreview code={"import { List } from \"@geeklego/ui\"\n\n<List variant=\"none\" orientation=\"horizontal\">\n  <List.Item>Terms</List.Item>\n  <List.Item>Privacy</List.Item>\n  <List.Item>Support</List.Item>\n  <List.Item>Status</List.Item>\n</List>"}>
+  <List variant="none" orientation="horizontal">
+    <List.Item>Terms</List.Item>
+    <List.Item>Privacy</List.Item>
+    <List.Item>Support</List.Item>
+    <List.Item>Status</List.Item>
+  </List>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { List } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <List variant=\"check\">\n    <List.Item>WCAG 2.2 AA contrast in dark mode</List.Item>\n    <List.Item>Check icon colour resolves via semantic tokens</List.Item>\n    <List.Item disabled>Disabled item — muted in dark mode</List.Item>\n  </List>\n  <List variant=\"bullet\">\n    <List.Item>Bullet markers use tertiary text colour</List.Item>\n    <List.Item>Item text uses primary text colour</List.Item>\n  </List>\n  <List variant=\"description\">\n    <List.Item term=\"Background\">var(--color-bg-primary)</List.Item>\n    <List.Item term=\"Text\">var(--color-text-primary)</List.Item>\n  </List>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <List variant="check">
+      <List.Item>WCAG 2.2 AA contrast in dark mode</List.Item>
+      <List.Item>Check icon colour resolves via semantic tokens</List.Item>
+      <List.Item disabled>Disabled item — muted in dark mode</List.Item>
+    </List>
+    <List variant="bullet">
+      <List.Item>Bullet markers use tertiary text colour</List.Item>
+      <List.Item>Item text uses primary text colour</List.Item>
+      <List.Item>All values resolve via theme overrides</List.Item>
+    </List>
+    <List variant="description">
+      <List.Item term="Background">var(--color-bg-primary) → neutral-950</List.Item>
+      <List.Item term="Text">var(--color-text-primary) → neutral-50</List.Item>
+    </List>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### List
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'bullet' | 'ordered' | 'none' | 'check' | 'dot' | 'description'", defaultValue: "'bullet'", description: "Visual style of the list markers. 'description' renders a dl/dt/dd structure." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Spacing between items and typography scale." },
+    { name: "orientation", type: "'vertical' | 'horizontal'", defaultValue: "'vertical'", description: "Layout direction. Horizontal wraps items in a row." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "List.Item elements." },
+  ]}
+/>
+
+### List.Item
+
+<PropsTable
+  rows={[
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Renders the item in a muted, non-interactive disabled state. Applies aria-disabled." },
+    { name: "term", type: "ReactNode", defaultValue: "—", description: "Term label for the description variant — renders as dt. Ignored in all other variants." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Item content." },
+  ]}
+/>
+
+## Accessibility
+
+**Semantic elements:** `<ul>` (bullet/check/dot/none), `<ol>` (ordered), `<dl>` (description)
+
+| Element | Implicit role |
+|---|---|
+| `<ul>` | `list` |
+| `<ol>` | `list` |
+| `<li>` | `listitem` |
+| `<dt>` | `term` |
+| `<dd>` | `definition` |
+
+- `aria-disabled="true"` applied to `<li>` when `disabled={true}`
+- Check and dot icons carry `aria-hidden="true"` — text content carries all meaning
+- Screen readers announce item count and position (e.g. "list, 4 items", "item 1 of 4")
+- `<dl>` announces term/definition pairs in supported screen readers
+
+### Keyboard Interaction
+
+| Key | Behaviour |
+|-----|-----------|
+| Tab | Moves focus to the next interactive element inside a list item |
+| Enter / Space | Activates any button or link within the focused item |

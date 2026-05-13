@@ -1,0 +1,17 @@
+{
+  "default": { "variant": "received", "timestamp": "2:34 PM", "children": "Hey! Are you free for a call later today?" },
+  "variants": [
+    { "variant": "received", "timestamp": "2:30 PM", "children": "Hey! Are you free for a call later today?" },
+    { "variant": "sent", "timestamp": "2:31 PM", "children": "Sure, I'm available after 3pm!" },
+    { "variant": "system", "children": "You are now connected" }
+  ],
+  "states": {
+    "noTimestamp": { "variant": "received", "children": "Message without timestamp" },
+    "longContent": { "variant": "received", "timestamp": "4:00 PM", "children": "This message contains a lot of text to verify that the bubble wraps correctly and respects the maximum width constraint while remaining visually comfortable to read." }
+  },
+  "edge_cases": [
+    { "label": "Single word", "variant": "sent", "children": "Hi" },
+    { "label": "Very long word", "variant": "received", "children": "Supercalifragilisticexpialidocious" },
+    { "label": "No timestamp", "variant": "system", "children": "Encryption enabled" }
+  ]
+}

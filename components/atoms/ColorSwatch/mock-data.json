@@ -1,0 +1,42 @@
+{
+  "default": {
+    "color": "#6366f1",
+    "aria-label": "Indigo — #6366f1",
+    "size": "md",
+    "shape": "square"
+  },
+  "variants": [
+    { "shape": "square", "color": "#6366f1", "aria-label": "Square swatch" },
+    { "shape": "circle", "color": "#6366f1", "aria-label": "Circle swatch" }
+  ],
+  "sizes": [
+    { "size": "sm", "color": "#22c55e", "aria-label": "Small green" },
+    { "size": "md", "color": "#22c55e", "aria-label": "Medium green" },
+    { "size": "lg", "color": "#22c55e", "aria-label": "Large green" }
+  ],
+  "states": {
+    "default":           { "color": "#f97316", "aria-label": "Orange" },
+    "selected":          { "color": "#f97316", "aria-label": "Orange — selected", "selected": true },
+    "disabled":          { "color": "#f97316", "aria-label": "Orange — unavailable", "disabled": true },
+    "selectedDisabled":  { "color": "#f97316", "aria-label": "Orange — selected and unavailable", "selected": true, "disabled": true }
+  },
+  "palette": [
+    { "color": "#ef4444", "aria-label": "Red — #ef4444" },
+    { "color": "#f97316", "aria-label": "Orange — #f97316" },
+    { "color": "#eab308", "aria-label": "Yellow — #eab308" },
+    { "color": "#22c55e", "aria-label": "Green — #22c55e" },
+    { "color": "#3b82f6", "aria-label": "Blue — #3b82f6" },
+    { "color": "#8b5cf6", "aria-label": "Purple — #8b5cf6" },
+    { "color": "#ec4899", "aria-label": "Pink — #ec4899" },
+    { "color": "#ffffff", "aria-label": "White — #ffffff" },
+    { "color": "#000000", "aria-label": "Black — #000000" }
+  ],
+  "edge_cases": {
+    "namedColor":    { "color": "cornflowerblue", "aria-label": "Cornflower blue" },
+    "rgbColor":      { "color": "rgb(99, 102, 241)", "aria-label": "Indigo via RGB" },
+    "hslColor":      { "color": "hsl(239, 84%, 67%)", "aria-label": "Indigo via HSL" },
+    "transparent":   { "color": "transparent", "aria-label": "Transparent" },
+    "veryDark":      { "color": "#0a0a0a", "aria-label": "Near black" },
+    "veryLight":     { "color": "#f9f9f9", "aria-label": "Near white" }
+  }
+}

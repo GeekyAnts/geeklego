@@ -1,0 +1,65 @@
+{
+  "default": {
+    "variant": "elevated",
+    "interactive": false,
+    "header": {
+      "title": "Project Update",
+      "description": "Last modified 2 hours ago",
+      "action": "View all"
+    },
+    "body": "A Card groups related content and actions into a single, scannable surface.",
+    "footer": ["Cancel", "Confirm"]
+  },
+  "variants": [
+    {
+      "variant": "elevated",
+      "label": "Elevated",
+      "description": "Surface with drop shadow — primary container style"
+    },
+    {
+      "variant": "outlined",
+      "label": "Outlined",
+      "description": "Surface with visible border, no shadow"
+    },
+    {
+      "variant": "filled",
+      "label": "Filled",
+      "description": "Muted background, no border or shadow"
+    },
+    {
+      "variant": "ghost",
+      "label": "Ghost",
+      "description": "Transparent — blends with background"
+    }
+  ],
+  "states": {
+    "default": { "interactive": false, "variant": "elevated" },
+    "interactive": { "interactive": true, "variant": "elevated" },
+    "loading": { "ariaBusy": true, "variant": "outlined" }
+  },
+  "edge_cases": {
+    "empty_body": {
+      "header": { "title": "Card with no body content" },
+      "body": ""
+    },
+    "long_title": {
+      "header": {
+        "title": "This is an extremely long card title that should truncate gracefully without breaking layout",
+        "description": "Description also has a long string that tests the clamp behaviour when text overflows"
+      }
+    },
+    "no_footer": {
+      "header": { "title": "Card without footer" },
+      "body": "This card has no footer section.",
+      "footer": null
+    },
+    "no_header": {
+      "body": "This card has no header — body content fills the top.",
+      "footer": ["Close"]
+    },
+    "rich_content": {
+      "header": { "title": "Rich Content Card" },
+      "body": "Card body can contain any React children — lists, images, forms, other atoms."
+    }
+  }
+}

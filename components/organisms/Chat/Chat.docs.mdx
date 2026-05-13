@@ -1,0 +1,178 @@
+---
+title: Chat
+description: A full-featured chat interface with message threads, typing indicator, and message composition.
+level: organism
+---
+
+## Typing Indicator
+
+When `isTyping` is `true`, the typing indicator appears below the message list while the other participant is composing.
+
+<ComponentPreview code={"import { Chat } from \"@geeklego/ui\"\n\n<div className=\"w-full max-w-lg h-[500px] flex flex-col\">\n  <Chat\n    messages={[\n      { id: \"1\", senderId: \"user-2\", senderName: \"Sarah\", senderInitials: \"SR\",\n        content: \"Good morning! Did you get a chance to review the proposal?\",\n        timestamp: \"9:01 AM\", date: \"2026-04-09\" },\n      { id: \"2\", senderId: \"user-1\",\n        content: \"Yes, I went through it last night. It looks great!\",\n        timestamp: \"9:04 AM\", date: \"2026-04-09\" },\n    ]}\n    currentUserId=\"user-1\"\n    participant={{ name: \"Sarah Reynolds\", status: \"online\", avatarInitials: \"SR\" }}\n    isTyping\n    className=\"flex-1\"\n  />\n</div>"}>
+  <div className="w-full max-w-lg h-[500px] flex flex-col">
+    <Chat
+      messages={[
+        { id: "1", senderId: "user-2", senderName: "Sarah", senderInitials: "SR",
+          content: "Good morning! Did you get a chance to review the proposal?",
+          timestamp: "9:01 AM", date: "2026-04-09" },
+        { id: "2", senderId: "user-1",
+          content: "Yes, I went through it last night. It looks great!",
+          timestamp: "9:04 AM", date: "2026-04-09" },
+      ]}
+      currentUserId="user-1"
+      participant={{ name: "Sarah Reynolds", status: "online", avatarInitials: "SR" }}
+      isTyping
+      className="flex-1"
+    />
+  </div>
+</ComponentPreview>
+
+## Multi-Day Thread
+
+Date group separators appear automatically when consecutive messages have different `date` values. Labels resolve to "Today", "Yesterday", or a locale-formatted date string.
+
+<ComponentPreview code={"import { Chat } from \"@geeklego/ui\"\n\n<div className=\"w-full max-w-lg h-[500px] flex flex-col\">\n  <Chat\n    messages={[\n      { id: \"a\", senderId: \"user-2\", senderName: \"Sarah\", senderInitials: \"SR\",\n        content: \"Quick update from yesterday — the numbers look good.\",\n        timestamp: \"5:30 PM\", date: \"2026-04-08\" },\n      { id: \"b\", senderId: \"user-1\", content: \"Got it, thanks!\",\n        timestamp: \"5:45 PM\", date: \"2026-04-08\" },\n      { id: \"c\", senderId: \"user-2\", senderName: \"Sarah\", senderInitials: \"SR\",\n        content: \"Good morning! Let's continue from where we left off.\",\n        timestamp: \"9:01 AM\", date: \"2026-04-09\" },\n      { id: \"d\", senderId: \"user-1\", content: \"Sounds good — ready when you are.\",\n        timestamp: \"9:04 AM\", date: \"2026-04-09\" },\n    ]}\n    currentUserId=\"user-1\"\n    participant={{ name: \"Sarah Reynolds\", status: \"online\", avatarInitials: \"SR\" }}\n    className=\"flex-1\"\n  />\n</div>"}>
+  <div className="w-full max-w-lg h-[500px] flex flex-col">
+    <Chat
+      messages={[
+        { id: "a", senderId: "user-2", senderName: "Sarah", senderInitials: "SR",
+          content: "Quick update from yesterday — the numbers look good.",
+          timestamp: "5:30 PM", date: "2026-04-08" },
+        { id: "b", senderId: "user-1", content: "Got it, thanks!",
+          timestamp: "5:45 PM", date: "2026-04-08" },
+        { id: "c", senderId: "user-2", senderName: "Sarah", senderInitials: "SR",
+          content: "Good morning! Let's continue from where we left off.",
+          timestamp: "9:01 AM", date: "2026-04-09" },
+        { id: "d", senderId: "user-1", content: "Sounds good — ready when you are.",
+          timestamp: "9:04 AM", date: "2026-04-09" },
+      ]}
+      currentUserId="user-1"
+      participant={{ name: "Sarah Reynolds", status: "online", avatarInitials: "SR" }}
+      className="flex-1"
+    />
+  </div>
+</ComponentPreview>
+
+## Loading
+
+Pass `loading` while fetching initial message history. The message list is replaced by animated skeleton placeholders that preserve the layout dimensions.
+
+<ComponentPreview code={"import { Chat } from \"@geeklego/ui\"\n\n<div className=\"w-full max-w-lg h-[400px] flex flex-col\">\n  <Chat\n    messages={[]}\n    currentUserId=\"user-1\"\n    participant={{ name: \"Sarah Reynolds\", status: \"online\", avatarInitials: \"SR\" }}\n    loading\n    className=\"flex-1\"\n  />\n</div>"}>
+  <div className="w-full max-w-lg h-[400px] flex flex-col">
+    <Chat
+      messages={[]}
+      currentUserId="user-1"
+      participant={{ name: "Sarah Reynolds", status: "online", avatarInitials: "SR" }}
+      loading
+      className="flex-1"
+    />
+  </div>
+</ComponentPreview>
+
+## Empty
+
+When `messages` is an empty array and `loading` is false, the message area is blank. The input bar remains active.
+
+<ComponentPreview code={"import { Chat } from \"@geeklego/ui\"\n\n<div className=\"w-full max-w-lg h-[400px] flex flex-col\">\n  <Chat\n    messages={[]}\n    currentUserId=\"user-1\"\n    participant={{ name: \"Sarah Reynolds\", status: \"away\", avatarInitials: \"SR\" }}\n    className=\"flex-1\"\n  />\n</div>"}>
+  <div className="w-full max-w-lg h-[400px] flex flex-col">
+    <Chat
+      messages={[]}
+      currentUserId="user-1"
+      participant={{ name: "Sarah Reynolds", status: "away", avatarInitials: "SR" }}
+      className="flex-1"
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Chat } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col p-6 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"h-[500px] flex flex-col\">\n    <Chat\n      messages={[\n        { id: \"1\", senderId: \"user-2\", senderName: \"Sarah\", senderInitials: \"SR\",\n          content: \"Good morning! Did you get a chance to review the proposal?\",\n          timestamp: \"9:01 AM\", date: \"2026-04-09\" },\n        { id: \"2\", senderId: \"user-1\", content: \"Yes, it looks great!\",\n          timestamp: \"9:04 AM\", date: \"2026-04-09\" },\n        { id: \"3\", senderId: \"user-2\", senderName: \"Sarah\", senderInitials: \"SR\",\n          content: \"Awesome — let me revise those numbers and share a new version.\",\n          timestamp: \"9:05 AM\", date: \"2026-04-09\" },\n      ]}\n      currentUserId=\"user-1\"\n      participant={{ name: \"Sarah Reynolds\", status: \"online\", avatarInitials: \"SR\" }}\n      isTyping\n      className=\"flex-1\"\n    />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col p-6 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="h-[500px] flex flex-col">
+      <Chat
+        messages={[
+          { id: "1", senderId: "user-2", senderName: "Sarah", senderInitials: "SR",
+            content: "Good morning! Did you get a chance to review the proposal?",
+            timestamp: "9:01 AM", date: "2026-04-09" },
+          { id: "2", senderId: "user-1", content: "Yes, it looks great!",
+            timestamp: "9:04 AM", date: "2026-04-09" },
+          { id: "3", senderId: "user-2", senderName: "Sarah", senderInitials: "SR",
+            content: "Awesome — let me revise those numbers and share a new version.",
+            timestamp: "9:05 AM", date: "2026-04-09" },
+        ]}
+        currentUserId="user-1"
+        participant={{ name: "Sarah Reynolds", status: "online", avatarInitials: "SR" }}
+        isTyping
+        className="flex-1"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### ChatProps
+
+<PropsTable
+  rows={[
+    { name: "messages", type: "ChatMessageData[]", defaultValue: "—", description: "Array of messages to render in the thread." },
+    { name: "currentUserId", type: "string", defaultValue: "—", description: "ID of the current user. Messages from this sender are right-aligned as sent." },
+    { name: "participant", type: "ChatParticipant", defaultValue: "—", description: "Participant shown in the chat header." },
+    { name: "onSend", type: "(message: string) => void", defaultValue: "undefined", description: "Called with the trimmed message text when the user sends." },
+    { name: "isTyping", type: "boolean", defaultValue: "false", description: "When true, shows the typing indicator below the message list." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "When true, replaces the message list with animated skeleton placeholders." },
+    { name: "showAttach", type: "boolean", defaultValue: "true", description: "When true, shows the attachment button in the input bar." },
+    { name: "onAttach", type: "() => void", defaultValue: "undefined", description: "Called when the attachment button is clicked." },
+    { name: "headerActions", type: "ReactNode", defaultValue: "undefined", description: "Slot for action buttons rendered in the chat header." },
+    { name: "className", type: "string", defaultValue: "undefined", description: "Additional CSS class applied to the root section element." },
+    { name: "i18nStrings", type: "ChatI18nStrings", defaultValue: "undefined", description: "Override localised system strings for this instance." },
+  ]}
+/>
+
+### ChatMessageData
+
+<PropsTable
+  rows={[
+    { name: "id", type: "string", defaultValue: "—", description: "Stable unique identifier. Used as the React key for each message." },
+    { name: "content", type: "string", defaultValue: "—", description: "Message text content." },
+    { name: "timestamp", type: "string", defaultValue: "—", description: "Display-ready time string shown below the bubble (e.g. \"3:45 PM\")." },
+    { name: "senderId", type: "string", defaultValue: "—", description: "ID of the message sender. Compared against currentUserId to determine alignment." },
+    { name: "senderName", type: "string", defaultValue: "undefined", description: "Display name shown above received bubbles when the sender changes." },
+    { name: "senderAvatar", type: "string", defaultValue: "undefined", description: "Avatar image URL for received messages." },
+    { name: "senderInitials", type: "string", defaultValue: "undefined", description: "Initials for fallback avatar (up to 2 characters)." },
+    { name: "date", type: "string", defaultValue: "undefined", description: "ISO date string (YYYY-MM-DD). A date separator is injected between messages whose date differs from the previous message." },
+  ]}
+/>
+
+### ChatParticipant
+
+<PropsTable
+  rows={[
+    { name: "name", type: "string", defaultValue: "—", description: "Display name of the conversation participant shown in the header." },
+    { name: "status", type: "'online' | 'away' | 'offline' | 'busy'", defaultValue: "—", description: "Online presence status shown as a coloured dot in the header." },
+    { name: "avatarSrc", type: "string", defaultValue: "undefined", description: "Avatar image URL." },
+    { name: "avatarInitials", type: "string", defaultValue: "undefined", description: "Initials for the fallback avatar." },
+  ]}
+/>
+
+## Accessibility
+
+- **`<section role="log">`** — `role="log"` implicitly sets `aria-live="polite"` and `aria-relevant="additions text"`, so screen readers announce new messages without interrupting the user.
+- **`aria-label`** on the root section uses the localised `chatLabel` string from `i18nStrings`.
+- **Date separators** render as `<li role="separator" aria-label="...">` so assistive technologies announce the date boundary when navigating the message list.
+- **Typing indicator** uses `role="status"` internally so screen readers announce when the participant starts or stops typing.
+- **Auto-scroll** moves a hidden `<div aria-hidden="true">` anchor into view — keyboard focus is never moved programmatically, preserving the user's position.
+- **Message list** is a semantic `<ul>` — each message and date separator is an `<li>` — providing correct list structure for assistive technologies.
+- **Loading state** uses `aria-busy="true"` on the skeleton container.
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Moves focus into the input bar |
+| `Enter` | Sends the composed message |
+| `Ctrl+Enter` / `Cmd+Enter` | Sends the composed message (multi-line mode) |
+| `Tab` (in header) | Cycles through header action buttons |

@@ -1,0 +1,69 @@
+{
+  "default": {
+    "defaultValue": "overview",
+    "variant": "line",
+    "size": "md",
+    "orientation": "horizontal",
+    "tabs": [
+      { "value": "overview", "label": "Overview" },
+      { "value": "analytics", "label": "Analytics" },
+      { "value": "settings", "label": "Settings" }
+    ]
+  },
+  "variants": ["line", "enclosed", "soft-rounded", "solid-rounded"],
+  "sizes": ["sm", "md", "lg"],
+  "orientations": ["horizontal", "vertical"],
+  "states": {
+    "loading": {
+      "loading": true,
+      "loadingCount": 3
+    },
+    "with_disabled_tab": {
+      "tabs": [
+        { "value": "active", "label": "Active", "disabled": false },
+        { "value": "locked", "label": "Locked", "disabled": true },
+        { "value": "preview", "label": "Preview", "disabled": false }
+      ]
+    },
+    "with_icons": {
+      "tabs": [
+        { "value": "home", "label": "Home", "icon": "Home" },
+        { "value": "analytics", "label": "Analytics", "icon": "BarChart2" },
+        { "value": "profile", "label": "Profile", "icon": "User" },
+        { "value": "settings", "label": "Settings", "icon": "Settings" }
+      ]
+    }
+  },
+  "edge_cases": {
+    "long_label": {
+      "tabs": [
+        { "value": "a", "label": "This is a very long tab label that might overflow its container" },
+        { "value": "b", "label": "Short" }
+      ]
+    },
+    "single_tab": {
+      "tabs": [
+        { "value": "only", "label": "Only Tab" }
+      ]
+    },
+    "many_tabs": {
+      "tabs": [
+        { "value": "t1", "label": "Account" },
+        { "value": "t2", "label": "Billing" },
+        { "value": "t3", "label": "Security" },
+        { "value": "t4", "label": "Notifications" },
+        { "value": "t5", "label": "Integrations" },
+        { "value": "t6", "label": "API Keys" },
+        { "value": "t7", "label": "Audit Log" }
+      ]
+    },
+    "vertical_with_icons": {
+      "orientation": "vertical",
+      "tabs": [
+        { "value": "general", "label": "General", "icon": "Settings" },
+        { "value": "notifications", "label": "Notifications", "icon": "Bell" },
+        { "value": "security", "label": "Security", "icon": "Lock" }
+      ]
+    }
+  }
+}

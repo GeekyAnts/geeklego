@@ -1,0 +1,107 @@
+---
+title: ThemeSwitcher
+description: A compact icon toggle group for switching between light, dark, and system themes.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { ThemeSwitcher } from \"@geeklego/ui\"\nimport { Sun, Moon } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-6 items-start\">\n  {/* 2 options */}\n  <ThemeSwitcher\n    defaultValue=\"light\"\n    options={[\n      { value: \"light\", label: \"Light theme\", icon: <Sun size={16} /> },\n      { value: \"dark\",  label: \"Dark theme\",  icon: <Moon size={16} /> },\n    ]}\n  />\n  {/* 3 options — default */}\n  <ThemeSwitcher defaultValue=\"system\" />\n</div>"}>
+  <div className="flex flex-col gap-6 items-start">
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">2 options (light · dark)</span>
+      <ThemeSwitcher defaultValue="light" options={[{ value: "light", label: "Light theme", icon: <Sun size={16} /> }, { value: "dark", label: "Dark theme", icon: <Moon size={16} /> }]} />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">3 options — default (system · light · dark)</span>
+      <ThemeSwitcher defaultValue="system" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { ThemeSwitcher } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 items-start\">\n  <ThemeSwitcher defaultValue=\"system\" size=\"sm\" />\n  <ThemeSwitcher defaultValue=\"light\" size=\"md\" />\n  <ThemeSwitcher defaultValue=\"dark\" size=\"lg\" />\n</div>"}>
+  <div className="flex flex-col gap-6 items-start">
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">sm</span>
+      <ThemeSwitcher defaultValue="system" size="sm" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">md (default)</span>
+      <ThemeSwitcher defaultValue="light" size="md" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">lg</span>
+      <ThemeSwitcher defaultValue="dark" size="lg" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { ThemeSwitcher } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 items-start\">\n  <ThemeSwitcher defaultValue=\"system\" />\n  <ThemeSwitcher defaultValue=\"light\" />\n  <ThemeSwitcher defaultValue=\"dark\" />\n</div>"}>
+  <div className="flex flex-col gap-4 items-start">
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">System selected</span>
+      <ThemeSwitcher defaultValue="system" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">Light selected</span>
+      <ThemeSwitcher defaultValue="light" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">Dark selected</span>
+      <ThemeSwitcher defaultValue="dark" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ThemeSwitcher } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <ThemeSwitcher defaultValue=\"dark\" size=\"sm\" />\n  <ThemeSwitcher defaultValue=\"system\" size=\"md\" />\n  <ThemeSwitcher defaultValue=\"light\" size=\"lg\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <ThemeSwitcher defaultValue="dark" size="sm" />
+    <ThemeSwitcher defaultValue="system" size="md" />
+    <ThemeSwitcher defaultValue="light" size="lg" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "value", type: "'system' | 'light' | 'dark'", defaultValue: "—", description: "Currently selected theme (controlled mode)." },
+    { name: "defaultValue", type: "'system' | 'light' | 'dark'", defaultValue: "'system'", description: "Default theme when uncontrolled." },
+    { name: "onChange", type: "(value: ThemeMode) => void", defaultValue: "—", description: "Called when the user selects a different theme." },
+    { name: "options", type: "ThemeSwitcherOption[]", defaultValue: "—", description: "Custom options list. Defaults to system · light · dark with Monitor, Sun, Moon icons." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Size of each toggle button." },
+  ]}
+/>
+
+## Accessibility
+
+The container uses `role="group" aria-label="Theme"` to group the buttons as a logical unit.
+
+| Attribute | Value | Purpose |
+|---|---|---|
+| `role="group"` | on container | Groups the buttons as a logical unit |
+| `aria-label="Theme"` | on container | Names the group for assistive technology |
+| `aria-pressed` | `true` / `false` on each button | Communicates selected state |
+| `aria-label` | option's label string | Accessible name for icon-only buttons |
+| `aria-hidden="true"` | on icon span | Prevents icon from being announced twice |
+
+Focus follows selection. The group uses a **roving tabindex** — only the selected button receives `tabIndex={0}`.
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Move focus into (or out of) the group |
+| Arrow Right | Move focus to the next option and select it |
+| Arrow Left | Move focus to the previous option and select it |
+| Home | Move focus to the first option and select it |
+| End | Move focus to the last option and select it |

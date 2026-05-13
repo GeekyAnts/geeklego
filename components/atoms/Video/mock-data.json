@@ -1,0 +1,45 @@
+{
+  "default": {
+    "src": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "poster": "https://www.w3schools.com/html/img_chania.jpg",
+    "ratio": "16/9",
+    "controls": true,
+    "rounded": true,
+    "caption": "Big Buck Bunny — open-license demo clip"
+  },
+  "variants": [
+    { "ratio": "16/9",  "label": "Widescreen (default)" },
+    { "ratio": "4/3",   "label": "Standard" },
+    { "ratio": "1/1",   "label": "Square" },
+    { "ratio": "21/9",  "label": "Cinematic" }
+  ],
+  "sizes": [
+    { "maxWidth": 320, "label": "Small container (320px)" },
+    { "maxWidth": 560, "label": "Medium container (560px)" },
+    { "maxWidth": 800, "label": "Large container (800px)" }
+  ],
+  "states": {
+    "with_caption":  { "caption": "A sample caption providing context for the video." },
+    "no_controls":   { "controls": false, "autoPlay": true, "muted": true, "loop": true, "playsInline": true },
+    "bordered":      { "bordered": true },
+    "not_rounded":   { "rounded": false },
+    "with_tracks": {
+      "tracks": [
+        { "src": "/captions/en.vtt", "kind": "captions", "srcLang": "en", "label": "English", "default": true },
+        { "src": "/captions/fr.vtt", "kind": "subtitles", "srcLang": "fr", "label": "Français" }
+      ]
+    },
+    "schema": { "schema": true, "caption": "Big Buck Bunny" }
+  },
+  "sources": [
+    { "src": "https://www.w3schools.com/html/mov_bbb.mp4",  "type": "video/mp4" },
+    { "src": "https://www.w3schools.com/html/mov_bbb.webm", "type": "video/webm" },
+    { "src": "https://www.w3schools.com/html/mov_bbb.ogg",  "type": "video/ogg" }
+  ],
+  "edge_cases": {
+    "no_poster":          { "poster": null },
+    "no_src_or_sources":  {},
+    "long_caption":       { "caption": "This is an intentionally very long caption to verify that the two-line clamp utility truncates gracefully without overflowing its container or causing any layout issues." },
+    "cinematic_no_radius": { "ratio": "21/9", "rounded": false }
+  }
+}

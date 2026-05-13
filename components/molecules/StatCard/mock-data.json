@@ -1,0 +1,75 @@
+{
+  "default": {
+    "label": "Total Revenue",
+    "value": "$12,450",
+    "delta": 12.5,
+    "deltaLabel": "vs last month"
+  },
+  "variants": [
+    { "variant": "elevated", "label": "Elevated", "value": "$8,200", "delta": 5.2 },
+    { "variant": "outlined", "label": "Outlined", "value": "3,218", "delta": -1.4 },
+    { "variant": "filled", "label": "Filled", "value": "845", "delta": 0 },
+    { "variant": "ghost", "label": "Ghost", "value": "99.8%", "delta": 0.3 }
+  ],
+  "sizes": ["sm", "md", "lg"],
+  "states": {
+    "trend_up": {
+      "label": "Monthly Sales",
+      "value": "$8,320",
+      "delta": 14.2,
+      "deltaLabel": "vs last month"
+    },
+    "trend_down": {
+      "label": "Churn Rate",
+      "value": "2.8%",
+      "delta": -6.8,
+      "deltaLabel": "vs last week"
+    },
+    "neutral": {
+      "label": "Conversion Rate",
+      "value": "3.4%",
+      "delta": 0,
+      "deltaLabel": "no change"
+    },
+    "no_delta": {
+      "label": "Plan",
+      "value": "$99/mo"
+    },
+    "loading": {
+      "label": "Active Sessions",
+      "value": "—",
+      "isLoading": true
+    },
+    "with_icon": {
+      "label": "Total Revenue",
+      "value": "$12,450",
+      "delta": 12.5,
+      "deltaLabel": "vs last month"
+    }
+  },
+  "edge_cases": {
+    "large_number": {
+      "label": "Total Pageviews",
+      "value": "1,234,567",
+      "delta": 2.3,
+      "deltaLabel": "all time"
+    },
+    "long_label": {
+      "label": "Average Session Duration Per Unique Visitor",
+      "value": "4m 32s",
+      "delta": 8.1
+    },
+    "zero_delta": {
+      "label": "Error Rate",
+      "value": "0.0%",
+      "delta": 0,
+      "deltaLabel": "this week"
+    },
+    "negative_value": {
+      "label": "Net Loss",
+      "value": "-$1,200",
+      "delta": -3.5,
+      "deltaLabel": "vs last quarter"
+    }
+  }
+}

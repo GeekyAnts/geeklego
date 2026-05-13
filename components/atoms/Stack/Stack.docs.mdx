@@ -1,0 +1,128 @@
+---
+title: Stack
+description: A layout utility atom that arranges children in a one-dimensional flex container using responsive layout spacing tokens.
+level: atom
+---
+
+## Direction
+
+<ComponentPreview code={"import { Stack } from \"@geeklego/ui\"\n\n<Stack direction=\"row\" gap=\"xl\" align=\"start\">\n  <Stack gap=\"sm\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">Column (default)</span>\n    <Stack direction=\"column\" gap=\"sm\">\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center\">Item 1</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center\">Item 2</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center\">Item 3</div>\n    </Stack>\n  </Stack>\n  <Stack gap=\"sm\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">Row</span>\n    <Stack direction=\"row\" gap=\"sm\">\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 1</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 2</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 3</div>\n    </Stack>\n  </Stack>\n</Stack>"}>
+  <Stack direction="row" gap="xl" align="start">
+    <Stack gap="sm">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">Column (default)</span>
+      <Stack direction="column" gap="sm">
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center">Item 1</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center">Item 2</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm text-center">Item 3</div>
+      </Stack>
+    </Stack>
+    <Stack gap="sm">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">Row</span>
+      <Stack direction="row" gap="sm">
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 1</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 2</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 3</div>
+      </Stack>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+## Gap Sizes
+
+<ComponentPreview code={"import { Stack } from \"@geeklego/ui\"\n\n<Stack direction=\"column\" gap=\"xl\">\n  <Stack direction=\"column\" gap=\"xs\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">gap=\"none\"</span>\n    <Stack direction=\"row\" gap=\"none\">\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">A</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">B</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">C</div>\n    </Stack>\n  </Stack>\n  <Stack direction=\"column\" gap=\"xs\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">gap=\"sm\"</span>\n    <Stack direction=\"row\" gap=\"sm\">\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">A</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">B</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">C</div>\n    </Stack>\n  </Stack>\n  <Stack direction=\"column\" gap=\"xs\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">gap=\"lg\"</span>\n    <Stack direction=\"row\" gap=\"lg\">\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">A</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">B</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">C</div>\n    </Stack>\n  </Stack>\n</Stack>"}>
+  <Stack direction="column" gap="xl">
+    <Stack direction="column" gap="xs">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">gap="none"</span>
+      <Stack direction="row" gap="none">
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">A</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">B</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">C</div>
+      </Stack>
+    </Stack>
+    <Stack direction="column" gap="xs">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">gap="sm"</span>
+      <Stack direction="row" gap="sm">
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">A</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">B</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">C</div>
+      </Stack>
+    </Stack>
+    <Stack direction="column" gap="xs">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">gap="lg"</span>
+      <Stack direction="row" gap="lg">
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">A</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">B</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">C</div>
+      </Stack>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+## Alignment & Wrap
+
+<ComponentPreview code={"import { Stack } from \"@geeklego/ui\"\n\n<Stack direction=\"column\" gap=\"xl\">\n  <Stack gap=\"xs\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">align=center + justify=between (row)</span>\n    <Stack direction=\"row\" align=\"center\" justify=\"between\" style={{ width: 360 }}>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Start</div>\n      <div className=\"px-6 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Middle</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">End</div>\n    </Stack>\n  </Stack>\n  <Stack gap=\"xs\">\n    <span className=\"text-label-sm text-[var(--color-text-secondary)]\">wrap=true (row, narrow container)</span>\n    <Stack direction=\"row\" gap=\"sm\" wrap style={{ width: 220 }}>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Alpha</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Beta</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Gamma</div>\n      <div className=\"px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Delta</div>\n    </Stack>\n  </Stack>\n</Stack>"}>
+  <Stack direction="column" gap="xl">
+    <Stack gap="xs">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">align=center + justify=between (row)</span>
+      <Stack direction="row" align="center" justify="between" style={{ width: 360 }}>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Start</div>
+        <div className="px-6 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Middle</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">End</div>
+      </Stack>
+    </Stack>
+    <Stack gap="xs">
+      <span className="text-label-sm text-[var(--color-text-secondary)]">wrap=true (row, narrow container)</span>
+      <Stack direction="row" gap="sm" wrap style={{ width: 220 }}>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Alpha</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Beta</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Gamma</div>
+        <div className="px-3 py-1 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Delta</div>
+      </Stack>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Stack } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Stack direction=\"column\" gap=\"md\">\n    <Stack direction=\"row\" gap=\"sm\">\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 1</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 2</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item 3</div>\n    </Stack>\n    <Stack direction=\"column\" gap=\"sm\">\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item A</div>\n      <div className=\"px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm\">Item B</div>\n    </Stack>\n  </Stack>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Stack direction="column" gap="md">
+      <Stack direction="row" gap="sm">
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 1</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 2</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item 3</div>
+      </Stack>
+      <Stack direction="column" gap="sm">
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item A</div>
+        <div className="px-4 py-2 bg-[var(--color-surface-raised)] border border-[var(--color-border-default)] rounded-[var(--radius-component-md)] text-body-sm">Item B</div>
+      </Stack>
+    </Stack>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "direction", type: "'row' | 'column'", defaultValue: "'column'", description: "Flex direction." },
+    { name: "gap", type: "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'", defaultValue: "'md'", description: "Gap between children — maps to responsive layout spacing tokens." },
+    { name: "align", type: "'start' | 'center' | 'end' | 'stretch' | 'baseline'", defaultValue: "'stretch'", description: "align-items value." },
+    { name: "justify", type: "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'", defaultValue: "'start'", description: "justify-content value." },
+    { name: "wrap", type: "boolean", defaultValue: "false", description: "Allow children to wrap onto multiple lines." },
+    { name: "inline", type: "boolean", defaultValue: "false", description: "Use inline-flex instead of flex." },
+    { name: "as", type: "ElementType", defaultValue: "'div'", description: "Root element type for semantic override (e.g. 'ul', 'section', 'nav')." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Items to stack." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- `<div>` by default — no ARIA role of its own
+- Use `as` prop to render semantic elements (`nav`, `ul`, `section`) when needed
+- Add `aria-label` when using a landmark element (e.g. `as="nav"`)
+- Stack is a transparent layout container — screen readers see only its children
+- No keyboard interaction — layout only

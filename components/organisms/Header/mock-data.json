@@ -1,0 +1,161 @@
+{
+  "default": {
+    "schema": false,
+    "i18nStrings": {
+      "navLabel": "Primary",
+      "mobileNavLabel": "Navigation",
+      "openMenuLabel": "Open menu",
+      "closeMenuLabel": "Close menu"
+    },
+    "nav": [
+      { "href": "/", "label": "Home", "isActive": true },
+      { "href": "/dashboard", "label": "Dashboard" },
+      { "href": "/docs", "label": "Docs" },
+      { "href": "/components", "label": "Components" }
+    ],
+    "actions": [
+      { "type": "button", "variant": "ghost", "label": "Sign in" },
+      { "type": "button", "variant": "primary", "label": "Get started" }
+    ]
+  },
+
+  "variants": [
+    {
+      "name": "Minimal",
+      "description": "Brand + CTA only, no nav",
+      "brand": { "href": "/", "name": "Geeklego" },
+      "nav": [],
+      "actions": [
+        { "type": "button", "variant": "primary", "label": "Get started" }
+      ]
+    },
+    {
+      "name": "Standard",
+      "description": "Brand + nav + actions",
+      "brand": { "href": "/", "name": "Geeklego" },
+      "nav": [
+        { "href": "/", "label": "Home", "isActive": true },
+        { "href": "/dashboard", "label": "Dashboard" },
+        { "href": "/docs", "label": "Docs" },
+        { "href": "/components", "label": "Components" }
+      ],
+      "actions": [
+        { "type": "button", "variant": "ghost", "label": "Sign in" },
+        { "type": "button", "variant": "primary", "label": "Get started" }
+      ]
+    },
+    {
+      "name": "App Shell",
+      "description": "Nav + icon actions + avatar",
+      "brand": { "href": "/", "name": "Geeklego" },
+      "nav": [
+        { "href": "/", "label": "Dashboard", "isActive": true },
+        { "href": "/settings", "label": "Settings" },
+        { "href": "/help", "label": "Help" }
+      ],
+      "actions": [
+        { "type": "button", "variant": "ghost", "iconOnly": true, "label": "Notifications" },
+        { "type": "avatar", "initials": "JD", "size": "sm" }
+      ]
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "Icon + label nav",
+      "description": "NavItem atoms with icon and label",
+      "nav": [
+        { "href": "/", "label": "Home", "icon": "Home", "isActive": true },
+        { "href": "/dashboard", "label": "Dashboard", "icon": "LayoutDashboard" },
+        { "href": "/docs", "label": "Docs", "icon": "BookOpen" }
+      ]
+    },
+    {
+      "name": "Label-only nav",
+      "description": "NavItem atoms with label only, no icon",
+      "nav": [
+        { "href": "/", "label": "Home", "isActive": true },
+        { "href": "/dashboard", "label": "Dashboard" },
+        { "href": "/docs", "label": "Docs" },
+        { "href": "/components", "label": "Components" },
+        { "href": "/about", "label": "About" }
+      ]
+    }
+  ],
+
+  "states": {
+    "default": {
+      "description": "Mobile menu closed (default)",
+      "mobileOpen": false
+    },
+    "mobileOpen": {
+      "description": "Mobile menu open — toggle activated",
+      "mobileOpen": true
+    },
+    "withBadge": {
+      "description": "Nav item with notification badge",
+      "nav": [
+        { "href": "/", "label": "Home", "isActive": true },
+        { "href": "/inbox", "label": "Inbox", "badge": { "count": 4 } },
+        { "href": "/settings", "label": "Settings" }
+      ]
+    },
+    "withSchema": {
+      "description": "Schema.org WPHeader microdata active",
+      "schema": true
+    },
+    "withDisabledNavItem": {
+      "description": "Nav item in disabled state",
+      "nav": [
+        { "href": "/", "label": "Home", "isActive": true },
+        { "href": "/beta", "label": "Beta", "disabled": true },
+        { "href": "/docs", "label": "Docs" }
+      ]
+    }
+  },
+
+  "edge_cases": {
+    "longBrandName": {
+      "description": "Brand name truncates on narrow viewports",
+      "brand": { "href": "/", "name": "Geeklego Design System Framework Pro" }
+    },
+    "manyNavItems": {
+      "description": "Many nav items — horizontal overflow handled by flex layout",
+      "nav": [
+        { "href": "/", "label": "Home", "isActive": true },
+        { "href": "/dashboard", "label": "Dashboard" },
+        { "href": "/docs", "label": "Documentation" },
+        { "href": "/components", "label": "Components" },
+        { "href": "/templates", "label": "Templates" },
+        { "href": "/blog", "label": "Blog" },
+        { "href": "/pricing", "label": "Pricing" },
+        { "href": "/about", "label": "About" }
+      ]
+    },
+    "brandLogoOnly": {
+      "description": "Brand slot with logo icon only, no text",
+      "brand": { "href": "/", "name": "" }
+    },
+    "noActions": {
+      "description": "No actions slot — nav only",
+      "actions": []
+    },
+    "iconOnlyActions": {
+      "description": "Actions area with icon-only buttons and avatar",
+      "actions": [
+        { "type": "button", "variant": "ghost", "iconOnly": true, "label": "Search" },
+        { "type": "button", "variant": "ghost", "iconOnly": true, "label": "Notifications" },
+        { "type": "avatar", "initials": "AB", "size": "sm" }
+      ]
+    },
+    "customI18n": {
+      "description": "Custom i18n strings override",
+      "i18nStrings": {
+        "navLabel": "Hauptnavigation",
+        "mobileNavLabel": "Navigation",
+        "openMenuLabel": "Menü öffnen",
+        "closeMenuLabel": "Menü schließen"
+      }
+    }
+  }
+}

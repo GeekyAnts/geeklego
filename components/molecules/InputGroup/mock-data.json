@@ -1,0 +1,34 @@
+{
+  "default": {
+    "placeholder": "Search…",
+    "size": "md",
+    "variant": "default"
+  },
+  "variants": [
+    { "variant": "default",  "placeholder": "Default variant",  "prefixLabel": "icon" },
+    { "variant": "filled",   "placeholder": "Filled variant",   "prefixLabel": "icon" },
+    { "variant": "flushed",  "placeholder": "Flushed variant",  "prefixLabel": "icon" },
+    { "variant": "unstyled", "placeholder": "Unstyled variant", "prefixLabel": "none" }
+  ],
+  "sizes": [
+    { "size": "sm", "placeholder": "Small",  "prefixLabel": "icon" },
+    { "size": "md", "placeholder": "Medium", "prefixLabel": "icon" },
+    { "size": "lg", "placeholder": "Large",  "prefixLabel": "icon" }
+  ],
+  "states": {
+    "default":  { "placeholder": "Default state",  "disabled": false, "error": false, "isLoading": false },
+    "error":    { "placeholder": "Error state",    "disabled": false, "error": true,  "isLoading": false },
+    "disabled": { "placeholder": "Disabled state", "disabled": true,  "error": false, "isLoading": false },
+    "loading":  { "placeholder": "Loading state",  "disabled": false, "error": false, "isLoading": true  }
+  },
+  "edge_cases": {
+    "prefix_only":          { "placeholder": "Icon prefix only",             "hasSuffix": false },
+    "suffix_only":          { "placeholder": "Button suffix only",           "hasPrefix": false },
+    "prefix_and_suffix":    { "placeholder": "Both addons",                  "hasPrefix": true, "hasSuffix": true },
+    "text_prefix":          { "placeholder": "0.00", "type": "number",      "prefixText": "$",  "suffixText": "USD" },
+    "long_placeholder":     { "placeholder": "This is a very long placeholder that should truncate cleanly within the input" },
+    "no_addons":            { "placeholder": "Plain input through InputGroup — behaves like bare Input" },
+    "button_suffix_long":   { "placeholder": "Enter your email address here", "buttonLabel": "Subscribe to Newsletter" },
+    "country_code_prefix":  { "placeholder": "(555) 000-0000", "type": "tel", "prefixText": "+1" }
+  }
+}

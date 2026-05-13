@@ -1,0 +1,71 @@
+{
+  "default": {
+    "placeholder": "Type your message here…",
+    "variant": "default",
+    "size": "md",
+    "rows": 4,
+    "resize": "vertical"
+  },
+  "variants": [
+    {
+      "variant": "default",
+      "label": "Default",
+      "description": "Outlined border at rest",
+      "placeholder": "Default outlined textarea"
+    },
+    {
+      "variant": "filled",
+      "label": "Filled",
+      "description": "Muted bg, no border",
+      "placeholder": "Filled textarea"
+    },
+    {
+      "variant": "flushed",
+      "label": "Flushed",
+      "description": "Border-bottom only, no radius",
+      "placeholder": "Flushed textarea"
+    },
+    {
+      "variant": "unstyled",
+      "label": "Unstyled",
+      "description": "No border, no bg — blank slate",
+      "placeholder": "Unstyled textarea"
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "label": "Small", "rows": 2, "description": "Compact padding + body-sm typography" },
+    { "size": "md", "label": "Medium", "rows": 4, "description": "Standard padding + body-md typography" },
+    { "size": "lg", "label": "Large", "rows": 6, "description": "Generous padding + body-lg typography" }
+  ],
+  "resize_options": [
+    { "resize": "none",       "label": "None",       "description": "Resize handle hidden — fixed dimensions" },
+    { "resize": "vertical",   "label": "Vertical",   "description": "Default — user can adjust height only" },
+    { "resize": "horizontal", "label": "Horizontal", "description": "User can adjust width only" },
+    { "resize": "both",       "label": "Both",       "description": "User can resize freely in all directions" }
+  ],
+  "states": {
+    "default":    { "placeholder": "Enter your message…", "rows": 4 },
+    "with_value": {
+      "defaultValue": "This is a sample message that has been entered by the user. It demonstrates how the textarea looks with real content spanning multiple lines.",
+      "rows": 4
+    },
+    "disabled":   { "placeholder": "Cannot edit this field", "disabled": true, "rows": 4 },
+    "error":      { "defaultValue": "This field contains an error.", "error": true, "rows": 4 },
+    "loading":    { "placeholder": "Processing…", "isLoading": true, "rows": 4 }
+  },
+  "edge_cases": {
+    "empty_placeholder":   { "placeholder": "", "rows": 4 },
+    "single_row":          { "rows": 1, "placeholder": "Single row" },
+    "many_rows":           { "rows": 12, "placeholder": "Very tall textarea…" },
+    "no_resize":           { "resize": "none", "rows": 3, "placeholder": "Fixed size — no resize" },
+    "horizontal_resize":   { "resize": "horizontal", "rows": 3, "placeholder": "Resize width only" },
+    "long_placeholder": {
+      "placeholder": "This is a very long placeholder text that demonstrates how the component handles overflow within its container boundaries across multiple words",
+      "rows": 4
+    },
+    "pre_filled_long": {
+      "defaultValue": "Line one\nLine two\nLine three\nLine four\nLine five\nLine six\nLine seven\nLine eight",
+      "rows": 6
+    }
+  }
+}

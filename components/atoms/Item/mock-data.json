@@ -1,0 +1,43 @@
+{
+  "default": {
+    "variant": "default",
+    "size": "md",
+    "title": "John Doe",
+    "description": "john.doe@example.com"
+  },
+  "variants": [
+    { "variant": "default", "title": "Default variant", "description": "Subtle background, no border" },
+    { "variant": "outlined", "title": "Outlined variant", "description": "Border visible, no background fill" },
+    { "variant": "elevated", "title": "Elevated variant", "description": "Raised surface with shadow" },
+    { "variant": "ghost", "title": "Ghost variant", "description": "Fully transparent, hover reveals background" }
+  ],
+  "sizes": [
+    { "size": "sm", "title": "Compact item" },
+    { "size": "md", "title": "Standard item", "description": "With a supporting description" },
+    { "size": "lg", "title": "Spacious item", "description": "With a longer supporting description for multi-line display" }
+  ],
+  "states": {
+    "disabled": { "variant": "default", "title": "Disabled item", "description": "Cannot interact", "disabled": true },
+    "selected": { "variant": "default", "title": "Selected item", "description": "Currently active", "selected": true },
+    "loading": { "variant": "default", "title": "", "description": "", "loading": true }
+  },
+  "contacts": [
+    { "title": "Alice Chen", "description": "alice.chen@company.com" },
+    { "title": "Bob Martinez", "description": "bob.martinez@company.com" },
+    { "title": "Carol Johnson", "description": "carol.johnson@company.com" },
+    { "title": "David Kim", "description": "david.kim@company.com" },
+    { "title": "Eva Patel", "description": "eva.patel@company.com" }
+  ],
+  "settings": [
+    { "title": "Notifications", "description": "Receive push notifications for new messages" },
+    { "title": "Dark Mode", "description": "Switch between light and dark theme" },
+    { "title": "Two-Factor Auth", "description": "Add an extra layer of security to your account" },
+    { "title": "Language", "description": "Choose your preferred language" }
+  ],
+  "edge_cases": {
+    "long_title": { "title": "This is a very long title that should be truncated when it exceeds the available width of the component container" },
+    "long_description": { "title": "Normal title", "description": "This is a very long description that should also be truncated when it goes beyond the available container width" },
+    "title_only": { "title": "Title only — no description, no media, no actions" },
+    "all_slots": { "title": "Full item", "description": "With all slots populated including media and actions" }
+  }
+}

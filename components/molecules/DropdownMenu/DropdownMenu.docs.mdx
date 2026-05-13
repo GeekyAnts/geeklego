@@ -1,0 +1,193 @@
+---
+title: DropdownMenu
+description: A floating action menu anchored to a trigger element, with support for icons, keyboard shortcuts, destructive items, groups, and separators.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { DropdownMenu, Button } from \"@geeklego/ui\"\nimport { ChevronDown, Edit, Copy, Download, Trash2 } from \"lucide-react\"\n\n<div className=\"flex flex-wrap gap-6 items-start\">\n  <DropdownMenu\n    trigger={<Button variant=\"outline\">Actions <ChevronDown size={14} /></Button>}\n    items={[\n      { id: \"edit\", label: \"Edit\" },\n      { id: \"duplicate\", label: \"Duplicate\" },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"delete\", label: \"Delete\", destructive: true },\n    ]}\n  />\n  <DropdownMenu\n    trigger={<Button variant=\"outline\">With icons</Button>}\n    items={[\n      { id: \"edit\", label: \"Edit\", icon: <Edit size={14} />, shortcut: \"⌘E\" },\n      { id: \"copy\", label: \"Copy\", icon: <Copy size={14} />, shortcut: \"⌘C\" },\n      { id: \"download\", label: \"Download\", icon: <Download size={14} /> },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"delete\", label: \"Delete\", icon: <Trash2 size={14} />, destructive: true },\n    ]}\n  />\n  <DropdownMenu\n    trigger={<Button variant=\"outline\">Grouped</Button>}\n    items={[\n      { id: \"grp-account\", type: \"group\", label: \"Account\", items: [\n        { id: \"profile\", label: \"Profile\", icon: <User size={14} /> },\n        { id: \"settings\", label: \"Settings\", icon: <Settings size={14} /> },\n      ]},\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"grp-more\", type: \"group\", label: \"More\", items: [\n        { id: \"help\", label: \"Help\", icon: <Info size={14} /> },\n        { id: \"signout\", label: \"Sign out\", icon: <ArrowRight size={14} /> },\n      ]},\n    ]}\n  />\n</div>"}>
+  <div className="flex flex-wrap gap-6 items-start">
+    <DropdownMenu
+      trigger={<Button variant="outline">Actions</Button>}
+      items={[
+        { id: "edit", label: "Edit" },
+        { id: "duplicate", label: "Duplicate" },
+        { id: "sep1", type: "separator" },
+        { id: "delete", label: "Delete", destructive: true },
+      ]}
+    />
+    <DropdownMenu
+      trigger={<Button variant="outline">With icons</Button>}
+      items={[
+        { id: "edit", label: "Edit", icon: <Edit size={14} />, shortcut: "⌘E" },
+        { id: "copy", label: "Copy", icon: <Copy size={14} />, shortcut: "⌘C" },
+        { id: "download", label: "Download", icon: <Download size={14} /> },
+        { id: "sep1", type: "separator" },
+        { id: "delete", label: "Delete", icon: <Trash2 size={14} />, destructive: true },
+      ]}
+    />
+    <DropdownMenu
+      trigger={<Button variant="outline">Grouped</Button>}
+      items={[
+        { id: "grp-account", type: "group", label: "Account", items: [
+          { id: "profile", label: "Profile", icon: <User size={14} /> },
+          { id: "settings", label: "Settings", icon: <Settings size={14} /> },
+        ]},
+        { id: "sep1", type: "separator" },
+        { id: "grp-more", type: "group", label: "More", items: [
+          { id: "help", label: "Help", icon: <Info size={14} /> },
+          { id: "signout", label: "Sign out", icon: <ArrowRight size={14} /> },
+        ]},
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Placement
+
+<ComponentPreview code={"import { DropdownMenu, Button } from \"@geeklego/ui\"\n\nconst items = [\n  { id: \"item1\", label: \"Item one\" },\n  { id: \"item2\", label: \"Item two\" },\n  { id: \"item3\", label: \"Item three\" },\n]\n\n<div className=\"flex flex-wrap gap-4 justify-center p-16\">\n  <DropdownMenu placement=\"bottom-start\" trigger={<Button variant=\"outline\" size=\"sm\">Bottom start</Button>} items={items} />\n  <DropdownMenu placement=\"bottom-end\" trigger={<Button variant=\"outline\" size=\"sm\">Bottom end</Button>} items={items} />\n  <DropdownMenu placement=\"top-start\" trigger={<Button variant=\"outline\" size=\"sm\">Top start</Button>} items={items} />\n  <DropdownMenu placement=\"top-end\" trigger={<Button variant=\"outline\" size=\"sm\">Top end</Button>} items={items} />\n</div>"}>
+  <div className="flex flex-wrap gap-4 justify-center p-16">
+    <DropdownMenu
+      placement="bottom-start"
+      trigger={<Button variant="outline" size="sm">Bottom start</Button>}
+      items={[{ id: "item1", label: "Item one" }, { id: "item2", label: "Item two" }, { id: "item3", label: "Item three" }]}
+    />
+    <DropdownMenu
+      placement="bottom-end"
+      trigger={<Button variant="outline" size="sm">Bottom end</Button>}
+      items={[{ id: "item1", label: "Item one" }, { id: "item2", label: "Item two" }, { id: "item3", label: "Item three" }]}
+    />
+    <DropdownMenu
+      placement="top-start"
+      trigger={<Button variant="outline" size="sm">Top start</Button>}
+      items={[{ id: "item1", label: "Item one" }, { id: "item2", label: "Item two" }, { id: "item3", label: "Item three" }]}
+    />
+    <DropdownMenu
+      placement="top-end"
+      trigger={<Button variant="outline" size="sm">Top end</Button>}
+      items={[{ id: "item1", label: "Item one" }, { id: "item2", label: "Item two" }, { id: "item3", label: "Item three" }]}
+    />
+  </div>
+</ComponentPreview>
+
+## Disabled Items
+
+<ComponentPreview code={"import { DropdownMenu, Button } from \"@geeklego/ui\"\nimport { Edit, Download, Bell, Trash2 } from \"lucide-react\"\n\n<div className=\"flex flex-wrap gap-6 items-start\">\n  <DropdownMenu\n    trigger={<Button variant=\"outline\">File actions</Button>}\n    items={[\n      { id: \"edit\", label: \"Edit\", icon: <Edit size={14} /> },\n      { id: \"download\", label: \"Download\", icon: <Download size={14} />, disabled: true },\n      { id: \"notify\", label: \"Notify team\", icon: <Bell size={14} />, disabled: true },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"delete\", label: \"Delete\", icon: <Trash2 size={14} />, destructive: true },\n    ]}\n  />\n  <DropdownMenu\n    trigger={<Button variant=\"ghost\" leftIcon={<MoreHorizontal size={16} />} iconOnly>More options</Button>}\n    items={[\n      { id: \"edit\", label: \"Edit\", icon: <Edit size={14} /> },\n      { id: \"copy\", label: \"Copy link\", icon: <Copy size={14} /> },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"delete\", label: \"Delete\", icon: <Trash2 size={14} />, destructive: true },\n    ]}\n  />\n</div>"}>
+  <div className="flex flex-wrap gap-6 items-start">
+    <DropdownMenu
+      trigger={<Button variant="outline">File actions</Button>}
+      items={[
+        { id: "edit", label: "Edit", icon: <Edit size={14} /> },
+        { id: "download", label: "Download", icon: <Download size={14} />, disabled: true },
+        { id: "notify", label: "Notify team", icon: <Bell size={14} />, disabled: true },
+        { id: "sep1", type: "separator" },
+        { id: "delete", label: "Delete", icon: <Trash2 size={14} />, destructive: true },
+      ]}
+    />
+    <DropdownMenu
+      trigger={<Button variant="ghost" leftIcon={<MoreHorizontal size={16} />} iconOnly>More options</Button>}
+      items={[
+        { id: "edit", label: "Edit", icon: <Edit size={14} /> },
+        { id: "copy", label: "Copy link", icon: <Copy size={14} /> },
+        { id: "sep1", type: "separator" },
+        { id: "delete", label: "Delete", icon: <Trash2 size={14} />, destructive: true },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { DropdownMenu, Button } from \"@geeklego/ui\"\nimport { Edit, Copy, Download, Trash2, Settings, User } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-wrap gap-6 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <DropdownMenu\n    trigger={<Button variant=\"outline\">Actions</Button>}\n    items={[\n      { id: \"edit\", label: \"Edit\", icon: <Edit size={14} /> },\n      { id: \"copy\", label: \"Copy\", icon: <Copy size={14} /> },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"delete\", label: \"Delete\", icon: <Trash2 size={14} />, destructive: true },\n    ]}\n  />\n  <DropdownMenu\n    trigger={<Button variant=\"primary\">Account</Button>}\n    items={[\n      { id: \"profile\", label: \"Profile\", icon: <User size={14} /> },\n      { id: \"settings\", label: \"Settings\", icon: <Settings size={14} /> },\n      { id: \"sep1\", type: \"separator\" },\n      { id: \"download\", label: \"Export data\", icon: <Download size={14} /> },\n    ]}\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-wrap gap-6 items-start p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <DropdownMenu
+      trigger={<Button variant="outline">Actions</Button>}
+      items={[
+        { id: "edit", label: "Edit", icon: <Edit size={14} /> },
+        { id: "copy", label: "Copy", icon: <Copy size={14} /> },
+        { id: "sep1", type: "separator" },
+        { id: "delete", label: "Delete", icon: <Trash2 size={14} />, destructive: true },
+      ]}
+    />
+    <DropdownMenu
+      trigger={<Button variant="primary">Account</Button>}
+      items={[
+        { id: "profile", label: "Profile", icon: <User size={14} /> },
+        { id: "settings", label: "Settings", icon: <Settings size={14} /> },
+        { id: "sep1", type: "separator" },
+        { id: "download", label: "Export data", icon: <Download size={14} /> },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+### DropdownMenu
+
+<PropsTable
+  rows={[
+    { name: "trigger", type: "ReactNode", defaultValue: "—", description: "The element that opens the menu. ARIA attributes (aria-haspopup, aria-expanded, aria-controls) are injected automatically via cloneElement. Required." },
+    { name: "items", type: "DropdownMenuItemType[]", defaultValue: "—", description: "Ordered list of menu items, separators, and groups. Required." },
+    { name: "placement", type: "'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'", defaultValue: "'bottom-start'", description: "Preferred panel placement relative to the trigger." },
+    { name: "open", type: "boolean", defaultValue: "—", description: "Controlled open state. Omit to use uncontrolled mode." },
+    { name: "onOpenChange", type: "(open: boolean) => void", defaultValue: "—", description: "Called when the open state changes. Required when using controlled mode." },
+    { name: "menuLabel", type: "string", defaultValue: "—", description: "Accessible label for the menu panel (aria-label on the ul element)." },
+  ]}
+/>
+
+### DropdownMenuItemDef
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Unique stable identifier. Required. |
+| `label` | `string` | Visible item label. Required. |
+| `icon` | `ReactNode` | Leading icon node. |
+| `shortcut` | `string` | Keyboard shortcut label rendered on the trailing edge (e.g. `"⌘C"`). |
+| `href` | `string` | When provided, renders the item as an anchor instead of a button. |
+| `target` | `string` | Link target attribute (e.g. `"_blank"`). |
+| `rel` | `string` | Link rel attribute. |
+| `disabled` | `boolean` | Non-interactive and visually muted. |
+| `destructive` | `boolean` | Renders the item in the error/destructive colour. |
+
+### DropdownMenuSeparatorDef
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | `'separator'` | Renders a visual divider rule. Required. |
+| `id` | `string` | Unique stable identifier. Required. |
+
+### DropdownMenuGroupDef
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | `'group'` | Renders items under a labelled group heading. Required. |
+| `id` | `string` | Unique stable identifier. Required. |
+| `label` | `string` | Group heading label. Required. |
+| `items` | `DropdownMenuItemDef[]` | Items belonging to this group. Required. |
+
+## Accessibility
+
+- Menu panel has `role="menu"` — screen readers announce it as a menu
+- Each item is `role="menuitem"` — navigable with arrow keys
+- Trigger receives `aria-haspopup="menu"`, `aria-expanded`, and `aria-controls` injected automatically
+- Escape key closes the menu and returns focus to the trigger
+- Click outside closes the menu
+- Disabled items have `aria-disabled="true"` and are non-interactive
+- Separator is `role="separator"` and `aria-hidden="true"`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Enter / Space | Opens the menu (on trigger) or activates the focused item |
+| Arrow Down | Opens the menu or moves focus to the next item |
+| Arrow Up | Moves focus to the previous item |
+| Escape | Closes the menu and returns focus to the trigger |
+| Tab | Closes the menu |
+| Home | Moves focus to the first item |
+| End | Moves focus to the last item |

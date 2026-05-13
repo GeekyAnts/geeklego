@@ -1,0 +1,68 @@
+{
+  "default": {
+    "isOpen": true,
+    "title": "Confirm deletion",
+    "size": "md",
+    "closeOnBackdropClick": true,
+    "loading": false
+  },
+  "sizes": [
+    { "size": "sm",   "title": "Small modal",      "description": "384px wide — compact dialogs" },
+    { "size": "md",   "title": "Medium modal",     "description": "512px wide — default dialogs" },
+    { "size": "lg",   "title": "Large modal",      "description": "640px wide — rich content" },
+    { "size": "xl",   "title": "Extra-large modal","description": "768px wide — complex forms" },
+    { "size": "full", "title": "Full-screen modal","description": "100vw × 100dvh — immersive content" }
+  ],
+  "states": {
+    "default": {
+      "isOpen": true,
+      "title": "Default state",
+      "loading": false
+    },
+    "loading": {
+      "isOpen": true,
+      "title": "Loading content",
+      "loading": true
+    },
+    "noTitle": {
+      "isOpen": true,
+      "title": null,
+      "loading": false,
+      "description": "No title — dialog uses aria-label fallback"
+    },
+    "noBackdropClose": {
+      "isOpen": true,
+      "title": "Cannot close via backdrop",
+      "loading": false,
+      "closeOnBackdropClick": false
+    }
+  },
+  "edge_cases": {
+    "veryLongTitle": {
+      "title": "This is an extremely long modal title that should truncate gracefully without breaking the header layout"
+    },
+    "emptyBody": {
+      "title": "Empty body",
+      "description": "Modal with header + footer but no body content"
+    },
+    "bodyOnly": {
+      "title": "No footer",
+      "description": "Modal with header + body but no footer — close via button or Escape"
+    },
+    "richContent": {
+      "title": "Rich content",
+      "description": "Modal body with mixed content: headings, paragraphs, lists, code blocks"
+    },
+    "scrollableContent": {
+      "title": "Scrollable body",
+      "description": "12+ paragraphs — body scrolls while header and footer remain fixed"
+    },
+    "i18nOverrides": {
+      "title": "Custom strings",
+      "i18nStrings": {
+        "closeLabel": "Dismiss dialog",
+        "dialogLabel": "Custom accessible name"
+      }
+    }
+  }
+}

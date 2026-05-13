@@ -1,0 +1,70 @@
+{
+  "default": {
+    "label": "Date of birth",
+    "hint": "Use the format MM/DD/YYYY",
+    "size": "md",
+    "variant": "default"
+  },
+  "variants": [
+    { "label": "Default variant", "variant": "default", "hint": "Outlined border at rest" },
+    { "label": "Filled variant", "variant": "filled", "hint": "Muted background, no border" },
+    { "label": "Flushed variant", "variant": "flushed", "hint": "Bottom border only" },
+    { "label": "Unstyled variant", "variant": "unstyled", "hint": "No border, no background" }
+  ],
+  "sizes": [
+    { "label": "Small date", "size": "sm" },
+    { "label": "Medium date (default)", "size": "md" },
+    { "label": "Large date", "size": "lg" }
+  ],
+  "states": {
+    "default": {
+      "label": "Date of birth",
+      "hint": "Helper text appears here"
+    },
+    "withValue": {
+      "label": "Start date",
+      "defaultValue": "2026-03-25",
+      "hint": "Pre-filled date"
+    },
+    "error": {
+      "label": "Event date",
+      "errorMessage": "Please enter a valid date"
+    },
+    "disabled": {
+      "label": "Locked date",
+      "defaultValue": "2026-03-25",
+      "hint": "This field cannot be edited",
+      "disabled": true
+    },
+    "loading": {
+      "label": "Appointment date",
+      "hint": "Fetching allowed date range…",
+      "isLoading": true
+    },
+    "required": {
+      "label": "Submission deadline",
+      "hint": "This field is required",
+      "required": true
+    }
+  },
+  "edge_cases": {
+    "long_label": {
+      "label": "Please enter the date on which you would like your subscription to begin",
+      "hint": "Subscription start date"
+    },
+    "long_hint": {
+      "label": "Travel date",
+      "hint": "Select the date you plan to depart. Please note that dates must be at least 7 days in the future to allow processing time for your booking."
+    },
+    "long_error": {
+      "label": "Return date",
+      "errorMessage": "The selected date falls outside the allowed booking window. Please choose a date between today and 12 months from now."
+    },
+    "min_max": {
+      "label": "Appointment date",
+      "min": "2026-01-01",
+      "max": "2026-12-31",
+      "hint": "Available dates: 2026 only"
+    }
+  }
+}

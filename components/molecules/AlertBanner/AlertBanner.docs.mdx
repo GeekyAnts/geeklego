@@ -1,0 +1,113 @@
+---
+title: AlertBanner
+description: Display contextual status messages with semantic variants, multiple visual appearances, and accessible live region support.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <AlertBanner variant=\"info\" appearance=\"subtle\" title=\"New feature available\" description=\"Explore the updated dashboard for a faster workflow.\" />\n  <AlertBanner variant=\"success\" appearance=\"subtle\" title=\"Changes saved\" description=\"Your profile has been updated successfully.\" />\n  <AlertBanner variant=\"warning\" appearance=\"subtle\" title=\"Storage limit approaching\" description=\"You have used 90% of your available storage.\" />\n  <AlertBanner variant=\"error\" appearance=\"subtle\" title=\"Payment failed\" description=\"We could not process your card. Please update your billing details.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <AlertBanner variant="info" appearance="subtle" title="New feature available" description="Explore the updated dashboard for a faster workflow." />
+    <AlertBanner variant="success" appearance="subtle" title="Changes saved" description="Your profile has been updated successfully." />
+    <AlertBanner variant="warning" appearance="subtle" title="Storage limit approaching" description="You have used 90% of your available storage." />
+    <AlertBanner variant="error" appearance="subtle" title="Payment failed" description="We could not process your card. Please update your billing details." />
+  </div>
+</ComponentPreview>
+
+## Appearances
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <AlertBanner variant=\"info\" appearance=\"solid\" title=\"Solid\" description=\"Filled background with inverse text for maximum prominence.\" />\n  <AlertBanner variant=\"info\" appearance=\"subtle\" title=\"Subtle\" description=\"Muted tinted background with a status border.\" />\n  <AlertBanner variant=\"info\" appearance=\"outline\" title=\"Outline\" description=\"Transparent background with a full status border.\" />\n  <AlertBanner variant=\"info\" appearance=\"left-accent\" title=\"Left Accent\" description=\"Tinted background with a bold inline-start bar.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <AlertBanner variant="info" appearance="solid" title="Solid" description="Filled background with inverse text for maximum prominence." />
+    <AlertBanner variant="info" appearance="subtle" title="Subtle" description="Muted tinted background with a status border." />
+    <AlertBanner variant="info" appearance="outline" title="Outline" description="Transparent background with a full status border." />
+    <AlertBanner variant="info" appearance="left-accent" title="Left Accent" description="Tinted background with a bold inline-start bar." />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <AlertBanner variant=\"info\" size=\"md\" title=\"Standard size (md)\" description=\"Default padding and icon — suitable for most contexts.\" />\n  <AlertBanner variant=\"info\" size=\"sm\" title=\"Compact size (sm)\" description=\"Reduced padding and icon — ideal for dense UIs.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <AlertBanner variant="info" size="md" title="Standard size (md)" description="Default padding and icon — suitable for most contexts." />
+    <AlertBanner variant="info" size="sm" title="Compact size (sm)" description="Reduced padding and icon — ideal for dense UIs." />
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <AlertBanner variant=\"info\" title=\"With icon\" description=\"The leading icon provides a redundant visual cue beyond colour alone.\" showIcon />\n  <AlertBanner variant=\"warning\" title=\"No icon\" description=\"Setting showIcon to false removes the leading icon for dense layouts.\" showIcon={false} />\n  <AlertBanner variant=\"success\" title=\"Title only\" />\n  <AlertBanner variant=\"error\" description=\"Description only — the text acts as the sole message.\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <AlertBanner variant="info" title="With icon" description="The leading icon provides a redundant visual cue beyond colour alone." showIcon />
+    <AlertBanner variant="warning" title="No icon" description="Setting showIcon to false removes the leading icon for dense layouts." showIcon={false} />
+    <AlertBanner variant="success" title="Title only" />
+    <AlertBanner variant="error" description="Description only — the text acts as the sole message." />
+  </div>
+</ComponentPreview>
+
+## With Actions
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<AlertBanner\n  variant=\"warning\"\n  title=\"Subscription expiring\"\n  description=\"Your plan expires in 3 days. Renew to keep access.\"\n  actions={<button type=\"button\" className=\"text-body-sm font-medium underline underline-offset-2 focus-visible:outline-none\">Renew now</button>}\n/>"}>
+  <AlertBanner
+    variant="warning"
+    title="Subscription expiring"
+    description="Your plan expires in 3 days. Renew to keep access."
+    actions={<button type="button" className="text-body-sm font-medium underline underline-offset-2 focus-visible:outline-none">Renew now</button>}
+  />
+</ComponentPreview>
+
+## Dismissible
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<AlertBanner\n  variant=\"info\"\n  title=\"Dismissible\"\n  description=\"A dismiss button appears on the trailing edge when dismissible is true.\"\n  dismissible\n/>"}>
+  <AlertBanner variant="info" title="Dismissible" description="A dismiss button appears on the trailing edge when dismissible is true." dismissible />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { AlertBanner } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <AlertBanner variant=\"info\" appearance=\"subtle\" title=\"New feature available\" description=\"Explore the updated dashboard for a faster workflow.\" />\n  <AlertBanner variant=\"success\" appearance=\"subtle\" title=\"Changes saved\" description=\"Your profile has been updated successfully.\" />\n  <AlertBanner variant=\"warning\" appearance=\"subtle\" title=\"Storage limit approaching\" description=\"You have used 90% of your available storage.\" />\n  <AlertBanner variant=\"error\" appearance=\"left-accent\" title=\"Payment failed\" description=\"We could not process your card. Please update your billing details.\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-4 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <AlertBanner variant="info" appearance="subtle" title="New feature available" description="Explore the updated dashboard for a faster workflow." />
+    <AlertBanner variant="success" appearance="subtle" title="Changes saved" description="Your profile has been updated successfully." />
+    <AlertBanner variant="warning" appearance="subtle" title="Storage limit approaching" description="You have used 90% of your available storage." />
+    <AlertBanner variant="error" appearance="left-accent" title="Payment failed" description="We could not process your card. Please update your billing details." />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'info' | 'success' | 'warning' | 'error'", defaultValue: "'info'", description: "Semantic status intent. Controls colour palette, default icon, and ARIA live region assertiveness." },
+    { name: "appearance", type: "'solid' | 'subtle' | 'outline' | 'left-accent'", defaultValue: "'subtle'", description: "Visual treatment strategy. Each appearance uses a fundamentally different visual approach." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Component scale. sm uses reduced padding and a smaller icon for dense layouts." },
+    { name: "title", type: "string", defaultValue: "—", description: "Optional bold title line rendered above the description." },
+    { name: "description", type: "ReactNode", defaultValue: "—", description: "Alert body content. Accepts a string or any React node." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Override the leading status icon entirely. Pass null to suppress without affecting showIcon." },
+    { name: "showIcon", type: "boolean", defaultValue: "true", description: "Whether to render the leading status icon." },
+    { name: "dismissible", type: "boolean", defaultValue: "false", description: "When true, a dismiss button appears on the trailing edge." },
+    { name: "onDismiss", type: "() => void", defaultValue: "—", description: "Called when the user activates the dismiss button." },
+    { name: "actions", type: "ReactNode", defaultValue: "—", description: "Optional action slot below the description — intended for one or two action nodes." },
+    { name: "i18nStrings", type: "AlertBannerI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for the dismiss button label." },
+  ]}
+/>
+
+## Accessibility
+
+- `role="alert"` (assertive) for `error` and `warning` — screen reader interrupts current speech immediately
+- `role="status"` (polite) for `info` and `success` — screen reader waits for a pause before announcing
+- Leading icon wrapper is `aria-hidden` — colour is not the sole status cue (icon provides redundancy)
+- Dismiss button has a localised `aria-label` via `i18nStrings.dismissLabel`
+- Focus ring and 44×44px touch target on the dismiss button
+- `actions` slot items are individually keyboard-reachable
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the dismiss button or action items |
+| Enter | Activates the focused button |
+| Space | Activates the focused button |

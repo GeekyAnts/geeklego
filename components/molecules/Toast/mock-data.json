@@ -1,0 +1,142 @@
+{
+  "default": {
+    "variant": "info",
+    "appearance": "subtle",
+    "size": "md",
+    "title": "Update available",
+    "description": "Version 3.2.1 is ready to install. Restart to apply.",
+    "dismissible": true,
+    "showIcon": true
+  },
+  "variants": [
+    {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": "Info",
+      "description": "Your export has been queued and will be ready shortly."
+    },
+    {
+      "variant": "success",
+      "appearance": "subtle",
+      "title": "Success",
+      "description": "Changes saved successfully. All data is up to date."
+    },
+    {
+      "variant": "warning",
+      "appearance": "subtle",
+      "title": "Warning",
+      "description": "Your session expires in 5 minutes. Save your work."
+    },
+    {
+      "variant": "error",
+      "appearance": "subtle",
+      "title": "Error",
+      "description": "Failed to connect. Check your connection and try again."
+    }
+  ],
+  "appearances": [
+    {
+      "appearance": "solid",
+      "variant": "info",
+      "title": "Solid",
+      "description": "Filled status background, high-contrast inverse text."
+    },
+    {
+      "appearance": "subtle",
+      "variant": "info",
+      "title": "Subtle",
+      "description": "Muted tinted background with status-coloured border."
+    },
+    {
+      "appearance": "outline",
+      "variant": "info",
+      "title": "Outline",
+      "description": "Surface-raised background with full status border."
+    },
+    {
+      "appearance": "left-accent",
+      "variant": "info",
+      "title": "Left accent",
+      "description": "Tinted background with bold inline-start status bar."
+    }
+  ],
+  "sizes": [
+    {
+      "size": "sm",
+      "variant": "info",
+      "title": "Small",
+      "description": "Reduced padding for dense notification stacks."
+    },
+    {
+      "size": "md",
+      "variant": "info",
+      "title": "Medium",
+      "description": "Default size with comfortable reading spacing."
+    }
+  ],
+  "states": {
+    "dismissible": {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": "Dismissible",
+      "description": "Dismiss button visible on the trailing edge.",
+      "dismissible": true
+    },
+    "nonDismissible": {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": "Non-dismissible",
+      "description": "Consumer manages removal — no dismiss button rendered.",
+      "dismissible": false
+    },
+    "noIcon": {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": "No icon",
+      "description": "showIcon=false removes the leading status icon.",
+      "showIcon": false
+    },
+    "withProgress": {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": "With progress",
+      "description": "Auto-dismisses in 5 seconds with a countdown bar.",
+      "duration": 5000,
+      "showProgress": true
+    }
+  },
+  "edge_cases": {
+    "titleOnly": {
+      "variant": "success",
+      "appearance": "subtle",
+      "title": "File uploaded",
+      "description": null,
+      "dismissible": true
+    },
+    "descriptionOnly": {
+      "variant": "info",
+      "appearance": "subtle",
+      "title": null,
+      "description": "Your preferences have been saved.",
+      "dismissible": true
+    },
+    "longTitle": {
+      "variant": "warning",
+      "appearance": "subtle",
+      "title": "A very long notification title that should truncate at the single-line overflow boundary",
+      "description": "Short description."
+    },
+    "longDescription": {
+      "variant": "error",
+      "appearance": "subtle",
+      "title": "Connection error",
+      "description": "Unable to reach the server. This may be caused by a network interruption, a firewall rule, or the server being temporarily unavailable. Please check your connection and try again in a few moments."
+    },
+    "withActions": {
+      "variant": "warning",
+      "appearance": "subtle",
+      "title": "Unsaved changes",
+      "description": "You have unsaved changes that will be lost if you leave this page."
+    }
+  }
+}

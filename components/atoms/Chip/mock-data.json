@@ -1,0 +1,69 @@
+{
+  "default": {
+    "variant": "solid",
+    "size": "md",
+    "interactive": true,
+    "children": "Design System"
+  },
+
+  "variants": [
+    { "variant": "solid",   "children": "Solid"   },
+    { "variant": "soft",    "children": "Soft"    },
+    { "variant": "outline", "children": "Outline" },
+    { "variant": "ghost",   "children": "Ghost"   }
+  ],
+
+  "variants_selected": [
+    { "variant": "solid",   "selected": true, "children": "Solid"   },
+    { "variant": "soft",    "selected": true, "children": "Soft"    },
+    { "variant": "outline", "selected": true, "children": "Outline" },
+    { "variant": "ghost",   "selected": true, "children": "Ghost"   }
+  ],
+
+  "sizes": [
+    { "size": "sm", "children": "Small"  },
+    { "size": "md", "children": "Medium" },
+    { "size": "lg", "children": "Large"  }
+  ],
+
+  "states": {
+    "default":          { "children": "Default"  },
+    "selected":         { "selected": true, "children": "Selected"  },
+    "disabled":         { "disabled": true, "children": "Disabled"  },
+    "disabled_selected":{ "disabled": true, "selected": true, "children": "Disabled selected" },
+    "removable":        { "interactive": false, "children": "Removable" },
+    "static":           { "interactive": false, "children": "Static tag" }
+  },
+
+  "filter_group": {
+    "description": "Three-chip filter group — one selected",
+    "chips": [
+      { "children": "React",      "selected": true  },
+      { "children": "TypeScript", "selected": false },
+      { "children": "CSS",        "selected": false }
+    ]
+  },
+
+  "tag_list": {
+    "description": "Removable tags in a tag-input context",
+    "chips": [
+      { "interactive": false, "children": "React" },
+      { "interactive": false, "children": "TypeScript" },
+      { "interactive": false, "children": "Tailwind CSS" }
+    ]
+  },
+
+  "edge_cases": {
+    "short_label":       { "children": "A" },
+    "long_label":        { "children": "Very long chip label that might truncate" },
+    "single_word":       { "children": "Tag" },
+    "with_number":       { "children": "12 items" },
+    "emoji_label":       { "children": "🚀 Launch" },
+    "sm_removable":      { "size": "sm", "interactive": false, "children": "Tiny" },
+    "lg_with_icon_remove": {
+      "size": "lg",
+      "interactive": false,
+      "children": "Design"
+    }
+  }
+}

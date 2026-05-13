@@ -1,0 +1,68 @@
+# ─── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+
+# ─── Build outputs ───────────────────────────────────────────────────────────
+dist/
+app/dist/
+storybook-static/
+
+# ─── Environment & secrets ───────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── OS & editor ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ─── Claude Code (local settings) ──────────────────────────────────────────
+.claude/settings.local.json
+.claude/launch.json
+
+# ─── Logs & cache ────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+.cache/
+.eslintcache
+.turbo/
+
+# ─── Vitest / Playwright ─────────────────────────────────────────────────────
+/test-results/
+/playwright-report/
+/blob-report/
+.playwright/
+
+# ─── TypeScript ──────────────────────────────────────────────────────────────
+*.tsbuildinfo
+
+# ─── npm lock file (monorepo uses pnpm — pnpm-lock.yaml is canonical) ────────
+package-lock.json
+
+# ─── Storybook assets (demo files not needed) ────────────────────────────────
+stories/assets/*.svg
+stories/assets/*.png
+stories/assets/*.jpg
+stories/assets/*.jpeg
+stories/assets/*.gif
+stories/assets/*.webp
+stories/assets/*.avif
+
+# ─── Local dev / editor files ───────────────────────────────────────────────
+app/.claude/launch.json
+
+# ─── Log files (local development logs) ──────────────────────────────────────
+storybook.log
+dev.log
+
+# ─── Temporary / working files ───────────────────────────────────────────────
+validate-css-gen.js
+app/roundtrip-analysis.md
+
+# ─── Internal / non-public docs ──────────────────────────────────────────────
+COMPONENT-CHECKLIST.md
+PUBLIC-REPO-SETUP.md
+docs/migration-guides.md

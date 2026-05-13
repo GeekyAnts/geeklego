@@ -1,0 +1,98 @@
+---
+title: SkipLink
+description: A keyboard-accessible bypass link that lets users skip repeated navigation blocks.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { SkipLink } from \"@geeklego/ui\"\n\n{/* Place skip links as the first focusable elements on the page */}\n<div className=\"flex flex-col gap-2\">\n  <SkipLink href=\"#main-content\" forceVisible>Skip to main content</SkipLink>\n  <SkipLink href=\"#navigation\" forceVisible>Skip to navigation</SkipLink>\n  <SkipLink href=\"#search\" forceVisible>Skip to search</SkipLink>\n  <SkipLink href=\"#footer\" forceVisible>Skip to footer</SkipLink>\n</div>"}>
+  <div className="flex flex-col gap-2">
+    <SkipLink href="#skip-docs-main" forceVisible>Skip to main content</SkipLink>
+    <SkipLink href="#skip-docs-nav" forceVisible>Skip to navigation</SkipLink>
+    <SkipLink href="#skip-docs-search" forceVisible>Skip to search</SkipLink>
+    <SkipLink href="#skip-docs-footer" forceVisible>Skip to footer</SkipLink>
+    <main id="skip-docs-main" tabIndex={-1} className="sr-only">Main content</main>
+    <nav id="skip-docs-nav" tabIndex={-1} className="sr-only">Navigation</nav>
+    <section id="skip-docs-search" tabIndex={-1} className="sr-only">Search</section>
+    <footer id="skip-docs-footer" tabIndex={-1} className="sr-only">Footer</footer>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { SkipLink } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <SkipLink href=\"#main\" size=\"sm\" forceVisible>Skip to main content</SkipLink>\n  <SkipLink href=\"#main\" size=\"md\" forceVisible>Skip to main content</SkipLink>\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">sm</span>
+      <SkipLink href="#skip-sizes-main" size="sm" forceVisible>Skip to main content</SkipLink>
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-xs text-[var(--color-text-secondary)]">md (default)</span>
+      <SkipLink href="#skip-sizes-main" size="md" forceVisible>Skip to main content</SkipLink>
+    </div>
+    <main id="skip-sizes-main" tabIndex={-1} className="sr-only">Main content</main>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { SkipLink } from \"@geeklego/ui\"\n\n{/* Hidden by default — appears when focused */}\n<SkipLink href=\"#main-content\">Skip to main content</SkipLink>\n\n{/* forceVisible — for testing and accessibility audits */}\n<SkipLink href=\"#main-content\" forceVisible>Skip to main content</SkipLink>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">Hidden (default) — Tab into the area to reveal</span>
+      <div className="relative h-10 overflow-hidden rounded-[var(--radius-component-md)] bg-[var(--color-bg-secondary)]">
+        <SkipLink href="#skip-states-main">Skip to main content</SkipLink>
+        <span className="absolute inset-0 flex items-center justify-center text-body-sm text-[var(--color-text-tertiary)]">Link is hidden above viewport</span>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-secondary)]">Visible on focus (forceVisible=true) — for testing</span>
+      <div className="relative h-10">
+        <SkipLink href="#skip-states-main" forceVisible>Skip to main content</SkipLink>
+      </div>
+    </div>
+    <main id="skip-states-main" tabIndex={-1} className="sr-only">Main content</main>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { SkipLink } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-3 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <SkipLink href=\"#main\" forceVisible>Skip to main content</SkipLink>\n  <SkipLink href=\"#nav\" size=\"sm\" forceVisible>Skip to navigation</SkipLink>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-3 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <SkipLink href="#skip-dark-main" forceVisible>Skip to main content</SkipLink>
+    <SkipLink href="#skip-dark-nav" size="sm" forceVisible>Skip to navigation</SkipLink>
+    <main id="skip-dark-main" tabIndex={-1} className="sr-only">Main</main>
+    <nav id="skip-dark-nav" tabIndex={-1} className="sr-only">Nav</nav>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "—", description: "Fragment href pointing to the landmark to skip to. Must match the id of a target element (e.g. '#main-content'). Required." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Height, padding, and typography scale." },
+    { name: "forceVisible", type: "boolean", defaultValue: "false", description: "Forces the link to be always visible. Use only for Storybook, testing, and accessibility audits — never in production." },
+    { name: "children", type: "ReactNode", defaultValue: "'Skip to main content'", description: "Label text. Override for multi-skip-link patterns (e.g. 'Skip to navigation')." },
+  ]}
+/>
+
+## Accessibility
+
+Implements **WCAG 2.1 SC 2.4.1 — Bypass Blocks (Level A)**. Keyboard-only users can Tab to the skip link, which slides into view, then press Enter to move focus to the target landmark.
+
+- Semantic `<a href="...">` — a native hyperlink activated with Enter
+- No `aria-label` needed — the visible label text is the accessible name
+- Landmark targets must use `tabIndex={-1}` to receive programmatic focus
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Move focus to the skip link (link slides into view) |
+| Enter | Follow the href to the target landmark; focus moves to the target |
+| Tab (again) | Move focus past the skip link to the next focusable element |

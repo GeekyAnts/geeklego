@@ -1,0 +1,115 @@
+---
+title: Item
+description: A flexible list item for menus, dropdowns, and option lists.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Mail, Settings, Star, Bell, ChevronRight } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 w-full max-w-2xl\">\n  <Item variant=\"default\" title=\"Default variant\" description=\"Subtle background, no border\" media={<Mail size={16} />} actions={<ChevronRight size={16} />} interactive />\n  <Item variant=\"outlined\" title=\"Outlined variant\" description=\"Border visible, no background fill\" media={<Settings size={16} />} actions={<ChevronRight size={16} />} interactive />\n  <Item variant=\"elevated\" title=\"Elevated variant\" description=\"Raised surface with shadow\" media={<Star size={16} />} actions={<ChevronRight size={16} />} interactive />\n  <Item variant=\"ghost\" title=\"Ghost variant\" description=\"Fully transparent until hovered\" media={<Bell size={16} />} actions={<ChevronRight size={16} />} interactive />\n</div>"}>
+  <div className="flex flex-col gap-4 w-full max-w-2xl">
+    <Item variant="default" title="Default variant" description="Subtle background, no border" media={<Mail size={16} />} actions={<ChevronRight size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+    <Item variant="outlined" title="Outlined variant" description="Border visible, no background fill" media={<Settings size={16} />} actions={<ChevronRight size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+    <Item variant="elevated" title="Elevated variant" description="Raised surface with shadow" media={<Star size={16} />} actions={<ChevronRight size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+    <Item variant="ghost" title="Ghost variant" description="Fully transparent until hovered" media={<Bell size={16} />} actions={<ChevronRight size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Mail, MoreHorizontal } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-4 w-full max-w-2xl\">\n  <Item size=\"sm\" title=\"Compact item\" media={<Mail size={14} />} interactive />\n  <Item size=\"md\" title=\"Standard item\" description=\"With a supporting description\" media={<Mail size={16} />} actions={<MoreHorizontal size={16} />} interactive />\n  <Item size=\"lg\" title=\"Spacious item\" description=\"With a longer supporting description for multi-line display\" media={<Mail size={16} />} actions={<MoreHorizontal size={16} />} interactive />\n</div>"}>
+  <div className="flex flex-col gap-4 w-full max-w-2xl">
+    <Item size="sm" title="Compact item" media={<Mail size={14} className="text-[var(--color-text-secondary)]" />} interactive />
+    <Item size="md" title="Standard item" description="With a supporting description" media={<Mail size={16} />} actions={<MoreHorizontal size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+    <Item size="lg" title="Spacious item" description="With a longer supporting description for multi-line display" media={<Mail size={16} />} actions={<MoreHorizontal size={16} className="text-[var(--color-text-tertiary)]" />} interactive />
+  </div>
+</ComponentPreview>
+
+## Selected
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Star } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-3 w-full max-w-2xl\">\n  <Item title=\"Unselected item\" description=\"Not currently active\" media={<Star size={16} />} interactive />\n  <Item title=\"Selected item\" description=\"Currently active\" media={<Star size={16} />} selected interactive />\n</div>"}>
+  <div className="flex flex-col gap-3 w-full max-w-2xl">
+    <Item title="Unselected item" description="Not currently active" media={<Star size={16} />} interactive />
+    <Item title="Selected item" description="Currently active" media={<Star size={16} />} selected interactive />
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Settings } from \"lucide-react\"\n\n<Item title=\"Disabled item\" description=\"Cannot interact\" media={<Settings size={16} />} disabled />"}>
+  <div className="max-w-2xl">
+    <Item title="Disabled item" description="Cannot interact" media={<Settings size={16} />} disabled />
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\n\n<Item title=\"\" loading />"}>
+  <div className="max-w-2xl">
+    <Item title="" loading />
+  </div>
+</ComponentPreview>
+
+## As Link
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Mail, ChevronRight } from \"lucide-react\"\n\n<Item\n  title=\"Link item\"\n  description=\"Renders as an anchor element\"\n  media={<Mail size={16} />}\n  actions={<ChevronRight size={16} />}\n  href=\"#\"\n />"}>
+  <div className="max-w-2xl">
+    <Item title="Link item" description="Renders as an anchor element" media={<Mail size={16} />} actions={<ChevronRight size={16} className="text-[var(--color-text-tertiary)]" />} href="#" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Item } from \"@geeklego/ui\"\nimport { Mail, Settings, Star, Bell, MoreHorizontal } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-3 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Item variant=\"default\" title=\"Default in dark\" description=\"Subtle background variant\" media={<Mail size={16} />} actions={<MoreHorizontal size={16} />} interactive />\n  <Item variant=\"outlined\" title=\"Outlined in dark\" description=\"Border variant\" media={<Settings size={16} />} interactive />\n  <Item variant=\"elevated\" title=\"Elevated in dark\" description=\"Shadow variant\" media={<Star size={16} />} interactive />\n  <Item title=\"Selected in dark\" description=\"Currently active\" media={<Bell size={16} />} selected interactive />\n  <Item title=\"Disabled in dark\" description=\"Cannot interact\" disabled />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-3 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Item variant="default" title="Default in dark" description="Subtle background variant" media={<Mail size={16} />} actions={<MoreHorizontal size={16} />} interactive />
+    <Item variant="outlined" title="Outlined in dark" description="Border variant" media={<Settings size={16} />} interactive />
+    <Item variant="elevated" title="Elevated in dark" description="Shadow variant" media={<Star size={16} />} interactive />
+    <Item title="Selected in dark" description="Currently active" media={<Bell size={16} />} selected interactive />
+    <Item title="Disabled in dark" description="Cannot interact" disabled />
+    <Item title="" loading />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'default' | 'outlined' | 'elevated' | 'ghost'", defaultValue: "'default'", description: "Visual treatment. Each variant uses a fundamentally different visual strategy." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height, padding, and typography size." },
+    { name: "title", type: "ReactNode", defaultValue: "—", description: "Primary text content. Required." },
+    { name: "description", type: "ReactNode", defaultValue: "—", description: "Secondary text content rendered below the title." },
+    { name: "media", type: "ReactNode", defaultValue: "—", description: "Left-side media slot for Avatar, icon, or thumbnail." },
+    { name: "actions", type: "ReactNode", defaultValue: "—", description: "Right-side actions slot for Button, Badge, or Switch." },
+    { name: "selected", type: "boolean", defaultValue: "false", description: "Whether this item is in a selected state." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Whether interaction is disabled." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Shows a loading skeleton replacing content." },
+    { name: "interactive", type: "boolean", defaultValue: "—", description: "Adds hover, focus, and active styles. Auto-true when onClick or href is provided." },
+    { name: "href", type: "string", defaultValue: "—", description: "Link target. Renders the item as an anchor element." },
+    { name: "target", type: "string", defaultValue: "—", description: "Anchor target attribute (e.g. '_blank')." },
+    { name: "rel", type: "string", defaultValue: "—", description: "Anchor rel attribute. 'noopener noreferrer' is auto-added when target='_blank'." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<a>` when `href` is provided (native link semantics)
+- Renders as `<div role="button" tabIndex={0}>` when `onClick` is provided without `href`
+- Renders as plain `<div>` when non-interactive
+- `aria-selected` set when `selected` is true
+- `aria-disabled` set when `disabled` is true
+- `aria-busy` set when `loading` is true
+- Media slot rendered with `aria-hidden="true"` (decorative)
+- Keyboard: Enter and Space trigger `onClick` on `div[role=button]`
+- Disabled items are removed from the tab order
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the item |
+| Enter | Activates the item (click or follow href) |
+| Space | Activates the item (click only, not links) |

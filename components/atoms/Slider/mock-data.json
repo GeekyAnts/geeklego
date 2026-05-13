@@ -1,0 +1,28 @@
+{
+  "default": {
+    "label": "Volume",
+    "defaultValue": 40,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "size": "md"
+  },
+  "sizes": [
+    { "label": "Small track", "size": "sm", "defaultValue": 60 },
+    { "label": "Medium track", "size": "md", "defaultValue": 60 },
+    { "label": "Large track", "size": "lg", "defaultValue": 60 }
+  ],
+  "states": {
+    "empty":      { "label": "Empty (0%)",        "defaultValue": 0 },
+    "half":       { "label": "Half (50%)",         "defaultValue": 50 },
+    "full":       { "label": "Full (100%)",        "defaultValue": 100 },
+    "disabled":   { "label": "Disabled",           "defaultValue": 50, "disabled": true },
+    "with_value": { "label": "With value display", "defaultValue": 72, "showValue": true },
+    "no_label":   { "aria-label": "Brightness",   "defaultValue": 30 }
+  },
+  "edge_cases": {
+    "step_5":        { "label": "Step 5",              "min": 0,  "max": 100, "step": 5,   "defaultValue": 25 },
+    "custom_range":  { "label": "Temperature (°C)",    "min": 16, "max": 30,  "step": 0.5, "defaultValue": 22, "showValue": true },
+    "long_label":    { "label": "This is a very long label that should truncate gracefully in constrained layouts", "defaultValue": 50 }
+  }
+}

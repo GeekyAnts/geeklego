@@ -1,0 +1,68 @@
+{
+  "default": {
+    "triggerLabel": "Open popover",
+    "bodyText": "This is the popover body content. It can contain any React nodes — text, links, form fields, or rich markup."
+  },
+  "placements": [
+    { "placement": "bottom-start", "triggerLabel": "↓ bottom-start", "bodyText": "Anchored below, aligned to start." },
+    { "placement": "bottom-end",   "triggerLabel": "↓ bottom-end",   "bodyText": "Anchored below, aligned to end."   },
+    { "placement": "top-start",    "triggerLabel": "↑ top-start",    "bodyText": "Anchored above, aligned to start." },
+    { "placement": "top-end",      "triggerLabel": "↑ top-end",      "bodyText": "Anchored above, aligned to end."   },
+    { "placement": "left-start",   "triggerLabel": "← left-start",   "bodyText": "Anchored to the left, top-aligned."    },
+    { "placement": "left-end",     "triggerLabel": "← left-end",     "bodyText": "Anchored to the left, bottom-aligned." },
+    { "placement": "right-start",  "triggerLabel": "→ right-start",  "bodyText": "Anchored to the right, top-aligned."    },
+    { "placement": "right-end",    "triggerLabel": "→ right-end",    "bodyText": "Anchored to the right, bottom-aligned." }
+  ],
+  "contentVariants": {
+    "bodyOnly": {
+      "body": "A simple popover without a title. Good for brief contextual details."
+    },
+    "withHeaderNoClose": {
+      "title": "Filter options",
+      "body": "Use the header to label the popover when the context isn't obvious from the trigger alone."
+    },
+    "withHeaderAndClose": {
+      "title": "Account settings",
+      "body": "The close button (×) in the header provides a secondary dismiss target alongside Escape and click-outside."
+    },
+    "withFooter": {
+      "title": "Confirm action",
+      "body": "The footer typically holds primary and secondary action buttons. Use it when the user needs to confirm or cancel."
+    }
+  },
+  "states": {
+    "controlled": {
+      "triggerLabel": "Open settings",
+      "title": "Display settings",
+      "body": "Controlled state is managed externally via the open + onOpenChange props. This enables imperative control from a parent component."
+    },
+    "infoOnly": {
+      "body": "A minimal body-only popover triggered by an icon button. Great for tooltips that need to hold interactive content."
+    }
+  },
+  "darkMode": {
+    "title": "Dark mode popover",
+    "body": "Panel uses --color-surface-raised which resolves to a dark surface in dark mode.",
+    "footerTitle": "With footer",
+    "footerBody": "Footer and header dividers are subtler in dark mode to avoid harsh contrast."
+  },
+  "playground": {
+    "title": "Playground popover",
+    "body": "Use the controls panel to adjust placement, toggle the close button, and switch to a controlled open state."
+  },
+  "accessibility": {
+    "triggerLabel": "Open accessible popover",
+    "triggerAriaLabel": "Open account settings dialog",
+    "title": "Keyboard accessible dialog",
+    "body": "This panel has role='dialog', aria-modal='true', and aria-labelledby pointing to the heading. Focus is trapped inside while open and returns to the trigger on close.",
+    "bodyOnlyTrigger": "Info (no title)",
+    "bodyOnlyText": "When no title is provided, aria-labelledby is omitted. Consider adding an aria-label directly on the trigger for SR context.",
+    "note": "Test keyboard: Tab/Shift+Tab wraps within the panel. Escape closes and returns focus to the trigger. The trigger button carries aria-expanded and aria-controls."
+  },
+  "edge_cases": {
+    "very_long_title": "This is an extremely long title that should be truncated with an ellipsis when it overflows the available header width",
+    "rich_body": "Body can contain <strong>bold text</strong>, links, or form elements. The panel has overflow-hidden and a max-width token.",
+    "no_title_no_footer": "Minimal popover — only body content, no header, no footer.",
+    "nested_interactive": "Body with a text input or button — focus trap keeps Tab/Shift+Tab inside the panel."
+  }
+}

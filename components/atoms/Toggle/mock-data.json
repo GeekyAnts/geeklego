@@ -1,0 +1,51 @@
+{
+  "default": {
+    "children": "Bold",
+    "variant": "default",
+    "size": "md",
+    "defaultPressed": false
+  },
+  "variants": [
+    { "variant": "default", "children": "Default",  "pressed": false },
+    { "variant": "default", "children": "Default",  "pressed": true  },
+    { "variant": "outline", "children": "Outline",  "pressed": false },
+    { "variant": "outline", "children": "Outline",  "pressed": true  },
+    { "variant": "ghost",   "children": "Ghost",    "pressed": false },
+    { "variant": "ghost",   "children": "Ghost",    "pressed": true  }
+  ],
+  "sizes": [
+    { "size": "sm", "children": "Small",  "variant": "outline" },
+    { "size": "md", "children": "Medium", "variant": "outline" },
+    { "size": "lg", "children": "Large",  "variant": "outline" }
+  ],
+  "states": {
+    "unpressed": { "children": "Unpressed", "variant": "outline", "pressed": false },
+    "pressed":   { "children": "Pressed",   "variant": "outline", "pressed": true  },
+    "disabled":  { "children": "Disabled",  "variant": "outline", "disabled": true },
+    "pressed_disabled": { "children": "Pressed + Disabled", "variant": "outline", "pressed": true, "disabled": true }
+  },
+  "edge_cases": {
+    "icon_only": {
+      "children": "(icon node)",
+      "aria-label": "Bold",
+      "variant": "outline",
+      "note": "No visible text — aria-label is the accessible name"
+    },
+    "long_label": {
+      "children": "Toggle the advanced formatting options",
+      "variant": "outline",
+      "note": "content-nowrap clips with ellipsis before wrapping"
+    },
+    "empty_children": {
+      "children": null,
+      "aria-label": "Action",
+      "variant": "default",
+      "note": "Children is null — aria-label is mandatory here"
+    },
+    "icon_and_text": {
+      "children": "(icon + 'Grid view')",
+      "variant": "outline",
+      "pressed": false
+    }
+  }
+}

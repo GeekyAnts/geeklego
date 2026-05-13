@@ -1,0 +1,208 @@
+---
+title: Drawer
+description: An off-canvas panel that slides in from any edge of the viewport with focus trapping, Escape dismissal, and full ARIA dialog semantics.
+level: organism
+---
+
+## Placements
+
+The `placement` prop controls which viewport edge the panel slides in from. Each placement rounds only the inner corners.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction PlacementsDemo() {\n  const [open, setOpen] = useState<\"left\" | \"right\" | \"top\" | \"bottom\" | null>(null)\n\n  return (\n    <div className=\"flex flex-wrap gap-3\">\n      {([\"right\", \"left\", \"top\", \"bottom\"] as const).map((placement) => (\n        <Button key={placement} variant=\"outline\" onClick={() => setOpen(placement)}>\n          {placement} (open)\n        </Button>\n      ))}\n      {open && (\n        <Drawer\n          isOpen\n          onClose={() => setOpen(null)}\n          placement={open}\n          title={`${open.charAt(0).toUpperCase() + open.slice(1)} drawer`}\n        >\n          <Drawer.Body>\n            <p>This drawer slides in from the <strong>{open}</strong> edge.</p>\n          </Drawer.Body>\n          <Drawer.Footer>\n            <Button variant=\"primary\" onClick={() => setOpen(null)}>Got it</Button>\n          </Drawer.Footer>\n        </Drawer>\n      )}\n    </div>\n  )\n}"}>
+  <div className="flex flex-wrap gap-3">
+    <div className="flex flex-col gap-2 text-body-sm text-[var(--color-text-secondary)]">
+      <div className="flex items-center gap-2">
+        <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">right (default)</span>
+        <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">left</span>
+        <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">top</span>
+        <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">bottom</span>
+      </div>
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Interactive — trigger opens a portal overlay. See the code tab for the full controlled pattern.</p>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+Left/right drawers use `size` to control panel width; top/bottom drawers use it to control panel height. `full` fills the entire viewport with no border-radius.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction SizesDemo() {\n  const [size, setSize] = useState<\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\" | null>(null)\n\n  return (\n    <div className=\"flex flex-wrap gap-3\">\n      {([\"sm\", \"md\", \"lg\", \"xl\", \"full\"] as const).map((s) => (\n        <Button key={s} variant=\"outline\" onClick={() => setSize(s)}>\n          {s.toUpperCase()} (open)\n        </Button>\n      ))}\n      {size && (\n        <Drawer\n          isOpen\n          onClose={() => setSize(null)}\n          size={size}\n          placement=\"right\"\n          title={`${size.toUpperCase()} drawer`}\n        >\n          <Drawer.Body>\n            <p>This is a <strong>{size}</strong> right-side drawer.</p>\n          </Drawer.Body>\n          <Drawer.Footer>\n            <Button variant=\"primary\" onClick={() => setSize(null)}>Close</Button>\n          </Drawer.Footer>\n        </Drawer>\n      )}\n    </div>\n  )\n}"}>
+  <div className="flex flex-wrap gap-2">
+    <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">sm</span>
+    <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">md (default)</span>
+    <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">lg</span>
+    <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">xl</span>
+    <span className="inline-flex items-center px-3 py-1 rounded-[var(--radius-component-sm)] border border-[var(--color-border-default)] text-body-sm">full</span>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+When `loading={true}` the body content is replaced with a skeleton placeholder while the header and footer remain in place.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction LoadingDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <>\n      <Button variant=\"outline\" onClick={() => setOpen(true)}>Loading state</Button>\n      <Drawer\n        isOpen={open}\n        onClose={() => setOpen(false)}\n        title=\"Loading content\"\n        loading={true}\n      >\n        <Drawer.Body>\n          <p>This content is hidden during loading.</p>\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"primary\" onClick={() => setOpen(false)}>OK</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </>\n  )\n}"}>
+  <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-72 flex flex-col" style={{height: "280px"}}>
+    <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+      <span className="text-heading-h4 text-[var(--color-text-primary)] truncate-label content-flex">Loading content</span>
+      <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+    </header>
+    <div className="flex flex-col gap-4 px-5 py-4 grow overflow-y-auto">
+      <div className="skeleton h-10 w-3/4 rounded-[var(--radius-component-sm)]" />
+      <div className="skeleton h-6 w-full rounded-[var(--radius-component-sm)]" />
+      <div className="skeleton h-6 w-5/6 rounded-[var(--radius-component-sm)]" />
+      <div className="skeleton h-6 w-4/5 rounded-[var(--radius-component-sm)]" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## No Title
+
+When no `title` prop is provided the drawer header omits the `<h2>` and the dialog uses `aria-label` from `i18nStrings.drawerLabel` as its accessible name.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction NoTitleDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <>\n      <Button variant=\"outline\" onClick={() => setOpen(true)}>No title</Button>\n      <Drawer isOpen={open} onClose={() => setOpen(false)}>\n        <Drawer.Body>\n          <p>When no title prop is provided, the dialog uses aria-label as its accessible name.</p>\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"ghost\" onClick={() => setOpen(false)}>Cancel</Button>\n          <Button variant=\"primary\" onClick={() => setOpen(false)}>OK</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </>\n  )\n}"}>
+  <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-72 flex flex-col" style={{height: "220px"}}>
+    <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+      <div />
+      <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+    </header>
+    <Drawer.Body className="grow">
+      <p className="text-body-md text-[var(--color-text-secondary)]">No title — the dialog uses aria-label as its accessible name.</p>
+    </Drawer.Body>
+    <Drawer.Footer>
+      <Button variant="ghost" size="sm">Cancel</Button>
+      <Button variant="primary" size="sm">OK</Button>
+    </Drawer.Footer>
+  </div>
+</ComponentPreview>
+
+## Backdrop Disabled
+
+Setting `closeOnBackdropClick={false}` suppresses backdrop-click dismissal. Only the close button or Escape key will close the drawer.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction BackdropDisabledDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <>\n      <Button variant=\"outline\" onClick={() => setOpen(true)}>No backdrop close</Button>\n      <Drawer\n        isOpen={open}\n        onClose={() => setOpen(false)}\n        title=\"Backdrop disabled\"\n        closeOnBackdropClick={false}\n      >\n        <Drawer.Body>\n          <p>Clicking outside this drawer does not close it. Only the close button or Escape key work.</p>\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"primary\" onClick={() => setOpen(false)}>Close</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </>\n  )\n}"}>
+  <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-72 flex flex-col" style={{height: "220px"}}>
+    <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+      <span className="text-heading-h4 text-[var(--color-text-primary)] truncate-label content-flex">Backdrop disabled</span>
+      <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+    </header>
+    <Drawer.Body className="grow">
+      <p className="text-body-md text-[var(--color-text-secondary)]">Clicking outside does not close. Only close button or Escape works.</p>
+    </Drawer.Body>
+    <Drawer.Footer>
+      <Button variant="primary" size="sm">Close</Button>
+    </Drawer.Footer>
+  </div>
+</ComponentPreview>
+
+## Scrollable Content
+
+`Drawer.Body` grows to fill available panel height and scrolls independently when content overflows. The header and footer remain fixed.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction ScrollableDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <>\n      <Button variant=\"outline\" onClick={() => setOpen(true)}>Long content</Button>\n      <Drawer isOpen={open} onClose={() => setOpen(false)} title=\"Scrollable content\" size=\"md\">\n        <Drawer.Body>\n          {Array.from({ length: 15 }).map((_, i) => (\n            <p key={i + 1} className=\"mb-4\">\n              Item {i + 1}: The drawer body scrolls independently when content overflows the panel height.\n            </p>\n          ))}\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"primary\" onClick={() => setOpen(false)}>Done</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </>\n  )\n}"}>
+  <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-72 flex flex-col" style={{height: "280px"}}>
+    <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+      <span className="text-heading-h4 text-[var(--color-text-primary)] truncate-label content-flex">Scrollable content</span>
+      <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+    </header>
+    <Drawer.Body className="grow overflow-y-auto">
+      <p className="text-body-md text-[var(--color-text-secondary)] mb-3">Item 1: Body scrolls independently when content overflows.</p>
+      <p className="text-body-md text-[var(--color-text-secondary)] mb-3">Item 2: Header and footer remain fixed in place.</p>
+      <p className="text-body-md text-[var(--color-text-secondary)] mb-3">Item 3: Only the body region scrolls.</p>
+      <p className="text-body-md text-[var(--color-text-secondary)] mb-3">Item 4: More content below...</p>
+    </Drawer.Body>
+    <Drawer.Footer>
+      <Button variant="primary" size="sm">Done</Button>
+    </Drawer.Footer>
+  </div>
+</ComponentPreview>
+
+## Destructive Action
+
+Use a destructive variant for confirmations that have permanent consequences.
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { AlertTriangle } from \"lucide-react\"\nimport { useState } from \"react\"\n\nfunction DestructiveDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <>\n      <Button variant=\"destructive\" onClick={() => setOpen(true)}>Danger drawer</Button>\n      <Drawer isOpen={open} onClose={() => setOpen(false)} title=\"Destructive action\">\n        <Drawer.Body>\n          <div className=\"flex gap-3\">\n            <span aria-hidden=\"true\" className=\"text-[var(--color-status-error)] shrink-0 mt-0.5\">\n              <AlertTriangle size={16} />\n            </span>\n            <p>This action is permanent and cannot be undone. All associated data will be removed.</p>\n          </div>\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"ghost\" onClick={() => setOpen(false)}>Cancel</Button>\n          <Button variant=\"destructive\" onClick={() => setOpen(false)}>Delete permanently</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </>\n  )\n}"}>
+  <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-72 flex flex-col" style={{height: "240px"}}>
+    <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+      <span className="text-heading-h4 text-[var(--color-text-primary)] truncate-label content-flex">Destructive action</span>
+      <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+    </header>
+    <Drawer.Body className="grow">
+      <div className="flex gap-3">
+        <span aria-hidden="true" className="text-[var(--color-status-error)] shrink-0 mt-0.5"><AlertTriangle size={16} /></span>
+        <p className="text-body-md text-[var(--color-text-secondary)]">This action is permanent and cannot be undone.</p>
+      </div>
+    </Drawer.Body>
+    <Drawer.Footer>
+      <Button variant="ghost" size="sm">Cancel</Button>
+      <Button variant="destructive" size="sm">Delete permanently</Button>
+    </Drawer.Footer>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Drawer, Button } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nfunction DarkModeDemo() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <div\n      data-theme=\"dark\"\n      className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n    >\n      <Button variant=\"primary\" onClick={() => setOpen(true)}>Open in dark mode</Button>\n      <Drawer isOpen={open} onClose={() => setOpen(false)} title=\"Dark mode drawer\">\n        <Drawer.Body>\n          <p>Tokens cascade correctly in dark mode. The backdrop, panel, text, and footer all use theme-aware semantics.</p>\n        </Drawer.Body>\n        <Drawer.Footer>\n          <Button variant=\"ghost\" onClick={() => setOpen(false)}>Cancel</Button>\n          <Button variant=\"primary\" onClick={() => setOpen(false)}>Confirm</Button>\n        </Drawer.Footer>\n      </Drawer>\n    </div>\n  )\n}"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="relative overflow-hidden rounded-[var(--radius-component-lg)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)] w-full flex flex-col" style={{height: "240px"}}>
+      <header className="flex items-center justify-between px-5 py-4 border-b border-[var(--color-border-default)] shrink-0">
+        <span className="text-heading-h4 text-[var(--color-text-primary)] truncate-label content-flex">Dark mode drawer</span>
+        <Button variant="ghost" size="sm" aria-label="Close"><X size={14} /></Button>
+      </header>
+      <Drawer.Body className="grow">
+        <p className="text-body-md text-[var(--color-text-secondary)]">Tokens cascade correctly in dark mode. The backdrop, panel, text, and footer all use theme-aware semantics.</p>
+      </Drawer.Body>
+      <Drawer.Footer>
+        <Button variant="ghost" size="sm">Cancel</Button>
+        <Button variant="primary" size="sm">Confirm</Button>
+      </Drawer.Footer>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "isOpen", type: "boolean", defaultValue: "—", description: "Whether the drawer is visible. Required." },
+    { name: "onClose", type: "() => void", defaultValue: "—", description: "Called when the drawer should close (Escape key, backdrop click, or close button). Required." },
+    { name: "placement", type: "'left' | 'right' | 'top' | 'bottom'", defaultValue: "'right'", description: "Edge of the viewport the panel slides in from." },
+    { name: "size", type: "'sm' | 'md' | 'lg' | 'xl' | 'full'", defaultValue: "'md'", description: "Panel size preset. Left/right: controls width. Top/bottom: controls height. 'full' fills the entire viewport with no border-radius." },
+    { name: "title", type: "string", defaultValue: "—", description: "Title text rendered in the drawer header. Also wires aria-labelledby on the dialog. When omitted, aria-label falls back to i18nStrings.drawerLabel." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "When true, the body content is replaced with a loading skeleton. Dimensions are preserved." },
+    { name: "closeOnBackdropClick", type: "boolean", defaultValue: "true", description: "When false, clicking the backdrop overlay does not call onClose." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the dialog panel element." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Drawer content — compose Drawer.Body and Drawer.Footer inside." },
+    { name: "i18nStrings", type: "DrawerI18nStrings", defaultValue: "—", description: "Per-instance overrides for system strings. Keys: closeLabel (default 'Close'), drawerLabel (default 'Drawer')." },
+  ]}
+/>
+
+## Accessibility
+
+**Semantic element:** `<div role="dialog" aria-modal="true">` rendered in a portal on `document.body`.
+
+**ARIA attributes:**
+
+| Attribute | Value | Condition |
+|---|---|---|
+| `role` | `"dialog"` | Always |
+| `aria-modal` | `"true"` | Always |
+| `aria-labelledby` | Points to the `<h2>` title `id` | When `title` is provided |
+| `aria-label` | `i18nStrings.drawerLabel` | When `title` is omitted |
+| `aria-busy` | `"true"` | When `loading={true}` |
+
+**Focus management:**
+- Focus is trapped inside the panel while open via `useFocusTrap`.
+- Escape dismissal is handled by `useEscapeDismiss`.
+- On close, focus returns to the element that triggered the drawer.
+- The backdrop carries `aria-hidden="true"` — it is a visual affordance only.
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the next focusable element within the panel (trapped). |
+| Shift + Tab | Moves focus to the previous focusable element within the panel. |
+| Escape | Closes the drawer and returns focus to the trigger element. |

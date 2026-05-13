@@ -1,0 +1,89 @@
+---
+title: Checkbox
+description: An accessible checkbox input with label, indeterminate state, and error feedback.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { useState } from \"react\"\nimport { Checkbox } from \"@geeklego/ui\"\n\nfunction Example() {\n  const [checked, setChecked] = useState(false)\n  return (\n    <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)}>\n      Accept terms and conditions\n    </Checkbox>\n  )\n}"}>
+  <div className="flex flex-col gap-4">
+    <Checkbox checked={false}>Unchecked</Checkbox>
+    <Checkbox checked>Checked</Checkbox>
+    <Checkbox checked={false} indeterminate>Indeterminate</Checkbox>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Checkbox } from \"@geeklego/ui\"\n\n<Checkbox size=\"sm\" checked onChange={...}>Small</Checkbox>\n<Checkbox size=\"md\" checked onChange={...}>Medium</Checkbox>\n<Checkbox size=\"lg\" checked onChange={...}>Large</Checkbox>"}>
+  <div className="flex flex-col gap-4">
+    <Checkbox size="sm" checked>Small (14 px indicator)</Checkbox>
+    <Checkbox size="md" checked>Medium (16 px indicator)</Checkbox>
+    <Checkbox size="lg" checked>Large (20 px indicator)</Checkbox>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Checkbox } from \"@geeklego/ui\"\n\n<Checkbox checked={false} onChange={...}>Default</Checkbox>\n<Checkbox checked onChange={...}>Checked</Checkbox>\n<Checkbox checked={false} indeterminate onChange={...}>Indeterminate</Checkbox>\n<Checkbox checked={false} disabled>Disabled</Checkbox>\n<Checkbox checked={false} error onChange={...}>Error</Checkbox>\n<Checkbox checked={false} required onChange={...}>Required</Checkbox>"}>
+  <div className="flex flex-col gap-4">
+    <Checkbox checked={false}>Default (unchecked)</Checkbox>
+    <Checkbox checked>Checked</Checkbox>
+    <Checkbox checked={false} indeterminate>Indeterminate</Checkbox>
+    <Checkbox checked={false} disabled>Disabled unchecked</Checkbox>
+    <Checkbox checked disabled>Disabled checked</Checkbox>
+    <Checkbox checked={false} indeterminate disabled>Disabled indeterminate</Checkbox>
+    <Checkbox checked={false} error>Error unchecked</Checkbox>
+    <Checkbox checked error>Error checked</Checkbox>
+    <Checkbox checked={false} required>Required field</Checkbox>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <div className=\"flex flex-col gap-4\">\n    <Checkbox checked={false} onChange={...}>Unchecked</Checkbox>\n    <Checkbox checked onChange={...}>Checked</Checkbox>\n    <Checkbox checked={false} error onChange={...}>Error</Checkbox>\n  </div>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-[var(--radius-component-lg)] max-w-2xl">
+    <div className="flex flex-col gap-4">
+      <Checkbox checked={false}>Unchecked in dark mode</Checkbox>
+      <Checkbox checked>Checked in dark mode</Checkbox>
+      <Checkbox checked={false} indeterminate>Indeterminate in dark mode</Checkbox>
+      <Checkbox checked={false} disabled>Disabled in dark mode</Checkbox>
+      <Checkbox checked={false} error>Error in dark mode</Checkbox>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "checked", type: "boolean", defaultValue: "false", description: "Whether the checkbox is checked. Control via onChange." },
+    { name: "indeterminate", type: "boolean", defaultValue: "false", description: "Tri-state — partially selected. Visually overrides checked display with a dash." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Visual size of the indicator box." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Marks the field as invalid — shifts border to error color." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "required", type: "boolean", defaultValue: "false", description: "Marks the field as required." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Label text or elements rendered alongside the indicator. Without children, supply aria-label." },
+    { name: "onChange", type: "ChangeEventHandler", defaultValue: "—", description: "Callback fired when the checked state changes." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders a native `<input type="checkbox">` — full browser accessibility support
+- `aria-checked="mixed"` set when `indeterminate` is true
+- `aria-invalid="true"` set when `error` is true
+- `aria-required="true"` set when `required` is true
+- `aria-disabled="true"` set when `disabled` is true
+- Label is associated to the input via a wrapping `<label>` element
+- When no `children` label is provided, supply `aria-label` to describe the checkbox
+- `focus-visible` focus ring for keyboard navigation
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the checkbox |
+| Space | Toggles the checked state |

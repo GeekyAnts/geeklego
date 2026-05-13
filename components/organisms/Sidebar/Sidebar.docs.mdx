@@ -1,0 +1,430 @@
+---
+title: Sidebar
+description: A full sidebar organism with header, nav groups, and footer slots.
+level: organism
+---
+
+## Collapsible Variants
+
+The `collapsible` prop controls collapse behaviour. `"icon"` collapses to a narrow icon rail, `"offcanvas"` slides the panel off-screen, and `"none"` keeps it always visible.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, Settings, Users, Bell } from \"lucide-react\"\n\n{/* icon-rail collapsible */}\n<SidebarProvider defaultOpen={true}>\n  <Sidebar collapsible=\"icon\">\n    <Sidebar.Header>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuButton size=\"lg\" tooltip=\"Acme Inc\" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Header>\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip=\"Dashboard\">Dashboard</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Settings size={14} />} tooltip=\"Settings\">Settings</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Users size={14} />} tooltip=\"Team\">Team</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n    <Sidebar.Footer>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuButton size=\"lg\" icon={<Bell size={14} />} tooltip=\"Notifications\">Notifications</Sidebar.MenuButton>\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Footer>\n    <Sidebar.Rail />\n  </Sidebar>\n  <div className=\"flex flex-1 flex-col\">\n    <header className=\"flex h-[var(--sidebar-header-height)] items-center gap-2 border-b border-[var(--color-border-subtle)] px-4\">\n      <Sidebar.Trigger />\n    </header>\n    <main className=\"flex-1 p-6\">\n      <p className=\"text-body-sm text-[var(--color-text-secondary)]\">Main content area</p>\n    </main>\n  </div>\n</SidebarProvider>"}>
+  <SidebarProvider defaultOpen={true}>
+    <Sidebar collapsible="icon">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" tooltip="Acme Inc" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip="Dashboard">Dashboard</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Settings size={14} />} tooltip="Settings">Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Users size={14} />} tooltip="Team">Team</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+      <Sidebar.Footer>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" icon={<Bell size={14} />} tooltip="Notifications">Notifications</Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Footer>
+      <Sidebar.Rail />
+    </Sidebar>
+    <div className="flex flex-1 flex-col">
+      <header className="flex h-[var(--sidebar-header-height)] items-center gap-2 border-b border-[var(--color-border-subtle)] px-4">
+        <Sidebar.Trigger />
+      </header>
+      <main className="flex-1 p-6">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Main content area</p>
+      </main>
+    </div>
+  </SidebarProvider>
+</ComponentPreview>
+
+## With Groups
+
+Use `Sidebar.Group` with `Sidebar.GroupLabel`, `Sidebar.GroupAction`, and `Sidebar.Separator` to organise nav items into labelled sections. A `Sidebar.MenuBadge` renders a count beside an item.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, Users, Settings, Bell, Plus, MoreHorizontal } from \"lucide-react\"\n\n<SidebarProvider>\n  <Sidebar collapsible=\"icon\">\n    <Sidebar.Header>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuButton size=\"lg\" tooltip=\"Acme Inc\" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Header>\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>\n        <Sidebar.GroupAction aria-label=\"Add project\">\n          <Plus size={14} aria-hidden=\"true\" />\n        </Sidebar.GroupAction>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip=\"Dashboard\">Dashboard</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Users size={14} />} tooltip=\"Team\">Team</Sidebar.MenuButton>\n              <Sidebar.MenuBadge>3</Sidebar.MenuBadge>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n      <Sidebar.Separator />\n      <Sidebar.Group>\n        <Sidebar.GroupLabel>Settings</Sidebar.GroupLabel>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Settings size={14} />} tooltip=\"Account\">Account</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Bell size={14} />} tooltip=\"Notifications\">\n                Notifications\n              </Sidebar.MenuButton>\n              <Sidebar.MenuAction aria-label=\"More options\" showOnHover>\n                <MoreHorizontal size={14} aria-hidden=\"true\" />\n              </Sidebar.MenuAction>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n    <Sidebar.Rail />\n  </Sidebar>\n  <div className=\"flex-1 p-6\">\n    <p className=\"text-body-sm text-[var(--color-text-secondary)]\">Main content area</p>\n  </div>\n</SidebarProvider>"}>
+  <SidebarProvider>
+    <Sidebar collapsible="icon">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" tooltip="Acme Inc" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
+          <Sidebar.GroupAction aria-label="Add project">
+            <Plus size={14} aria-hidden="true" />
+          </Sidebar.GroupAction>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip="Dashboard">Dashboard</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Users size={14} />} tooltip="Team">Team</Sidebar.MenuButton>
+                <Sidebar.MenuBadge>3</Sidebar.MenuBadge>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+        <Sidebar.Separator />
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>Settings</Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Settings size={14} />} tooltip="Account">Account</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Bell size={14} />} tooltip="Notifications">Notifications</Sidebar.MenuButton>
+                <Sidebar.MenuAction aria-label="More options" showOnHover>
+                  <MoreHorizontal size={14} aria-hidden="true" />
+                </Sidebar.MenuAction>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+      <Sidebar.Rail />
+    </Sidebar>
+    <div className="flex-1 p-6">
+      <p className="text-body-sm text-[var(--color-text-secondary)]">Main content area</p>
+    </div>
+  </SidebarProvider>
+</ComponentPreview>
+
+## Sub-Menu
+
+`Sidebar.MenuSub` nests a second-level list beneath a parent `Sidebar.MenuItem`. The active sub-item uses `isActive` on `Sidebar.MenuSubButton`. Use `ChevronRight` as a `suffix` on the parent button to indicate expandability.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, ChevronRight } from \"lucide-react\"\n\n<SidebarProvider>\n  <Sidebar collapsible=\"none\">\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton\n                icon={<Home size={14} />}\n                suffix={<ChevronRight size={14} className=\"rotate-90\" />}\n                aria-expanded={true}\n              >Playground</Sidebar.MenuButton>\n              <Sidebar.MenuSub>\n                <Sidebar.MenuSubItem>\n                  <Sidebar.MenuSubButton href=\"/playground/history\">History</Sidebar.MenuSubButton>\n                </Sidebar.MenuSubItem>\n                <Sidebar.MenuSubItem>\n                  <Sidebar.MenuSubButton href=\"/playground/starred\" isActive>Starred</Sidebar.MenuSubButton>\n                </Sidebar.MenuSubItem>\n                <Sidebar.MenuSubItem>\n                  <Sidebar.MenuSubButton href=\"/playground/settings\">Settings</Sidebar.MenuSubButton>\n                </Sidebar.MenuSubItem>\n              </Sidebar.MenuSub>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n  </Sidebar>\n</SidebarProvider>"}>
+  <SidebarProvider>
+    <Sidebar collapsible="none">
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Home size={14} />} suffix={<ChevronRight size={14} className="rotate-90" />} aria-expanded={true}>Playground</Sidebar.MenuButton>
+                <Sidebar.MenuSub>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton href="/playground/history">History</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton href="/playground/starred" isActive>Starred</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton href="/playground/settings">Settings</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                </Sidebar.MenuSub>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+    </Sidebar>
+  </SidebarProvider>
+</ComponentPreview>
+
+## Loading
+
+Replace menu items with `Sidebar.MenuSkeleton` while content is loading. Pass `showIcon` to include an icon placeholder.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\n\n<SidebarProvider>\n  <Sidebar collapsible=\"none\">\n    <Sidebar.Header>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuSkeleton showIcon />\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Header>\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupLabel>Loading\u2026</Sidebar.GroupLabel>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>\n            <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>\n            <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n    <Sidebar.Footer>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuSkeleton showIcon />\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Footer>\n  </Sidebar>\n</SidebarProvider>"}>
+  <SidebarProvider>
+    <Sidebar collapsible="none">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuSkeleton showIcon />
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>Loading…</Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>
+              <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>
+              <Sidebar.MenuItem><Sidebar.MenuSkeleton showIcon /></Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+      <Sidebar.Footer>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuSkeleton showIcon />
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Footer>
+    </Sidebar>
+  </SidebarProvider>
+</ComponentPreview>
+
+## Active, Disabled, Badge, and Action
+
+`isActive` marks the current route. `disabled` blocks interaction. `Sidebar.MenuBadge` overlays a count. `Sidebar.MenuAction` with `showOnHover` reveals a contextual action on hover.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, Settings, List, Bell, MoreHorizontal } from \"lucide-react\"\n\n<SidebarProvider>\n  <Sidebar collapsible=\"none\">\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupLabel>States</Sidebar.GroupLabel>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Home size={14} />} isActive>Active item</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Settings size={14} />} disabled>Disabled item</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<List size={14} />}>With badge</Sidebar.MenuButton>\n              <Sidebar.MenuBadge>12</Sidebar.MenuBadge>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Bell size={14} />}>Hover for action</Sidebar.MenuButton>\n              <Sidebar.MenuAction aria-label=\"More options\" showOnHover>\n                <MoreHorizontal size={14} aria-hidden=\"true\" />\n              </Sidebar.MenuAction>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n  </Sidebar>\n</SidebarProvider>"}>
+  <SidebarProvider>
+    <Sidebar collapsible="none">
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupLabel>States</Sidebar.GroupLabel>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Home size={14} />} isActive>Active item</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Settings size={14} />} disabled>Disabled item</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<List size={14} />}>With badge</Sidebar.MenuButton>
+                <Sidebar.MenuBadge>12</Sidebar.MenuBadge>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Bell size={14} />}>Hover for action</Sidebar.MenuButton>
+                <Sidebar.MenuAction aria-label="More options" showOnHover>
+                  <MoreHorizontal size={14} aria-hidden="true" />
+                </Sidebar.MenuAction>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+    </Sidebar>
+  </SidebarProvider>
+</ComponentPreview>
+
+## Floating
+
+The `"floating"` variant renders the sidebar with rounded corners and a drop shadow, separated from the page background.
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, Settings, Users } from \"lucide-react\"\n\n<SidebarProvider>\n  <Sidebar collapsible=\"icon\" variant=\"floating\">\n    <Sidebar.Header>\n      <Sidebar.Menu>\n        <Sidebar.MenuItem>\n          <Sidebar.MenuButton size=\"lg\" tooltip=\"Acme Inc\" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>\n        </Sidebar.MenuItem>\n      </Sidebar.Menu>\n    </Sidebar.Header>\n    <Sidebar.Content>\n      <Sidebar.Group>\n        <Sidebar.GroupContent>\n          <Sidebar.Menu>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip=\"Dashboard\">Dashboard</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Settings size={14} />} tooltip=\"Settings\">Settings</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n            <Sidebar.MenuItem>\n              <Sidebar.MenuButton icon={<Users size={14} />} tooltip=\"Team\">Team</Sidebar.MenuButton>\n            </Sidebar.MenuItem>\n          </Sidebar.Menu>\n        </Sidebar.GroupContent>\n      </Sidebar.Group>\n    </Sidebar.Content>\n    <Sidebar.Rail />\n  </Sidebar>\n  <div className=\"flex flex-1 flex-col\">\n    <header className=\"flex h-[var(--sidebar-header-height)] items-center gap-2 px-4\">\n      <Sidebar.Trigger />\n    </header>\n    <main className=\"flex-1 p-6\">\n      <p className=\"text-body-sm text-[var(--color-text-secondary)]\">Floating variant — rounded corners and shadow</p>\n    </main>\n  </div>\n</SidebarProvider>"}>
+  <SidebarProvider>
+    <Sidebar collapsible="icon" variant="floating">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" tooltip="Acme Inc" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
+      <Sidebar.Content>
+        <Sidebar.Group>
+          <Sidebar.GroupContent>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip="Dashboard">Dashboard</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Settings size={14} />} tooltip="Settings">Settings</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton icon={<Users size={14} />} tooltip="Team">Team</Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.GroupContent>
+        </Sidebar.Group>
+      </Sidebar.Content>
+      <Sidebar.Rail />
+    </Sidebar>
+    <div className="flex flex-1 flex-col">
+      <header className="flex h-[var(--sidebar-header-height)] items-center gap-2 px-4">
+        <Sidebar.Trigger />
+      </header>
+      <main className="flex-1 p-6">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Floating variant — rounded corners and shadow</p>
+      </main>
+    </div>
+  </SidebarProvider>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Sidebar, SidebarProvider } from \"@geeklego/ui\"\nimport { Home, Settings, Users, Bell } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex h-[500px] bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden\"\n>\n  <SidebarProvider>\n    <Sidebar collapsible=\"icon\">\n      <Sidebar.Header>\n        <Sidebar.Menu>\n          <Sidebar.MenuItem>\n            <Sidebar.MenuButton size=\"lg\" tooltip=\"Acme Inc\" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>\n          </Sidebar.MenuItem>\n        </Sidebar.Menu>\n      </Sidebar.Header>\n      <Sidebar.Content>\n        <Sidebar.Group>\n          <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>\n          <Sidebar.GroupContent>\n            <Sidebar.Menu>\n              <Sidebar.MenuItem>\n                <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip=\"Dashboard\">Dashboard</Sidebar.MenuButton>\n              </Sidebar.MenuItem>\n              <Sidebar.MenuItem>\n                <Sidebar.MenuButton icon={<Settings size={14} />} tooltip=\"Settings\">Settings</Sidebar.MenuButton>\n              </Sidebar.MenuItem>\n              <Sidebar.MenuItem>\n                <Sidebar.MenuButton icon={<Users size={14} />} tooltip=\"Team\">Team</Sidebar.MenuButton>\n              </Sidebar.MenuItem>\n            </Sidebar.Menu>\n          </Sidebar.GroupContent>\n        </Sidebar.Group>\n      </Sidebar.Content>\n      <Sidebar.Footer>\n        <Sidebar.Menu>\n          <Sidebar.MenuItem>\n            <Sidebar.MenuButton size=\"lg\" icon={<Bell size={14} />} tooltip=\"Notifications\">Notifications</Sidebar.MenuButton>\n          </Sidebar.MenuItem>\n        </Sidebar.Menu>\n      </Sidebar.Footer>\n      <Sidebar.Rail />\n    </Sidebar>\n    <div className=\"flex flex-1 flex-col\">\n      <header className=\"flex h-[var(--sidebar-header-height)] items-center gap-2 border-b border-[var(--color-border-subtle)] px-4\">\n        <Sidebar.Trigger />\n      </header>\n      <main className=\"flex-1 p-6\">\n        <p className=\"text-body-sm text-[var(--color-text-secondary)]\">Dark mode</p>\n      </main>\n    </div>\n  </SidebarProvider>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex h-[500px] bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden"
+  >
+    <SidebarProvider>
+      <Sidebar collapsible="icon">
+        <Sidebar.Header>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" tooltip="Acme Inc" icon={<Home size={16} />}>Acme Inc</Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Header>
+        <Sidebar.Content>
+          <Sidebar.Group>
+            <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
+            <Sidebar.GroupContent>
+              <Sidebar.Menu>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton icon={<Home size={14} />} isActive tooltip="Dashboard">Dashboard</Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton icon={<Settings size={14} />} tooltip="Settings">Settings</Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton icon={<Users size={14} />} tooltip="Team">Team</Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.Menu>
+            </Sidebar.GroupContent>
+          </Sidebar.Group>
+        </Sidebar.Content>
+        <Sidebar.Footer>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" icon={<Bell size={14} />} tooltip="Notifications">Notifications</Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Footer>
+        <Sidebar.Rail />
+      </Sidebar>
+      <div className="flex flex-1 flex-col">
+        <header className="flex h-[var(--sidebar-header-height)] items-center gap-2 border-b border-[var(--color-border-subtle)] px-4">
+          <Sidebar.Trigger />
+        </header>
+        <main className="flex-1 p-6">
+          <p className="text-body-sm text-[var(--color-text-secondary)]">Dark mode</p>
+        </main>
+      </div>
+    </SidebarProvider>
+  </div>
+</ComponentPreview>
+
+## Props
+
+### SidebarProvider
+
+<PropsTable
+  rows={[
+    { name: "defaultOpen", type: "boolean", defaultValue: "true", description: "Whether the sidebar is open by default (uncontrolled)." },
+    { name: "open", type: "boolean", defaultValue: "—", description: "Controlled open state." },
+    { name: "onOpenChange", type: "(open: boolean) => void", defaultValue: "—", description: "Controlled open-state change handler." },
+    { name: "shortcut", type: "string", defaultValue: "'b'", description: "Keyboard shortcut key combined with Cmd (Mac) or Ctrl (Win/Linux). Defaults to Cmd+B / Ctrl+B." },
+    { name: "persist", type: "boolean", defaultValue: "false", description: "Persist open state in localStorage under 'sidebar:state'." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Required. Wrap Sidebar and page content here." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the provider wrapper div." },
+  ]}
+/>
+
+### Sidebar
+
+<PropsTable
+  rows={[
+    { name: "side", type: "'left' | 'right'", defaultValue: "'left'", description: "Which edge of the layout the sidebar renders on." },
+    { name: "variant", type: "'sidebar' | 'floating' | 'inset'", defaultValue: "'sidebar'", description: "Visual style variant. 'floating' adds rounded corners and a shadow. 'inset' renders inside the page flow." },
+    { name: "collapsible", type: "'offcanvas' | 'icon' | 'none'", defaultValue: "'offcanvas'", description: "Collapse behaviour. 'offcanvas' slides off-screen, 'icon' collapses to a narrow rail, 'none' is always visible." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Slot content: Header, Content, Footer, Rail." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the sidebar element." },
+  ]}
+/>
+
+### Sidebar.MenuButton
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "—", description: "When provided, renders as an anchor tag instead of a button." },
+    { name: "isActive", type: "boolean", defaultValue: "false", description: "Marks this as the active route. Adds aria-current='page'." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Height and text size of the menu button." },
+    { name: "icon", type: "ReactNode", defaultValue: "—", description: "Icon always visible, including in icon-rail mode. Pass a lucide icon element." },
+    { name: "tooltip", type: "string", defaultValue: "—", description: "Tooltip shown in icon-rail mode as the native title attribute. Defaults to children text content." },
+    { name: "suffix", type: "ReactNode", defaultValue: "—", description: "Trailing element after children (e.g. a chevron for expandable items). Hidden in icon-rail mode." },
+    { name: "schema", type: "boolean", defaultValue: "false", description: "Opt-in Schema.org SiteNavigationElement Microdata." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Button label. Used as the accessible name in icon-rail mode via the tooltip prop." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Sidebar.MenuAction
+
+<PropsTable
+  rows={[
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Required accessible label for the icon-only action button." },
+    { name: "showOnHover", type: "boolean", defaultValue: "true", description: "Hide the action until the parent list item is hovered." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Icon content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Sidebar.MenuSkeleton
+
+<PropsTable
+  rows={[
+    { name: "showIcon", type: "boolean", defaultValue: "true", description: "Show an icon placeholder before the text skeleton." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Sidebar.GroupAction
+
+<PropsTable
+  rows={[
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Required accessible label for the icon-only group action button." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Icon content." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+### Sidebar.MenuSubButton
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "—", description: "When provided, renders as an anchor tag." },
+    { name: "isActive", type: "boolean", defaultValue: "false", description: "Marks this sub-item as the active route." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Sub-item label." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- `<Sidebar>` renders as `<aside>` — a complementary landmark announced as "Sidebar navigation" by screen readers
+- `<Sidebar.Content>` is the scrollable nav wrapper
+- `<Sidebar.Footer>` is scoped inside the `<aside>` landmark
+- `Sidebar.MenuButton` with `isActive` sets `aria-current="page"` on the active item
+- `Sidebar.MenuButton` with `disabled` sets `aria-disabled="true"` and `tabIndex={-1}`
+- `Sidebar.GroupAction` and `Sidebar.MenuAction` require `aria-label` — they are icon-only buttons
+- In icon-rail mode (`collapsible="icon"` + `state="collapsed"`), `Sidebar.MenuButton` hides label text and exposes `tooltip` as the native `title` attribute for screen reader announcement
+- `Sidebar.Rail` receives `tabIndex={-1}` and is reachable by pointer only
+- The global keyboard shortcut (default Cmd+B / Ctrl+B) toggles the sidebar from anywhere on the page; it is configurable via the `shortcut` prop on `SidebarProvider`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus into the sidebar; first stop is `Sidebar.Trigger` |
+| Tab (again) | Enters `Sidebar.Content`; first nav item receives focus |
+| ArrowDown / ArrowUp | Moves between `Sidebar.MenuButton` items (roving tabindex) |
+| Enter / Space | Activates a link or triggers a button action |
+| Tab (from last nav item) | Exits the nav and reaches the footer `Sidebar.MenuButton` |
+| Cmd+B / Ctrl+B | Toggles sidebar open/closed from anywhere on the page |

@@ -1,0 +1,140 @@
+---
+title: Tag
+description: A categorisation label for metadata, keywords, and taxonomy across three visual treatments and six colour intents.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6\">\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Tag variant=\"solid\" color=\"default\">Default</Tag>\n    <Tag variant=\"solid\" color=\"brand\">Brand</Tag>\n    <Tag variant=\"solid\" color=\"success\">Success</Tag>\n    <Tag variant=\"solid\" color=\"warning\">Warning</Tag>\n    <Tag variant=\"solid\" color=\"error\">Error</Tag>\n    <Tag variant=\"solid\" color=\"info\">Info</Tag>\n  </div>\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Tag variant=\"soft\" color=\"default\">Default</Tag>\n    <Tag variant=\"soft\" color=\"brand\">Brand</Tag>\n    <Tag variant=\"soft\" color=\"success\">Success</Tag>\n    <Tag variant=\"soft\" color=\"warning\">Warning</Tag>\n    <Tag variant=\"soft\" color=\"error\">Error</Tag>\n    <Tag variant=\"soft\" color=\"info\">Info</Tag>\n  </div>\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Tag variant=\"outline\" color=\"default\">Default</Tag>\n    <Tag variant=\"outline\" color=\"brand\">Brand</Tag>\n    <Tag variant=\"outline\" color=\"success\">Success</Tag>\n    <Tag variant=\"outline\" color=\"warning\">Warning</Tag>\n    <Tag variant=\"outline\" color=\"error\">Error</Tag>\n    <Tag variant=\"outline\" color=\"info\">Info</Tag>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex items-center gap-3 flex-wrap">
+      <Tag variant="solid" color="default">Default</Tag>
+      <Tag variant="solid" color="brand">Brand</Tag>
+      <Tag variant="solid" color="success">Success</Tag>
+      <Tag variant="solid" color="warning">Warning</Tag>
+      <Tag variant="solid" color="error">Error</Tag>
+      <Tag variant="solid" color="info">Info</Tag>
+    </div>
+    <div className="flex items-center gap-3 flex-wrap">
+      <Tag variant="soft" color="default">Default</Tag>
+      <Tag variant="soft" color="brand">Brand</Tag>
+      <Tag variant="soft" color="success">Success</Tag>
+      <Tag variant="soft" color="warning">Warning</Tag>
+      <Tag variant="soft" color="error">Error</Tag>
+      <Tag variant="soft" color="info">Info</Tag>
+    </div>
+    <div className="flex items-center gap-3 flex-wrap">
+      <Tag variant="outline" color="default">Default</Tag>
+      <Tag variant="outline" color="brand">Brand</Tag>
+      <Tag variant="outline" color="success">Success</Tag>
+      <Tag variant="outline" color="warning">Warning</Tag>
+      <Tag variant="outline" color="error">Error</Tag>
+      <Tag variant="outline" color="info">Info</Tag>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4\">\n  <div className=\"flex items-center gap-3\">\n    <Tag size=\"sm\" variant=\"solid\" color=\"brand\">Solid sm</Tag>\n    <Tag size=\"sm\" variant=\"soft\" color=\"brand\">Soft sm</Tag>\n    <Tag size=\"sm\" variant=\"outline\" color=\"brand\">Outline sm</Tag>\n  </div>\n  <div className=\"flex items-center gap-3\">\n    <Tag size=\"md\" variant=\"solid\" color=\"brand\">Solid md</Tag>\n    <Tag size=\"md\" variant=\"soft\" color=\"brand\">Soft md</Tag>\n    <Tag size=\"md\" variant=\"outline\" color=\"brand\">Outline md</Tag>\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <Tag size="sm" variant="solid" color="brand">Solid sm</Tag>
+      <Tag size="sm" variant="soft" color="brand">Soft sm</Tag>
+      <Tag size="sm" variant="outline" color="brand">Outline sm</Tag>
+    </div>
+    <div className="flex items-center gap-3">
+      <Tag size="md" variant="solid" color="brand">Solid md</Tag>
+      <Tag size="md" variant="soft" color="brand">Soft md</Tag>
+      <Tag size="md" variant="outline" color="brand">Outline md</Tag>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Static
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3 flex-wrap\">\n  <Tag color=\"brand\">React</Tag>\n  <Tag color=\"success\">Published</Tag>\n  <Tag color=\"warning\">Draft</Tag>\n  <Tag color=\"error\">Deprecated</Tag>\n  <Tag color=\"info\">Beta</Tag>\n</div>"}>
+  <div className="flex items-center gap-3 flex-wrap">
+    <Tag color="brand">React</Tag>
+    <Tag color="success">Published</Tag>
+    <Tag color="warning">Draft</Tag>
+    <Tag color="error">Deprecated</Tag>
+    <Tag color="info">Beta</Tag>
+  </div>
+</ComponentPreview>
+
+## Linked
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-3 flex-wrap\">\n  <Tag color=\"brand\" href=\"#react\">React</Tag>\n  <Tag color=\"success\" href=\"#typescript\">TypeScript</Tag>\n  <Tag color=\"info\" href=\"#design\">Design Systems</Tag>\n</div>"}>
+  <div className="flex items-center gap-3 flex-wrap">
+    <Tag color="brand" href="#react">React</Tag>
+    <Tag color="success" href="#typescript">TypeScript</Tag>
+    <Tag color="info" href="#design">Design Systems</Tag>
+  </div>
+</ComponentPreview>
+
+## With Icons
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\nimport { Info, Star, AlertTriangle, CheckCircle } from \"lucide-react\"\n\n<div className=\"flex items-center gap-3 flex-wrap\">\n  <Tag color=\"default\" leftIcon={<Info size={12} />}>Topic</Tag>\n  <Tag color=\"brand\" leftIcon={<Star size={12} />}>Featured</Tag>\n  <Tag color=\"warning\" leftIcon={<AlertTriangle size={12} />}>Caution</Tag>\n  <Tag color=\"success\" leftIcon={<CheckCircle size={12} />}>Verified</Tag>\n</div>"}>
+  <div className="flex items-center gap-3 flex-wrap">
+    <Tag color="default" leftIcon={<Info size={12} />}>Topic</Tag>
+    <Tag color="brand" leftIcon={<Star size={12} />}>Featured</Tag>
+    <Tag color="warning" leftIcon={<AlertTriangle size={12} />}>Caution</Tag>
+    <Tag color="success" leftIcon={<CheckCircle size={12} />}>Verified</Tag>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Tag } from \"@geeklego/ui\"\nimport { Info, Star } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Tag variant=\"solid\" color=\"brand\">Brand</Tag>\n    <Tag variant=\"soft\" color=\"success\">Success</Tag>\n    <Tag variant=\"outline\" color=\"error\">Error</Tag>\n    <Tag variant=\"soft\" color=\"info\">Info</Tag>\n  </div>\n  <div className=\"flex items-center gap-3 flex-wrap\">\n    <Tag color=\"brand\" href=\"#react\">React</Tag>\n    <Tag color=\"info\" href=\"#design\" leftIcon={<Info size={12} />}>Design</Tag>\n    <Tag color=\"brand\" leftIcon={<Star size={12} />}>Featured</Tag>\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="flex items-center gap-3 flex-wrap">
+      <Tag variant="solid" color="brand">Brand</Tag>
+      <Tag variant="soft" color="success">Success</Tag>
+      <Tag variant="outline" color="error">Error</Tag>
+      <Tag variant="soft" color="info">Info</Tag>
+    </div>
+    <div className="flex items-center gap-3 flex-wrap">
+      <Tag color="brand" href="#react">React</Tag>
+      <Tag color="info" href="#design" leftIcon={<Info size={12} />}>Design</Tag>
+      <Tag color="brand" leftIcon={<Star size={12} />}>Featured</Tag>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'solid' | 'soft' | 'outline'", defaultValue: "'soft'", description: "Visual treatment. Solid uses a filled background; soft uses a tinted background; outline uses a transparent background with a coloured border." },
+    { name: "color", type: "'default' | 'brand' | 'success' | 'warning' | 'error' | 'info'", defaultValue: "'default'", description: "Category colour intent." },
+    { name: "size", type: "'sm' | 'md'", defaultValue: "'md'", description: "Height and typography scale." },
+    { name: "href", type: "string", defaultValue: "—", description: "Renders as an anchor link for navigating to a filtered view. Mutually exclusive with onRemove." },
+    { name: "leftIcon", type: "ReactNode", defaultValue: "—", description: "Optional leading icon node." },
+    { name: "onRemove", type: "(e: MouseEvent) => void", defaultValue: "—", description: "When provided, a remove button appears inside the tag. Mutually exclusive with href." },
+    { name: "i18nStrings", type: "TagI18nStrings", defaultValue: "—", description: "Internationalisation strings for system-generated text (e.g. remove button aria-label)." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Tag label content." },
+  ]}
+/>
+
+## Accessibility
+
+- **Semantic element:** `<span>` (static or removable), `<a>` (linked)
+- `aria-label` for additional context when needed
+- `aria-hidden="true"` on leading icon wrapper — decorative
+- Remove button has `aria-label` (default: "Remove", i18n-configurable)
+- Linked tags are focusable via Tab and activated with Enter
+- Static tags without interaction are not focusable
+- All variant and colour combinations meet WCAG 2.2 AA minimum contrast ratio
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to a linked tag or its remove button |
+| Enter | Activates link navigation or remove action |
+| Space | Activates remove button |

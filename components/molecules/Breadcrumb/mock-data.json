@@ -1,0 +1,98 @@
+{
+  "default": {
+    "items": [
+      { "label": "Home", "href": "/" },
+      { "label": "Products", "href": "/products" },
+      { "label": "Dashboard" }
+    ],
+    "size": "md"
+  },
+  "variants": [
+    {
+      "description": "Default chevron separator",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Products", "href": "/products" },
+        { "label": "Widget" }
+      ]
+    },
+    {
+      "description": "Single item (root)",
+      "items": [{ "label": "Home" }]
+    },
+    {
+      "description": "Two items",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Dashboard" }
+      ]
+    },
+    {
+      "description": "Long trail (5 items)",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Workspace", "href": "/workspace" },
+        { "label": "Projects", "href": "/workspace/projects" },
+        { "label": "Alpha", "href": "/workspace/projects/alpha" },
+        { "label": "Settings" }
+      ]
+    }
+  ],
+  "sizes": [
+    {
+      "size": "sm",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Products", "href": "/products" },
+        { "label": "Widget" }
+      ]
+    },
+    {
+      "size": "md",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Products", "href": "/products" },
+        { "label": "Widget" }
+      ]
+    },
+    {
+      "size": "lg",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Products", "href": "/products" },
+        { "label": "Widget" }
+      ]
+    }
+  ],
+  "states": {
+    "default": {
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Dashboard" }
+      ]
+    },
+    "with_disabled": {
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "Products", "href": "/products", "disabled": true },
+        { "label": "Dashboard" }
+      ]
+    }
+  },
+  "edge_cases": [
+    {
+      "description": "Empty label",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "" }
+      ]
+    },
+    {
+      "description": "Very long label",
+      "items": [
+        { "label": "Home", "href": "/" },
+        { "label": "A Very Long Breadcrumb Label That Tests Wrapping Behavior In Tight Containers" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+---
+title: ColorSwatch
+description: A clickable color swatch button displaying an arbitrary CSS color with selected, disabled, size, and shape variants.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { ColorSwatch } from \"@geeklego/ui\"\n\n<div className=\"flex items-center gap-4\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#6366f1\" shape=\"square\" aria-label=\"Square swatch\" size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Square</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#6366f1\" shape=\"circle\" aria-label=\"Circle swatch\" size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Circle</span>\n  </div>\n</div>"}>
+  <div className="flex items-center gap-4">
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#6366f1" shape="square" aria-label="Square swatch" size="md" />
+      <span className="text-body-xs text-secondary">Square</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#6366f1" shape="circle" aria-label="Circle swatch" size="md" />
+      <span className="text-body-xs text-secondary">Circle</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { ColorSwatch } from \"@geeklego/ui\"\n\n<div className=\"flex items-end gap-4\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#22c55e\" size=\"sm\" aria-label=\"Small green swatch\" />\n    <span className=\"text-body-xs text-secondary\">sm</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#22c55e\" size=\"md\" aria-label=\"Medium green swatch\" />\n    <span className=\"text-body-xs text-secondary\">md</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#22c55e\" size=\"lg\" aria-label=\"Large green swatch\" />\n    <span className=\"text-body-xs text-secondary\">lg</span>\n  </div>\n</div>"}>
+  <div className="flex items-end gap-4">
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#22c55e" size="sm" aria-label="Small green swatch" />
+      <span className="text-body-xs text-secondary">sm</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#22c55e" size="md" aria-label="Medium green swatch" />
+      <span className="text-body-xs text-secondary">md</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#22c55e" size="lg" aria-label="Large green swatch" />
+      <span className="text-body-xs text-secondary">lg</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { ColorSwatch } from \"@geeklego/ui\"\n\n<div className=\"flex flex-wrap items-center gap-6\">\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#f97316\" aria-label=\"Default state\" size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Default</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#f97316\" aria-label=\"Selected state\" selected size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Selected</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#f97316\" aria-label=\"Disabled state\" disabled size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Disabled</span>\n  </div>\n  <div className=\"flex flex-col items-center gap-2\">\n    <ColorSwatch color=\"#f97316\" aria-label=\"Selected and disabled\" selected disabled size=\"md\" />\n    <span className=\"text-body-xs text-secondary\">Selected + Disabled</span>\n  </div>\n</div>"}>
+  <div className="flex flex-wrap items-center gap-6">
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#f97316" aria-label="Default state" size="md" />
+      <span className="text-body-xs text-secondary">Default</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#f97316" aria-label="Selected state" selected size="md" />
+      <span className="text-body-xs text-secondary">Selected</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#f97316" aria-label="Disabled state" disabled size="md" />
+      <span className="text-body-xs text-secondary">Disabled</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <ColorSwatch color="#f97316" aria-label="Selected and disabled" selected disabled size="md" />
+      <span className="text-body-xs text-secondary">Selected + Disabled</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ColorSwatch } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <div className=\"flex flex-wrap gap-3\">\n    <ColorSwatch color=\"#ef4444\" aria-label=\"Red\" size=\"md\" />\n    <ColorSwatch color=\"#f97316\" aria-label=\"Orange\" size=\"md\" />\n    <ColorSwatch color=\"#eab308\" aria-label=\"Yellow\" size=\"md\" />\n    <ColorSwatch color=\"#22c55e\" aria-label=\"Green\" size=\"md\" />\n    <ColorSwatch color=\"#3b82f6\" aria-label=\"Blue\" size=\"md\" />\n    <ColorSwatch color=\"#8b5cf6\" aria-label=\"Purple\" size=\"md\" />\n    <ColorSwatch color=\"#6366f1\" aria-label=\"Indigo selected\" selected size=\"md\" />\n    <ColorSwatch color=\"#ec4899\" aria-label=\"Pink disabled\" disabled size=\"md\" />\n  </div>\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <div className="flex flex-wrap gap-3">
+      <ColorSwatch color="#ef4444" aria-label="Red" size="md" />
+      <ColorSwatch color="#f97316" aria-label="Orange" size="md" />
+      <ColorSwatch color="#eab308" aria-label="Yellow" size="md" />
+      <ColorSwatch color="#22c55e" aria-label="Green" size="md" />
+      <ColorSwatch color="#3b82f6" aria-label="Blue" size="md" />
+      <ColorSwatch color="#8b5cf6" aria-label="Purple" size="md" />
+      <ColorSwatch color="#6366f1" aria-label="Indigo selected" selected size="md" />
+      <ColorSwatch color="#ec4899" aria-label="Pink disabled" disabled size="md" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "color", type: "string", defaultValue: "—", description: "Required. CSS color value (hex, rgb, hsl, named). Applied as background via CSS custom property injection." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Required. Accessible label for this color. Screen readers announce this when the swatch is focused." },
+    { name: "selected", type: "boolean", defaultValue: "false", description: "Shows a persistent ring and sets aria-pressed to true." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Visual size of the swatch button. sm=24px, md=32px, lg=40px." },
+    { name: "shape", type: "'square' | 'circle'", defaultValue: "'square'", description: "Shape of the swatch." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables interaction. Reduces opacity and prevents hover/active response." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Semantic `<button type="button">` element
+- `aria-label` is required — describes the color to screen readers
+- `aria-pressed` set to `true` when `selected`
+- `aria-disabled` and `disabled` set when `disabled`
+- `focus-visible` focus ring for keyboard navigation
+- All sizes meet WCAG 2.5.8 minimum 24×24px touch target
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the swatch |
+| Enter | Activates the swatch |
+| Space | Activates the swatch |

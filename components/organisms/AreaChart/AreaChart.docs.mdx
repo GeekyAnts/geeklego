@@ -1,0 +1,275 @@
+---
+title: AreaChart
+description: A responsive area chart for time-series and continuous data.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\nconst data = [\n  { label: \"Jan\", revenue: 4000, profit: 2400, expenses: 1600 },\n  { label: \"Feb\", revenue: 3200, profit: 1398, expenses: 1802 },\n  { label: \"Mar\", revenue: 5100, profit: 3800, expenses: 1300 },\n  { label: \"Apr\", revenue: 4800, profit: 2908, expenses: 1892 },\n  { label: \"May\", revenue: 6200, profit: 4800, expenses: 1400 },\n]\n\nconst series = [\n  { name: \"Revenue\", dataKey: \"revenue\" },\n  { name: \"Profit\", dataKey: \"profit\" },\n  { name: \"Expenses\", dataKey: \"expenses\" },\n]\n\n{/* Overlay with monotone curves */}\n<AreaChart\n  title=\"Overlay (default)\"\n  data={data}\n  series={series}\n  curveType=\"monotone\"\n  periods={[]}\n/>\n\n{/* Stacked with monotone curves */}\n<AreaChart\n  title=\"Stacked\"\n  data={data}\n  series={series}\n  stacked\n  curveType=\"monotone\"\n  periods={[]}\n/>\n\n{/* Linear curves */}\n<AreaChart\n  title=\"Linear curves\"\n  data={data}\n  series={series.slice(0, 2)}\n  curveType=\"linear\"\n  periods={[]}\n/>"}>
+  <div className="flex flex-col gap-8 max-w-2xl">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Overlay - Monotone</p>
+      <AreaChart
+        title="Overlay (default)"
+        data={[
+          { label: "Jan", revenue: 4000, profit: 2400, expenses: 1600 },
+          { label: "Feb", revenue: 3200, profit: 1398, expenses: 1802 },
+          { label: "Mar", revenue: 5100, profit: 3800, expenses: 1300 },
+          { label: "Apr", revenue: 4800, profit: 2908, expenses: 1892 },
+          { label: "May", revenue: 6200, profit: 4800, expenses: 1400 },
+        ]}
+        series={[
+          { name: "Revenue", dataKey: "revenue" },
+          { name: "Profit", dataKey: "profit" },
+          { name: "Expenses", dataKey: "expenses" },
+        ]}
+        curveType="monotone"
+        periods={[]}
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Stacked - Monotone</p>
+      <AreaChart
+        title="Stacked"
+        data={[
+          { label: "Jan", revenue: 4000, profit: 2400, expenses: 1600 },
+          { label: "Feb", revenue: 3200, profit: 1398, expenses: 1802 },
+          { label: "Mar", revenue: 5100, profit: 3800, expenses: 1300 },
+          { label: "Apr", revenue: 4800, profit: 2908, expenses: 1892 },
+          { label: "May", revenue: 6200, profit: 4800, expenses: 1400 },
+        ]}
+        series={[
+          { name: "Revenue", dataKey: "revenue" },
+          { name: "Profit", dataKey: "profit" },
+          { name: "Expenses", dataKey: "expenses" },
+        ]}
+        stacked
+        curveType="monotone"
+        periods={[]}
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Overlay - Linear</p>
+      <AreaChart
+        title="Linear curves"
+        data={[
+          { label: "Jan", revenue: 4000, profit: 2400 },
+          { label: "Feb", revenue: 3200, profit: 1398 },
+          { label: "Mar", revenue: 5100, profit: 3800 },
+          { label: "Apr", revenue: 4800, profit: 2908 },
+          { label: "May", revenue: 6200, profit: 4800 },
+        ]}
+        series={[
+          { name: "Revenue", dataKey: "revenue" },
+          { name: "Profit", dataKey: "profit" },
+        ]}
+        curveType="linear"
+        periods={[]}
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Stacked - Linear</p>
+      <AreaChart
+        title="Stacked Linear"
+        data={[
+          { label: "Jan", revenue: 4000, profit: 2400, expenses: 1600 },
+          { label: "Feb", revenue: 3200, profit: 1398, expenses: 1802 },
+          { label: "Mar", revenue: 5100, profit: 3800, expenses: 1300 },
+          { label: "Apr", revenue: 4800, profit: 2908, expenses: 1892 },
+          { label: "May", revenue: 6200, profit: 4800, expenses: 1400 },
+        ]}
+        series={[
+          { name: "Revenue", dataKey: "revenue" },
+          { name: "Profit", dataKey: "profit" },
+          { name: "Expenses", dataKey: "expenses" },
+        ]}
+        stacked
+        curveType="linear"
+        periods={[]}
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\n{/* Single series */}\n<AreaChart\n  title=\"Page Views\"\n  metric=\"72,048\"\n  data={[...]}\n  series={[{ name: \"Revenue\", dataKey: \"revenue\" }]}\n  periods={[]}\n/>\n\n{/* Multi-series (3) */}\n<AreaChart\n  title=\"Financials\"\n  data={[...]}\n  series={[\n    { name: \"Revenue\", dataKey: \"revenue\" },\n    { name: \"Profit\", dataKey: \"profit\" },\n    { name: \"Expenses\", dataKey: \"expenses\" },\n  ]}\n  periods={[]}\n/>"}>
+  <div className="flex flex-col gap-8 max-w-2xl">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Single series</p>
+      <AreaChart
+        title="Page Views"
+        metric="72,048"
+        data={[
+          { label: "Jan", revenue: 4000 },
+          { label: "Feb", revenue: 3200 },
+          { label: "Mar", revenue: 5100 },
+          { label: "Apr", revenue: 4800 },
+          { label: "May", revenue: 6200 },
+        ]}
+        series={[{ name: "Revenue", dataKey: "revenue" }]}
+        periods={[]}
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-2">Multi-series (3)</p>
+      <AreaChart
+        title="Financials"
+        data={[
+          { label: "Jan", revenue: 4000, profit: 2400, expenses: 1600 },
+          { label: "Feb", revenue: 3200, profit: 1398, expenses: 1802 },
+          { label: "Mar", revenue: 5100, profit: 3800, expenses: 1300 },
+          { label: "Apr", revenue: 4800, profit: 2908, expenses: 1892 },
+          { label: "May", revenue: 6200, profit: 4800, expenses: 1400 },
+        ]}
+        series={[
+          { name: "Revenue", dataKey: "revenue" },
+          { name: "Profit", dataKey: "profit" },
+          { name: "Expenses", dataKey: "expenses" },
+        ]}
+        periods={[]}
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Empty Data
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\n<AreaChart\n  title=\"No Data\"\n  data={[]}\n  series={[\n    { name: \"Revenue\", dataKey: \"revenue\" },\n    { name: \"Profit\", dataKey: \"profit\" },\n  ]}\n  periods={[]}\n/>"}>
+  <div className="max-w-2xl">
+    <AreaChart
+      title="No Data"
+      data={[]}
+      series={[
+        { name: "Revenue", dataKey: "revenue" },
+        { name: "Profit", dataKey: "profit" },
+      ]}
+      periods={[]}
+    />
+  </div>
+</ComponentPreview>
+
+## Negative Delta
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\n<AreaChart\n  title=\"Churn Rate\"\n  metric=\"4.2%\"\n  delta={-1.8}\n  deltaLabel=\"from last month\"\n  data={[\n    { label: \"Jan\", churn: 160 },\n    { label: \"Feb\", churn: 180 },\n    { label: \"Mar\", churn: 130 },\n    { label: \"Apr\", churn: 189 },\n    { label: \"May\", churn: 140 },\n  ]}\n  series={[{ name: \"Churn\", dataKey: \"churn\" }]}\n  periods={[]}\n/>"}>
+  <div className="max-w-2xl">
+    <AreaChart
+      title="Churn Rate"
+      metric="4.2%"
+      delta={-1.8}
+      deltaLabel="from last month"
+      data={[
+        { label: "Jan", churn: 160 },
+        { label: "Feb", churn: 180 },
+        { label: "Mar", churn: 130 },
+        { label: "Apr", churn: 189 },
+        { label: "May", churn: 140 },
+      ]}
+      series={[{ name: "Churn", dataKey: "churn" }]}
+      periods={[]}
+    />
+  </div>
+</ComponentPreview>
+
+## No Period Selector / No Grid
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\n<AreaChart\n  title=\"Minimal\"\n  data={[\n    { label: \"Jan\", revenue: 4000 },\n    { label: \"Feb\", revenue: 3200 },\n    { label: \"Mar\", revenue: 5100 },\n    { label: \"Apr\", revenue: 4800 },\n    { label: \"May\", revenue: 6200 },\n  ]}\n  series={[{ name: \"Revenue\", dataKey: \"revenue\" }]}\n  showGrid={false}\n  showYAxis={false}\n  periods={[]}\n/>"}>
+  <div className="max-w-2xl">
+    <AreaChart
+      title="Minimal"
+      data={[
+        { label: "Jan", revenue: 4000 },
+        { label: "Feb", revenue: 3200 },
+        { label: "Mar", revenue: 5100 },
+        { label: "Apr", revenue: 4800 },
+        { label: "May", revenue: 6200 },
+      ]}
+      series={[{ name: "Revenue", dataKey: "revenue" }]}
+      showGrid={false}
+      showYAxis={false}
+      periods={[]}
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { AreaChart } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"max-w-2xl p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-xl)]\"\n>\n  <AreaChart\n    title=\"Revenue Overview\"\n    infoLabel=\"Monthly revenue and profit trend\"\n    metric=\"$75,100\"\n    delta={12.4}\n    deltaLabel=\"from last year\"\n    dateStart=\"Jan 2026\"\n    dateEnd=\"Dec 2026\"\n    data={[...]}\n    series={[\n      { name: \"Revenue\", dataKey: \"revenue\" },\n      { name: \"Profit\", dataKey: \"profit\" },\n    ]}\n    period=\"monthly\"\n    description=\"Revenue has grown consistently throughout the year.\"\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="max-w-2xl p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-xl)]"
+  >
+    <AreaChart
+      title="Revenue Overview"
+      infoLabel="Monthly revenue and profit trend"
+      metric="$75,100"
+      delta={12.4}
+      deltaLabel="from last year"
+      dateStart="Jan 2026"
+      dateEnd="Dec 2026"
+      data={[
+        { label: "Jan", revenue: 4000, profit: 2400 },
+        { label: "Feb", revenue: 3200, profit: 1398 },
+        { label: "Mar", revenue: 5100, profit: 3800 },
+        { label: "Apr", revenue: 4800, profit: 2908 },
+        { label: "May", revenue: 6200, profit: 4800 },
+      ]}
+      series={[
+        { name: "Revenue", dataKey: "revenue" },
+        { name: "Profit", dataKey: "profit" },
+      ]}
+      period="monthly"
+      description="Revenue has grown consistently throughout the year, with the strongest gains in Q4."
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "title", type: "string", defaultValue: "—", description: "Card title displayed in the header." },
+    { name: "infoLabel", type: "string", defaultValue: "—", description: "Accessible label for the info icon button. Omit to hide the icon." },
+    { name: "metric", type: "number | string", defaultValue: "—", description: "Primary numeric metric displayed prominently below the header. Omit to show chart only." },
+    { name: "delta", type: "number", defaultValue: "—", description: "Change percentage. Positive values render green, negative values render red." },
+    { name: "deltaLabel", type: "string", defaultValue: "—", description: "Context text shown next to the delta value (e.g. \"from last week\")." },
+    { name: "dateStart", type: "string", defaultValue: "—", description: "Start-of-range date label shown left-aligned below the metric." },
+    { name: "dateEnd", type: "string", defaultValue: "—", description: "End-of-range date label shown right-aligned below the metric." },
+    { name: "data", type: "AreaChartDataPoint[]", defaultValue: "[]", description: "Time-series data points. Order determines left-to-right rendering." },
+    { name: "series", type: "AreaChartSeries[]", defaultValue: "[]", description: "Series definitions. Order determines stacking order and color assignment." },
+    { name: "stacked", type: "boolean", defaultValue: "false", description: "When true, series areas are stacked on top of each other." },
+    { name: "curveType", type: "'linear' | 'monotone'", defaultValue: "'monotone'", description: "Curve interpolation method for area paths." },
+    { name: "showGrid", type: "boolean", defaultValue: "true", description: "Show horizontal grid lines." },
+    { name: "showXAxis", type: "boolean", defaultValue: "true", description: "Show X-axis labels." },
+    { name: "showYAxis", type: "boolean", defaultValue: "true", description: "Show Y-axis labels." },
+    { name: "period", type: "string", defaultValue: "'weekly'", description: "Currently selected period value (should match one of `periods` lowercased)." },
+    { name: "periods", type: "string[]", defaultValue: "['Daily', 'Weekly', 'Monthly', 'Yearly']", description: "Available period options shown in the selector dropdown." },
+    { name: "onPeriodChange", type: "(period: string) => void", defaultValue: "—", description: "Called when the user selects a different period." },
+    { name: "description", type: "string", defaultValue: "—", description: "Optional description text rendered below a divider at the bottom of the card." },
+    { name: "formatValue", type: "(value: number) => string", defaultValue: "—", description: "Custom value formatter for Y-axis labels and tooltip values." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "When true, replaces the chart area with a shimmer skeleton placeholder." },
+    { name: "i18nStrings", type: "AreaChartI18nStrings", defaultValue: "—", description: "Override localised strings for this instance." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes applied to the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- SVG chart has `role="img"` with a descriptive `aria-label` derived from the title
+- A visually hidden `<table>` provides a full data fallback for screen readers, with column headers for each series
+- Info button uses `title` attribute for accessible labelling
+- Period selector has an `aria-label` for screen reader context
+- `aria-busy` and `aria-live` attributes applied during loading state via `getLoadingProps`
+- Legend swatches are `aria-hidden="true"` to avoid redundant announcements
+- Tooltip dot indicators use `aria-hidden="true"`
+- Tooltip container has `role="tooltip"`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the info button (if present), then to the period selector |
+| Enter / Space | Activates the info button or opens the period selector |
+| Arrow Up / Down | Navigates period selector options when open |
+| Escape | Closes the period selector dropdown |

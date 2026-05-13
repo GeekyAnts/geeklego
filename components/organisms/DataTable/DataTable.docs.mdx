@@ -1,0 +1,307 @@
+---
+title: DataTable
+description: Display tabular data with sorting, row selection, loading skeletons, empty states, and optional pagination.
+level: organism
+---
+
+## Variants
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\", sortable: true },\n  { key: \"email\", header: \"Email\" },\n  { key: \"role\", header: \"Role\" },\n  { key: \"joined\", header: \"Joined\", align: \"end\" },\n]\n\nconst data = [\n  { id: 1, name: \"Alice Martin\", email: \"alice@example.com\", role: \"Admin\", joined: \"2024-01-15\" },\n  { id: 2, name: \"Bob Chen\", email: \"bob@example.com\", role: \"Editor\", joined: \"2024-02-20\" },\n  { id: 3, name: \"Carol Davies\", email: \"carol@example.com\", role: \"Viewer\", joined: \"2024-03-10\" },\n]\n\n{/* default */}\n<DataTable caption=\"Default table\" columns={columns} data={data} rowKey=\"id\" variant=\"default\" />\n\n{/* striped */}\n<DataTable caption=\"Striped table\" columns={columns} data={data} rowKey=\"id\" variant=\"striped\" />\n\n{/* bordered */}\n<DataTable caption=\"Bordered table\" columns={columns} data={data} rowKey=\"id\" variant=\"bordered\" />"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] capitalize">default</p>
+      <DataTable
+        caption="Default table"
+        columns={[
+          { key: "name", header: "Name", sortable: true },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+          { key: "joined", header: "Joined", align: "end" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+          { id: 4, name: "Daniel Kim", email: "dan@example.com", role: "Editor", joined: "2024-04-05" },
+        ]}
+        rowKey="id"
+        variant="default"
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] capitalize">striped</p>
+      <DataTable
+        caption="Striped table"
+        columns={[
+          { key: "name", header: "Name", sortable: true },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+          { key: "joined", header: "Joined", align: "end" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+          { id: 4, name: "Daniel Kim", email: "dan@example.com", role: "Editor", joined: "2024-04-05" },
+        ]}
+        rowKey="id"
+        variant="striped"
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] capitalize">bordered</p>
+      <DataTable
+        caption="Bordered table"
+        columns={[
+          { key: "name", header: "Name", sortable: true },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+          { key: "joined", header: "Joined", align: "end" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+          { id: 4, name: "Daniel Kim", email: "dan@example.com", role: "Editor", joined: "2024-04-05" },
+        ]}
+        rowKey="id"
+        variant="bordered"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\" },\n  { key: \"email\", header: \"Email\" },\n  { key: \"role\", header: \"Role\" },\n]\n\nconst data = [\n  { id: 1, name: \"Alice Martin\", email: \"alice@example.com\", role: \"Admin\" },\n  { id: 2, name: \"Bob Chen\", email: \"bob@example.com\", role: \"Editor\" },\n  { id: 3, name: \"Carol Davies\", email: \"carol@example.com\", role: \"Viewer\" },\n]\n\n<DataTable caption=\"Small\" columns={columns} data={data} rowKey=\"id\" size=\"sm\" />\n<DataTable caption=\"Medium\" columns={columns} data={data} rowKey=\"id\" size=\"md\" />\n<DataTable caption=\"Large\" columns={columns} data={data} rowKey=\"id\" size=\"lg\" />"}>
+  <div className="flex flex-col gap-6">
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] uppercase">sm</p>
+      <DataTable
+        caption="Small size table"
+        columns={[
+          { key: "name", header: "Name" },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer" },
+        ]}
+        rowKey="id"
+        size="sm"
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] uppercase">md</p>
+      <DataTable
+        caption="Medium size table"
+        columns={[
+          { key: "name", header: "Name" },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer" },
+        ]}
+        rowKey="id"
+        size="md"
+      />
+    </div>
+    <div>
+      <p className="text-label-sm text-[var(--color-text-secondary)] mb-[var(--spacing-component-sm)] uppercase">lg</p>
+      <DataTable
+        caption="Large size table"
+        columns={[
+          { key: "name", header: "Name" },
+          { key: "email", header: "Email" },
+          { key: "role", header: "Role" },
+        ]}
+        data={[
+          { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin" },
+          { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor" },
+          { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer" },
+        ]}
+        rowKey="id"
+        size="lg"
+      />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Loading
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\", sortable: true },\n  { key: \"email\", header: \"Email\", sortable: true },\n  { key: \"role\", header: \"Role\" },\n  { key: \"status\", header: \"Status\", align: \"center\" },\n  { key: \"joined\", header: \"Joined\", align: \"end\" },\n]\n\n<DataTable\n  caption=\"Loading state\"\n  columns={columns}\n  data={[]}\n  loading\n  loadingRowCount={4}\n/>"}>
+  <DataTable
+    caption="Loading state"
+    columns={[
+      { key: "name", header: "Name", sortable: true },
+      { key: "email", header: "Email", sortable: true },
+      { key: "role", header: "Role" },
+      { key: "status", header: "Status", align: "center" },
+      { key: "joined", header: "Joined", align: "end" },
+    ]}
+    data={[]}
+    loading
+    loadingRowCount={4}
+  />
+</ComponentPreview>
+
+## Empty
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\" },\n  { key: \"email\", header: \"Email\" },\n  { key: \"role\", header: \"Role\" },\n]\n\n<DataTable\n  caption=\"Empty table\"\n  columns={columns}\n  data={[]}\n  i18nStrings={{ emptyMessage: \"No team members yet\" }}\n/>"}>
+  <DataTable
+    caption="Empty table"
+    columns={[
+      { key: "name", header: "Name" },
+      { key: "email", header: "Email" },
+      { key: "role", header: "Role" },
+    ]}
+    data={[]}
+    i18nStrings={{ emptyMessage: "No team members yet" }}
+  />
+</ComponentPreview>
+
+## Sortable
+
+Sorting is fully controlled. Pass `sortState` and `onSortChange` to enable sort toggling on columns marked `sortable: true`. The consumer is responsible for sorting the data array. Clicking a sortable column cycles: none, ascending, descending, none.
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\", sortable: true },\n  { key: \"email\", header: \"Email\", sortable: true },\n  { key: \"role\", header: \"Role\", sortable: true },\n  { key: \"joined\", header: \"Joined\", sortable: true, align: \"end\" },\n]\n\nconst data = [\n  { id: 1, name: \"Alice Martin\", email: \"alice@example.com\", role: \"Admin\", joined: \"2024-01-15\" },\n  { id: 2, name: \"Bob Chen\", email: \"bob@example.com\", role: \"Editor\", joined: \"2024-02-20\" },\n  { id: 3, name: \"Carol Davies\", email: \"carol@example.com\", role: \"Viewer\", joined: \"2024-03-10\" },\n]\n\nconst [sort, setSort] = useState({ key: \"name\", direction: \"asc\" })\n\n<DataTable\n  caption=\"Sorted table\"\n  columns={columns}\n  data={data}\n  rowKey=\"id\"\n  sortState={sort}\n  onSortChange={setSort}\n/>"}>
+  <DataTable
+    caption="Sorted table"
+    columns={[
+      { key: "name", header: "Name", sortable: true },
+      { key: "email", header: "Email", sortable: true },
+      { key: "role", header: "Role", sortable: true },
+      { key: "joined", header: "Joined", sortable: true, align: "end" },
+    ]}
+    data={[
+      { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+      { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+      { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+    ]}
+    rowKey="id"
+    sortState={{ key: "name", direction: "asc" }}
+  />
+</ComponentPreview>
+
+## Row Selection
+
+Pass `selectedKeys` (a Set of row key strings) and `onSelectionChange` to enable row selection. A checkbox column is prepended automatically. The header checkbox supports select-all and indeterminate state.
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\" },\n  { key: \"email\", header: \"Email\" },\n  { key: \"role\", header: \"Role\" },\n]\n\nconst data = [\n  { id: 1, name: \"Alice Martin\", email: \"alice@example.com\", role: \"Admin\" },\n  { id: 2, name: \"Bob Chen\", email: \"bob@example.com\", role: \"Editor\" },\n  { id: 3, name: \"Carol Davies\", email: \"carol@example.com\", role: \"Viewer\" },\n]\n\nconst [selected, setSelected] = useState(new Set([\"2\"]))\n\n<DataTable\n  caption=\"Selectable table\"\n  columns={columns}\n  data={data}\n  rowKey=\"id\"\n  selectedKeys={selected}\n  onSelectionChange={setSelected}\n/>"}>
+  <DataTable
+    caption="Selectable table"
+    columns={[
+      { key: "name", header: "Name" },
+      { key: "email", header: "Email" },
+      { key: "role", header: "Role" },
+    ]}
+    data={[
+      { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin" },
+      { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor" },
+      { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer" },
+      { id: 4, name: "Daniel Kim", email: "dan@example.com", role: "Editor" },
+    ]}
+    rowKey="id"
+    selectedKeys={new Set(["2", "4"])}
+  />
+</ComponentPreview>
+
+## With Pagination
+
+Pass a `pagination` config object to render a pagination bar beneath the table. Page state is fully controlled by the consumer. The pagination bar is hidden while `loading` is true.
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\nimport { useState } from \"react\"\n\nconst columns = [\n  { key: \"name\", header: \"Name\" },\n  { key: \"email\", header: \"Email\" },\n  { key: \"role\", header: \"Role\" },\n]\n\nconst allData = [ /* full dataset */ ]\nconst [page, setPage] = useState(1)\nconst pageSize = 3\n\n<DataTable\n  caption=\"Paginated table\"\n  columns={columns}\n  data={allData.slice((page - 1) * pageSize, page * pageSize)}\n  rowKey=\"id\"\n  pagination={{\n    currentPage: page,\n    totalPages: 3,\n    onPageChange: setPage,\n    showFirstLast: true,\n  }}\n/>"}>
+  <DataTable
+    caption="Paginated table"
+    columns={[
+      { key: "name", header: "Name" },
+      { key: "email", header: "Email" },
+      { key: "role", header: "Role" },
+      { key: "joined", header: "Joined", align: "end" },
+    ]}
+    data={[
+      { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+      { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+      { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+    ]}
+    rowKey="id"
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { DataTable } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <DataTable\n    caption=\"Dark mode table\"\n    columns={[\n      { key: \"name\", header: \"Name\", sortable: true },\n      { key: \"email\", header: \"Email\" },\n      { key: \"role\", header: \"Role\" },\n      { key: \"joined\", header: \"Joined\", align: \"end\" },\n    ]}\n    data={[\n      { id: 1, name: \"Alice Martin\", email: \"alice@example.com\", role: \"Admin\", joined: \"2024-01-15\" },\n      { id: 2, name: \"Bob Chen\", email: \"bob@example.com\", role: \"Editor\", joined: \"2024-02-20\" },\n      { id: 3, name: \"Carol Davies\", email: \"carol@example.com\", role: \"Viewer\", joined: \"2024-03-10\" },\n    ]}\n    rowKey=\"id\"\n    variant=\"striped\"\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <DataTable
+      caption="Dark mode table"
+      columns={[
+        { key: "name", header: "Name", sortable: true },
+        { key: "email", header: "Email" },
+        { key: "role", header: "Role" },
+        { key: "joined", header: "Joined", align: "end" },
+      ]}
+      data={[
+        { id: 1, name: "Alice Martin", email: "alice@example.com", role: "Admin", joined: "2024-01-15" },
+        { id: 2, name: "Bob Chen", email: "bob@example.com", role: "Editor", joined: "2024-02-20" },
+        { id: 3, name: "Carol Davies", email: "carol@example.com", role: "Viewer", joined: "2024-03-10" },
+        { id: 4, name: "Daniel Kim", email: "dan@example.com", role: "Editor", joined: "2024-04-05" },
+        { id: 5, name: "Eva Rossi", email: "eva@example.com", role: "Admin", joined: "2024-05-18" },
+      ]}
+      rowKey="id"
+      variant="striped"
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "columns", type: "DataTableColumn[]", defaultValue: "—", description: "Column definitions. Order determines display order." },
+    { name: "data", type: "Record<string, unknown>[]", defaultValue: "—", description: "Row data. Each object maps column keys to cell values." },
+    { name: "rowKey", type: "string | (row, index) => string", defaultValue: "index", description: "Stable row key. Either a property name on the row object, or a function returning a unique string." },
+    { name: "variant", type: "'default' | 'striped' | 'bordered'", defaultValue: "'default'", description: "Visual table style. Default uses bottom-only row borders, striped alternates row backgrounds, bordered adds full cell borders." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Row height and cell padding tier." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "Replace table body with skeleton placeholder rows while data loads." },
+    { name: "loadingRowCount", type: "number", defaultValue: "5", description: "Number of skeleton rows to show in loading state." },
+    { name: "sortState", type: "DataTableSortState", defaultValue: "—", description: "Controlled sort state with key and direction." },
+    { name: "onSortChange", type: "(sort: DataTableSortState) => void", defaultValue: "—", description: "Called when a sortable column header button is clicked." },
+    { name: "selectedKeys", type: "Set<string>", defaultValue: "—", description: "Set of row keys that are currently selected. Omit both selectedKeys and onSelectionChange to disable row selection." },
+    { name: "onSelectionChange", type: "(keys: Set<string>) => void", defaultValue: "—", description: "Called when the selection changes. Providing this enables row selection with a prepended checkbox column." },
+    { name: "caption", type: "string", defaultValue: "—", description: "Accessible table caption rendered as sr-only. Also used as aria-label for the scroll container." },
+    { name: "aria-label", type: "string", defaultValue: "—", description: "Explicit aria-label for the scroll region. Takes precedence over caption." },
+    { name: "stickyHeader", type: "boolean", defaultValue: "false", description: "Stick the thead row while the table body scrolls." },
+    { name: "pagination", type: "DataTablePaginationConfig", defaultValue: "—", description: "Pagination config. When provided, renders a Pagination bar beneath the table. Hidden while loading." },
+    { name: "i18nStrings", type: "DataTableI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for sort labels, empty message, and selection labels." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes on the wrapper element." },
+  ]}
+/>
+
+## Accessibility
+
+- Wrapped in a `role="region"` container with `aria-label` (from caption or explicit aria-label prop)
+- `aria-busy` set on the region during loading state
+- Native `<table>` element with `<caption class="sr-only">` for screen reader identification
+- `<th scope="col">` on all column headers so screen readers announce the column on every cell
+- `aria-sort` on sortable `<th>` elements communicates current sort state (ascending, descending, or none)
+- Sort button `aria-label` describes the next action: "Sort [column] ascending", "Sort [column] descending", "Clear sort for [column]"
+- `aria-selected` on each `<tr>` communicates row selection state
+- Header checkbox shows indeterminate state when a subset of rows is selected
+- Skeleton rows are `aria-hidden="true"` to prevent screen reader noise during loading
+- All sort buttons and checkboxes meet the 24x24 px minimum touch target (WCAG 2.5.8)
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to sort buttons and row checkboxes in document order |
+| Enter | Activates a focused sort button or toggles a checkbox |
+| Space | Activates a focused sort button or toggles a checkbox |

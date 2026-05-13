@@ -1,0 +1,133 @@
+---
+title: Breadcrumb
+description: A navigational trail showing the user's location within the hierarchy.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { Breadcrumb } from \"@geeklego/ui\"\nimport { Home, Settings } from \"lucide-react\"\n\n<div className=\"flex flex-col gap-6\">\n  <Breadcrumb\n    items={[\n      { label: \"Home\", href: \"/\" },\n      { label: \"Products\", href: \"/products\" },\n      { label: \"Dashboard\" },\n    ]}\n  />\n  <Breadcrumb\n    items={[\n      { label: \"Home\", href: \"/\" },\n      { label: \"Products\", href: \"/products\" },\n      { label: \"Dashboard\" },\n    ]}\n    separator={<span className=\"text-[var(--breadcrumb-separator-color)] text-label-md px-1\">/</span>}\n  />\n  <Breadcrumb\n    items={[\n      { label: \"Home\", href: \"/\", icon: <Home size={14} /> },\n      { label: \"Settings\", href: \"/settings\", icon: <Settings size={14} /> },\n      { label: \"Profile\" },\n    ]}\n  />\n</div>"}>
+  <div className="flex flex-col gap-6">
+    <Breadcrumb
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Products", href: "/products" },
+        { label: "Dashboard" },
+      ]}
+    />
+    <Breadcrumb
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Products", href: "/products" },
+        { label: "Dashboard" },
+      ]}
+      separator={<span className="text-[var(--breadcrumb-separator-color)] text-label-md px-1">/</span>}
+    />
+    <Breadcrumb
+      items={[
+        { label: "Home", href: "/", icon: <Home size={14} /> },
+        { label: "Settings", href: "/settings", icon: <Settings size={14} /> },
+        { label: "Profile" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Breadcrumb } from \"@geeklego/ui\"\n\nconst items = [\n  { label: \"Home\", href: \"/\" },\n  { label: \"Products\", href: \"/products\" },\n  { label: \"Dashboard\" },\n]\n\n<div className=\"flex flex-col gap-4\">\n  <Breadcrumb items={items} size=\"sm\" />\n  <Breadcrumb items={items} size=\"md\" />\n  <Breadcrumb items={items} size=\"lg\" />\n</div>"}>
+  <div className="flex flex-col gap-4">
+    <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Dashboard" }]} size="sm" />
+    <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Dashboard" }]} size="md" />
+    <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Dashboard" }]} size="lg" />
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Breadcrumb } from \"@geeklego/ui\"\n\n<Breadcrumb\n  items={[\n    { label: \"Home\", href: \"/\" },\n    { label: \"Products\", href: \"/products\", disabled: true },\n    { label: \"Dashboard\" },\n  ]}\n/>"}>
+  <Breadcrumb
+    items={[
+      { label: "Home", href: "/" },
+      { label: "Products", href: "/products", disabled: true },
+      { label: "Dashboard" },
+    ]}
+  />
+</ComponentPreview>
+
+## Long Trail
+
+<ComponentPreview code={"import { Breadcrumb } from \"@geeklego/ui\"\n\n<Breadcrumb\n  items={[\n    { label: \"Home\", href: \"/\" },\n    { label: \"Workspace\", href: \"/workspace\" },\n    { label: \"Projects\", href: \"/workspace/projects\" },\n    { label: \"Alpha\", href: \"/workspace/projects/alpha\" },\n    { label: \"Settings\" },\n  ]}\n/>"}>
+  <Breadcrumb
+    items={[
+      { label: "Home", href: "/" },
+      { label: "Workspace", href: "/workspace" },
+      { label: "Projects", href: "/workspace/projects" },
+      { label: "Alpha", href: "/workspace/projects/alpha" },
+      { label: "Settings" },
+    ]}
+  />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { Breadcrumb } from \"@geeklego/ui\"\nimport { Home } from \"lucide-react\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <Breadcrumb items={[{ label: \"Home\", href: \"/\" }, { label: \"Products\", href: \"/products\" }, { label: \"Dashboard\" }]} />\n  <Breadcrumb\n    items={[\n      { label: \"Home\", href: \"/\", icon: <Home size={14} /> },\n      { label: \"Settings\", href: \"/settings\" },\n      { label: \"Profile\" },\n    ]}\n  />\n  <Breadcrumb\n    items={[\n      { label: \"Home\", href: \"/\" },\n      { label: \"Products\", href: \"/products\", disabled: true },\n      { label: \"Dashboard\" },\n    ]}\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Dashboard" }]} />
+    <Breadcrumb
+      items={[
+        { label: "Home", href: "/", icon: <Home size={14} /> },
+        { label: "Settings", href: "/settings" },
+        { label: "Profile" },
+      ]}
+    />
+    <Breadcrumb
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Products", href: "/products", disabled: true },
+        { label: "Dashboard" },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "items", type: "BreadcrumbItemData[]", defaultValue: "—", description: "Ordered list of breadcrumb items. The last item is automatically treated as the current page." },
+    { name: "separator", type: "ReactNode", defaultValue: "ChevronRight icon", description: "Custom separator element between items." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Text size applied uniformly to all items." },
+    { name: "schema", type: "boolean", defaultValue: "—", description: "Opt-in Schema.org BreadcrumbList Microdata on the nav and ListItem on each crumb." },
+    { name: "i18nStrings", type: "BreadcrumbI18nStrings", defaultValue: "—", description: "Override localised strings such as the nav aria-label for this instance." },
+  ]}
+/>
+
+### BreadcrumbItemData
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `label` | `string` | The visible label text. Required. |
+| `href` | `string` | URL this item links to. Omit for the current page. |
+| `current` | `boolean` | Explicitly marks as current page. Auto-applied to the last item. |
+| `disabled` | `boolean` | Non-interactive, visually muted. |
+| `icon` | `ReactNode` | Optional icon node before the label. |
+
+## Accessibility
+
+- Wrapped in `<nav aria-label="Breadcrumb">` — announces as a navigation landmark
+- Items are rendered as `<ol>` / `<li>` — communicates ordered sequence to screen readers
+- Separator icons are `aria-hidden="true"` — not read by screen readers
+- The last item receives `aria-current="page"` via the underlying BreadcrumbItem atom
+- Disabled items are non-interactive and visually muted
+- Schema.org `BreadcrumbList` and `ListItem` Microdata available via the `schema` prop
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus between breadcrumb links |
+| Enter | Navigates to the focused link |

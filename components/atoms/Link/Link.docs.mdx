@@ -1,0 +1,141 @@
+---
+title: Link
+description: Accessible anchor element with inline and standalone visual variants.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Link } from \"@geeklego/ui\"\n\n{/* Inline in prose */}\n<p>Read the <Link href=\"/docs\">documentation</Link> to get started.</p>\n\n{/* Subtle — low emphasis */}\n<Link href=\"/privacy\" variant=\"subtle\">Privacy policy</Link>\n\n{/* Inline — no underline, just color */}\n<Link href=\"/tailwind\" variant=\"inline\">Tailwind CSS v4</Link>\n\n{/* Standalone — block-level CTA */}\n<Link href=\"/components\" variant=\"standalone\">View all components →</Link>"}>
+  <div className="flex flex-col gap-8 max-w-md">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">default</span>
+      <p className="text-body-md text-[var(--color-text-primary)]">Read the <Link href="#">component documentation</Link> to get started.</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">subtle</span>
+      <p className="text-body-md text-[var(--color-text-primary)]">See our <Link href="#" variant="subtle">privacy policy</Link> for details.</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">inline</span>
+      <p className="text-body-md text-[var(--color-text-primary)]">Geeklego is a <Link href="#" variant="inline">design-system-first</Link> React library built on <Link href="#" variant="inline">Tailwind CSS v4</Link>.</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">standalone</span>
+      <Link href="#" variant="standalone">View all components →</Link>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Link } from \"@geeklego/ui\"\n\n<Link href=\"#\" size=\"sm\">Small</Link>\n<Link href=\"#\" size=\"md\">Medium</Link>\n<Link href=\"#\" size=\"lg\">Large</Link>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">sm</span>
+      <div className="flex items-center gap-6 flex-wrap">
+        <Link href="#" size="sm" variant="default">Default link</Link>
+        <Link href="#" size="sm" variant="subtle">Subtle link</Link>
+        <Link href="#" size="sm" variant="standalone">Standalone link</Link>
+      </div>
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">md</span>
+      <div className="flex items-center gap-6 flex-wrap">
+        <Link href="#" size="md" variant="default">Default link</Link>
+        <Link href="#" size="md" variant="subtle">Subtle link</Link>
+        <Link href="#" size="md" variant="standalone">Standalone link</Link>
+      </div>
+    </div>
+    <div className="flex flex-col gap-1">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">lg</span>
+      <div className="flex items-center gap-6 flex-wrap">
+        <Link href="#" size="lg" variant="default">Default link</Link>
+        <Link href="#" size="lg" variant="subtle">Subtle link</Link>
+        <Link href="#" size="lg" variant="standalone">Standalone link</Link>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Link } from \"@geeklego/ui\"\n\n{/* External — auto adds target=\"_blank\" rel=\"noopener noreferrer\" */}\n<Link href=\"https://example.com\" external>External resource</Link>\n\n{/* Disabled — removed from tab order, aria-disabled=\"true\" */}\n<Link href=\"#\" disabled>Unavailable</Link>"}>
+  <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Default</span>
+      <Link href="#">Default link</Link>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">External</span>
+      <Link href="https://example.com" external>Opens in new tab</Link>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">Disabled</span>
+      <Link href="#" disabled>Disabled link</Link>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-body-sm text-[var(--color-text-tertiary)]">All variants — disabled</span>
+      <div className="flex items-center gap-6 flex-wrap">
+        <Link href="#" variant="default" disabled>Default</Link>
+        <Link href="#" variant="subtle" disabled>Subtle</Link>
+        <Link href="#" variant="inline" disabled>Inline</Link>
+        <Link href="#" variant="standalone" disabled>Standalone</Link>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"bg-primary p-8 rounded-lg max-w-2xl\">\n  <p className=\"text-body-md text-[var(--color-text-primary)]\">\n    Read the <Link href=\"#\">documentation</Link> to get started.\n  </p>\n  <Link href=\"https://example.com\" external>External</Link>\n</div>"}>
+  <div data-theme="dark" className="bg-primary p-8 rounded-lg max-w-2xl">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">default</span>
+        <p className="text-body-md text-[var(--color-text-primary)]">Read the <Link href="#">component documentation</Link> to get started.</p>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">subtle</span>
+        <p className="text-body-md text-[var(--color-text-primary)]">See our <Link href="#" variant="subtle">privacy policy</Link> for details.</p>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">standalone</span>
+        <Link href="#" variant="standalone">View all components →</Link>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="text-body-sm text-[var(--color-text-tertiary)]">external</span>
+        <Link href="https://example.com" external>Opens in new tab</Link>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "href", type: "string", defaultValue: "—", description: "Navigation URL. Omit when the link is disabled." },
+    { name: "variant", type: "'default' | 'subtle' | 'inline' | 'standalone'", defaultValue: "'default'", description: "Visual style." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "—", description: "Explicit font size. When omitted, inherits size from surrounding context." },
+    { name: "external", type: "boolean", defaultValue: "false", description: "Renders an external link icon and sets target='_blank' with rel='noopener noreferrer'." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Removes href, applies muted styles, sets aria-disabled='true', and removes from tab order." },
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "Link label text." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a native `<a>` element — full browser and assistive technology support
+- `external` automatically adds `target="_blank"` with `rel="noopener noreferrer"` for security; consider adding `aria-label="Link text (opens in a new tab)"` for screen readers
+- `disabled` removes the link from the tab order and adds `aria-disabled="true"` — it does not use the HTML `disabled` attribute (anchors don't support it)
+- Always use descriptive link text — avoid "click here", "read more", or "here" as standalone labels
+- `focus-visible` focus ring for keyboard navigation
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the link |
+| Enter | Activates the link |

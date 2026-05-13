@@ -1,0 +1,116 @@
+---
+title: FileUpload
+description: A drag-and-drop file upload zone with per-file status tracking, upload progress display, and three layout variants.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { FileUpload } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-lg\">\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">dropzone (default)</p>\n    <FileUpload variant=\"dropzone\" hint=\"PNG, JPG up to 5 MB\" />\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">compact</p>\n    <FileUpload variant=\"compact\" hint=\"PNG, JPG up to 5 MB\" />\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">button</p>\n    <FileUpload variant=\"button\" />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-lg">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">dropzone (default)</p>
+      <FileUpload variant="dropzone" hint="PNG, JPG up to 5 MB" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">compact</p>
+      <FileUpload variant="compact" hint="PNG, JPG up to 5 MB" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">button</p>
+      <FileUpload variant="button" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { FileUpload } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-6 max-w-lg\">\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">sm</p>\n    <FileUpload size=\"sm\" hint=\"PNG, JPG up to 5 MB\" />\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">md</p>\n    <FileUpload size=\"md\" hint=\"PNG, JPG up to 5 MB\" />\n  </div>\n  <div>\n    <p className=\"text-body-sm text-[var(--color-text-secondary)] mb-2\">lg</p>\n    <FileUpload size=\"lg\" hint=\"PNG, JPG up to 5 MB\" />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-6 max-w-lg">
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">sm</p>
+      <FileUpload size="sm" hint="PNG, JPG up to 5 MB" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">md</p>
+      <FileUpload size="md" hint="PNG, JPG up to 5 MB" />
+    </div>
+    <div>
+      <p className="text-body-sm text-[var(--color-text-secondary)] mb-2">lg</p>
+      <FileUpload size="lg" hint="PNG, JPG up to 5 MB" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Zone Error State
+
+<ComponentPreview code={"import { FileUpload } from \"@geeklego/ui\"\n\n<div className=\"max-w-lg\">\n  <FileUpload\n    error\n    errorMessage=\"Only PNG and JPG files are accepted.\"\n    hint=\"PNG, JPG up to 10 MB\"\n  />\n</div>"}>
+  <div className="max-w-lg">
+    <FileUpload error errorMessage="Only PNG and JPG files are accepted." hint="PNG, JPG up to 10 MB" />
+  </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { FileUpload } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-4 max-w-lg\">\n  <FileUpload disabled hint=\"Uploads disabled during processing\" />\n  <FileUpload disabled variant=\"compact\" hint=\"PNG, JPG up to 5 MB\" />\n  <FileUpload disabled variant=\"button\" />\n</div>"}>
+  <div className="flex flex-col gap-4 max-w-lg">
+    <FileUpload disabled hint="Uploads disabled during processing" />
+    <FileUpload disabled variant="compact" hint="PNG, JPG up to 5 MB" />
+    <FileUpload disabled variant="button" />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { FileUpload } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <FileUpload hint=\"PNG, JPG up to 10 MB\" />\n  <FileUpload variant=\"compact\" hint=\"PNG, JPG up to 5 MB\" />\n  <FileUpload variant=\"button\" />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <FileUpload hint="PNG, JPG up to 10 MB" />
+    <FileUpload variant="compact" hint="PNG, JPG up to 5 MB" />
+    <FileUpload variant="button" />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "variant", type: "'dropzone' | 'compact' | 'button'", defaultValue: "'dropzone'", description: "Visual layout. dropzone = large centred zone; compact = single-row zone; button = trigger button only." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Controls drop zone vertical padding and icon size. File items are always the same size." },
+    { name: "accept", type: "string", defaultValue: "—", description: "Forwarded to the hidden input. E.g. \"image/*,.pdf\"" },
+    { name: "multiple", type: "boolean", defaultValue: "false", description: "Allow selecting multiple files." },
+    { name: "maxFiles", type: "number", defaultValue: "—", description: "Cap on accepted files in multiple mode." },
+    { name: "maxFileSize", type: "number", defaultValue: "—", description: "Max file size in bytes. Files over this limit are added with status 'error'." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the zone, input, and all remove buttons." },
+    { name: "error", type: "boolean", defaultValue: "false", description: "Puts the drop zone in error visual state (red border)." },
+    { name: "errorMessage", type: "string", defaultValue: "—", description: "Error text shown below the zone when error is true." },
+    { name: "hint", type: "string", defaultValue: "—", description: "Secondary hint inside the zone, e.g. \"PNG, JPG up to 5 MB\"." },
+    { name: "files", type: "FileUploadFile[]", defaultValue: "—", description: "Controlled file list. Each entry carries id, File object, and optional status/progress. Omit for uncontrolled mode." },
+    { name: "onFilesChange", type: "(files: FileUploadFile[]) => void", defaultValue: "—", description: "Called with the full updated list when files are added." },
+    { name: "onFileRemove", type: "(id: string) => void", defaultValue: "—", description: "Called with the removed file id when the user clicks remove." },
+    { name: "i18nStrings", type: "FileUploadI18nStrings", defaultValue: "—", description: "Per-instance i18n string overrides for all visible text." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names on the root container div." },
+  ]}
+/>
+
+## Accessibility
+
+- `<label>` element wraps the drop zone — clicking anywhere in the zone activates the hidden `<input type="file">`
+- Hidden `<input type="file">` receives `aria-label` from `i18nStrings.inputLabel` (default: "Upload files")
+- `aria-disabled` set on both the `<label>` and `<input>` when `disabled` is true
+- `aria-invalid` and `aria-describedby` applied to the input via `getErrorFieldProps()` when `error` and `errorMessage` are set
+- File list renders as `<ul aria-label="Selected files">` with each file as `<li>`
+- File meta paragraph uses `aria-live="polite" aria-atomic="true"` to announce status changes (Done, Uploading, error)
+- Zone error message uses `role="alert"` for immediate announcement
+- Remove buttons include the filename: `aria-label="Remove file: filename.pdf"`
+
+### Keyboard Interaction
+
+| Key | Context | Action |
+|-----|---------|--------|
+| Tab | Component | Moves focus to the hidden file input |
+| Enter / Space | Hidden input focused | Opens the native file picker |
+| Tab | File list | Moves through remove buttons |
+| Enter / Space | Remove button focused | Removes the file |

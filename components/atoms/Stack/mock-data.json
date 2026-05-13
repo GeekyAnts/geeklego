@@ -1,0 +1,40 @@
+{
+  "default": {
+    "direction": "column",
+    "gap": "md",
+    "align": "stretch",
+    "justify": "start",
+    "wrap": false,
+    "inline": false
+  },
+  "directions": [
+    { "direction": "column", "gap": "md" },
+    { "direction": "row", "gap": "md" }
+  ],
+  "gaps": [
+    { "gap": "none" },
+    { "gap": "xs" },
+    { "gap": "sm" },
+    { "gap": "md" },
+    { "gap": "lg" },
+    { "gap": "xl" }
+  ],
+  "align_options": ["start", "center", "end", "stretch", "baseline"],
+  "justify_options": ["start", "center", "end", "between", "around", "evenly"],
+  "states": {
+    "wrap": { "direction": "row", "gap": "sm", "wrap": true },
+    "inline": { "inline": true, "gap": "sm" },
+    "centered": { "direction": "column", "align": "center", "justify": "center", "gap": "md" }
+  },
+  "semantic_overrides": [
+    { "as": "nav", "aria-label": "Primary navigation" },
+    { "as": "ul", "style": { "listStyle": "none", "padding": 0, "margin": 0 } },
+    { "as": "section", "aria-label": "Content section" }
+  ],
+  "edge_cases": {
+    "no_children": { "direction": "column", "gap": "md" },
+    "single_child": { "direction": "column", "gap": "md" },
+    "many_children_nowrap": { "direction": "row", "gap": "sm", "wrap": false },
+    "many_children_wrap": { "direction": "row", "gap": "sm", "wrap": true }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "default": {
+    "variant": "bullet",
+    "size": "md",
+    "orientation": "vertical",
+    "items": [
+      "Design tokens are the single source of truth",
+      "Components inherit from the design system",
+      "Theme switching works across all variants",
+      "Accessibility is built in from the start"
+    ]
+  },
+  "variants": [
+    {
+      "variant": "bullet",
+      "label": "Unordered bullet list",
+      "items": ["First item", "Second item", "Third item"]
+    },
+    {
+      "variant": "ordered",
+      "label": "Ordered numbered list",
+      "items": ["Step one", "Step two", "Step three"]
+    },
+    {
+      "variant": "check",
+      "label": "Check list",
+      "items": [
+        "WCAG 2.2 AA colour contrast",
+        "Keyboard navigation support",
+        "Screen reader announcements",
+        "Touch targets minimum 24 × 24 px"
+      ]
+    },
+    {
+      "variant": "dot",
+      "label": "Dot marker list",
+      "items": ["Brand dot markers", "Compact feature list", "Consistent across themes"]
+    },
+    {
+      "variant": "none",
+      "label": "No markers",
+      "items": ["Terms", "Privacy", "Support", "Status"]
+    },
+    {
+      "variant": "description",
+      "label": "Description list",
+      "items": [
+        { "term": "Version", "definition": "4.2.1" },
+        { "term": "Licence", "definition": "MIT" },
+        { "term": "Stack", "definition": "React 19 · TypeScript 5.7 · Tailwind CSS v4" }
+      ]
+    }
+  ],
+  "sizes": [
+    { "size": "sm", "label": "Small — text-body-sm, gap-xs" },
+    { "size": "md", "label": "Medium — text-body-md, gap-sm (default)" },
+    { "size": "lg", "label": "Large — text-body-lg, gap-md" }
+  ],
+  "states": {
+    "allEnabled": {
+      "items": ["Active item one", "Active item two", "Active item three"]
+    },
+    "someDisabled": {
+      "items": [
+        { "text": "Available feature", "disabled": false },
+        { "text": "Disabled — not available in this plan", "disabled": true },
+        { "text": "Another active feature", "disabled": false },
+        { "text": "Disabled — requires upgrade", "disabled": true }
+      ]
+    },
+    "allDisabled": {
+      "items": [
+        { "text": "Feature not available", "disabled": true },
+        { "text": "Another unavailable option", "disabled": true },
+        { "text": "Requires different plan", "disabled": true }
+      ]
+    },
+    "horizontal": {
+      "orientation": "horizontal",
+      "variant": "none",
+      "items": ["Terms", "Privacy", "Support", "Status"]
+    }
+  },
+  "edge_cases": {
+    "empty_list": [],
+    "single_item": ["Only one item in this list"],
+    "very_long_item": "A much longer item that contains a full sentence worth of content and will wrap naturally across multiple lines whilst keeping the icon or marker pinned to the top-left of the first line, maintaining optical alignment throughout the reading experience.",
+    "nested_list": {
+      "description": "A List.Item containing another List as its children — renders a nested list",
+      "items": ["Parent item one", "Parent with nested list", "Parent item three"]
+    },
+    "description_no_term": {
+      "description": "description variant item with no term prop — only <dd> rendered",
+      "definition": "Value without a label"
+    },
+    "mixed_content": {
+      "description": "Items containing links, bold text, or other inline elements",
+      "items": [
+        "Plain text item",
+        "Item with <strong> bold </strong> text",
+        "Item with an inline link"
+      ]
+    }
+  }
+}

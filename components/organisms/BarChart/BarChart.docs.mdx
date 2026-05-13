@@ -1,0 +1,209 @@
+---
+title: BarChart
+description: A responsive bar chart for categorical data visualisation.
+level: organism
+---
+
+## Series Colors
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"All 7 Series\"\n  infoLabel=\"Demonstrates all chart series colors\"\n  metric={700}\n  dateStart=\"Jan 1, 2026\"\n  dateEnd=\"Jan 7, 2026\"\n  series={[\n    { name: \"Series 1\", value: 100 },\n    { name: \"Series 2\", value: 100 },\n    { name: \"Series 3\", value: 100 },\n    { name: \"Series 4\", value: 100 },\n    { name: \"Series 5\", value: 100 },\n    { name: \"Series 6\", value: 100 },\n    { name: \"Series 7\", value: 100 },\n  ]}\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="All 7 Series"
+      infoLabel="Demonstrates all chart series colors"
+      metric={700}
+      dateStart="Jan 1, 2026"
+      dateEnd="Jan 7, 2026"
+      series={[
+        { name: "Series 1", value: 100 },
+        { name: "Series 2", value: 100 },
+        { name: "Series 3", value: 100 },
+        { name: "Series 4", value: 100 },
+        { name: "Series 5", value: 100 },
+        { name: "Series 6", value: 100 },
+        { name: "Series 7", value: 100 },
+      ]}
+    />
+  </div>
+</ComponentPreview>
+
+## Positive Delta
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"Revenue Channels\"\n  infoLabel=\"Revenue by acquisition channel\"\n  metric=\"$48,290\"\n  delta={12.4}\n  deltaLabel=\"from last month\"\n  dateStart=\"Feb 1, 2026\"\n  dateEnd=\"Feb 28, 2026\"\n  series={[\n    { name: \"Direct\", value: 210 },\n    { name: \"Organic\", value: 145 },\n    { name: \"Paid\", value: 98 },\n    { name: \"Referral\", value: 47 },\n  ]}\n  period=\"monthly\"\n  description=\"Revenue is up across all channels this month.\"\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="Revenue Channels"
+      infoLabel="Revenue by acquisition channel"
+      metric="$48,290"
+      delta={12.4}
+      deltaLabel="from last month"
+      dateStart="Feb 1, 2026"
+      dateEnd="Feb 28, 2026"
+      series={[
+        { name: "Direct", value: 210 },
+        { name: "Organic", value: 145 },
+        { name: "Paid", value: 98 },
+        { name: "Referral", value: 47 },
+      ]}
+      period="monthly"
+      description="Revenue is up across all channels this month."
+    />
+  </div>
+</ComponentPreview>
+
+## Negative Delta
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"Active Users\"\n  infoLabel=\"Active users by acquisition source\"\n  metric=\"1,842\"\n  delta={-4.7}\n  deltaLabel=\"from last week\"\n  dateStart=\"Mar 10, 2026\"\n  dateEnd=\"Mar 17, 2026\"\n  series={[\n    { name: \"App\", value: 950 },\n    { name: \"Web\", value: 620 },\n    { name: \"API\", value: 272 },\n  ]}\n  period=\"weekly\"\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="Active Users"
+      infoLabel="Active users by acquisition source"
+      metric="1,842"
+      delta={-4.7}
+      deltaLabel="from last week"
+      dateStart="Mar 10, 2026"
+      dateEnd="Mar 17, 2026"
+      series={[
+        { name: "App", value: 950 },
+        { name: "Web", value: 620 },
+        { name: "API", value: 272 },
+      ]}
+      period="weekly"
+    />
+  </div>
+</ComponentPreview>
+
+## No Description
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"Traffic Sources\"\n  infoLabel=\"Page views by source\"\n  metric=\"12,048\"\n  delta={8.3}\n  deltaLabel=\"from last week\"\n  dateStart=\"Mar 17, 2026\"\n  dateEnd=\"Mar 24, 2026\"\n  series={[\n    { name: \"Search\", value: 5200 },\n    { name: \"Direct\", value: 3100 },\n    { name: \"Social\", value: 2400 },\n    { name: \"Email\", value: 1348 },\n  ]}\n  period=\"weekly\"\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="Traffic Sources"
+      infoLabel="Page views by source"
+      metric="12,048"
+      delta={8.3}
+      deltaLabel="from last week"
+      dateStart="Mar 17, 2026"
+      dateEnd="Mar 24, 2026"
+      series={[
+        { name: "Search", value: 5200 },
+        { name: "Direct", value: 3100 },
+        { name: "Social", value: 2400 },
+        { name: "Email", value: 1348 },
+      ]}
+      period="weekly"
+    />
+  </div>
+</ComponentPreview>
+
+## Few Series
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"Platform Split\"\n  metric=\"3,291\"\n  delta={1.2}\n  deltaLabel=\"from yesterday\"\n  dateStart=\"Mar 23, 2026\"\n  dateEnd=\"Mar 24, 2026\"\n  series={[\n    { name: \"iOS\", value: 1850 },\n    { name: \"Android\", value: 1020 },\n    { name: \"Web\", value: 421 },\n  ]}\n  period=\"daily\"\n  periods={[\"Hourly\", \"Daily\", \"Weekly\"]}\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="Platform Split"
+      metric="3,291"
+      delta={1.2}
+      deltaLabel="from yesterday"
+      dateStart="Mar 23, 2026"
+      dateEnd="Mar 24, 2026"
+      series={[
+        { name: "iOS", value: 1850 },
+        { name: "Android", value: 1020 },
+        { name: "Web", value: 421 },
+      ]}
+      period="daily"
+      periods={["Hourly", "Daily", "Weekly"]}
+    />
+  </div>
+</ComponentPreview>
+
+## No Periods
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<BarChart\n  title=\"All-time Sources\"\n  metric=\"284,120\"\n  dateStart=\"Jan 1, 2024\"\n  dateEnd=\"Mar 24, 2026\"\n  series={[\n    { name: \"Organic\", value: 142000 },\n    { name: \"Paid\", value: 68000 },\n    { name: \"Referral\", value: 45000 },\n    { name: \"Direct\", value: 29120 },\n  ]}\n  periods={[]}\n  description=\"Cumulative breakdown since launch.\"\n/>"}>
+  <div className="max-w-2xl">
+    <BarChart
+      title="All-time Sources"
+      metric="284,120"
+      dateStart="Jan 1, 2024"
+      dateEnd="Mar 24, 2026"
+      series={[
+        { name: "Organic", value: 142000 },
+        { name: "Paid", value: 68000 },
+        { name: "Referral", value: 45000 },
+        { name: "Direct", value: 29120 },
+      ]}
+      periods={[]}
+      description="Cumulative breakdown since launch."
+    />
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { BarChart } from \"@geeklego/ui\"\n\n<div\n  data-theme=\"dark\"\n  className=\"flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl\"\n>\n  <BarChart\n    title=\"Sales Channels\"\n    infoLabel=\"Shows the distribution of total sales across channels\"\n    metric={246}\n    delta={2.1}\n    deltaLabel=\"from last week\"\n    dateStart=\"Mar 17, 2026\"\n    dateEnd=\"Mar 24, 2026\"\n    series={[\n      { name: \"Direct\", value: 86 },\n      { name: \"Email\", value: 52 },\n      { name: \"Social\", value: 45 },\n      { name: \"Paid\", value: 30 },\n      { name: \"Affiliate\", value: 20 },\n    ]}\n    period=\"weekly\"\n    description=\"Distribution of total sales across different channels.\"\n  />\n</div>"}>
+  <div
+    data-theme="dark"
+    className="flex flex-col gap-6 p-8 bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl"
+  >
+    <BarChart
+      title="Sales Channels"
+      infoLabel="Shows the distribution of total sales across channels"
+      metric={246}
+      delta={2.1}
+      deltaLabel="from last week"
+      dateStart="Mar 17, 2026"
+      dateEnd="Mar 24, 2026"
+      series={[
+        { name: "Direct", value: 86 },
+        { name: "Email", value: 52 },
+        { name: "Social", value: 45 },
+        { name: "Paid", value: 30 },
+        { name: "Affiliate", value: 20 },
+      ]}
+      period="weekly"
+      description="Distribution of total sales across different channels."
+    />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "title", type: "string", defaultValue: "required", description: "Card title displayed in the header." },
+    { name: "infoLabel", type: "string", defaultValue: "\u2014", description: "Accessible label for the info icon button. Omit to hide the icon." },
+    { name: "metric", type: "number | string", defaultValue: "\u2014", description: "Primary numeric metric displayed prominently below the header. Omit to show chart only." },
+    { name: "delta", type: "number", defaultValue: "\u2014", description: "Change percentage. Positive values render green, negative values render red." },
+    { name: "deltaLabel", type: "string", defaultValue: "\u2014", description: "Context text shown next to the delta value (e.g. \"from last week\")." },
+    { name: "dateStart", type: "string", defaultValue: "\u2014", description: "Start-of-range date label shown left-aligned below the metric." },
+    { name: "dateEnd", type: "string", defaultValue: "\u2014", description: "End-of-range date label shown right-aligned below the metric." },
+    { name: "series", type: "BarChartSeries[]", defaultValue: "[]", description: "Bar segments. Order determines left-to-right rendering and color assignment. Each entry has `name` (string) and `value` (number)." },
+    { name: "period", type: "string", defaultValue: "'weekly'", description: "Currently selected period value (should match one of `periods` lowercased)." },
+    { name: "periods", type: "string[]", defaultValue: "['Daily', 'Weekly', 'Monthly', 'Yearly']", description: "Available period options shown in the selector dropdown." },
+    { name: "onPeriodChange", type: "(period: string) => void", defaultValue: "\u2014", description: "Called when the user selects a different period." },
+    { name: "description", type: "string", defaultValue: "\u2014", description: "Optional description text rendered below the divider." },
+    { name: "loading", type: "boolean", defaultValue: "false", description: "When true, replaces the chart area with a shimmer skeleton placeholder." },
+    { name: "i18nStrings", type: "BarChartI18nStrings", defaultValue: "\u2014", description: "Override localised strings for this instance." },
+    { name: "className", type: "string", defaultValue: "\u2014", description: "Additional CSS classes applied to the root element." },
+  ]}
+/>
+
+## Accessibility
+
+- Bar chart container uses `role="img"` with an `aria-label` describing the chart title
+- A visually hidden `<table>` provides a full data fallback for screen readers, with columns for segment name, value, and percentage share
+- Info button uses `title` attribute for its accessible name
+- Period selector has `aria-label` for screen reader context
+- Colour legend swatches are marked `aria-hidden="true"` so they do not announce to screen readers
+- Loading state uses `aria-busy` and `aria-live` attributes via `getLoadingProps`
+- Tooltip uses `role="tooltip"` for proper semantics
+- Up to 7 distinct series colours ensure visual differentiation
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the info button, then the period selector |
+| Enter / Space | Activates the info button or opens the period selector dropdown |
+| ArrowDown / ArrowUp | Navigates period selector options when open |

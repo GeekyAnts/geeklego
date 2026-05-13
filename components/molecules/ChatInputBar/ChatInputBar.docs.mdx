@@ -1,0 +1,83 @@
+---
+title: ChatInputBar
+description: Message composition area with textarea, send button, and optional attachment button.
+level: molecule
+---
+
+## Variants
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<div className=\"flex flex-col gap-[var(--spacing-component-md)]\">\n  <div>\n    <p className=\"text-label-sm text-secondary mb-2\">With attachment button</p>\n    <ChatInputBar showAttach />\n  </div>\n  <div>\n    <p className=\"text-label-sm text-secondary mb-2\">Without attachment button</p>\n    <ChatInputBar showAttach={false} />\n  </div>\n</div>"}>
+  <div className="flex flex-col gap-[var(--spacing-component-md)]">
+    <div>
+      <p className="text-label-sm text-secondary mb-2">With attachment button</p>
+      <ChatInputBar showAttach />
+    </div>
+    <div>
+      <p className="text-label-sm text-secondary mb-2">Without attachment button</p>
+      <ChatInputBar showAttach={false} />
+    </div>
+  </div>
+</ComponentPreview>
+
+## With Max Length
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<ChatInputBar showAttach maxLength={160} />"}>
+  <ChatInputBar showAttach maxLength={160} />
+</ComponentPreview>
+
+## Default (Empty — Send Disabled)
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<ChatInputBar showAttach />"}>
+  <ChatInputBar showAttach />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<ChatInputBar showAttach disabled />"}>
+  <ChatInputBar showAttach disabled />
+</ComponentPreview>
+
+## Custom i18n Strings
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<ChatInputBar showAttach i18nStrings={{ placeholder: \"Send a message...\", sendLabel: \"Send\", attachLabel: \"Attach file\" }} />"}>
+  <ChatInputBar showAttach i18nStrings={{ placeholder: "Send a message...", sendLabel: "Send", attachLabel: "Attach file" }} />
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"import { ChatInputBar } from \"@geeklego/ui\"\n\n<div data-theme=\"dark\" className=\"bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden\">\n  <ChatInputBar showAttach />\n</div>"}>
+  <div data-theme="dark" className="bg-[var(--color-bg-primary)] rounded-[var(--radius-component-lg)] max-w-2xl overflow-hidden">
+    <ChatInputBar showAttach />
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "onSend", type: "(message: string) => void", defaultValue: "—", description: "Called with the trimmed message text when the user sends." },
+    { name: "maxLength", type: "number", defaultValue: "—", description: "Maximum character count enforced via maxLength on the textarea. No counter UI is shown." },
+    { name: "showAttach", type: "boolean", defaultValue: "true", description: "When true, renders the attachment icon button at the start of the bar." },
+    { name: "onAttach", type: "() => void", defaultValue: "—", description: "Called when the attachment button is clicked." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the entire form — textarea and both buttons." },
+    { name: "i18nStrings", type: "ChatInputBarI18nStrings", defaultValue: "—", description: "Override localised system strings. Keys: sendLabel, attachLabel, placeholder." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes merged onto the root form element." },
+  ]}
+/>
+
+## Accessibility
+
+- Root is a `<form>` — implicit form landmark semantics
+- Attachment button is icon-only with `aria-label` (default: "Attach file") resolved via i18n
+- Send button is icon-only with `aria-label` (default: "Send message") resolved via i18n
+- When textarea is empty, send button is `disabled` with `aria-disabled="true"` — preventing keyboard activation
+- Textarea carries `aria-label` matching the send button label for screen reader context
+- `Ctrl/Cmd + Enter` shortcut is additive — standard form submit via `Enter` remains intact
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Enter | Submits the message when the textarea has content |
+| Ctrl+Enter / Cmd+Enter | Submits the message from inside the textarea |
+| Tab | Moves focus between the attachment button, textarea, and send button |

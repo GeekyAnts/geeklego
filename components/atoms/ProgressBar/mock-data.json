@@ -1,0 +1,48 @@
+{
+  "default": {
+    "value": 60,
+    "max": 100,
+    "variant": "default",
+    "size": "md",
+    "rounded": true,
+    "label": "Loading progress",
+    "showLabel": false,
+    "showValue": false
+  },
+  "variants": [
+    { "variant": "default",  "value": 65, "label": "Default progress" },
+    { "variant": "success",  "value": 100, "label": "Upload complete" },
+    { "variant": "warning",  "value": 80, "label": "Storage almost full" },
+    { "variant": "error",    "value": 40, "label": "Upload failed" },
+    { "variant": "neutral",  "value": 50, "label": "Background task" }
+  ],
+  "sizes": [
+    { "size": "xs", "value": 55, "label": "Extra-small (2px)" },
+    { "size": "sm", "value": 55, "label": "Small (4px)" },
+    { "size": "md", "value": 55, "label": "Medium (8px)" },
+    { "size": "lg", "value": 55, "label": "Large (16px)" }
+  ],
+  "states": {
+    "empty":         { "value": 0,         "label": "Not started" },
+    "quarter":       { "value": 25,        "label": "One quarter done" },
+    "half":          { "value": 50,        "label": "Halfway there" },
+    "three_quarter": { "value": 75,        "label": "Almost done" },
+    "complete":      { "value": 100,       "variant": "success", "label": "Complete" },
+    "indeterminate": { "value": null,      "label": "Processing…" },
+    "with_label":    { "value": 68,        "showLabel": true, "showValue": true, "label": "Upload progress" },
+    "error":         { "value": 40,        "variant": "error", "label": "Upload failed" }
+  },
+  "edge_cases": {
+    "over_max":      { "value": 150, "max": 100,  "label": "Value clamped to max" },
+    "negative":      { "value": -10, "max": 100,  "label": "Value clamped to 0" },
+    "custom_max":    { "value": 7,   "max": 10,   "label": "7 of 10 steps" },
+    "squared":       { "value": 60,  "rounded": false, "label": "Squared ends" },
+    "no_label":      { "value": 60  },
+    "long_label":    {
+      "value": 42,
+      "showLabel": true,
+      "showValue": true,
+      "label": "Syncing files with the remote cloud storage server — 42 of 100 items uploaded"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+---
+title: Slider
+description: Range input with track fill, optional label/value display, three sizes, and controlled/uncontrolled support.
+level: atom
+---
+
+## Sizes
+
+<ComponentPreview code={"import { Slider } from \"@geeklego/ui\"\n\n<Slider size=\"sm\" label=\"Brightness\" defaultValue={60} />\n<Slider size=\"md\" label=\"Volume\" defaultValue={60} />\n<Slider size=\"lg\" label=\"Bass\" defaultValue={60} />"}>
+  <div className="flex flex-col gap-6 w-80">
+      <div className="flex flex-col gap-2">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Small — 2px track · 14px thumb</p>
+        <Slider size="sm" label="Brightness" defaultValue={60} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Medium (default) — 4px track · 16px thumb</p>
+        <Slider size="md" label="Volume" defaultValue={60} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="text-body-sm text-[var(--color-text-secondary)]">Large — 8px track · 20px thumb</p>
+        <Slider size="lg" label="Bass" defaultValue={60} />
+      </div>
+    </div>
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={"import { Slider } from \"@geeklego/ui\"\n\n<Slider label=\"Disabled\" defaultValue={50} disabled />"}>
+  <div className="w-80">
+      <Slider label="Disabled" defaultValue={50} disabled />
+    </div>
+</ComponentPreview>
+
+## With Value
+
+<ComponentPreview code={"import { Slider } from \"@geeklego/ui\"\n\n{/* Show numeric value next to label */}\n<Slider label=\"Volume\" defaultValue={72} showValue />\n\n{/* Custom range and step */}\n<Slider label=\"Temperature (\u00b0C)\" min={16} max={30} step={0.5} defaultValue={22} showValue />"}>
+  <div className="flex flex-col gap-4 w-80">
+      <Slider label="Volume" defaultValue={72} showValue />
+      <Slider label="Temperature (°C)" min={16} max={30} step={0.5} defaultValue={22} showValue />
+    </div>
+</ComponentPreview>
+
+## States
+
+<ComponentPreview code={"import { Slider } from \"@geeklego/ui\"\n\n<Slider label=\"Empty\" defaultValue={0} />\n<Slider label=\"Half\" defaultValue={50} />\n<Slider label=\"Full\" defaultValue={100} />\n<Slider label=\"Disabled\" defaultValue={50} disabled />\n<Slider label=\"With value\" defaultValue={72} showValue />"}>
+  <div className="flex flex-col gap-4 w-80">
+      <Slider label="Empty (0%)" defaultValue={0} />
+      <Slider label="Half (50%)" defaultValue={50} />
+      <Slider label="Full (100%)" defaultValue={100} />
+      <Slider label="Disabled" defaultValue={50} disabled />
+      <Slider label="With value display" defaultValue={72} showValue />
+    </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl w-80\">\n  <Slider label=\"Volume\" defaultValue={55} showValue />\n  <Slider label=\"Disabled\" defaultValue={40} disabled />\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-4 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl w-80">
+      <Slider label="Volume" defaultValue={55} showValue />
+      <Slider label="Disabled" defaultValue={40} disabled />
+      <Slider size="sm" label="Small track" defaultValue={70} />
+      <Slider size="lg" label="Large track" defaultValue={30} />
+    </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "min", type: "number", defaultValue: "0", description: "Minimum value." },
+    { name: "max", type: "number", defaultValue: "100", description: "Maximum value." },
+    { name: "step", type: "number", defaultValue: "1", description: "Step increment between values." },
+    { name: "value", type: "number", defaultValue: "—", description: "Controlled current value. Pair with onChange." },
+    { name: "defaultValue", type: "number", defaultValue: "min (or 0)", description: "Initial value for uncontrolled usage." },
+    { name: "onChange", type: "(value: number) => void", defaultValue: "—", description: "Called with the new numeric value on every input change." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Track height and thumb size scale." },
+    { name: "disabled", type: "boolean", defaultValue: "false", description: "Whether the slider is non-interactive." },
+    { name: "label", type: "string", defaultValue: "—", description: "Optional visible label rendered above the track. Used as accessible name via aria-labelledby." },
+    { name: "showValue", type: "boolean", defaultValue: "false", description: "Render the current numeric value to the right of the label row." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional class names applied to the outermost wrapper div." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as a native `<input type="range">` — all keyboard interaction is browser-native
+- `label` provides the accessible name via `aria-labelledby`; without `label`, pass `aria-label`
+- `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, and `aria-valuetext` are set automatically
+- The visual value display (when `showValue`) is `aria-hidden` — screen readers get the value from `aria-valuenow`
+- `disabled` sets both HTML `disabled` and `aria-disabled`
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the slider |
+| Arrow Right / Up | Increases value by step |
+| Arrow Left / Down | Decreases value by step |
+| Home | Sets value to minimum |
+| End | Sets value to maximum |
+| Page Up | Increases by 10× step |
+| Page Down | Decreases by 10× step |

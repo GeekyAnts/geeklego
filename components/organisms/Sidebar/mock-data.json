@@ -1,0 +1,95 @@
+{
+  "default": {
+    "workspace": {
+      "name": "Acme Inc",
+      "tier": "Enterprise"
+    },
+    "user": {
+      "name": "shadcn",
+      "email": "m@example.com",
+      "avatarSrc": null,
+      "avatarAlt": "shadcn avatar"
+    },
+    "groups": [
+      {
+        "id": "platform",
+        "label": "Platform",
+        "items": [
+          {
+            "id": "playground",
+            "label": "Playground",
+            "icon": "SquareTerminal",
+            "isExpandable": true,
+            "isExpanded": true,
+            "children": [
+              { "id": "history",     "label": "History",  "href": "/playground/history"  },
+              { "id": "starred",     "label": "Starred",  "href": "/playground/starred"  },
+              { "id": "settings-pg", "label": "Settings", "href": "/playground/settings" }
+            ]
+          },
+          { "id": "models",        "label": "Models",        "icon": "Bot",         "href": "/models"    },
+          { "id": "documentation", "label": "Documentation", "icon": "BookOpen",    "href": "/docs"      },
+          { "id": "settings",      "label": "Settings",      "icon": "Settings2",   "href": "/settings"  }
+        ]
+      }
+    ]
+  },
+  "withGroups": {
+    "workspace": {
+      "name": "Acme Inc",
+      "tier": "Enterprise"
+    },
+    "user": {
+      "name": "shadcn",
+      "email": "m@example.com"
+    },
+    "groups": [
+      {
+        "id": "platform",
+        "label": "Platform",
+        "items": [
+          { "id": "dashboard",  "label": "Dashboard",  "icon": "LayoutDashboard", "href": "/dashboard", "isActive": true },
+          { "id": "models",     "label": "Models",     "icon": "Bot",             "href": "/models"     }
+        ]
+      },
+      {
+        "id": "settings",
+        "label": "Settings",
+        "items": [
+          { "id": "account", "label": "Account", "icon": "User",    "href": "/account" },
+          { "id": "billing", "label": "Billing", "icon": "Receipt", "href": "/billing" },
+          { "id": "team",    "label": "Team",    "icon": "Users",   "href": "/team"    }
+        ]
+      },
+      {
+        "id": "help",
+        "label": "Help",
+        "items": [
+          { "id": "docs",    "label": "Documentation", "icon": "BookOpen", "href": "/docs"    },
+          { "id": "support", "label": "Support",       "icon": "LifeBuoy", "href": "/support" }
+        ]
+      }
+    ]
+  },
+  "states": {
+    "loading": true,
+    "disabled_item": {
+      "id": "models",
+      "label": "Models",
+      "icon": "Bot",
+      "href": "/models",
+      "disabled": true
+    }
+  },
+  "edge_cases": {
+    "long_workspace_name": "Acme International Corporation Ltd",
+    "long_user_name": "Christopher Alexander Worthington III",
+    "long_email": "christopher.worthington@enterprise-example.com",
+    "single_nav_item": {
+      "id": "dashboard",
+      "label": "Dashboard",
+      "icon": "LayoutDashboard",
+      "href": "/dashboard"
+    }
+  }
+}

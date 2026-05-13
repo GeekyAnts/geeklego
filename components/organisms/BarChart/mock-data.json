@@ -1,0 +1,116 @@
+{
+  "default": {
+    "title": "Sales Channels",
+    "infoLabel": "Shows the distribution of total sales across channels",
+    "metric": 246,
+    "delta": 2.1,
+    "deltaLabel": "from last week",
+    "dateStart": "Mar 17, 2026",
+    "dateEnd": "Mar 24, 2026",
+    "period": "weekly",
+    "series": [
+      { "name": "Direct", "value": 86 },
+      { "name": "Email", "value": 52 },
+      { "name": "Social", "value": 45 },
+      { "name": "Paid", "value": 30 },
+      { "name": "Affiliate", "value": 20 },
+      { "name": "Organic", "value": 8 },
+      { "name": "Other", "value": 5 }
+    ],
+    "description": "This chart shows the distribution of your total sales across different channels. Use this breakdown to understand where most of your revenue is coming from, which channels are underperforming, and where to focus your next campaign."
+  },
+  "delta_states": {
+    "positive": {
+      "metric": "$48,290",
+      "delta": 12.4,
+      "deltaLabel": "from last month",
+      "series": [
+        { "name": "Direct", "value": 210 },
+        { "name": "Organic", "value": 145 },
+        { "name": "Paid", "value": 98 },
+        { "name": "Referral", "value": 47 }
+      ]
+    },
+    "negative": {
+      "metric": "1,842",
+      "delta": -4.7,
+      "deltaLabel": "from last week",
+      "series": [
+        { "name": "App", "value": 950 },
+        { "name": "Web", "value": 620 },
+        { "name": "API", "value": 272 }
+      ]
+    },
+    "neutral": {
+      "metric": 512,
+      "delta": 0,
+      "deltaLabel": "from last period",
+      "series": [
+        { "name": "Channel A", "value": 256 },
+        { "name": "Channel B", "value": 256 }
+      ]
+    }
+  },
+  "periods": {
+    "daily": { "dateStart": "Mar 24, 2026", "dateEnd": "Mar 24, 2026", "period": "daily" },
+    "weekly": { "dateStart": "Mar 17, 2026", "dateEnd": "Mar 24, 2026", "period": "weekly" },
+    "monthly": { "dateStart": "Mar 1, 2026", "dateEnd": "Mar 31, 2026", "period": "monthly" },
+    "yearly": { "dateStart": "Jan 1, 2026", "dateEnd": "Dec 31, 2026", "period": "yearly" }
+  },
+  "edge_cases": {
+    "single_series": {
+      "title": "Single Channel",
+      "metric": 500,
+      "series": [{ "name": "Direct", "value": 500 }]
+    },
+    "two_series": {
+      "title": "Two Channels",
+      "metric": 200,
+      "series": [
+        { "name": "Mobile", "value": 140 },
+        { "name": "Desktop", "value": 60 }
+      ]
+    },
+    "max_series": {
+      "title": "Seven Channels",
+      "metric": 700,
+      "series": [
+        { "name": "A", "value": 200 },
+        { "name": "B", "value": 150 },
+        { "name": "C", "value": 120 },
+        { "name": "D", "value": 90 },
+        { "name": "E", "value": 70 },
+        { "name": "F", "value": 40 },
+        { "name": "G", "value": 30 }
+      ]
+    },
+    "string_metric": {
+      "title": "Revenue",
+      "metric": "$1,284,920",
+      "delta": 8.3,
+      "deltaLabel": "from last quarter",
+      "series": [
+        { "name": "Enterprise", "value": 680000 },
+        { "name": "SMB", "value": 420000 },
+        { "name": "Consumer", "value": 184920 }
+      ]
+    },
+    "no_description": {
+      "title": "Quick Stats",
+      "metric": 99,
+      "series": [
+        { "name": "Pass", "value": 85 },
+        { "name": "Fail", "value": 14 }
+      ]
+    },
+    "no_dates": {
+      "title": "All-time Breakdown",
+      "metric": "284,120",
+      "series": [
+        { "name": "Organic", "value": 142000 },
+        { "name": "Paid", "value": 68000 },
+        { "name": "Referral", "value": 74120 }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "default": {
+    "placeholder": "Enter text…",
+    "variant": "default",
+    "size": "md",
+    "type": "text"
+  },
+  "variants": [
+    { "variant": "default", "placeholder": "Default — outlined border" },
+    { "variant": "filled",  "placeholder": "Filled — muted background" },
+    { "variant": "flushed", "placeholder": "Flushed — border-bottom only" },
+    { "variant": "unstyled","placeholder": "Unstyled — blank slate" }
+  ],
+  "sizes": [
+    { "size": "sm", "placeholder": "Small input" },
+    { "size": "md", "placeholder": "Medium input" },
+    { "size": "lg", "placeholder": "Large input" }
+  ],
+  "states": {
+    "loading":       { "placeholder": "Validating…", "isLoading": true },
+    "disabled":      { "placeholder": "Cannot edit", "disabled": true },
+    "error":         { "defaultValue": "invalid-email", "error": true },
+    "withLeftIcon":  { "placeholder": "Search…", "leftIcon": "Search" },
+    "withRightIcon": { "placeholder": "Password", "type": "password", "rightIcon": "Eye" },
+    "withBothIcons": { "placeholder": "Username", "leftIcon": "AtSign", "rightIcon": "User" }
+  },
+  "edge_cases": {
+    "empty":        { "placeholder": "", "value": "" },
+    "very_long":    { "defaultValue": "This is a very long value that should be truncated gracefully when it overflows the available width of the input field" },
+    "type_password":{ "type": "password", "defaultValue": "s3cr3t-p4ssw0rd" },
+    "type_email":   { "type": "email",    "placeholder": "you@example.com" },
+    "type_number":  { "type": "number",   "placeholder": "0", "min": "0", "max": "100" },
+    "type_search":  { "type": "search",   "placeholder": "Search…" },
+    "required":     { "required": true,   "placeholder": "Required field" }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "driveTree": [
+    {
+      "id": "shared-drives",
+      "label": "Shared drives",
+      "children": [
+        {
+          "id": "design-files",
+          "label": "Design Files - Client",
+          "children": [
+            {
+              "id": "abb",
+              "label": "ABB",
+              "children": [
+                {
+                  "id": "abb-icons",
+                  "label": "Icons",
+                  "children": [
+                    { "id": "abb-icons-source", "label": "Source file", "children": [] }
+                  ]
+                },
+                { "id": "abb-source", "label": "Source File", "children": [] }
+              ]
+            },
+            { "id": "adobe",     "label": "Adobe Old Account Users", "children": [] },
+            { "id": "aerobrief", "label": "Aerobrief",               "children": [] },
+            { "id": "airops",    "label": "AirOps",                  "children": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "fileSystemTree": [
+    {
+      "id": "src",
+      "label": "src",
+      "children": [
+        {
+          "id": "components",
+          "label": "components",
+          "children": [
+            { "id": "button", "label": "Button.tsx" },
+            { "id": "input",  "label": "Input.tsx"  },
+            { "id": "modal",  "label": "Modal.tsx"  }
+          ]
+        },
+        { "id": "index", "label": "index.ts" },
+        { "id": "app",   "label": "App.tsx"  }
+      ]
+    },
+    { "id": "pkg", "label": "package.json" }
+  ],
+  "navTree": [
+    { "id": "dashboard", "label": "Dashboard" },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "children": [
+        { "id": "profile",  "label": "Profile"  },
+        { "id": "security", "label": "Security" },
+        { "id": "team",     "label": "Team"     }
+      ]
+    },
+    {
+      "id": "files",
+      "label": "Files",
+      "badge": 24,
+      "children": [
+        { "id": "recent",  "label": "Recent",  "badge": 5 },
+        { "id": "starred", "label": "Starred"             },
+        { "id": "shared",  "label": "Shared",  "badge": 3 },
+        { "id": "trash",   "label": "Trash",   "disabled": true }
+      ]
+    }
+  ],
+  "defaultExpanded": ["shared-drives", "design-files", "abb", "abb-icons"],
+  "defaultSelected": "abb-icons-source",
+  "edge_cases": {
+    "emptyItems": [],
+    "singleNode": [{ "id": "single", "label": "Only item" }],
+    "deeplyNested": {
+      "note": "5 levels deep — tests indentation calculation",
+      "id": "l1", "label": "Level 1",
+      "children": [{ "id": "l2", "label": "Level 2",
+        "children": [{ "id": "l3", "label": "Level 3",
+          "children": [{ "id": "l4", "label": "Level 4",
+            "children": [{ "id": "l5", "label": "Level 5 (deepest)" }]
+          }]
+        }]
+      }]
+    },
+    "longLabels": [
+      { "id": "long", "label": "Adobe Old Account Users — Legacy Creative Suite Subscriptions (2019)" }
+    ],
+    "allDisabled": [
+      { "id": "d1", "label": "Disabled A", "disabled": true },
+      { "id": "d2", "label": "Disabled B", "disabled": true, "children": [{ "id": "d2a", "label": "Child" }] }
+    ],
+    "withBadges": [
+      { "id": "b1", "label": "Inbox",    "badge": 99 },
+      { "id": "b2", "label": "Sent",     "badge": 0  },
+      { "id": "b3", "label": "Archived", "badge": "New" }
+    ]
+  }
+}

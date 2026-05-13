@@ -1,0 +1,94 @@
+{
+  "default": {
+    "legend": "Notification preferences",
+    "hint": "Choose how you want to receive updates.",
+    "variant": "default",
+    "layout": "column",
+    "gap": "md",
+    "required": false,
+    "disabled": false
+  },
+  "variants": [
+    {
+      "id": "default",
+      "legend": "Account type",
+      "variant": "default",
+      "hint": "Select the account that best fits your needs."
+    },
+    {
+      "id": "boxed",
+      "legend": "Account type",
+      "variant": "boxed",
+      "hint": "Select the account that best fits your needs."
+    }
+  ],
+  "layouts": [
+    {
+      "id": "column",
+      "legend": "Notification channels",
+      "layout": "column"
+    },
+    {
+      "id": "row",
+      "legend": "Preferred days",
+      "layout": "row",
+      "gap": "lg"
+    }
+  ],
+  "gaps": [
+    { "id": "sm", "legend": "Interests", "gap": "sm" },
+    { "id": "md", "legend": "Interests", "gap": "md" },
+    { "id": "lg", "legend": "Interests", "gap": "lg" }
+  ],
+  "states": {
+    "default": {
+      "legend": "Shipping method"
+    },
+    "with_hint": {
+      "legend": "Shipping method",
+      "hint": "Free standard shipping on orders over $50."
+    },
+    "required": {
+      "legend": "Shipping method",
+      "required": true
+    },
+    "error": {
+      "legend": "Notification preferences",
+      "required": true,
+      "error": "Please select at least one notification method."
+    },
+    "error_boxed": {
+      "legend": "Notification preferences",
+      "required": true,
+      "variant": "boxed",
+      "error": "Please select at least one notification method."
+    },
+    "disabled": {
+      "legend": "Shipping method",
+      "hint": "Shipping options are locked during checkout.",
+      "disabled": true
+    }
+  },
+  "edge_cases": {
+    "long_legend": {
+      "legend": "This is a very long fieldset legend that should truncate gracefully at the end with an ellipsis when it exceeds its available width",
+      "variant": "default"
+    },
+    "long_hint": {
+      "legend": "Settings",
+      "hint": "This is a very long hint text that spans multiple lines to test the clamp-description utility class which should limit it to two lines maximum"
+    },
+    "long_error": {
+      "legend": "Preferences",
+      "required": true,
+      "error": "This is a very long error message that spans multiple lines to test the clamp-description utility class, providing detailed guidance about what the user needs to correct"
+    },
+    "required_boxed_error": {
+      "legend": "Verification",
+      "variant": "boxed",
+      "required": true,
+      "hint": "All fields are required for account verification.",
+      "error": "Please complete all required verification steps."
+    }
+  }
+}

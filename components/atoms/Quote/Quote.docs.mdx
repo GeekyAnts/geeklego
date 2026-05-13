@@ -1,0 +1,86 @@
+---
+title: Quote
+description: Semantic blockquote with four visual variants, attribution, source citation, and accessible markup.
+level: atom
+---
+
+## Variants
+
+<ComponentPreview code={"import { Quote } from \"@geeklego/ui\"\n\n{/* Default — left border accent */}\n<Quote variant=\"default\" attribution=\"Steve Jobs\" source=\"Stanford Commencement Address\">\n  Design is not just what it looks like and feels like. Design is how it works.\n</Quote>\n\n{/* Pullquote — large centered text with decorative marks */}\n<Quote variant=\"pullquote\" attribution=\"Leonardo da Vinci\">\n  Simplicity is the ultimate sophistication.\n</Quote>\n\n{/* Minimal — no decoration, just text */}\n<Quote variant=\"minimal\" attribution=\"Albert Einstein\">\n  In the middle of difficulty lies opportunity.\n</Quote>\n\n{/* Card — contained box with surface background */}\n<Quote variant=\"card\" attribution=\"Martin Fowler\" source=\"Refactoring\">\n  Any fool can write code that a computer can understand.\n</Quote>"}>
+  <div className="flex flex-col gap-6 max-w-2xl">
+    <Quote variant="default" attribution="Steve Jobs" source="Stanford Commencement Address">Design is not just what it looks like and feels like. Design is how it works.</Quote>
+    <Quote variant="pullquote" attribution="Leonardo da Vinci">Simplicity is the ultimate sophistication.</Quote>
+    <Quote variant="minimal" attribution="Albert Einstein">In the middle of difficulty lies opportunity.</Quote>
+    <Quote variant="card" attribution="Martin Fowler" source="Refactoring: Improving the Design of Existing Code">Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</Quote>
+  </div>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview code={"import { Quote } from \"@geeklego/ui\"\n\n<Quote size=\"sm\" attribution=\"Author\">Quote text</Quote>\n<Quote size=\"md\" attribution=\"Author\">Quote text</Quote>\n<Quote size=\"lg\" attribution=\"Author\">Quote text</Quote>"}>
+  <div className="flex flex-col gap-6 max-w-2xl">
+    <Quote size="sm" attribution="Ludwig Mies van der Rohe">Less is more.</Quote>
+    <Quote size="md" attribution="Ludwig Mies van der Rohe">Less is more.</Quote>
+    <Quote size="lg" attribution="Ludwig Mies van der Rohe">Less is more.</Quote>
+  </div>
+</ComponentPreview>
+
+## With Source
+
+<ComponentPreview code={"import { Quote } from \"@geeklego/ui\"\n\n{/* Attribution only */}\n<Quote attribution=\"Marie Curie\">\n  Nothing in life is to be feared, it is only to be understood.\n</Quote>\n\n{/* Attribution + source title */}\n<Quote attribution=\"Martin Fowler\" source=\"Refactoring\">\n  Any fool can write code that a computer can understand.\n</Quote>\n\n{/* Attribution + source with URL */}\n<Quote\n  attribution=\"Steve Jobs\"\n  source=\"Stanford Commencement Address\"\n  sourceUrl=\"https://news.stanford.edu/2005/06/14/jobs-061505/\"\n  cite=\"https://news.stanford.edu/2005/06/14/jobs-061505/\"\n>\n  Stay hungry, stay foolish.\n</Quote>"}>
+  <div className="flex flex-col gap-6 max-w-2xl">
+    <Quote attribution="Marie Curie">Nothing in life is to be feared, it is only to be understood.</Quote>
+    <Quote attribution="Martin Fowler" source="Refactoring">Any fool can write code that a computer can understand.</Quote>
+    <Quote
+      attribution="Steve Jobs"
+      source="Stanford Commencement Address"
+      sourceUrl="https://news.stanford.edu/2005/06/14/jobs-061505/"
+      cite="https://news.stanford.edu/2005/06/14/jobs-061505/"
+    >
+      Stay hungry, stay foolish.
+    </Quote>
+  </div>
+</ComponentPreview>
+
+## Dark Mode
+
+<ComponentPreview code={"<div data-theme=\"dark\" className=\"flex flex-col gap-6 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl\">\n  <Quote variant=\"default\" attribution=\"Steve Jobs\">The only way to do great work is to love what you do.</Quote>\n  <Quote variant=\"pullquote\" attribution=\"Leonardo da Vinci\">Simplicity is the ultimate sophistication.</Quote>\n  <Quote variant=\"card\" attribution=\"Martin Fowler\" source=\"Refactoring\">\n    Any fool can write code that a computer can understand.\n  </Quote>\n</div>"}>
+  <div data-theme="dark" className="flex flex-col gap-6 p-8 bg-primary rounded-[var(--radius-component-lg)] max-w-2xl">
+    <Quote variant="default" attribution="Steve Jobs" source="Stanford Commencement Address">The only way to do great work is to love what you do.</Quote>
+    <Quote variant="pullquote" attribution="Leonardo da Vinci">Simplicity is the ultimate sophistication.</Quote>
+    <Quote variant="minimal" attribution="Albert Einstein">In the middle of difficulty lies opportunity.</Quote>
+    <Quote variant="card" attribution="Martin Fowler" source="Refactoring">Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</Quote>
+  </div>
+</ComponentPreview>
+
+## Props
+
+<PropsTable
+  rows={[
+    { name: "children", type: "ReactNode", defaultValue: "—", description: "The quoted text. Required." },
+    { name: "variant", type: "'default' | 'pullquote' | 'minimal' | 'card'", defaultValue: "'default'", description: "Visual style variant." },
+    { name: "size", type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: "Controls text scale and internal spacing." },
+    { name: "attribution", type: "string", defaultValue: "—", description: "Name of the person being quoted — rendered before the source." },
+    { name: "source", type: "string", defaultValue: "—", description: "Title of the work being cited — wrapped in a semantic cite element." },
+    { name: "sourceUrl", type: "string", defaultValue: "—", description: "URL for the cited source — makes the source text a link." },
+    { name: "cite", type: "string", defaultValue: "—", description: "URL of the quoted document, set on the blockquote cite attribute for assistive technology." },
+    { name: "className", type: "string", defaultValue: "—", description: "Additional CSS classes." },
+  ]}
+/>
+
+## Accessibility
+
+- Renders as `<figure>` + `<blockquote>` + `<figcaption>` — semantic, screen-reader-friendly structure
+- When `attribution` is provided, `<figcaption>` associates the attribution with the quote
+- `source` renders inside a `<cite>` element — communicates semantic citation meaning
+- `sourceUrl` makes the source text a link; `cite` sets `blockquote[cite]` for AT context
+- Decorative elements (quotation marks in pullquote) are `aria-hidden="true"`
+- The `sourceUrl` link has a visible focus ring for keyboard navigation
+- No interactive elements unless `sourceUrl` is provided
+
+### Keyboard Interaction
+
+| Key | Action |
+|-----|--------|
+| Tab | Moves focus to the source link (if sourceUrl is provided) |
+| Enter | Activates the source link |

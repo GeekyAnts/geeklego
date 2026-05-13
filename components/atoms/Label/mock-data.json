@@ -1,0 +1,58 @@
+{
+  "default": {
+    "children": "Email address",
+    "htmlFor": "email",
+    "size": "md",
+    "required": false,
+    "optional": false,
+    "disabled": false,
+    "hasError": false
+  },
+  "variants": [
+    { "children": "Default label",         "htmlFor": "v1", "size": "md" },
+    { "children": "Required label",        "htmlFor": "v2", "size": "md", "required": true },
+    { "children": "Optional label",        "htmlFor": "v3", "size": "md", "optional": true },
+    { "children": "Required and optional", "htmlFor": "v4", "size": "md", "required": true, "optional": true }
+  ],
+  "sizes": [
+    { "children": "Medium label",    "htmlFor": "s-md",     "size": "md" },
+    { "children": "Small label",     "htmlFor": "s-sm",     "size": "sm" },
+    { "children": "Medium required", "htmlFor": "s-md-req", "size": "md", "required": true },
+    { "children": "Small required",  "htmlFor": "s-sm-req", "size": "sm", "required": true }
+  ],
+  "states": [
+    { "label": "Default",             "children": "First name",  "htmlFor": "st1" },
+    { "label": "Disabled",            "children": "First name",  "htmlFor": "st2", "disabled": true },
+    { "label": "Error",               "children": "First name",  "htmlFor": "st3", "hasError": true },
+    { "label": "Required",            "children": "First name",  "htmlFor": "st4", "required": true },
+    { "label": "Required + Disabled", "children": "First name",  "htmlFor": "st5", "required": true, "disabled": true },
+    { "label": "Required + Error",    "children": "First name",  "htmlFor": "st6", "required": true, "hasError": true },
+    { "label": "Optional",            "children": "Middle name", "htmlFor": "st7", "optional": true }
+  ],
+  "edge_cases": [
+    {
+      "label": "Truncated long text",
+      "children": "This is a very long label text that should truncate gracefully with ellipsis at the max-width boundary",
+      "htmlFor": "edge-long"
+    },
+    {
+      "label": "Single character",
+      "children": "A",
+      "htmlFor": "edge-single"
+    },
+    {
+      "label": "Required with long text",
+      "children": "Billing address line one with optional secondary details",
+      "htmlFor": "edge-req-long",
+      "required": true
+    },
+    {
+      "label": "All indicators simultaneously",
+      "children": "Field",
+      "htmlFor": "edge-all",
+      "required": true,
+      "optional": true,
+      "hasError": true
+    }
+  ]
+}

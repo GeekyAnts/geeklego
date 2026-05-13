@@ -1,0 +1,53 @@
+{
+  "default": {
+    "checked": false,
+    "size": "md",
+    "children": "Accept terms and conditions"
+  },
+  "variants": [
+    { "label": "Unchecked",      "checked": false, "indeterminate": false, "children": "Unchecked" },
+    { "label": "Checked",        "checked": true,  "indeterminate": false, "children": "Checked" },
+    { "label": "Indeterminate",  "checked": false, "indeterminate": true,  "children": "Indeterminate" },
+    { "label": "With label",     "checked": false, "children": "Checkbox with a visible label" },
+    { "label": "Without label",  "checked": false, "children": null, "aria-label": "Select item" }
+  ],
+  "sizes": [
+    { "label": "Small",  "size": "sm", "checked": true, "children": "Small (14 px)" },
+    { "label": "Medium", "size": "md", "checked": true, "children": "Medium (16 px)" },
+    { "label": "Large",  "size": "lg", "checked": true, "children": "Large (20 px)" }
+  ],
+  "states": {
+    "default":              { "checked": false, "children": "Default" },
+    "checked":              { "checked": true,  "children": "Checked" },
+    "indeterminate":        { "checked": false, "indeterminate": true, "children": "Indeterminate" },
+    "disabled_unchecked":   { "checked": false, "disabled": true, "children": "Disabled unchecked" },
+    "disabled_checked":     { "checked": true,  "disabled": true, "children": "Disabled checked" },
+    "disabled_indeterminate":{ "checked": false, "indeterminate": true, "disabled": true, "children": "Disabled indeterminate" },
+    "error":                { "checked": false, "error": true,  "children": "Error state" },
+    "error_checked":        { "checked": true,  "error": true,  "children": "Error checked" },
+    "required":             { "checked": false, "required": true, "children": "Required field" }
+  },
+  "edge_cases": [
+    {
+      "label": "No label — needs aria-label",
+      "checked": false,
+      "children": null,
+      "aria-label": "Select all"
+    },
+    {
+      "label": "Long label truncation",
+      "checked": true,
+      "children": "This is a very long checkbox label that should truncate gracefully when the container width is constrained"
+    },
+    {
+      "label": "Single character label",
+      "checked": false,
+      "children": "X"
+    },
+    {
+      "label": "Emoji label",
+      "checked": true,
+      "children": "Enable notifications 🔔"
+    }
+  ]
+}

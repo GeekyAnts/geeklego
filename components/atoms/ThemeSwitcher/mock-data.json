@@ -1,0 +1,39 @@
+{
+  "default": {
+    "defaultValue": "system",
+    "size": "md"
+  },
+  "sizes": [
+    { "size": "sm", "defaultValue": "system" },
+    { "size": "md", "defaultValue": "light" },
+    { "size": "lg", "defaultValue": "dark" }
+  ],
+  "states": {
+    "system_selected": { "value": "system" },
+    "light_selected":  { "value": "light" },
+    "dark_selected":   { "value": "dark" },
+    "brand_selected":  { "value": "dark" }
+  },
+  "options": {
+    "two_options": [
+      { "value": "light", "label": "Light theme" },
+      { "value": "dark",  "label": "Dark theme" }
+    ],
+    "three_options": [
+      { "value": "system", "label": "System theme" },
+      { "value": "light",  "label": "Light theme" },
+      { "value": "dark",   "label": "Dark theme" }
+    ],
+    "four_options": [
+      { "value": "system", "label": "System theme" },
+      { "value": "light",  "label": "Light theme" },
+      { "value": "dark",   "label": "Dark theme" }
+    ]
+  },
+  "edge_cases": {
+    "single_option": [
+      { "value": "light", "label": "Light theme" }
+    ],
+    "long_label": { "label": "Very Long Accessible Theme Label That Should Not Overflow" }
+  }
+}

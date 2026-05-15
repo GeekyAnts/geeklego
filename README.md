@@ -61,3 +61,9 @@ See `.claude/skills/` for the full list.
 ## License
 
 MIT
+
+## Built by GeekyAnts
+
+Geeklego is open-sourced and maintained by [GeekyAnts](https://geekyants.com) — engineering for the AI era, turning ambitious technology strategies into production-grade reality since 2006.
+
+Building AI-native products? Explore [GeekyAnts AI Services](https://geekyants.com/ai).

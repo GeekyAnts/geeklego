@@ -1,0 +1,96 @@
+.ed-toast-host {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 420px;
+  pointer-events: none;
+}
+
+.ed-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px 10px 14px;
+  border-radius: var(--ed-radius-md);
+  border: 1px solid var(--ed-border);
+  background: var(--ed-bg-elevated);
+  box-shadow: var(--ed-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.18));
+  animation: ed-toast-in 0.16s ease-out;
+}
+
+@keyframes ed-toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ed-toast__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ed-toast__message {
+  font-size: var(--ed-text-sm);
+  font-weight: 500;
+  color: var(--ed-text-primary);
+}
+.ed-toast__detail {
+  font-family: var(--ed-font-mono);
+  font-size: 11px;
+  color: var(--ed-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ed-toast__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.ed-toast__undo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: var(--ed-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--ed-info) 40%, transparent);
+  background: transparent;
+  color: var(--ed-info);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--ed-motion-fast), border-color var(--ed-motion-fast);
+}
+.ed-toast__undo:hover {
+  background: var(--ed-info-bg);
+  border-color: var(--ed-info);
+}
+
+.ed-toast__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--ed-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--ed-text-secondary);
+  cursor: pointer;
+  transition: background var(--ed-motion-fast), color var(--ed-motion-fast);
+}
+.ed-toast__close:hover {
+  background: var(--ed-bg-subtle);
+  color: var(--ed-text-primary);
+}

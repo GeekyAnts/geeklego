@@ -317,7 +317,7 @@ const PRIMARY_STEP_CANDIDATES = ['600', '700', '500', '800'] as const
  * Resolve a step's stored value (hex OR `oklch(...)`) to a hex string for contrast
  * math. Returns null if neither form parses.
  */
-function stepValueToHex(value: string | undefined): string | null {
+export function stepValueToHex(value: string | undefined): string | null {
   if (!value) return null
   const v = value.trim()
   if (/^#[0-9a-f]{6}$/i.test(v)) return v
@@ -384,11 +384,18 @@ export function pickPrimaryStep(
 // is whichever neutral extreme reads on it. Reuses the same contrast logic so the
 // foreground is AA-safe even if someone points the surface at a dark neutral step.
 
-/** The neutral surface step each role defaults to (matches the shipped semantics). */
+/** The neutral surface step each role defaults to in LIGHT (matches the shipped semantics). */
 const NEUTRAL_SURFACE_DEFAULTS: Record<string, string> = {
   accent: '100',
   secondary: '100',
   muted: '100',
+}
+
+/** The neutral surface step each role defaults to in DARK (matches themes/dark.css). */
+const NEUTRAL_SURFACE_DEFAULTS_DARK: Record<string, string> = {
+  accent: '800',
+  secondary: '800',
+  muted: '800',
 }
 
 export interface NeutralPairSuggestion {
@@ -414,10 +421,12 @@ export function suggestNeutralSemantics(
   colors: Record<string, Record<string, string>>,
   role: string,
   step?: string,
+  theme: 'light' | 'dark' = 'light',
 ): NeutralPairSuggestion | null {
   const neutral = colors.neutral
   if (!neutral) return null
-  const surfaceStep = step ?? NEUTRAL_SURFACE_DEFAULTS[role] ?? '100'
+  const defaults = theme === 'dark' ? NEUTRAL_SURFACE_DEFAULTS_DARK : NEUTRAL_SURFACE_DEFAULTS
+  const surfaceStep = step ?? defaults[role] ?? (theme === 'dark' ? '800' : '100')
 
   const surfaceHex = stepValueToHex(neutral[surfaceStep])
   const n0 = stepValueToHex(neutral['0'])

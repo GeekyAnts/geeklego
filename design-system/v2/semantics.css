@@ -12,7 +12,7 @@
 :root {
   --background:            var(--color-neutral-0);
   --foreground:            var(--color-neutral-900);
-  --primary:               var(--color-brand-500);
+  --primary:               var(--color-brand-600);
   --primary-foreground:    var(--color-neutral-0);
   --secondary:             var(--color-neutral-100);
   --secondary-foreground:  var(--color-neutral-900);

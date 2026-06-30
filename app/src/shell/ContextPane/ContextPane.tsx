@@ -41,12 +41,14 @@ function flattenTokens(tokens: GeeklegoTokensV2): { name: string; value: string 
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        entries.push({ name: `--${prefix}-${k}`, value: v })
+      // Some primitive scales are typed numeric in the model (fontWeight, zIndex,
+      // opacity) — coerce to string so they aren't silently dropped from the UI.
+      if (typeof v === 'string' || typeof v === 'number') {
+        entries.push({ name: `--${prefix}-${k}`, value: String(v) })
       } else if (v && typeof v === 'object') {
         for (const [k2, v2] of Object.entries(v as Record<string, unknown>)) {
-          if (typeof v2 === 'string') {
-            entries.push({ name: `--${prefix}-${k}-${k2}`, value: v2 })
+          if (typeof v2 === 'string' || typeof v2 === 'number') {
+            entries.push({ name: `--${prefix}-${k}-${k2}`, value: String(v2) })
           }
         }
       }

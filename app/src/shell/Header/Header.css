@@ -104,15 +104,13 @@
 .ed-header__pending-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 22px;
+  gap: 6px;
   height: 22px;
-  padding: 0 7px;
+  padding: 0 6px 0 9px;
   border-radius: 999px;
-  border: none;
-  background: var(--ed-accent);
-  color: var(--ed-accent-fg);
-  font-family: var(--ed-font-mono);
+  border: 1px solid color-mix(in oklch, var(--ed-warning) 75%, black);
+  background: var(--ed-warning-bg);
+  color: var(--ed-warning);
   font-size: 11px;
   font-weight: var(--ed-weight-semibold);
   line-height: 1;
@@ -120,11 +118,56 @@
   cursor: pointer;
   transition: opacity var(--ed-motion-fast), transform var(--ed-motion-fast);
 }
-.ed-header__pending-badge:hover {
+/* Suggestions badge — same pill shape as Changes, info-blue palette to distinguish. */
+.ed-header__suggest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 6px 0 9px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklch, var(--ed-info) 75%, black);
+  background: var(--ed-info-bg);
+  color: var(--ed-info);
+  font-size: 11px;
+  font-weight: var(--ed-weight-semibold);
+  line-height: 1;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: opacity var(--ed-motion-fast), transform var(--ed-motion-fast);
+}
+
+.ed-header__pending-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--ed-warning);
+  color: var(--ed-warning-bg);
+  font-family: var(--ed-font-mono);
+  font-size: 10px;
+  line-height: 1;
+}
+.ed-header__suggest-badge .ed-header__pending-count {
+  background: var(--ed-info);
+  color: var(--ed-info-bg);
+}
+.ed-header__pending-label {
+  letter-spacing: 0.01em;
+}
+.ed-header__pending-badge:hover,
+.ed-header__suggest-badge:hover {
   opacity: 0.85;
   transform: scale(1.08);
 }
 .ed-header__pending-badge:focus-visible {
-  outline: 2px solid var(--ed-accent);
+  outline: 2px solid var(--ed-warning);
+  outline-offset: 2px;
+}
+.ed-header__suggest-badge:focus-visible {
+  outline: 2px solid var(--ed-info);
   outline-offset: 2px;
 }

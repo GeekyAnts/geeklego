@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect, useCallback, useRef } from 'react'
 import type { TokenEntry, GeeklegoTokensV2 } from '../types'
 import { EdCard } from '../editor-ds/primitives/EdCard'
 import { getCategoryById, type CategoryMeta } from '../ia/categoryCopy'
+import { isStatusSemantic, semanticBucketOfVar } from '../ia/semanticBuckets'
 import CategoryGroup from './CategoryGroup'
 import FilterBar from '../components/FilterBar'
 import { getAllStaged, getStagedValue, getDraft, subscribeToPendingChanges, subscribeToDraftChanges, getStagedNewTokens, stage } from '../state/staging'
@@ -54,25 +55,15 @@ const categoryFilters: Record<string, (name: string) => boolean> = {
   zIndex: (name) => /^--(?:z-|layer-)/.test(name),
   border: (name) => /^--border-/.test(name),
   // Semantic — v2 (2-tier) uses the flat standard ShadCN/Tailwind vocabulary.
-  // These match the EXACT `--<name>` semantics (+ optional `-foreground` pair),
-  // grouped identically to getSemanticCategories() in ia/classify.ts. The
-  // foundations color/border/radius filters above all require a trailing
-  // `-<segment>`/`-<digit>`, so bare `--border`/`--radius`/`--input` never collide.
-  surface: (name) => /^--(?:background|foreground|card|card-foreground|popover|popover-foreground)$/.test(name),
-  interactive: (name) => /^--(?:primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring)$/.test(name),
-  // Status — feedback colors. Holds the standard `destructive` pair PLUS, as the semantic
-  // catch-all, any newly-authored semantic semantics.css introduces beyond the standard ShadCN
-  // set (e.g. --info, --success). This keeps the UI vocabulary 100% ShadCN-standard (no invented
-  // category). It must match a bare `--<name>` while EXCLUDING primitives (which always carry a
-  // trailing `-<segment>`/`-<digit>` after a known foundation prefix) and the surface/
-  // interactive/layout buckets above.
-  status: (name) =>
-    /^--[a-z][a-z0-9-]*$/.test(name) &&
-    !/^--(?:color|spacing|radius|font|line-height|letter-spacing|shadow|duration|ease|motion|z-index|z-|border-width|border-|icon-size|size|breakpoint|opacity)\b/.test(name) &&
-    !/^--(?:background|foreground|card|card-foreground|popover|popover-foreground)$/.test(name) &&
-    !/^--(?:primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring)$/.test(name) &&
-    !/^--(?:border|input|radius)$/.test(name),
-  layout: (name) => /^--(?:border|input|radius)$/.test(name),
+  // Membership for surface/interactive/layout/status comes from the shared
+  // `semanticBuckets` module (the single source of truth NavRail also uses), so
+  // the two systems can never drift. Each predicate strips the leading `--` and
+  // delegates. In particular `status` now correctly EXCLUDES the typography
+  // primitives (--text-/--leading-/--tracking-) that previously leaked in.
+  surface: (name) => semanticBucketOfVar(name) === 'surface',
+  interactive: (name) => semanticBucketOfVar(name) === 'interactive',
+  status: (name) => isStatusSemantic(name.replace(/^--/, '')),
+  layout: (name) => semanticBucketOfVar(name) === 'layout',
 }
 
 function filterTokensForCategory(tokens: TokenEntry[], category: string): TokenEntry[] {

@@ -11,8 +11,8 @@
 .dark {
   --background:            var(--color-neutral-950);
   --foreground:            var(--color-neutral-50);
-  --primary:               var(--color-brand-50);
-  --primary-foreground:    var(--color-neutral-900);
+  --primary:               var(--color-brand-600);
+  --primary-foreground:    var(--color-neutral-0);
   --secondary:             var(--color-neutral-800);
   --secondary-foreground:  var(--color-neutral-50);
   --muted:                 var(--color-neutral-800);

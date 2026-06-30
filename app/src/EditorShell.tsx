@@ -9,10 +9,15 @@ import { CommandPalette } from './components/CommandPalette'
 import ExportModal from './components/ExportModal'
 import { PendingModal } from './components/PendingModal'
 import './components/PendingModal.css'
+import { SuggestionsModal } from './components/SuggestionsModal'
+import { countAvailableSuggestions } from './state/suggestions'
+import { ToastHost } from './components/ToastHost'
+import { pushEditToast } from './state/toasts'
 import { KeyboardShortcuts } from './components/KeyboardShortcuts'
 import { OnboardingTour } from './components/OnboardingTour'
 import { EdSkeleton } from './editor-ds/primitives'
-import { getPendingCount, subscribeToPendingChanges, stage, getAllStaged, discardAll, getStagedNewTokens } from './state/staging'
+import { getPendingCount, subscribeToPendingChanges, stage, getStagedValue, getAllStaged, discardAll, getStagedNewTokens } from './state/staging'
+import { subscribeToLockChanges } from './state/semanticLocks'
 import { generateMergedTokens } from './utils/exportFormatter'
 import { buildTokenGraph, type TokenGraph } from './graph/build'
 import { classifyTokens } from './ia'
@@ -55,13 +60,15 @@ function flattenTokens(tokens: GeeklegoTokensV2): TokenEntry[] {
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        entries.push({ name: `--${prefix}-${k}`, value: v })
+      // fontWeight / zIndex / opacity are numeric in the model — coerce so they
+      // remain searchable in the command palette.
+      if (typeof v === 'string' || typeof v === 'number') {
+        entries.push({ name: `--${prefix}-${k}`, value: String(v) })
       } else if (v && typeof v === 'object') {
         // Nested (e.g. colors.neutral.500 → --color-neutral-500)
         for (const [k2, v2] of Object.entries(v as Record<string, unknown>)) {
-          if (typeof v2 === 'string') {
-            entries.push({ name: `--${prefix}-${k}-${k2}`, value: v2 })
+          if (typeof v2 === 'string' || typeof v2 === 'number') {
+            entries.push({ name: `--${prefix}-${k}-${k2}`, value: String(v2) })
           }
         }
       }
@@ -89,11 +96,14 @@ function collectTokenNames(tokens: GeeklegoTokensV2): string[] {
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
+      // fontWeight / zIndex / opacity are numeric in the model — include them so
+      // the NavRail counts match the rendered token lists.
+      if (typeof v === 'string' || typeof v === 'number') {
         names.push(`${prefix}-${k}`)
       } else if (v && typeof v === 'object') {
         for (const k2 of Object.keys(v as Record<string, unknown>)) {
-          if (typeof (v as Record<string, unknown>)[k2] === 'string') {
+          const v2 = (v as Record<string, unknown>)[k2]
+          if (typeof v2 === 'string' || typeof v2 === 'number') {
             names.push(`${prefix}-${k}-${k2}`)
           }
         }
@@ -121,7 +131,9 @@ function EditorShellContent() {
   const [exportOpen, setExportOpen] = useState(false)
   const [pendingDrawerOpen, setPendingDrawerOpen] = useState(false)
   const [pendingModalOpen, setPendingModalOpen] = useState(false)
+  const [suggestionsModalOpen, setSuggestionsModalOpen] = useState(false)
   const [pendingCount, setPendingCount] = useState(() => getPendingCount())
+  const [suggestionCount, setSuggestionCount] = useState(0)
   const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false)
   const [showOnboarding, setShowOnboarding] = useState(() => {
     return !localStorage.getItem('geeklego.editor.onboarding.completed')
@@ -181,6 +193,16 @@ function EditorShellContent() {
     return subscribeToPendingChanges(() => setPendingCount(getPendingCount()))
   }, [])
 
+  // Recompute the available-suggestions count whenever the model, staged edits,
+  // or locks change (all three feed computeAvailableSuggestions).
+  useEffect(() => {
+    const recompute = () => setSuggestionCount(countAvailableSuggestions(tokens))
+    recompute()
+    const unsubP = subscribeToPendingChanges(recompute)
+    const unsubL = subscribeToLockChanges(recompute)
+    return () => { unsubP(); unsubL() }
+  }, [tokens])
+
   // Keyboard shortcuts — ⌘K, ⌘E, ?
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -228,7 +250,15 @@ function EditorShellContent() {
   }, [tokens])
 
   const handleStageEdit = useCallback((tokenName: string, newValue: string) => {
+    const prev = getStagedValue(tokenName)
     stage(tokenName, newValue)
+    pushEditToast({
+      stagingKey: tokenName,
+      label: tokenName.replace(/^dark:/, '') + (tokenName.startsWith('dark:') ? ' (dark)' : ''),
+      prevValue: prev,
+      newValue,
+      verb: 'Updated',
+    })
   }, [])
 
   const handleRestoreDefault = useCallback(async () => {
@@ -351,9 +381,11 @@ function EditorShellContent() {
     <div className="ed-shell">
       <Header
         pendingCount={pendingCount}
+        suggestionCount={suggestionCount}
         onOpenCommandPalette={() => setCommandOpen(true)}
         onOpenExport={() => setExportOpen(true)}
         onOpenPending={() => setPendingModalOpen(true)}
+        onOpenSuggestions={() => setSuggestionsModalOpen(true)}
       />
 
       {classification && (
@@ -401,6 +433,21 @@ function EditorShellContent() {
         onClose={() => setPendingModalOpen(false)}
         tokens={tokens}
       />
+
+      <SuggestionsModal
+        open={suggestionsModalOpen}
+        onClose={() => setSuggestionsModalOpen(false)}
+        tokens={tokens}
+        onApplied={(s, prev) => pushEditToast({
+          stagingKey: s.stagingKey,
+          label: `${s.cssName} (${s.theme})`,
+          prevValue: prev,
+          newValue: s.to,
+          verb: 'Applied suggestion to',
+        })}
+      />
+
+      <ToastHost />
 
       {exportOpen && (
         <ExportModal

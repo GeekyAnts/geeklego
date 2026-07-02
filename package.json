@@ -55,6 +55,8 @@
     "sync-build": "npm run build",
     "validate-tokens": "npx tsx scripts/validate-tokens.ts",
     "export-ir": "npx tsx scripts/export-ir.ts",
+    "figma-plugin:build": "pnpm run export-ir && vite build --config figma-plugin/vite.config.mts",
+    "figma:component-manifest": "npx tsx scripts/figma/build-component-manifest.ts",
     "export-design-md": "npx tsx scripts/export-design-md.ts",
     "build-storybook": "storybook build",
     "lint-css": "stylelint --config .stylelintrc.mjs \"design-system/v2/**/*.css\""
@@ -65,6 +67,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@figma/plugin-typings": "^1.130.0",
     "@storybook/addon-a11y": "^10.2.19",
     "@storybook/addon-docs": "^10.2.19",
     "@storybook/react-vite": "^10.2.19",

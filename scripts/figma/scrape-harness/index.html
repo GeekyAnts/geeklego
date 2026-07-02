@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>GeekLego scrape harness</title>
+    <style>
+      /* Neutral page — no padding/margin so the scraped box is the component's
+         own geometry, nothing inherited. The scrape target is #scrape-root's
+         first element child. */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+      #scrape-root {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scrape-root"></div>
+    <script type="module" src="./main.tsx"></script>
+  </body>
+</html>

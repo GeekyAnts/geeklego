@@ -1,0 +1,263 @@
+<!-- GeekLego Sync — plugin UI (iframe). Hand-written, no build step:
+     vanilla JS inline, styled with Figma's theme CSS variables
+     (themeColors: true in showUI). Talks to the sandbox via postMessage. -->
+<div id="app">
+  <h1>GeekLego Sync</h1>
+  <p class="sub">
+    2-tier tokens → grouped Figma Variables.<br />
+    <code>01 · Primitives</code> · <code>02 · Semantics</code> (Light/Dark,
+    foldered by role) · <code>03 · Ext</code> · <code>04 · Typography</code>
+  </p>
+
+  <button id="sync" class="primary">Sync Tokens</button>
+
+  <details>
+    <summary>Use a different tokens.json (paste IR)</summary>
+    <textarea
+      id="ir"
+      rows="6"
+      placeholder='Paste the contents of dist/ir/tokens.json here to override the baked-in IR'
+    ></textarea>
+  </details>
+
+  <hr />
+
+  <h2>Components</h2>
+  <p class="sub">
+    Import a component as a native Figma variant set with tokens bound. Run
+    <strong>Sync Tokens</strong> first so bindings resolve.
+  </p>
+  <div id="components"><p class="sub empty">No components in this build.</p></div>
+
+  <pre id="log" hidden></pre>
+</div>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  body {
+    font: 11px/1.5 Inter, system-ui, sans-serif;
+    color: var(--figma-color-text, #333);
+    background: var(--figma-color-bg, #fff);
+  }
+  #app {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  h1 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--figma-color-border, #e5e5e5);
+    margin: 4px 0;
+  }
+  .sub {
+    color: var(--figma-color-text-secondary, #777);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--figma-color-border, #e5e5e5);
+    border-radius: 6px;
+  }
+  .row + .row {
+    margin-top: 6px;
+  }
+  .row .meta {
+    color: var(--figma-color-text-secondary, #777);
+  }
+  button.secondary {
+    padding: 6px 10px;
+    border: 1px solid var(--figma-color-border, #e5e5e5);
+    border-radius: 6px;
+    background: var(--figma-color-bg, #fff);
+    color: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.secondary:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  code {
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+  }
+  button.primary {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--figma-color-bg-brand, #0d99ff);
+    color: var(--figma-color-text-onbrand, #fff);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.primary:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  details summary {
+    cursor: pointer;
+    color: var(--figma-color-text-secondary, #777);
+  }
+  textarea {
+    width: 100%;
+    margin-top: 8px;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    border: 1px solid var(--figma-color-border, #e5e5e5);
+    border-radius: 6px;
+    padding: 6px;
+    background: var(--figma-color-bg-secondary, #fafafa);
+    color: inherit;
+  }
+  #log {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    background: var(--figma-color-bg-secondary, #f5f5f5);
+    max-height: 220px;
+    overflow: auto;
+  }
+</style>
+
+<script>
+  const syncBtn = document.getElementById("sync");
+  const irField = document.getElementById("ir");
+  const log = document.getElementById("log");
+  const componentsEl = document.getElementById("components");
+
+  function show(text) {
+    log.hidden = false;
+    log.textContent = text;
+  }
+
+  function renderComponents(components) {
+    if (!components || !components.length) {
+      componentsEl.innerHTML =
+        '<p class="sub empty">No components in this build. Run the manifest generator, then rebuild the plugin.</p>';
+      return;
+    }
+    componentsEl.innerHTML = "";
+    for (const c of components) {
+      const row = document.createElement("div");
+      row.className = "row";
+      const label = document.createElement("div");
+      label.innerHTML =
+        c.name + ' <span class="meta">· ' + c.variantCount + " variants</span>";
+      const btn = document.createElement("button");
+      btn.className = "secondary";
+      btn.textContent = "Import";
+      btn.onclick = () => {
+        btn.disabled = true;
+        btn.textContent = "Importing…";
+        show("Importing " + c.name + "…");
+        parent.postMessage(
+          { pluginMessage: { type: "import-component", component: c.name } },
+          "*"
+        );
+      };
+      row.appendChild(label);
+      row.appendChild(btn);
+      componentsEl.appendChild(row);
+    }
+  }
+
+  syncBtn.onclick = () => {
+    const irJson = irField.value.trim() || undefined;
+    if (irJson) {
+      try {
+        JSON.parse(irJson);
+      } catch {
+        show("✗ Pasted IR is not valid JSON.");
+        return;
+      }
+    }
+    syncBtn.disabled = true;
+    show("Syncing…");
+    parent.postMessage(
+      { pluginMessage: { type: "sync-tokens", irJson } },
+      "*"
+    );
+  };
+
+  function reenableImports() {
+    for (const btn of componentsEl.querySelectorAll("button")) {
+      btn.disabled = false;
+      btn.textContent = "Import";
+    }
+  }
+
+  onmessage = (event) => {
+    const msg = event.data.pluginMessage;
+    if (!msg) return;
+
+    if (msg.type === "component-list") {
+      renderComponents(msg.components);
+      return;
+    }
+    if (msg.type === "import-error") {
+      reenableImports();
+      show("✗ Import failed: " + msg.message);
+      return;
+    }
+    if (msg.type === "import-done") {
+      reenableImports();
+      const r = msg.report;
+      const lines = [
+        "✓ Imported " + r.name,
+        "",
+        "Variants created:  " + r.componentsCreated,
+        "Bindings applied:  " + r.bindingsApplied,
+        "Unbound literals:  " + r.unboundValues,
+      ];
+      if (r.warnings.length) {
+        lines.push("", "Warnings:");
+        for (const w of r.warnings) lines.push("  ⚠ " + w);
+      }
+      show(lines.join("\n"));
+      return;
+    }
+
+    syncBtn.disabled = false;
+    if (msg.type === "sync-error") {
+      show("✗ Sync failed: " + msg.message);
+      return;
+    }
+    if (msg.type === "sync-done") {
+      const r = msg.report;
+      const lines = [
+        "✓ Sync complete  (IR: " + r.irSource + ")",
+        "",
+        "Collections created: " + r.createdCollections,
+        "Variables created:   " + r.createdVariables,
+        "Values set:          " + r.valuesSet,
+      ];
+      if (r.warnings.length) {
+        lines.push("", "Warnings:");
+        for (const w of r.warnings) lines.push("  ⚠ " + w);
+      }
+      if (r.skipped.length) {
+        lines.push("", "Skipped tokens (no Figma variable type):");
+        for (const s of r.skipped) lines.push("  – " + s.path + ": " + s.reason);
+      }
+      show(lines.join("\n"));
+    }
+  };
+</script>

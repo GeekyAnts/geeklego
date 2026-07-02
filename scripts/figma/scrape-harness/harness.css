@@ -1,0 +1,12 @@
+/* Harness stylesheet — imports the real v2 design system, then explicitly
+   points Tailwind's content scan at the component + variant sources.
+
+   Tailwind v4 roots its automatic content detection at the Vite `root`, which
+   for the harness is scripts/figma/scrape-harness/. Without these @source
+   globs it never sees the cva class strings in components/v2/**, so no
+   utilities are emitted and everything renders unstyled. The paths are
+   relative to THIS file. */
+@import "../../../design-system/v2/index.css";
+
+@source "../../../components/v2/**/*.{ts,tsx}";
+@source "./main.tsx";

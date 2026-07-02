@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    include: ['app/src/**/*.test.ts', 'scripts/**/*.test.ts'],
+    include: ['app/src/**/*.test.ts', 'scripts/**/*.test.ts', 'figma-plugin/src/**/*.test.ts'],
     exclude: ['**/node_modules/**', '**/.git/**'],
     globals: true
   }

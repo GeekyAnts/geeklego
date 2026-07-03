@@ -15,8 +15,8 @@ function buildOriginalMap(
     colors: 'color', fontFamily: 'font', fontSize: 'text',
     fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
     spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration',
-    easing: 'ease', sizeScale: 'size', iconSize: 'icon-size',
+    duration: 'duration',
+    easing: 'ease',
   }
   const prims = tokens.primitives as unknown as Record<string, unknown>
   for (const [cat, prefix] of Object.entries(PRIMITIVE_PREFIX)) {

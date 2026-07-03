@@ -41,13 +41,10 @@ const PRIMITIVE_PREFIX: Record<string, string> = {
   spacing: 'spacing',
   radius: 'radius',
   borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
   duration: 'duration',
   easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
   breakpoints: 'breakpoint',
+  lineClamp: 'line-clamp',
 }
 
 function flattenTokens(tokens: GeeklegoTokensV2): TokenEntry[] {
@@ -60,7 +57,7 @@ function flattenTokens(tokens: GeeklegoTokensV2): TokenEntry[] {
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      // fontWeight / zIndex / opacity are numeric in the model — coerce so they
+      // fontWeight / lineClamp are numeric in the model — coerce so they
       // remain searchable in the command palette.
       if (typeof v === 'string' || typeof v === 'number') {
         entries.push({ name: `--${prefix}-${k}`, value: String(v) })
@@ -96,7 +93,7 @@ function collectTokenNames(tokens: GeeklegoTokensV2): string[] {
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      // fontWeight / zIndex / opacity are numeric in the model — include them so
+      // fontWeight / lineClamp are numeric in the model — include them so
       // the NavRail counts match the rendered token lists.
       if (typeof v === 'string' || typeof v === 'number') {
         names.push(`${prefix}-${k}`)

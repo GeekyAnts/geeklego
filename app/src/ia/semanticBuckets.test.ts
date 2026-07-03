@@ -40,7 +40,7 @@ describe('semanticBuckets — status membership', () => {
   })
 
   it('does NOT leak other foundation primitives into status', () => {
-    for (const n of ['color-brand-900', 'spacing-4', 'radius-lg', 'shadow-md', 'duration-200', 'z-index-50', 'opacity-50', 'breakpoint-md']) {
+    for (const n of ['color-brand-900', 'spacing-4', 'radius-lg', 'shadow-md', 'duration-200', 'opacity-50', 'breakpoint-md']) {
       expect(semanticBucketOf(n)).toBeNull()
     }
   })

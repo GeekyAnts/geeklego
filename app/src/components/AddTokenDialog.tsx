@@ -29,14 +29,10 @@ function deriveTreePath(name: string): TokenTreePath | null {
     ['--leading-', 'lineHeight'],
     ['--tracking-', 'letterSpacing'],
     ['--border-width-', 'borderWidth'],
-    ['--icon-size-', 'iconSize'],
     ['--duration-', 'duration'],
     ['--ease-', 'easing'],
-    ['--opacity-', 'opacity'],
-    ['--z-index-', 'zIndex'],
     ['--spacing-', 'spacing'],
     ['--radius-', 'radius'],
-    ['--size-', 'sizeScale'],
   ]
   for (const [prefix, category] of primitivePrefixes) {
     if (name.startsWith(prefix)) {
@@ -99,8 +95,7 @@ function getAllTokenNames(geeklegoTokens: GeeklegoTokensV2): Set<string> {
     colors: 'color', fontFamily: 'font', fontSize: 'text',
     fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
     spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration', easing: 'ease',
-    sizeScale: 'size', iconSize: 'icon-size',
+    duration: 'duration', easing: 'ease',
   }
   const prims = geeklegoTokens.primitives as unknown as Record<string, unknown>
   for (const [cat, vals] of Object.entries(prims)) {
@@ -143,8 +138,7 @@ function buildCandidates(geeklegoTokens: GeeklegoTokensV2, scopePrefix: string):
     colors: 'color', fontFamily: 'font', fontSize: 'text',
     fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
     spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration', easing: 'ease',
-    sizeScale: 'size', iconSize: 'icon-size',
+    duration: 'duration', easing: 'ease',
   }
   const prims = geeklegoTokens.primitives as unknown as Record<string, unknown>
   for (const [cat, vals] of Object.entries(prims)) {

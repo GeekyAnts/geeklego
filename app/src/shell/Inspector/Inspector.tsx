@@ -36,8 +36,8 @@ function fontFamilySlot(tokenName: string): string | null {
 // semantics/ext it would always say "not used by any other tokens" — misleading noise.
 const PRIMITIVE_TOKEN_PREFIXES = [
   '--color-', '--spacing-', '--radius-', '--font-', '--text-', '--leading-', '--tracking-',
-  '--border-', '--shadow-', '--motion-', '--duration-', '--ease-', '--z-', '--z-index-',
-  '--icon-size-', '--size-', '--opacity-', '--breakpoint-',
+  '--border-', '--shadow-', '--motion-', '--duration-', '--ease-',
+  '--breakpoint-', '--line-clamp-',
 ]
 function isPrimitiveToken(tokenName: string): boolean {
   return PRIMITIVE_TOKEN_PREFIXES.some(p => tokenName.startsWith(p))
@@ -50,10 +50,11 @@ function deriveBreadcrumb(tokenName: string): string {
   if (tokenName.startsWith('--font-')) return 'Foundations / Fonts'
   if (tokenName.startsWith('--typography-')) return 'Semantic / Typography'
   if (tokenName.startsWith('--border-')) return 'Foundations / Borders'
-  if (tokenName.startsWith('--opacity-')) return 'Foundations / Opacity'
   if (tokenName.startsWith('--z-')) return 'Foundations / Z-Index'
-  if (tokenName.startsWith('--motion-')) return 'Foundations / Motion'
+  if (tokenName.startsWith('--motion-') || tokenName.startsWith('--duration-') || tokenName.startsWith('--ease-')) return 'Foundations / Motion'
   if (tokenName.startsWith('--shadow-')) return 'Foundations / Shadows'
+  if (tokenName.startsWith('--line-clamp-')) return 'Foundations / Line Clamp'
+  if (tokenName.startsWith('--breakpoint-')) return 'Foundations / Breakpoints'
   return 'Tokens'
 }
 
@@ -78,13 +79,10 @@ const PRIMITIVE_PREFIX: Record<string, string> = {
   spacing: 'spacing',
   radius: 'radius',
   borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
   duration: 'duration',
   easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
   breakpoints: 'breakpoint',
+  lineClamp: 'line-clamp',
 }
 
 function resolveTokenValue(
@@ -179,9 +177,6 @@ function getTokenFamily(tokenName: string): string {
   if (tokenName.startsWith('--leading-')) return 'line-height'
   if (tokenName.startsWith('--tracking-')) return 'letter-spacing'
   if (tokenName.startsWith('--border-width-')) return 'border-width'
-  if (tokenName.startsWith('--opacity-')) return 'opacity'
-  if (tokenName.startsWith('--size-')) return 'size'
-  if (tokenName.startsWith('--icon-size-')) return 'icon-size'
   if (tokenName.startsWith('--duration-')) return 'duration'
   if (tokenName.startsWith('--ease-')) return 'ease'
   if (tokenName.startsWith('--shadow-')) return 'shadow'

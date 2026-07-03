@@ -198,14 +198,6 @@ export const CATEGORY_META: CategoryMeta[] = [
     appliesToScale: false,
   },
   {
-    id: 'foundations-z-index',
-    name: 'Z-Index',
-    statement:
-      'Z-index tokens establish layering order for overlapping elements. They prevent stacking conflicts and ensure predictable z-ordering.',
-    pattern: ['--z-*'],
-    appliesToScale: false,
-  },
-  {
     id: 'foundations-border',
     name: 'Border',
     statement:

@@ -90,15 +90,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
 
   lines.push(``)
   lines.push(`  /* ===========================================================================`)
-  lines.push(`     Z-INDEX`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.zIndex)) {
-    lines.push(`  ${pad(`--z-index-${k}:`, 24)} ${v};`)
-  }
-
-  lines.push(``)
-  lines.push(`  /* ===========================================================================`)
   lines.push(`     MOTION / ANIMATION`)
   lines.push(`     =========================================================================== */`)
   lines.push(``)
@@ -135,23 +126,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
     lines.push(``)
   }
 
-  lines.push(`  /* ===========================================================================`)
-  lines.push(`     SIZE SCALE (6, 8, 10, 12, 14, 16)`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.sizeScale)) {
-    lines.push(`  ${pad(`--size-${k}:`, 24)} ${v};`)
-  }
-
-  lines.push(``)
-  lines.push(`  /* ===========================================================================`)
-  lines.push(`     ICON SIZES (xs, sm, md, lg, xl, 2xl)`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.iconSize)) {
-    lines.push(`  ${pad(`--icon-size-${k}:`, 20)} ${v};`)
-  }
-
   lines.push(``)
   lines.push(`  /* ===========================================================================`)
   lines.push(`     SHADOW COLORS`)
@@ -163,26 +137,16 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
   // (stagger durations are already emitted in the MOTION/ANIMATION block above —
   // do not re-emit them here; a second block produced a duplicate declaration.)
 
-  // ── Content flexibility primitives ──
-  if (p.contentFlexibility) {
+  // ── Line clamp primitives ──
+  if (p.lineClamp && Object.keys(p.lineClamp).length > 0) {
     lines.push(``)
     lines.push(`  /* ===========================================================================`)
-    lines.push(`     CONTENT FLEXIBILITY`)
+    lines.push(`     LINE CLAMP`)
     lines.push(`     =========================================================================== */`)
     lines.push(``)
     lines.push(`  /* Line clamp values */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.lineClamp)) {
+    for (const [k, v] of Object.entries(p.lineClamp)) {
       lines.push(`  ${pad(`--line-clamp-${k}:`, 28)} ${v};`)
-    }
-    lines.push(``)
-    lines.push(`  /* Content max-width */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.maxWidth)) {
-      lines.push(`  ${pad(`--content-max-width-${k}:`, 32)} ${v};`)
-    }
-    lines.push(``)
-    lines.push(`  /* Content min-width */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.minWidth)) {
-      lines.push(`  ${pad(`--content-min-width-${k}:`, 32)} ${v};`)
     }
   }
 
@@ -242,11 +206,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
   // Opacity: intentionally not emitted — stock Tailwind/ShadCN has no opacity
   // theme scale; the built-in opacity-NN utility needs none. (See @theme note.)
   lines.push(``)
-  lines.push(`  /* Z-index */`)
-  for (const [k, v] of Object.entries(p.zIndex)) {
-    lines.push(`  ${pad(`--z-index-${k}:`, 24)} ${v};`)
-  }
-  lines.push(``)
   lines.push(`  /* Motion */`)
   for (const [k, v] of Object.entries(p.duration)) {
     lines.push(`  ${pad(`--duration-${k}:`, 24)} ${v};`)
@@ -272,31 +231,13 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
     }
     lines.push(``)
   }
-  lines.push(`  /* Size scale */`)
-  for (const [k, v] of Object.entries(p.sizeScale)) {
-    lines.push(`  ${pad(`--size-${k}:`, 24)} ${v};`)
-  }
-  lines.push(``)
-  lines.push(`  /* Icon sizes */`)
-  for (const [k, v] of Object.entries(p.iconSize)) {
-    lines.push(`  ${pad(`--icon-size-${k}:`, 20)} ${v};`)
-  }
-  lines.push(``)
   lines.push(`  /* Shadow colors */`)
   lines.push(`  ${pad(`--color-shadow-neutral:`, 24)} ${p.colorShadowNeutral};`)
-  if (p.contentFlexibility) {
+  if (p.lineClamp && Object.keys(p.lineClamp).length > 0) {
     lines.push(``)
-    lines.push(`  /* Content flexibility */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.lineClamp)) {
+    lines.push(`  /* Line clamp values */`)
+    for (const [k, v] of Object.entries(p.lineClamp)) {
       lines.push(`  ${pad(`--line-clamp-${k}:`, 28)} ${v};`)
-    }
-    lines.push(``)
-    for (const [k, v] of Object.entries(p.contentFlexibility.maxWidth)) {
-      lines.push(`  ${pad(`--content-max-width-${k}:`, 32)} ${v};`)
-    }
-    lines.push(``)
-    for (const [k, v] of Object.entries(p.contentFlexibility.minWidth)) {
-      lines.push(`  ${pad(`--content-min-width-${k}:`, 32)} ${v};`)
     }
   }
   lines.push(``)

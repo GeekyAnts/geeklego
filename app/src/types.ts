@@ -1,11 +1,3 @@
-// ─── Content Flexibility ─────────────────────────────────────────────────────
-
-export interface ContentFlexibilityPrimitives {
-  lineClamp: Record<string, number>
-  maxWidth: Record<string, string>
-  minWidth: Record<string, string>
-}
-
 // ─── Primitives ──────────────────────────────────────────────────────────────
 
 export interface ColorScale {
@@ -31,15 +23,11 @@ export interface Primitives {
   spacing: Record<string, string>
   radius: Record<string, string>
   borderWidth: Record<string, string>
-  opacity: Record<string, number>
-  zIndex: Record<string, number>
   duration: Record<string, string>
   easing: Record<string, string>
-  sizeScale: Record<string, string>
-  iconSize: Record<string, string>
   colorShadowNeutral: string
   breakpoints: Record<string, string>
-  contentFlexibility: ContentFlexibilityPrimitives
+  lineClamp: Record<string, number>
 }
 
 // ─── v2 flat ShadCN semantic model ─────────────────────────────────────────────
@@ -152,7 +140,7 @@ export type TabId = 'primitives' | 'semantics' | 'responsive' | 'export'
 export type ThemeMode = 'light' | 'dark'
 export type PrimitiveSection =
   | 'colors' | 'typography' | 'spacing' | 'sizing'
-  | 'radius' | 'borders' | 'opacity' | 'zindex' | 'motion'
+  | 'radius' | 'borders' | 'zindex' | 'motion'
 
 export interface ColorOption {
   label: string

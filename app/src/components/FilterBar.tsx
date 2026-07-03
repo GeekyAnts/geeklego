@@ -47,7 +47,6 @@ function getTokenType(tokenName: string): string {
     font: 'font-size',
     shadow: 'shadow',
     motion: 'motion',
-    z: 'z-index',
     border: 'border',
     surface: 'surface',
     content: 'text',

@@ -146,20 +146,6 @@
      =========================================================================== */
 
   /* ===========================================================================
-     Z-INDEX
-     =========================================================================== */
-
-  --z-index-hide:          -1;
-  --z-index-base:          0;
-  --z-index-raised:        10;
-  --z-index-dropdown:      100;
-  --z-index-sticky:        200;
-  --z-index-overlay:       300;
-  --z-index-modal:         400;
-  --z-index-toast:         500;
-  --z-index-tooltip:       600;
-
-  /* ===========================================================================
      MOTION / ANIMATION
      =========================================================================== */
 
@@ -286,22 +272,6 @@
   --color-info-950:            oklch(28.226% 0.087 267.935);
 
   /* ===========================================================================
-     SIZE SCALE (6, 8, 10, 12, 14, 16)
-     =========================================================================== */
-
-
-  /* ===========================================================================
-     ICON SIZES (xs, sm, md, lg, xl, 2xl)
-     =========================================================================== */
-
-  --icon-size-xs:      0.75rem;
-  --icon-size-sm:      1rem;
-  --icon-size-md:      1.25rem;
-  --icon-size-lg:      1.5rem;
-  --icon-size-xl:      2rem;
-  --icon-size-2xl:     3rem;
-
-  /* ===========================================================================
      SHADOW COLORS
      =========================================================================== */
 
@@ -319,21 +289,6 @@
   --line-clamp-4:              4;
   --line-clamp-5:              5;
   --line-clamp-6:              6;
-
-  /* Content max-width */
-  --content-max-width-xs:          12rem;
-  --content-max-width-sm:          16rem;
-  --content-max-width-overlay-sm:  18rem;
-  --content-max-width-md:          24rem;
-  --content-max-width-lg:          32rem;
-  --content-max-width-xl:          40rem;
-  --content-max-width-full:        100%;
-
-  /* Content min-width */
-  --content-min-width-0:           0px;
-  --content-min-width-xs:          3rem;
-  --content-min-width-sm:          6rem;
-  --content-min-width-md:          10rem;
 
 } /* end @theme */
 
@@ -450,17 +405,6 @@
   --border-width-default:      2px;
   --border-width-focus:        2px;
   --border-width-thick:        4px;
-
-  /* Z-index */
-  --z-index-hide:          -1;
-  --z-index-base:          0;
-  --z-index-raised:        10;
-  --z-index-dropdown:      100;
-  --z-index-sticky:        200;
-  --z-index-overlay:       300;
-  --z-index-modal:         400;
-  --z-index-toast:         500;
-  --z-index-tooltip:       600;
 
   /* Motion */
   --duration-instant:      0ms;
@@ -579,16 +523,6 @@
   --color-info-900:            oklch(37.906% 0.138 265.522);
   --color-info-950:            oklch(28.226% 0.087 267.935);
 
-  /* Size scale */
-
-  /* Icon sizes */
-  --icon-size-xs:      0.75rem;
-  --icon-size-sm:      1rem;
-  --icon-size-md:      1.25rem;
-  --icon-size-lg:      1.5rem;
-  --icon-size-xl:      2rem;
-  --icon-size-2xl:     3rem;
-
   /* Shadow colors */
   --color-shadow-neutral:  #141619;
 
@@ -599,18 +533,5 @@
   --line-clamp-4:              4;
   --line-clamp-5:              5;
   --line-clamp-6:              6;
-
-  --content-max-width-xs:          12rem;
-  --content-max-width-sm:          16rem;
-  --content-max-width-overlay-sm:  18rem;
-  --content-max-width-md:          24rem;
-  --content-max-width-lg:          32rem;
-  --content-max-width-xl:          40rem;
-  --content-max-width-full:        100%;
-
-  --content-min-width-0:           0px;
-  --content-min-width-xs:          3rem;
-  --content-min-width-sm:          6rem;
-  --content-min-width-md:          10rem;
 
 } /* end :root primitive mirror */

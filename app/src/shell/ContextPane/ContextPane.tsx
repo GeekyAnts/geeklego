@@ -22,13 +22,10 @@ const PRIMITIVE_PREFIX: Record<string, string> = {
   spacing: 'spacing',
   radius: 'radius',
   borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
   duration: 'duration',
   easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
   breakpoints: 'breakpoint',
+  lineClamp: 'line-clamp',
 }
 
 function flattenTokens(tokens: GeeklegoTokensV2): { name: string; value: string }[] {
@@ -41,8 +38,8 @@ function flattenTokens(tokens: GeeklegoTokensV2): { name: string; value: string 
     const values = prims[category]
     if (!values || typeof values !== 'object') continue
     for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      // Some primitive scales are typed numeric in the model (fontWeight, zIndex,
-      // opacity) — coerce to string so they aren't silently dropped from the UI.
+      // Some primitive scales are typed numeric in the model (fontWeight,
+      // lineClamp) — coerce to string so they aren't silently dropped from the UI.
       if (typeof v === 'string' || typeof v === 'number') {
         entries.push({ name: `--${prefix}-${k}`, value: String(v) })
       } else if (v && typeof v === 'object') {

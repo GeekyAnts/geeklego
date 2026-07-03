@@ -52,8 +52,8 @@ function collectAllTokenNames(tokens: GeeklegoTokensV2): Set<string> {
 
   const primitiveKeys = [
     'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight',
-    'spacing', 'radius', 'borderWidth', 'opacity', 'zIndex', 'duration',
-    'easing', 'sizeScale', 'iconSize', 'contentFlexibility', 'colorShadowNeutral',
+    'spacing', 'radius', 'borderWidth', 'duration',
+    'easing', 'lineClamp', 'colorShadowNeutral',
     'breakpoints'
   ] as const
 
@@ -87,8 +87,8 @@ export function buildTokenGraph(tokens: GeeklegoTokensV2): TokenGraph {
 
   const primitiveKeys = [
     'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight',
-    'spacing', 'radius', 'borderWidth', 'opacity', 'zIndex', 'duration',
-    'easing', 'sizeScale', 'iconSize', 'contentFlexibility', 'colorShadowNeutral',
+    'spacing', 'radius', 'borderWidth', 'duration',
+    'easing', 'lineClamp', 'colorShadowNeutral',
     'breakpoints'
   ] as const
 

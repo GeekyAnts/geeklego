@@ -36,9 +36,10 @@ function getFoundationsCategories(): {
     { pattern: /^radius-/, categoryId: 'radius', label: 'Radius', icon: 'Box' },
     { pattern: /^(font|text|leading|tracking)-/, categoryId: 'typography', label: 'Fonts', icon: 'Type' },
     { pattern: /^shadow-/, categoryId: 'shadow', label: 'Shadows', icon: 'Layers' },
-    { pattern: /^motion-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
-    { pattern: /^z-/, categoryId: 'zIndex', label: 'Z-Index', icon: 'Layers' },
+    { pattern: /^(motion|duration|ease)-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
     { pattern: /^border-/, categoryId: 'border', label: 'Borders', icon: 'Frame' },
+    { pattern: /^line-clamp-/, categoryId: 'line-clamp', label: 'Line Clamp', icon: 'AlignJustify' },
+    { pattern: /^breakpoint-/, categoryId: 'breakpoint', label: 'Breakpoints', icon: 'Monitor' },
   ]
 }
 

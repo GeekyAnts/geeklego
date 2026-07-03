@@ -52,8 +52,9 @@ const categoryFilters: Record<string, (name: string) => boolean> = {
   typography: (name) => /^--(?:font-|text-|leading-|tracking-)/.test(name),
   shadow: (name) => /^--shadow-/.test(name),
   motion: (name) => /^--(?:motion-|duration-|ease-)/.test(name),
-  zIndex: (name) => /^--(?:z-|layer-)/.test(name),
   border: (name) => /^--border-/.test(name),
+  'line-clamp': (name) => /^--line-clamp-/.test(name),
+  breakpoint: (name) => /^--breakpoint-/.test(name),
   // Semantic — v2 (2-tier) uses the flat standard ShadCN/Tailwind vocabulary.
   // Membership for surface/interactive/layout/status comes from the shared
   // `semanticBuckets` module (the single source of truth NavRail also uses), so
@@ -163,11 +164,6 @@ function splitIntoGroups(tokens: TokenEntry[], category: string): Record<string,
     if (other.length > 0) groups['Other'] = other
 
     if (Object.keys(groups).length === 0) groups['All Motion'] = tokens
-    return groups
-  }
-
-  if (category === 'zIndex') {
-    groups['Z-Index'] = tokens
     return groups
   }
 
@@ -344,7 +340,6 @@ function groupNameToPrefix(category: string, groupName: string): string {
     return '--duration-'
   }
   if (category === 'border') return '--border-width-'
-  if (category === 'zIndex') return '--z-index-'
   // v2 semantics are flat standard names with no shared prefix (e.g. --primary,
   // --background) — a new semantic is just `--<name>`, so start the add-token
   // dialog with a bare `--` for all semantic categories.

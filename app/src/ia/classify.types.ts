@@ -15,8 +15,9 @@ export type FoundationsSubCategory =
   | 'typography'
   | 'shadow'
   | 'motion'
-  | 'zIndex'
   | 'border'
+  | 'line-clamp'
+  | 'breakpoint'
 
 /**
  * Semantic sub-categories

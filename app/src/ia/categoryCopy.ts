@@ -1,3 +1,22 @@
+/** The architectural role a token category plays in the system. See the
+ *  Motion Duration ADR (docs/ADR-motion-duration-governed-vocabulary.md):
+ *  a category is either live-themeable, a governed vocabulary consumed by
+ *  tooling/exports, or a build-time contract. */
+export type ArchitecturalRole = 'Theme Token' | 'Governed Vocabulary' | 'Build-time Contract'
+
+/** Per-category architectural metadata — the honest "what is this and does it
+ *  re-theme live" record surfaced in the CategoryPage. `runtimeThemeable` MUST
+ *  reflect the real build behaviour, not the aspiration (avoid the lying control). */
+export interface CategoryArchitecture {
+  role: ArchitecturalRole
+  purpose: string
+  runtimeThemeable: boolean
+  /** Short label for the current-state of consumption, e.g. "Live" or "Exports only". */
+  usage: string
+  consumers: string[]
+  notes: string
+}
+
 export interface CategoryMeta {
   id: string
   name: string
@@ -5,7 +24,117 @@ export interface CategoryMeta {
   pattern: string[]
   appliesToScale?: boolean
   sortFn?: (a: TokenEntry, b: TokenEntry) => number
+  architecture?: CategoryArchitecture
 }
+
+/** Architectural metadata keyed by the CategoryPage `category` string (the top-level
+ *  category, not the `foundations-*` sub-id). Only top-level categories are surfaced
+ *  in the CategoryPage header panel. Verified against build behaviour, not aspiration. */
+export const CATEGORY_ARCHITECTURE: Record<string, CategoryArchitecture> = {
+  color: {
+    role: 'Theme Token',
+    purpose: 'Defines the brand palette and drives every semantic token.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'Consumed by components through the semantic layer, never directly.',
+  },
+  spacing: {
+    role: 'Theme Token',
+    purpose: 'Sets the spacing scale that governs layout rhythm and component density.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'AI', 'Figma', 'IR'],
+    notes: 'Tailwind resolves the --spacing scale at runtime, so edits re-theme live.',
+  },
+  radius: {
+    role: 'Theme Token',
+    purpose: 'Controls corner rounding across every surface via a single --radius base.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'Registered @theme inline; the sm/md/lg/xl scale derives from --radius via calc().',
+  },
+  typography: {
+    role: 'Theme Token',
+    purpose: 'Defines the type system — families, sizes, weights, line-height, and tracking.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'AI', 'Figma', 'IR'],
+    notes: 'Font families load via fonts.css @import; sizes/leading/tracking resolve live.',
+  },
+  shadow: {
+    role: 'Theme Token',
+    purpose: 'Establishes elevation depth from subtle surface lift to prominent overlays.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'AI', 'Figma', 'IR'],
+    notes: 'Consumed as shadow utilities that resolve the token at runtime.',
+  },
+  motion: {
+    role: 'Governed Vocabulary',
+    purpose: 'Defines the canonical motion language — approved durations plus live easing curves.',
+    runtimeThemeable: false,
+    usage: 'Governed (duration) · Live (easing)',
+    consumers: ['AI', 'Figma', 'IR', 'React Native', 'Flutter', 'Docs'],
+    notes:
+      'Split category: --duration-* is a governed vocabulary — Tailwind compiles durations to static values, so it is not runtime-themeable and consumers translate it (e.g. fast → duration-150). --ease-* is the exception: it is live-wired and re-themes at runtime. See the Motion Duration ADR.',
+  },
+  border: {
+    role: 'Governed Vocabulary',
+    purpose: 'Defines the approved border-width vocabulary for strokes and boundaries.',
+    runtimeThemeable: false,
+    usage: 'Governed (wire-up deferred)',
+    consumers: ['AI', 'Figma', 'IR', 'Docs'],
+    notes:
+      'Border-width tokens are a governed vocabulary; component wire-up is intentionally deferred (no mass migration). Existing components keep their current borders.',
+  },
+  breakpoint: {
+    role: 'Build-time Contract',
+    purpose: 'Defines the responsive breakpoints that drive every sm:/md:/lg:/xl: utility.',
+    runtimeThemeable: false,
+    usage: 'Build-time (live-wired)',
+    consumers: ['Components', 'AI', 'IR'],
+    notes:
+      'Live-wired, not orphaned: --breakpoint-* is a real Tailwind v4 namespace, so editing a value re-themes every responsive component on the next build (our px steps override Tailwind’s rem defaults). "Build-time" because it compiles to @media queries rather than a runtime custom property, so a live in-editor edit won’t reflect until rebuild.',
+  },
+  // Semantic categories — the themeable interface components consume directly.
+  surface: {
+    role: 'Theme Token',
+    purpose: 'Semantic background/surface layers (background, card, popover) aliased to primitives.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'Re-pointed per theme; @theme inline makes overrides (.dark) re-theme live.',
+  },
+  interactive: {
+    role: 'Theme Token',
+    purpose: 'Semantic tokens for interactive elements (primary, secondary, accent, ring).',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'The standard ShadCN interactive vocabulary; consumed as bg-/text-/ring- utilities.',
+  },
+  status: {
+    role: 'Theme Token',
+    purpose: 'Semantic status colors (destructive, and any success/warning/info extensions).',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'Discovered semantics route here; consumed through standard utilities.',
+  },
+  layout: {
+    role: 'Theme Token',
+    purpose: 'Semantic structural tokens (borders, inputs) that frame and separate content.',
+    runtimeThemeable: true,
+    usage: 'Live',
+    consumers: ['Components', 'Themes', 'AI', 'Figma', 'IR'],
+    notes: 'border-border / border-input / ring-ring; re-theme live via @theme inline.',
+  },
+}
+
+export const getArchitectureForCategory = (category: string): CategoryArchitecture | undefined =>
+  CATEGORY_ARCHITECTURE[category]
 
 interface TokenEntry {
   name: string

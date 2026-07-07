@@ -135,12 +135,31 @@ const FRAMEWORK_INTERNAL_PREFIXES = ['tw-', 'radix-']
 // (e.g. style={{ '--x': value }} consumed by a className). These are computed
 // per-render and so are intentionally absent from the design-system CSS.
 // Add a v2 component's runtime-injected var name here if it consumes one.
-//
+const INLINE_STYLE_VARS = new Set<string>([])
+
 // Chart: ChartContainer injects one `--color-<seriesKey>` var per config series
 // from `config[key].color` (which itself chains to a --chart-N semantic). The
-// series keys are consumer-defined (demo uses desktop/mobile), so these are
-// runtime, not static tokens — recharts reads them in SVG fill/stroke.
-const INLINE_STYLE_VARS = new Set<string>(['color-desktop', 'color-mobile'])
+// series keys are CONSUMER-defined (desktop/mobile/value/… — whatever the demo's
+// data uses), so these are runtime vars, not static tokens — recharts reads them
+// in SVG fill/stroke. We can't enumerate every possible key, so recognise them
+// structurally: a `--color-<key>` var, consumed in a Chart/PieChart/_preview file,
+// whose `<key>` is NOT a defined token. Real chart tokens (`--color-chart-1`,
+// `--color-background`, …) ARE defined and so still validate normally — the
+// `!defined` guard is what keeps this from masking genuine broken refs.
+// Anchor to a real path SEGMENT (a `<Name>/` directory, not a substring) so a
+// non-chart dir like `ChartUtils/` can't accidentally match, and additionally
+// require the file to actually pull in the injector (`ChartContainer`) — that is
+// the component that emits the runtime `--color-<seriesKey>` vars. Both must hold
+// before we mask an undefined --color-* ref, so a genuinely-broken ref in a
+// chart-named file that doesn't use ChartContainer is still caught.
+const CHART_INJECT_DIR = /(?:^|\/)(?:Chart|PieChart|_preview)\//
+function isChartInjectedColorVar(name: string, filePath: string, content: string, defined: Set<string>): boolean {
+  if (!name.startsWith('color-')) return false
+  if (defined.has(name)) return false // a real, defined --color-* token
+  if (!CHART_INJECT_DIR.test(filePath)) return false
+  // Content signal: the file must reference ChartContainer, the injector of these vars.
+  return content.includes('ChartContainer')
+}
 
 export function validateNoDuplicateDeclarations(css: string): Array<{ prop: string; firstLine: number; dupLine: number; firstValue: string; dupValue: string; selector: string }> {
   const duplicates: Array<{ prop: string; firstLine: number; dupLine: number; firstValue: string; dupValue: string; selector: string }> = []
@@ -231,6 +250,8 @@ export function validateComponentTokenRefs(
         if (FRAMEWORK_INTERNAL_PREFIXES.some(prefix => name.startsWith(prefix))) continue
         // Skip CSS custom properties injected dynamically via React inline styles
         if (INLINE_STYLE_VARS.has(name)) continue
+        // Skip ChartContainer-injected --color-<seriesKey> runtime vars
+        if (isChartInjectedColorVar(name, filePath, content, defined)) continue
         if (!defined.has(name)) {
           broken.push({ name, file: filePath, line: i + 1 })
         }

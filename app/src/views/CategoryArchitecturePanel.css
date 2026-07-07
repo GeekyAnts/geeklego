@@ -1,0 +1,111 @@
+/* ─── Category architecture panel (collapsible under the header) ──────────── */
+.ed-arch-panel {
+  background: var(--ed-bg-panel);
+  border: 1px solid var(--ed-border);
+  border-radius: var(--ed-radius-card);
+  overflow: hidden;
+}
+
+.ed-arch-panel__summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ed-space-2) var(--ed-space-3);
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+/* Hide the native disclosure triangle across engines */
+.ed-arch-panel__summary::-webkit-details-marker {
+  display: none;
+}
+
+.ed-arch-panel__summary:hover {
+  background: var(--ed-bg-subtle);
+}
+
+.ed-arch-panel__chevron {
+  color: var(--ed-text-muted);
+  flex-shrink: 0;
+  transition: transform var(--ed-motion-fast, 0.15s) ease;
+}
+
+.ed-arch-panel[open] .ed-arch-panel__chevron {
+  transform: rotate(90deg);
+}
+
+.ed-arch-panel__summary-label {
+  font-size: var(--ed-text-xs);
+  font-weight: var(--ed-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ed-text-muted);
+}
+
+.ed-arch-panel__role-chip {
+  margin-left: var(--ed-space-1);
+}
+
+/* At-a-glance runtime-themeable status in the summary row */
+.ed-arch-panel__themeable {
+  margin-left: auto;
+  font-size: var(--ed-text-xs);
+  font-weight: var(--ed-weight-medium);
+}
+
+.ed-arch-panel__themeable--yes {
+  color: var(--ed-success);
+}
+
+.ed-arch-panel__themeable--no {
+  color: var(--ed-warning);
+}
+
+/* ─── Expanded body ───────────────────────────────────────────────────────── */
+.ed-arch-panel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin: 0;
+  padding: 4px 16px 18px;
+  border-top: 1px solid var(--ed-border-soft, var(--ed-border));
+}
+
+.ed-arch-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ed-space-2);
+  min-width: 0;
+}
+
+.ed-arch-panel__field--wide {
+  grid-column: 1 / -1;
+}
+
+.ed-arch-panel__label {
+  font-size: var(--ed-text-xs);
+  font-weight: var(--ed-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ed-text-muted);
+}
+
+.ed-arch-panel__value {
+  margin: 0;
+  font-size: var(--ed-text-sm);
+  color: var(--ed-text-strong);
+  line-height: var(--ed-leading-snug);
+}
+
+.ed-arch-panel__consumers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ed-space-2);
+}
+
+.ed-arch-panel__notes {
+  color: var(--ed-text-muted);
+  line-height: var(--ed-leading-normal);
+}

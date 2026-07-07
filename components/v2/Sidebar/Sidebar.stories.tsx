@@ -41,7 +41,7 @@ import "../../../design-system/v2/index.css";
  * Sidebar — a composable navigation shell. Built as a composition (no single
  * Radix primitive): the mobile drawer is the v2 Sheet (Radix Dialog) and the
  * collapsed-icon labels use the v2 Tooltip (Radix Tooltip). Wrap the app in
- * `SidebarProvider`; the panel renders on its own `--ext-sidebar-*` surface.
+ * `SidebarProvider`; the panel renders on its own `--sidebar-*` surface.
  */
 const meta = {
   title: "v2/Sidebar",

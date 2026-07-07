@@ -191,12 +191,6 @@ function applyThemeToken(
 
 
 
-  // Line clamp: --line-clamp-{n}
-  const lineClampMatch = name.match(/^line-clamp-(.+)$/)
-  if (lineClampMatch) {
-    primitives.lineClamp[lineClampMatch[1]] = parseNumeric(value)
-    return
-  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -241,7 +235,6 @@ function emptyV2Primitives(): GeeklegoTokensV2['primitives'] {
     easing: {},
     colorShadowNeutral: '',
     breakpoints: {},
-    lineClamp: {},
   }
 }
 

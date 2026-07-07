@@ -1,0 +1,30 @@
+{
+  "skill_name": "component-builder-v2",
+  "note": "Iteration-1 evals target the Phase-1 token-decision update: ext-vs-core fork + safelist trap + not re-adding existing status semantics. These are the behaviors the improvement changed; earlier evals (badge/tooltip/cmdk) cover the untouched backbone-selection path.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "sidebar-like-custom-surface-should-be-core",
+      "prompt": "Add a Toolbar component to the library — a horizontal bar that sits at the top of an editor, with its own subtle background surface, its own border, and hovered/active button states that use a highlight distinct from the app's main content area. It's a reusable navigation-ish surface, like a sidebar but horizontal. Wire up whatever tokens it needs.",
+      "expected_output": "The skill should recognize this is a REUSABLE surface (like sidebar) → CORE semantics, not --ext-*. It should apply the 'would a second component want this?' test and land on core --toolbar-* (or reuse existing surface semantics). If it adds new core semantics, it must ALSO add their utilities to the @source inline safelist in semantics.css (else tree-shaken). Should NOT dump these into the --ext-* block as if they were a one-off brand look.",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 1,
+      "name": "one-off-brand-flourish-should-be-ext",
+      "prompt": "Build a PromoBanner component — a single, deliberately loud marketing banner with our brand's neon-gradient glow look, oversized uppercase text, and a chunky drop shadow. It's a one-off hero treatment, nothing else in the app should look like this.",
+      "expected_output": "The skill should recognize this is a ONE-OFF brand look nothing else reuses → --ext-* block (like gamified). Tokens named --ext-promobanner-* (or similar), in the SEPARATE --ext-* :root + @theme inline block, each chained to a primitive (never raw hex/gradient literals). The cva variant uses ONLY its --ext-* utilities, no core semantics. Should NOT promote these to core semantics.",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 2,
+      "name": "existing-status-semantic-do-not-re-add",
+      "prompt": "Add an Alert component with success, warning, info, and error/destructive variants — each with an appropriately colored background and readable foreground text, like a typical notification banner.",
+      "expected_output": "The skill should KNOW that success/warning/info (+ -foreground) and destructive already exist as core semantics and just CONSUME them (bg-success text-success-foreground, bg-warning, bg-info, bg-destructive) — NOT re-add them to semantics.css. Should build a straightforward cva Alert with these standard utilities. No new tokens, no --ext-*, no duplicate semantic definitions.",
+      "files": [],
+      "assertions": []
+    }
+  ]
+}

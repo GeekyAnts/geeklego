@@ -63,7 +63,7 @@ A `TooltipProvider` must wrap the tree if any `SidebarMenuButton` uses the `tool
 
 ## Tokens
 
-The panel renders on its own surface via the `--ext-sidebar-*` token group (background, foreground, border, accent + accent-foreground for hovered/active items, ring). These live in the `--ext-*` block of `semantics.css`, each chained to a primitive, and are overridden per-theme in `themes/dark.css`. Widths reuse existing spacing primitives (`w-64` expanded, `w-12` icon, `w-72` mobile) — no raw dimensions.
+The panel renders on its own surface via the `--sidebar-*` token group (background, foreground, border, accent + accent-foreground for hovered/active items, ring). These are **standard ShadCN core semantics** (ShadCN ships a dedicated `--sidebar-*` group) — they live in the core semantic set of `semantics.css`, each chained to a primitive, and are overridden per-theme in `themes/dark.css`. Widths reuse existing spacing primitives (`w-64` expanded, `w-12` icon, `w-72` mobile) — no raw dimensions.
 
 ## Responsive behavior
 

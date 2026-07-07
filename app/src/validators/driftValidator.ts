@@ -49,7 +49,7 @@ export function saveDefaultSnapshot(tokens: GeeklegoTokensV2): void {
   const primitiveKeys = [
     'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight',
     'spacing', 'radius', 'borderWidth', 'duration',
-    'easing', 'lineClamp', 'colorShadowNeutral',
+    'easing', 'colorShadowNeutral',
     'breakpoints'
   ] as const
 

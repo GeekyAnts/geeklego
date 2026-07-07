@@ -16,7 +16,6 @@ export type FoundationsSubCategory =
   | 'shadow'
   | 'motion'
   | 'border'
-  | 'line-clamp'
   | 'breakpoint'
 
 /**

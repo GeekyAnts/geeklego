@@ -21,7 +21,7 @@
  *
  *  • Tier 1 — PRIMITIVES: live under top-level groups (color, fontFamily, fontSize,
  *    fontWeight, lineHeight, letterSpacing, spacing, radius, borderWidth,
- *    duration, easing, size, breakpoint, lineClamp,
+ *    duration, easing, size, breakpoint,
  *    shadowColor). Their `$value` is the resolved literal (primitives are
  *    leaves — they don't alias anything).
  *
@@ -43,7 +43,7 @@
  *
  *  • $type mapping: color | dimension (spacing/radius/size/fontSize/width/
  *    breakpoint/letterSpacing/lineHeight-with-unit) | fontWeight | number (
- *    lineClamp/unitless lineHeight) | duration | cubicBezier (easing) | fontFamily | shadow.
+ *    unitless lineHeight) | duration | cubicBezier (easing) | fontFamily | shadow.
  *
  *  • Versioning (MULTI-TARGET §6.5): a STATIC semver + source id are stamped in `$extensions`
  *    at the document root. This repo has NO git, so we do NOT shell out for a SHA, and we
@@ -172,10 +172,6 @@ function buildPrimitiveIndex(p: Primitives): {
   // Breakpoints: --breakpoint-{name} (dimension)
   for (const name of Object.keys(p.breakpoints)) {
     push(`breakpoint-${name}`, ['breakpoint', name], p.breakpoints[name], 'dimension')
-  }
-  // Line clamp
-  for (const n of Object.keys(p.lineClamp)) {
-    push(`line-clamp-${n}`, ['lineClamp', n], String(p.lineClamp[n]), 'number')
   }
 
   const byCssVar = new Map<string, PrimitiveRecord>()

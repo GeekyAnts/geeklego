@@ -10,8 +10,10 @@ import { isLocked, lockSemantic, toggleLock, subscribeToLockChanges } from '../.
 import { pushEditToast, pushToast } from '../../state/toasts'
 import { usePreviewTheme, setPreviewTheme } from '../../state/previewTheme'
 import { withPxAnnotation, suggestBrandSemantics, suggestNeutralSemantics, parseColorRef } from '../../utils/colorUtils'
+import { PRIMITIVE_PREFIX } from '../../utils/flattenTokens'
 import type { GeeklegoTokensV2, TokenUsageMap } from '../../types'
 import { V2_SEMANTIC_KEYS } from '../../types'
+import { semanticBucketOfVar, type SemanticBucket } from '../../ia'
 import { UsedBy } from './UsedBy'
 import { UsedInComponents } from './UsedInComponents'
 import { GoogleFontPicker } from './GoogleFontPicker'
@@ -37,7 +39,7 @@ function fontFamilySlot(tokenName: string): string | null {
 const PRIMITIVE_TOKEN_PREFIXES = [
   '--color-', '--spacing-', '--radius-', '--font-', '--text-', '--leading-', '--tracking-',
   '--border-', '--shadow-', '--motion-', '--duration-', '--ease-',
-  '--breakpoint-', '--line-clamp-',
+  '--breakpoint-',
 ]
 function isPrimitiveToken(tokenName: string): boolean {
   return PRIMITIVE_TOKEN_PREFIXES.some(p => tokenName.startsWith(p))
@@ -53,9 +55,21 @@ function deriveBreadcrumb(tokenName: string): string {
   if (tokenName.startsWith('--z-')) return 'Foundations / Z-Index'
   if (tokenName.startsWith('--motion-') || tokenName.startsWith('--duration-') || tokenName.startsWith('--ease-')) return 'Foundations / Motion'
   if (tokenName.startsWith('--shadow-')) return 'Foundations / Shadows'
-  if (tokenName.startsWith('--line-clamp-')) return 'Foundations / Line Clamp'
   if (tokenName.startsWith('--breakpoint-')) return 'Foundations / Breakpoints'
+  // Core semantics (Tier 2) — derive the sub-bucket from the single-source-of-truth
+  // bucketer so status semantics (destructive/success/warning/info) get a proper
+  // "Semantic / Status" breadcrumb instead of the generic 'Tokens' fallback.
+  const bucket = semanticBucketOfVar(tokenName)
+  if (bucket) return `Semantic / ${SEMANTIC_BUCKET_LABEL[bucket]}`
   return 'Tokens'
+}
+
+/** Sub-bucket → breadcrumb label, mirroring ia/classify.ts SEMANTIC_SUB_CATEGORIES. */
+const SEMANTIC_BUCKET_LABEL: Record<SemanticBucket, string> = {
+  surface: 'Surfaces',
+  interactive: 'Interactive',
+  layout: 'Layout',
+  status: 'Status',
 }
 
 const SEMANTIC_PREFIXES = ['bg', 'text', 'border', 'action', 'status', 'state', 'data-series', 'surface', 'hue', 'alpha']
@@ -64,25 +78,6 @@ function isFoundationColorToken(tokenName: string): boolean {
   if (!tokenName.startsWith('--color-')) return false
   const rest = tokenName.slice('--color-'.length)
   return !SEMANTIC_PREFIXES.some(p => rest.startsWith(p + '-') || rest === p)
-}
-
-/** Extract the colour family name from a foundation token, e.g. "brand" from "--color-brand-50" */
-// Mirrors PRIMITIVE_PREFIX in EditorShell.tsx and ContextPane.tsx —
-// maps the JS primitive-object key to the CSS variable prefix.
-const PRIMITIVE_PREFIX: Record<string, string> = {
-  colors: 'color',
-  fontFamily: 'font',
-  fontSize: 'text',
-  fontWeight: 'font-weight',
-  lineHeight: 'leading',
-  letterSpacing: 'tracking',
-  spacing: 'spacing',
-  radius: 'radius',
-  borderWidth: 'border-width',
-  duration: 'duration',
-  easing: 'ease',
-  breakpoints: 'breakpoint',
-  lineClamp: 'line-clamp',
 }
 
 function resolveTokenValue(

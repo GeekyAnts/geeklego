@@ -149,15 +149,10 @@
      MOTION / ANIMATION
      =========================================================================== */
 
-  --duration-instant:      0ms;
-  --duration-fast:         100ms;
+  --duration-fast:         150ms;
   --duration-normal:       200ms;
   --duration-slow:         300ms;
-  --duration-slower:       500ms;
-  --duration-slowest:      700ms;
-  --duration-spin:         700ms;
-  --duration-stagger-sm:   160ms;
-  --duration-stagger-md:   320ms;
+  --duration-spin:         1000ms;
 
   --ease-linear:       linear;
   --ease-in:           cubic-bezier(0.4, 0, 1, 1);
@@ -277,19 +272,6 @@
 
   --color-shadow-neutral:  #141619;
 
-
-  /* ===========================================================================
-     CONTENT FLEXIBILITY
-     =========================================================================== */
-
-  /* Line clamp values */
-  --line-clamp-1:              1;
-  --line-clamp-2:              2;
-  --line-clamp-3:              3;
-  --line-clamp-4:              4;
-  --line-clamp-5:              5;
-  --line-clamp-6:              6;
-
 } /* end @theme */
 
 /* =============================================================================
@@ -407,15 +389,10 @@
   --border-width-thick:        4px;
 
   /* Motion */
-  --duration-instant:      0ms;
-  --duration-fast:         100ms;
+  --duration-fast:         150ms;
   --duration-normal:       200ms;
   --duration-slow:         300ms;
-  --duration-slower:       500ms;
-  --duration-slowest:      700ms;
-  --duration-spin:         700ms;
-  --duration-stagger-sm:   160ms;
-  --duration-stagger-md:   320ms;
+  --duration-spin:         1000ms;
 
   --ease-linear:       linear;
   --ease-in:           cubic-bezier(0.4, 0, 1, 1);
@@ -525,13 +502,5 @@
 
   /* Shadow colors */
   --color-shadow-neutral:  #141619;
-
-  /* Content flexibility */
-  --line-clamp-1:              1;
-  --line-clamp-2:              2;
-  --line-clamp-3:              3;
-  --line-clamp-4:              4;
-  --line-clamp-5:              5;
-  --line-clamp-6:              6;
 
 } /* end :root primitive mirror */

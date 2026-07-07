@@ -130,6 +130,15 @@ describe('v2 semantics round-trip — semantics.css is canonical', () => {
     // covers the two semantics that collide with Tailwind native utils / appear only as -foreground
     expect(out).toMatch(/@source inline\([^)]*\baccent\b[^)]*\)/)
     expect(out).toMatch(/@source inline\([^)]*\bmuted\b[^)]*\)/)
+    // C1: extra (non-canonical) semantics like --info must survive export in the safelist too —
+    // otherwise bg-info/text-info/border-info are tree-shaken from dist. The bg/text line must
+    // carry both info and its -foreground; the border line must carry info (it has a -foreground).
+    const bgTextLine = out.match(/@source inline\("\{hover:,focus:,\}\{bg,text\}-\{([^}]*)\}"\);/)?.[1] ?? ''
+    expect(bgTextLine.split(',')).toContain('info')
+    expect(bgTextLine.split(',')).toContain('info-foreground')
+    const borderLine = out.match(/@source inline\("border-\{([^}]*)\}"\);/)?.[1] ?? ''
+    expect(borderLine.split(',')).toContain('info')
+    expect(borderLine.split(',')).toContain('destructive')
   })
 
   it('round-trips a new semantic dark override through generate → re-parse', () => {

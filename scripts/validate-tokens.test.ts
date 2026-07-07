@@ -84,6 +84,38 @@ describe('validateComponentTokenRefs — broken var() in v2 components', () => {
     ])
     expect(broken).toHaveLength(0)
   })
+
+  // M3 — the chart-injected --color-<seriesKey> whitelist is anchored to a real
+  // directory segment AND gated on the ChartContainer content signal.
+  it('masks ChartContainer-injected --color-<seriesKey> vars in a real chart file', () => {
+    const css = `:root { --color-chart-1: var(--chart-1); }`
+    const componentCode = `import { ChartContainer } from "../Chart/Chart";\n<Bar fill="var(--color-value)" />`
+    const { broken } = validateComponentTokenRefs(css, [
+      { filePath: 'components/v2/_preview/Dashboard.stories.tsx', content: componentCode },
+    ])
+    expect(broken).toHaveLength(0)
+  })
+
+  it('does NOT mask an undefined --color-* in a non-chart dir whose name merely contains "Chart"', () => {
+    const css = `:root { --primary: var(--color-brand-900); }`
+    // ChartUtils/ is NOT a chart component dir; substring-matching would have masked this.
+    const componentCode = `const cls = 'bg-[var(--color-bogus)]'`
+    const { broken } = validateComponentTokenRefs(css, [
+      { filePath: 'components/v2/ChartUtils/helpers.ts', content: componentCode },
+    ])
+    expect(broken).toHaveLength(1)
+    expect(broken[0].name).toBe('color-bogus')
+  })
+
+  it('does NOT mask an undefined --color-* in a chart dir that lacks ChartContainer', () => {
+    const css = `:root { --primary: var(--color-brand-900); }`
+    const componentCode = `const cls = 'bg-[var(--color-typo)]'` // no ChartContainer import
+    const { broken } = validateComponentTokenRefs(css, [
+      { filePath: 'components/v2/Chart/Chart.types.ts', content: componentCode },
+    ])
+    expect(broken).toHaveLength(1)
+    expect(broken[0].name).toBe('color-typo')
+  })
 })
 
 describe('validateNoDuplicateDeclarations', () => {

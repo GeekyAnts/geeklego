@@ -55,9 +55,9 @@ import type {
  * the v2 `Tooltip` (Radix Tooltip — delay, positioning, aria-describedby).
  * SidebarProvider owns the open/collapsed state + the mobile-breakpoint watch.
  *
- * The panel renders on its OWN surface — the --ext-sidebar-* token group
- * (ShadCN ships a dedicated --sidebar-* group for this; in v2 it lives in the
- * --ext-* block, each chained to a primitive). The expanded / icon / mobile
+ * The panel renders on its OWN surface — the --sidebar-* token group
+ * (standard ShadCN core vocab; ShadCN ships a dedicated --sidebar-* group, so
+ * in v2 these are core semantics, each chained to a primitive). The expanded / icon / mobile
  * widths map exactly onto existing spacing primitives (16rem = --spacing-64 →
  * `w-64`, 3rem = --spacing-12 → `w-12`, 18rem = --spacing-72 → `w-72`), so the
  * sidebar consumes the standard width utilities — no raw dimensions, no inline
@@ -140,7 +140,7 @@ export const SidebarProvider = forwardRef<HTMLDivElement, SidebarProviderProps>(
           ref={ref}
           data-slot="sidebar-wrapper"
           className={cn(
-            "flex min-h-svh w-full text-ext-sidebar-foreground",
+            "flex min-h-svh w-full text-sidebar-foreground",
             className,
           )}
           {...props}
@@ -174,7 +174,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
           ref={ref}
           data-slot="sidebar"
           className={cn(
-            "flex h-full w-64 flex-col border-ext-sidebar-border bg-ext-sidebar-bg",
+            "flex h-full w-64 flex-col border-sidebar-border bg-sidebar-bg",
             side === "left" ? "border-r" : "border-l",
             className,
           )}
@@ -195,7 +195,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
             data-slot="sidebar"
             data-sidebar="sidebar"
             data-mobile="true"
-            className="w-72 gap-0 border-ext-sidebar-border bg-ext-sidebar-bg p-0 text-ext-sidebar-foreground sm:max-w-72"
+            className="w-72 gap-0 border-sidebar-border bg-sidebar-bg p-0 text-sidebar-foreground sm:max-w-72"
           >
             <SheetHeader className="sr-only">
               <SheetTitle>Sidebar</SheetTitle>
@@ -247,14 +247,14 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
           <div
             data-sidebar="sidebar"
             className={cn(
-              "flex h-full w-full flex-col bg-ext-sidebar-bg text-ext-sidebar-foreground",
+              "flex h-full w-full flex-col bg-sidebar-bg text-sidebar-foreground",
               variant === "floating"
-                ? "rounded-lg border border-ext-sidebar-border shadow-sm"
+                ? "rounded-lg border border-sidebar-border shadow-sm"
                 : variant === "inset"
                   ? "rounded-lg"
                   : side === "left"
-                    ? "border-r border-ext-sidebar-border"
-                    : "border-l border-ext-sidebar-border",
+                    ? "border-r border-sidebar-border"
+                    : "border-l border-sidebar-border",
             )}
           >
             {children}
@@ -282,9 +282,9 @@ export const SidebarTrigger = forwardRef<
         toggleSidebar();
       }}
       className={cn(
-        "inline-flex size-8 items-center justify-center rounded-md text-ext-sidebar-foreground",
-        "transition-colors hover:bg-ext-sidebar-accent hover:text-ext-sidebar-accent-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ext-sidebar-ring",
+        "inline-flex size-8 items-center justify-center rounded-md text-sidebar-foreground",
+        "transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
         "[&>svg]:size-4",
         className,
       )}
@@ -311,7 +311,7 @@ export const SidebarRail = forwardRef<HTMLButtonElement, SidebarRailProps>(
         title="Toggle sidebar"
         className={cn(
           "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all md:flex",
-          "after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 hover:after:bg-ext-sidebar-border",
+          "after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 hover:after:bg-sidebar-border",
           "group-data-[side=left]:-right-4 group-data-[side=right]:left-0",
           className,
         )}
@@ -389,7 +389,7 @@ export const SidebarSeparator = forwardRef<
     data-slot="sidebar-separator"
     role="separator"
     aria-orientation="horizontal"
-    className={cn("mx-2 h-px shrink-0 bg-ext-sidebar-border", className)}
+    className={cn("mx-2 h-px shrink-0 bg-sidebar-border", className)}
     {...props}
   />
 ));
@@ -533,7 +533,7 @@ export const SidebarMenuSub = forwardRef<
     ref={ref}
     data-slot="sidebar-menu-sub"
     className={cn(
-      "mx-3 flex min-w-0 flex-col gap-1 border-l border-ext-sidebar-border px-2 py-0.5",
+      "mx-3 flex min-w-0 flex-col gap-1 border-l border-sidebar-border px-2 py-0.5",
       "group-data-[collapsible=icon]:hidden",
       className,
     )}
@@ -557,10 +557,10 @@ export const SidebarMenuSubButton = forwardRef<
         data-slot="sidebar-menu-sub-button"
         data-active={isActive}
         className={cn(
-          "flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-ext-sidebar-foreground outline-none",
-          "transition-colors hover:bg-ext-sidebar-accent hover:text-ext-sidebar-accent-foreground",
-          "focus-visible:ring-2 focus-visible:ring-ext-sidebar-ring",
-          "data-[active=true]:bg-ext-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-ext-sidebar-accent-foreground",
+          "flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none",
+          "transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+          "focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+          "data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground",
           "[&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
           size === "sm" ? "text-xs" : "text-sm",
           "group-data-[collapsible=icon]:hidden",

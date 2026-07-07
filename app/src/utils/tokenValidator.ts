@@ -51,11 +51,6 @@ function collectPrimitiveNames(primitives: GeeklegoTokensV2['primitives']): Set<
   if (primitives.colorShadowNeutral) {
     names.add(`--color-shadow-neutral`)
   }
-  // New duration tokens for stagger values
-  if (primitives.duration) {
-    if ('stagger-sm' in primitives.duration) names.add(`--duration-stagger-sm`)
-    if ('stagger-md' in primitives.duration) names.add(`--duration-stagger-md`)
-  }
   if (primitives.breakpoints) {
     for (const k of Object.keys(primitives.breakpoints)) names.add(`--breakpoint-${k}`)
   }

@@ -53,7 +53,7 @@ function collectAllTokenNames(tokens: GeeklegoTokensV2): Set<string> {
   const primitiveKeys = [
     'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight',
     'spacing', 'radius', 'borderWidth', 'duration',
-    'easing', 'lineClamp', 'colorShadowNeutral',
+    'easing',
     'breakpoints'
   ] as const
 
@@ -64,6 +64,13 @@ function collectAllTokenNames(tokens: GeeklegoTokensV2): Set<string> {
         names.add(`--${cssPrefixForKey(key)}-${k}`)
       }
     }
+  }
+
+  // Scalar primitive: colorShadowNeutral is a single string, not a Record scale,
+  // so the object-guarded loop above skips it. Register its --color-shadow-neutral
+  // node explicitly so it appears in the graph like every other primitive.
+  if (typeof tokens.primitives.colorShadowNeutral === 'string' && tokens.primitives.colorShadowNeutral !== '') {
+    names.add('--color-shadow-neutral')
   }
 
   // v2 flat semantics: each key maps to the CSS variable `--<key>`.
@@ -88,7 +95,7 @@ export function buildTokenGraph(tokens: GeeklegoTokensV2): TokenGraph {
   const primitiveKeys = [
     'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight',
     'spacing', 'radius', 'borderWidth', 'duration',
-    'easing', 'lineClamp', 'colorShadowNeutral',
+    'easing',
     'breakpoints'
   ] as const
 
@@ -102,6 +109,11 @@ export function buildTokenGraph(tokens: GeeklegoTokensV2): TokenGraph {
         }
       }
     }
+  }
+
+  // Scalar primitive: register --color-shadow-neutral's value (see names loop above).
+  if (typeof tokens.primitives.colorShadowNeutral === 'string' && tokens.primitives.colorShadowNeutral !== '') {
+    tokenValues.set('--color-shadow-neutral', tokens.primitives.colorShadowNeutral)
   }
 
   // v2 flat semantics: each key maps to the CSS variable `--<key>`.

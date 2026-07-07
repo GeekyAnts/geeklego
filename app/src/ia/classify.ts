@@ -38,7 +38,6 @@ function getFoundationsCategories(): {
     { pattern: /^shadow-/, categoryId: 'shadow', label: 'Shadows', icon: 'Layers' },
     { pattern: /^(motion|duration|ease)-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
     { pattern: /^border-/, categoryId: 'border', label: 'Borders', icon: 'Frame' },
-    { pattern: /^line-clamp-/, categoryId: 'line-clamp', label: 'Line Clamp', icon: 'AlignJustify' },
     { pattern: /^breakpoint-/, categoryId: 'breakpoint', label: 'Breakpoints', icon: 'Monitor' },
   ]
 }

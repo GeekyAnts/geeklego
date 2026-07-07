@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect, useCallback, useRef } from 'react'
 import type { TokenEntry, GeeklegoTokensV2 } from '../types'
 import { EdCard } from '../editor-ds/primitives/EdCard'
-import { getCategoryById, type CategoryMeta } from '../ia/categoryCopy'
+import { getCategoryById, getArchitectureForCategory, type CategoryMeta } from '../ia/categoryCopy'
+import { CategoryArchitecturePanel } from './CategoryArchitecturePanel'
 import { isStatusSemantic, semanticBucketOfVar } from '../ia/semanticBuckets'
 import CategoryGroup from './CategoryGroup'
 import FilterBar from '../components/FilterBar'
@@ -53,7 +54,6 @@ const categoryFilters: Record<string, (name: string) => boolean> = {
   shadow: (name) => /^--shadow-/.test(name),
   motion: (name) => /^--(?:motion-|duration-|ease-)/.test(name),
   border: (name) => /^--border-/.test(name),
-  'line-clamp': (name) => /^--line-clamp-/.test(name),
   breakpoint: (name) => /^--breakpoint-/.test(name),
   // Semantic — v2 (2-tier) uses the flat standard ShadCN/Tailwind vocabulary.
   // Membership for surface/interactive/layout/status comes from the shared
@@ -340,6 +340,7 @@ function groupNameToPrefix(category: string, groupName: string): string {
     return '--duration-'
   }
   if (category === 'border') return '--border-width-'
+  if (category === 'breakpoint') return '--breakpoint-'
   // v2 semantics are flat standard names with no shared prefix (e.g. --primary,
   // --background) — a new semantic is just `--<name>`, so start the add-token
   // dialog with a bare `--` for all semantic categories.
@@ -474,6 +475,7 @@ function CategoryPage({ category, tokens, geeklegoTokens, onTokenClick }: Catego
   const [newPaletteOpen, setNewPaletteOpen] = useState(false)
   const displayCategory = getDisplayCategory(category)
   const meta = getCategoryMeta(category) || defaultMeta
+  const architecture = getArchitectureForCategory(category)
   const useScaleView = meta.appliesToScale || shouldUseScaleView(category)
 
   // Re-render when any staged edit changes so the list reflects live edits
@@ -541,6 +543,8 @@ function CategoryPage({ category, tokens, geeklegoTokens, onTokenClick }: Catego
         <h1 className="ed-category-title">{displayCategory}</h1>
         <p className="ed-category-statement">{meta.statement || 'Category tokens for consistent design.'}</p>
       </EdCard>
+
+      {architecture && <CategoryArchitecturePanel architecture={architecture} />}
 
       {category !== 'typography-semantic' && categoryFilteredTokens.length > 0 && (
         <FilterBar allTokens={categoryFilteredTokens} onFilterChange={handleFilterChange} category={category} />

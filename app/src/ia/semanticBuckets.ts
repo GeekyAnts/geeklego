@@ -26,8 +26,14 @@ export const SURFACE_RE =
 export const INTERACTIVE_RE =
   /^(primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring)$/
 
-/** Structural semantics (border, input, radius). */
-export const LAYOUT_RE = /^(border|input|radius)$/
+/** Structural semantics (border, input, radius) + the sidebar navigation-chrome
+ *  group. The `sidebar-*` group is a dedicated navigation surface promoted to core;
+ *  it's bucketed under layout (structural chrome) so it doesn't fall into the status
+ *  catch-all alongside destructive/success/warning. The whole group is kept together
+ *  here rather than split across surface/interactive so the cockpit renders it as one
+ *  coherent navigation block. */
+export const LAYOUT_RE =
+  /^(border|input|radius|sidebar-bg|sidebar-foreground|sidebar-border|sidebar-accent|sidebar-accent-foreground|sidebar-ring)$/
 
 // The canonical "this is a primitive / foundation prefix" exclusion. A bare name
 // matching this is a Tier-1 primitive (or a registered foundation scale), NOT a

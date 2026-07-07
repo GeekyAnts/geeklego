@@ -65,6 +65,16 @@ describe('semanticBuckets — non-status buckets', () => {
     }
   })
 
+  it('routes the sidebar navigation-chrome group to layout, NOT status (M1)', () => {
+    for (const n of [
+      'sidebar-bg', 'sidebar-foreground', 'sidebar-border',
+      'sidebar-accent', 'sidebar-accent-foreground', 'sidebar-ring',
+    ]) {
+      expect(semanticBucketOf(n), `${n} must be layout`).toBe('layout')
+      expect(isStatusSemantic(n), `${n} must not be status`).toBe(false)
+    }
+  })
+
   it('none of the non-status buckets are misclassified as status', () => {
     for (const n of ['background', 'primary', 'border', 'card', 'ring', 'radius']) {
       expect(isStatusSemantic(n)).toBe(false)

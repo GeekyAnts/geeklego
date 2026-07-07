@@ -11,15 +11,13 @@
 .dark {
   --background:            var(--color-neutral-950);
   --foreground:            var(--color-neutral-50);
-  --primary:               var(--color-brand-200);
-  --primary-foreground:    var(--color-brand-900);
-  /* secondary/muted = NEUTRAL structure (never the brand ramp). */
+  --primary:               var(--color-brand-50);
+  --primary-foreground:    var(--color-neutral-900);
   --secondary:             var(--color-neutral-800);
   --secondary-foreground:  var(--color-neutral-50);
   --muted:                 var(--color-neutral-800);
   --muted-foreground:      var(--color-neutral-400);
-  /* accent = the one neutral surface intentionally brand-tinted (hover/active). */
-  --accent:                var(--color-brand-800);
+  --accent:                var(--color-neutral-800);
   --accent-foreground:     var(--color-neutral-50);
   --destructive:           var(--color-error-600);
   --destructive-foreground: var(--color-neutral-50);
@@ -29,28 +27,24 @@
   --warning-foreground:    var(--color-neutral-50);
   --info:                  var(--color-info-600);
   --info-foreground:       var(--color-neutral-50);
-  /* borders/inputs = NEUTRAL gray, so changing the brand never repaints structure. */
   --border:                var(--color-neutral-700);
   --input:                 var(--color-neutral-700);
-  --ring:                  var(--color-brand-300);
+  --ring:                  var(--color-brand-50);
   --card:                  var(--color-neutral-900);
   --card-foreground:       var(--color-neutral-50);
   --popover:               var(--color-neutral-900);
   --popover-foreground:    var(--color-neutral-50);
-
-  /* Chart series — re-point at lighter primitive steps so the hues stay
-     legible against the dark surface. */
+  --sidebar-bg:            var(--color-neutral-900);
+  --sidebar-foreground:    var(--color-neutral-50);
+  --sidebar-border:        var(--color-neutral-700);
+  --sidebar-accent:        var(--color-neutral-800);
+  --sidebar-accent-foreground: var(--color-neutral-50);
+  --sidebar-ring:          var(--color-brand-300);
   --chart-1:               var(--color-brand-400);
   --chart-2:               var(--color-accent-400);
   --chart-3:               var(--color-success-400);
   --chart-4:               var(--color-warning-400);
   --chart-5:               var(--color-info-400);
-  --sidebar-bg:                var(--color-neutral-900);
-  --sidebar-foreground:        var(--color-neutral-50);
-  --sidebar-border:            var(--color-neutral-700);
-  --sidebar-accent:            var(--color-neutral-800);
-  --sidebar-accent-foreground: var(--color-neutral-50);
-  --sidebar-ring:              var(--color-brand-300);
 
   /* --ext-* overrides for dark (opaque passthrough). */
   --ext-button-gamified-shadow: 0 2px 0 0 var(--color-accent-800);

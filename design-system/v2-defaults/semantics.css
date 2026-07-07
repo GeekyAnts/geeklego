@@ -12,50 +12,38 @@
 :root {
   --background:            var(--color-neutral-0);
   --foreground:            var(--color-neutral-900);
-  --primary:               var(--color-brand-900);
+  --primary:               var(--color-brand-600);
   --primary-foreground:    var(--color-neutral-0);
-  /* secondary/muted = NEUTRAL structure (never the brand ramp). */
   --secondary:             var(--color-neutral-100);
   --secondary-foreground:  var(--color-neutral-900);
   --muted:                 var(--color-neutral-100);
-  --muted-foreground:      var(--color-neutral-500);
-  /* accent = the one neutral surface intentionally brand-tinted (hover/active). */
-  --accent:                var(--color-brand-100);
-  --accent-foreground:     var(--color-brand-900);
+  --muted-foreground:      var(--color-neutral-900);
+  --accent:                var(--color-neutral-100);
+  --accent-foreground:     var(--color-neutral-900);
   --destructive:           var(--color-error-500);
   --destructive-foreground: var(--color-neutral-0);
-  /* geeklego extends ShadCN: success/warning/info feedback family (base + fg pairs). */
   --success:               var(--color-success-500);
   --success-foreground:    var(--color-neutral-0);
   --warning:               var(--color-warning-500);
   --warning-foreground:    var(--color-neutral-0);
   --info:                  var(--color-info-500);
   --info-foreground:       var(--color-neutral-0);
-  /* borders/inputs = NEUTRAL gray, so changing the brand never repaints structure. */
   --border:                var(--color-neutral-200);
   --input:                 var(--color-neutral-200);
-  --ring:                  var(--color-brand-900);
+  --ring:                  var(--color-brand-600);
   --card:                  var(--color-neutral-0);
   --card-foreground:       var(--color-neutral-900);
   --popover:               var(--color-neutral-0);
   --popover-foreground:    var(--color-neutral-900);
-
-  /* Sidebar — standard ShadCN core vocab, its own navigation surface. */
-  --sidebar-bg:               var(--color-neutral-50);
-  --sidebar-foreground:       var(--color-neutral-900);
-  --sidebar-border:           var(--color-neutral-200);
-  --sidebar-accent:           var(--color-neutral-100);
+  --sidebar-bg:            var(--color-neutral-50);
+  --sidebar-foreground:    var(--color-neutral-900);
+  --sidebar-border:        var(--color-neutral-200);
+  --sidebar-accent:        var(--color-neutral-100);
   --sidebar-accent-foreground: var(--color-neutral-900);
-  --sidebar-ring:             var(--color-brand-600);
+  --sidebar-ring:          var(--color-brand-600);
 
   /* ShadCN expects a single --radius; component utilities derive sm/md/lg from it. */
   --radius:                var(--radius-lg);
-
-  /* Chart data-series — geeklego EXTENDS the standard ShadCN set (which defines
-     --chart-1..5 but leaves the values theme-specific). Five visually distinct
-     brand hues for chart series; each chains to a primitive, never a raw value.
-     Consumed by recharts via var() in SVG fill/stroke props (no className path
-     exists for SVG paint), which is the documented arbitrary-value exception. */
   --chart-1:               var(--color-brand-500);
   --chart-2:               var(--color-accent-500);
   --chart-3:               var(--color-success-500);
@@ -93,26 +81,30 @@
   --color-card-foreground:       var(--card-foreground);
   --color-popover:               var(--popover);
   --color-popover-foreground:    var(--popover-foreground);
-  --color-sidebar-bg:               var(--sidebar-bg);
-  --color-sidebar-foreground:       var(--sidebar-foreground);
-  --color-sidebar-border:           var(--sidebar-border);
-  --color-sidebar-accent:           var(--sidebar-accent);
+  --color-sidebar-bg:            var(--sidebar-bg);
+  --color-sidebar-foreground:    var(--sidebar-foreground);
+  --color-sidebar-border:        var(--sidebar-border);
+  --color-sidebar-accent:        var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-ring:             var(--sidebar-ring);
-
-  --radius-sm:                   calc(var(--radius) - 4px);
-  --radius-md:                   calc(var(--radius) - 2px);
-  --radius-lg:                   var(--radius);
-  --radius-xl:                   calc(var(--radius) + 4px);
-
-  /* Register chart series as color tokens so the color-chart utilities resolve
-     (recharts reads them in SVG fill/stroke; also gives bg-chart utilities). */
+  --color-sidebar-ring:          var(--sidebar-ring);
   --color-chart-1:               var(--chart-1);
   --color-chart-2:               var(--chart-2);
   --color-chart-3:               var(--chart-3);
   --color-chart-4:               var(--chart-4);
   --color-chart-5:               var(--chart-5);
+
+  --radius-sm:                   calc(var(--radius) - 4px);
+  --radius-md:                   calc(var(--radius) - 2px);
+  --radius-lg:                   var(--radius);
+  --radius-xl:                   calc(var(--radius) + 4px);
 }
+
+/* ---------------------------------------------------------------------------
+   2b · Safelist — always generate the semantic color utilities (see note above).
+   --------------------------------------------------------------------------- */
+@source inline("{hover:,focus:,}{bg,text}-{background,foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,success,success-foreground,warning,warning-foreground,info,info-foreground,card,card-foreground,popover,popover-foreground,sidebar-bg,sidebar-foreground,sidebar-accent,sidebar-accent-foreground,chart-1,chart-2,chart-3,chart-4,chart-5}");
+@source inline("border-{border,input,sidebar-border,destructive,success,warning,info}");
+@source inline("ring-{ring,sidebar-ring}");
 
 /* ---------------------------------------------------------------------------
    3 · CUSTOM VARIANTS — namespaced --ext-<component>-<variant>-* tokens.
@@ -143,6 +135,8 @@
        --radix-accordion-content-height var Radix measures at runtime. Defining
        them in @theme is what makes Tailwind v4 emit the animate-* utilities.
        Not tokens — geeklego-level motion shared by collapsible components.
+       Durations chain to the governed motion vocabulary (var(--duration-*))
+       per the Motion Duration ADR — never hardcode a duration here.
    --------------------------------------------------------------------------- */
 @theme {
   --animate-accordion-down: accordion-down var(--duration-normal) ease-out;
@@ -169,5 +163,15 @@
   @keyframes collapsible-up {
     from { height: var(--radix-collapsible-content-height); }
     to { height: 0; }
+  }
+
+  /* Caret blink — the fake cursor in InputOTP slots (input-otp drives a single
+     hidden input, so each slot paints its own blinking caret). Not a token —
+     geeklego-level motion shared by the OTP field. */
+  --animate-caret-blink: caret-blink var(--duration-spin) ease-out infinite;
+
+  @keyframes caret-blink {
+    0%, 70%, 100% { opacity: 1; }
+    20%, 50% { opacity: 0; }
   }
 }

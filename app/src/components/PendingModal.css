@@ -282,3 +282,21 @@
   border-color: var(--ed-info) !important;
   color: var(--ed-info) !important;
 }
+
+/* Warn-only entries: a legibility problem with no safe auto-pick (no Apply button). */
+.ed-suggest-item--warn {
+  background: var(--ed-warning-bg);
+}
+.ed-suggest-warn-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ed-warning);
+}
+.ed-suggest-warn-msg svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}

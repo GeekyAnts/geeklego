@@ -11,8 +11,8 @@
 .dark {
   --background:            var(--color-neutral-950);
   --foreground:            var(--color-neutral-50);
-  --primary:               var(--color-brand-600);
-  --primary-foreground:    var(--color-neutral-0);
+  --primary:               var(--color-brand-50);
+  --primary-foreground:    var(--color-neutral-900);
   --secondary:             var(--color-neutral-800);
   --secondary-foreground:  var(--color-neutral-50);
   --muted:                 var(--color-neutral-800);
@@ -29,22 +29,22 @@
   --info-foreground:       var(--color-neutral-50);
   --border:                var(--color-neutral-700);
   --input:                 var(--color-neutral-700);
-  --ring:                  var(--color-brand-600);
+  --ring:                  var(--color-brand-50);
   --card:                  var(--color-neutral-900);
   --card-foreground:       var(--color-neutral-50);
   --popover:               var(--color-neutral-900);
   --popover-foreground:    var(--color-neutral-50);
-  --chart-1:               var(--color-brand-400);
-  --chart-2:               var(--color-accent-400);
-  --chart-3:               var(--color-success-400);
-  --chart-4:               var(--color-warning-400);
-  --chart-5:               var(--color-info-400);
   --sidebar-bg:            var(--color-neutral-900);
   --sidebar-foreground:    var(--color-neutral-50);
   --sidebar-border:        var(--color-neutral-700);
   --sidebar-accent:        var(--color-neutral-800);
   --sidebar-accent-foreground: var(--color-neutral-50);
   --sidebar-ring:          var(--color-brand-300);
+  --chart-1:               var(--color-brand-400);
+  --chart-2:               var(--color-accent-400);
+  --chart-3:               var(--color-success-400);
+  --chart-4:               var(--color-warning-400);
+  --chart-5:               var(--color-info-400);
 
   /* --ext-* overrides for dark (opaque passthrough). */
   --ext-button-gamified-shadow: 0 2px 0 0 var(--color-accent-800);

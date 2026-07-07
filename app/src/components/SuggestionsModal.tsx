@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useMemo, useState } from 'react'
-import { X, ArrowRight, Check } from 'lucide-react'
+import { X, ArrowRight, Check, AlertTriangle } from 'lucide-react'
 import { stage, getStagedValue, subscribeToPendingChanges } from '../state/staging'
 import { subscribeToLockChanges } from '../state/semanticLocks'
 import { withPxAnnotation } from '../utils/colorUtils'
@@ -38,13 +38,16 @@ export function SuggestionsModal({ open, onClose, tokens, onApplied }: Suggestio
     onApplied?.(s, prev)
   }, [onApplied])
 
+  // Warn-only entries have no `to`/stagingKey — they are never applied.
+  const applicable = useMemo(() => suggestions.filter(s => s.kind === 'suggest'), [suggestions])
+
   const applyAll = useCallback(() => {
-    for (const s of suggestions) {
+    for (const s of applicable) {
       const prev = getStagedValue(s.stagingKey)
       stage(s.stagingKey, s.to)
       onApplied?.(s, prev)
     }
-  }, [suggestions, onApplied])
+  }, [applicable, onApplied])
 
   useEffect(() => {
     if (!open) return
@@ -83,12 +86,15 @@ export function SuggestionsModal({ open, onClose, tokens, onApplied }: Suggestio
         <div className="ed-pending-modal__body">
           {suggestions.length === 0 ? (
             <div className="ed-pending-modal__empty">
-              No suggestions available — every semantic already matches its auto-pick (or is locked).
+              No suggestions available — every semantic matches its auto-pick, reads legibly on its surface, or is locked.
             </div>
           ) : (
             <div className="ed-pending-modal__list">
               {suggestions.map((s) => (
-                <div key={`${s.theme}:${s.cssName}`} className="ed-pending-modal__item">
+                <div
+                  key={`${s.kind}:${s.theme}:${s.cssName}`}
+                  className={`ed-pending-modal__item${s.kind === 'warn' ? ' ed-suggest-item--warn' : ''}`}
+                >
                   <div className="ed-pending-modal__item-info">
                     <span className="ed-pending-modal__token-name">
                       <span className={`ed-suggest-theme-tag ed-suggest-theme-tag--${s.theme}`}>
@@ -96,27 +102,37 @@ export function SuggestionsModal({ open, onClose, tokens, onApplied }: Suggestio
                       </span>
                       {s.cssName}
                     </span>
-                    <div className="ed-pending-modal__value-row">
-                      <span className="ed-pending-modal__old">{withPxAnnotation(s.from)}</span>
-                      <span className="ed-pending-modal__arrow"><ArrowRight size={11} aria-hidden="true" /></span>
-                      <span className="ed-pending-modal__new">{withPxAnnotation(s.to)}</span>
-                    </div>
+                    {s.to ? (
+                      <div className="ed-pending-modal__value-row">
+                        <span className="ed-pending-modal__old">{withPxAnnotation(s.from)}</span>
+                        <span className="ed-pending-modal__arrow"><ArrowRight size={11} aria-hidden="true" /></span>
+                        <span className="ed-pending-modal__new">{withPxAnnotation(s.to)}</span>
+                      </div>
+                    ) : null}
+                    {s.message ? (
+                      <div className="ed-suggest-warn-msg">
+                        <AlertTriangle size={12} aria-hidden="true" />
+                        <span>{s.message}</span>
+                      </div>
+                    ) : null}
                   </div>
-                  <button
-                    type="button"
-                    className="ed-pending-modal__undo-btn ed-suggest-apply-btn"
-                    onClick={() => applyOne(s)}
-                    aria-label={`Apply suggestion for ${s.cssName} (${s.theme})`}
-                  >
-                    <Check size={11} aria-hidden="true" /> Apply
-                  </button>
+                  {s.kind === 'suggest' && (
+                    <button
+                      type="button"
+                      className="ed-pending-modal__undo-btn ed-suggest-apply-btn"
+                      onClick={() => applyOne(s)}
+                      aria-label={`Apply suggestion for ${s.cssName} (${s.theme})`}
+                    >
+                      <Check size={11} aria-hidden="true" /> Apply
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {suggestions.length > 0 && (
+        {applicable.length > 0 && (
           <div className="ed-pending-modal__footer">
             <button
               type="button"

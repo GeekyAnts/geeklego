@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { computeAvailableSuggestions } from './suggestions.ts'
 import { discardAll } from './staging.ts'
-import { unlockSemantic, getAllLocked } from './semanticLocks.ts'
+import { lockSemantic, unlockSemantic, getAllLocked } from './semanticLocks.ts'
 import type { GeeklegoTokensV2 } from '../types.ts'
 
 // A neutral ramp + brand ramp wide enough for the engines to pick from.
@@ -92,5 +92,75 @@ describe('computeAvailableSuggestions', () => {
 
   it('returns [] for a null model', () => {
     expect(computeAvailableSuggestions(null)).toEqual([])
+  })
+
+  // A near-black brand ramp whose LIGHTER steps are still visible on a dark surface
+  // (so the engine can offer an applicable re-point), plus dark bg = a dark neutral.
+  const NEAR_BLACK_BRAND = {
+    '50': '#f5f5f5', '100': '#ececec', '200': '#c5c5c5', '300': '#909090',
+    '400': '#545454', '500': '#171717', '600': '#161616', '700': '#151515',
+    '900': '#111111',
+  }
+
+  it('offers an APPLICABLE re-point when --primary is invisible but a lighter step exists', () => {
+    const tokens = makeTokens({ dark: { background: 'var(--color-neutral-900)' } }) // #1c1c20
+    ;(tokens.primitives.colors as Record<string, unknown>).brand = NEAR_BLACK_BRAND
+
+    const s = computeAvailableSuggestions(tokens)
+    const fix = s.find(x => x.key === 'primary' && x.theme === 'dark')
+    expect(fix).toBeDefined()
+    expect(fix!.kind).toBe('suggest')          // applicable, not warn-only
+    expect(fix!.to).toBe('var(--color-brand-50)') // highest-contrast step on dark bg
+    expect(fix!.stagingKey).toBe('dark:--primary')
+    expect(fix!.message).toMatch(/invisible/i)
+  })
+
+  it('still surfaces the fix even when the token is locked (Apply is opt-in)', () => {
+    const tokens = makeTokens({ dark: { background: 'var(--color-neutral-900)' } })
+    ;(tokens.primitives.colors as Record<string, unknown>).brand = NEAR_BLACK_BRAND
+    lockSemantic('dark:primary') // a lock must not silence a legibility problem
+    try {
+      const s = computeAvailableSuggestions(tokens)
+      expect(s.some(x => x.key === 'primary' && x.theme === 'dark')).toBe(true)
+    } finally {
+      unlockSemantic('dark:primary')
+    }
+  })
+
+  it('falls back to warn-only when the ramp is too flat to have a visible step', () => {
+    // Every step near-black → nothing clears 3:1 on a near-black dark bg.
+    const flatBlack = {
+      '50': '#0d0d0d', '100': '#0d0d0d', '200': '#0c0c0c', '300': '#0c0c0c',
+      '400': '#0b0b0b', '500': '#0b0b0b', '600': '#0a0a0a', '700': '#0a0a0a',
+      '900': '#090909',
+    }
+    const tokens = makeTokens({ dark: { background: 'var(--color-neutral-900)' } })
+    ;(tokens.primitives.colors as Record<string, unknown>).brand = flatBlack
+    const s = computeAvailableSuggestions(tokens)
+    const warn = s.find(x => x.key === 'primary' && x.theme === 'dark')
+    expect(warn).toBeDefined()
+    expect(warn!.kind).toBe('warn')
+    expect(warn!.to).toBe('')
+    expect(warn!.message).toMatch(/widen the ramp/i)
+  })
+
+  it('does not tug --primary back to a step invisible on the dark surface (no revert loop)', () => {
+    // Simulate the post-apply state: --primary already re-pointed to the visible
+    // light step (brand-50) on a dark bg. The brand loop's text-optimal pick is
+    // brand-600 (invisible on this bg) — it must NOT be suggested as a revert.
+    const tokens = makeTokens({
+      dark: { primary: 'var(--color-brand-50)', background: 'var(--color-neutral-900)' },
+    })
+    ;(tokens.primitives.colors as Record<string, unknown>).brand = NEAR_BLACK_BRAND
+    const s = computeAvailableSuggestions(tokens)
+    const darkPrimary = s.filter(x => x.key === 'primary' && x.theme === 'dark')
+    // brand-50 is visible on the dark bg → no surface fix, and no revert to brand-600.
+    expect(darkPrimary.some(x => x.to === 'var(--color-brand-600)')).toBe(false)
+  })
+
+  it('does not flag --primary when it stands out on its surface', () => {
+    // Default indigo brand-600 on white/dark neutrals — plenty of contrast.
+    const s = computeAvailableSuggestions(makeTokens())
+    expect(s.some(x => x.key === 'primary' && x.message)).toBe(false)
   })
 })

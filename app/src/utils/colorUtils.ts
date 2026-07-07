@@ -302,6 +302,36 @@ export function makeColorRef(family: string, shade: string): string {
   return `var(--color-${family}-${shade})`
 }
 
+/** WCAG 2.x minimum contrast for a non-text UI component against its surface. */
+export const WCAG_UI_COMPONENT = 3.0
+
+/** Every step key we'll consider when re-pointing a brand element for surface visibility. */
+const SURFACE_FIX_STEP_CANDIDATES = [
+  '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950',
+] as const
+
+/**
+ * Pick a brand-ramp step that is VISIBLE against a given surface (≥3:1, the
+ * non-text-UI threshold). Chooses the candidate with the highest contrast against
+ * `surfaceHex` — the most unambiguously visible option — so an all-black ramp on a
+ * dark surface flips to its lightest step. Returns the step key, or null if the
+ * ramp is so flat that no step clears the threshold.
+ */
+export function pickStepForSurface(
+  scale: Record<string, string>,
+  surfaceHex: string,
+): { step: string; contrast: number } | null {
+  let best: { step: string; contrast: number } | null = null
+  for (const step of SURFACE_FIX_STEP_CANDIDATES) {
+    const hex = stepValueToHex(scale[step])
+    if (!hex) continue
+    const contrast = contrastRatio(hex, surfaceHex)
+    if (!best || contrast > best.contrast) best = { step, contrast }
+  }
+  if (!best || best.contrast < WCAG_UI_COMPONENT) return null
+  return best
+}
+
 // ─── Brand-aware semantic auto-pick ─────────────────────────────────────────────
 // Given a brand ramp, pick the --primary step + matching foreground so the result
 // reads as the hue AND meets WCAG 2 AA (4.5:1). Mirrors what ShadCN hand-tunes per

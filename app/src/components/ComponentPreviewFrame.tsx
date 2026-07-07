@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback, useMemo } from 'react'
-import { componentToStoryId, getStoryUrl, getAvailableStories } from '../utils/storybook'
+import { componentToStoryId, getStoryUrl, getAvailableStories, STORYBOOK_ORIGIN } from '../utils/storybook'
 
 interface ComponentPreviewFrameProps {
   componentName: string
@@ -12,8 +12,6 @@ interface ComponentPreviewFrameProps {
   /** Defer mounting the iframe until the card scrolls near view (gallery use). */
   lazy?: boolean
 }
-
-const STORYBOOK_ORIGIN = 'http://localhost:6006'
 
 // Build the override CSS for the active theme. `tokens` is the staged-edits Map,
 // whose keys may be either `--foo` (light/base) or `dark:--foo` (dark override).

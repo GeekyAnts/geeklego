@@ -12,7 +12,7 @@
 :root {
   --background:            var(--color-neutral-0);
   --foreground:            var(--color-neutral-900);
-  --primary:               var(--color-brand-500);
+  --primary:               var(--color-brand-600);
   --primary-foreground:    var(--color-neutral-0);
   --secondary:             var(--color-neutral-100);
   --secondary-foreground:  var(--color-neutral-900);
@@ -22,6 +22,12 @@
   --accent-foreground:     var(--color-neutral-900);
   --destructive:           var(--color-error-500);
   --destructive-foreground: var(--color-neutral-0);
+  --success:               var(--color-success-500);
+  --success-foreground:    var(--color-neutral-0);
+  --warning:               var(--color-warning-500);
+  --warning-foreground:    var(--color-neutral-0);
+  --info:                  var(--color-info-500);
+  --info-foreground:       var(--color-neutral-0);
   --border:                var(--color-neutral-200);
   --input:                 var(--color-neutral-200);
   --ring:                  var(--color-brand-600);
@@ -29,6 +35,12 @@
   --card-foreground:       var(--color-neutral-900);
   --popover:               var(--color-neutral-0);
   --popover-foreground:    var(--color-neutral-900);
+  --sidebar-bg:            var(--color-neutral-50);
+  --sidebar-foreground:    var(--color-neutral-900);
+  --sidebar-border:        var(--color-neutral-200);
+  --sidebar-accent:        var(--color-neutral-100);
+  --sidebar-accent-foreground: var(--color-neutral-900);
+  --sidebar-ring:          var(--color-brand-600);
 
   /* ShadCN expects a single --radius; component utilities derive sm/md/lg from it. */
   --radius:                var(--radius-lg);
@@ -56,6 +68,12 @@
   --color-accent-foreground:     var(--accent-foreground);
   --color-destructive:           var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success:               var(--success);
+  --color-success-foreground:    var(--success-foreground);
+  --color-warning:               var(--warning);
+  --color-warning-foreground:    var(--warning-foreground);
+  --color-info:                  var(--info);
+  --color-info-foreground:       var(--info-foreground);
   --color-border:                var(--border);
   --color-input:                 var(--input);
   --color-ring:                  var(--ring);
@@ -63,6 +81,12 @@
   --color-card-foreground:       var(--card-foreground);
   --color-popover:               var(--popover);
   --color-popover-foreground:    var(--popover-foreground);
+  --color-sidebar-bg:            var(--sidebar-bg);
+  --color-sidebar-foreground:    var(--sidebar-foreground);
+  --color-sidebar-border:        var(--sidebar-border);
+  --color-sidebar-accent:        var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-ring:          var(--sidebar-ring);
   --color-chart-1:               var(--chart-1);
   --color-chart-2:               var(--chart-2);
   --color-chart-3:               var(--chart-3);
@@ -78,9 +102,9 @@
 /* ---------------------------------------------------------------------------
    2b · Safelist — always generate the semantic color utilities (see note above).
    --------------------------------------------------------------------------- */
-@source inline("{hover:,focus:,}{bg,text}-{background,foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,card,card-foreground,popover,popover-foreground}");
-@source inline("border-{border,input}");
-@source inline("ring-ring");
+@source inline("{hover:,focus:,}{bg,text}-{background,foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,success,success-foreground,warning,warning-foreground,info,info-foreground,card,card-foreground,popover,popover-foreground,sidebar-bg,sidebar-foreground,sidebar-accent,sidebar-accent-foreground,chart-1,chart-2,chart-3,chart-4,chart-5}");
+@source inline("border-{border,input,sidebar-border,destructive,success,warning,info}");
+@source inline("ring-{ring,sidebar-ring}");
 
 /* ---------------------------------------------------------------------------
    3 · CUSTOM VARIANTS — namespaced --ext-<component>-<variant>-* tokens.
@@ -95,19 +119,6 @@
   --ext-button-gamified-foreground: var(--color-neutral-0);
   --ext-button-gamified-ring:       var(--color-accent-300);
   --ext-button-gamified-shadow:     0 2px 0 0 var(--color-accent-700);
-
-  /* Sidebar — its own navigation surface, distinct from --background/--card.
-     ShadCN ships a dedicated --sidebar-* token group for exactly this; in v2
-     it lives in the --ext-* block (chained to primitives, never hardcoded).
-     `bg`/`fg` = the panel surface; `border` = its edge + internal separators;
-     `accent`/`accent-fg` = the hovered/active menu-item highlight (quiet,
-     neutral — same role as the core --accent); `ring` = focus ring on items. */
-  --ext-sidebar-bg:               var(--color-neutral-50);
-  --ext-sidebar-foreground:       var(--color-neutral-900);
-  --ext-sidebar-border:           var(--color-neutral-200);
-  --ext-sidebar-accent:           var(--color-neutral-100);
-  --ext-sidebar-accent-foreground: var(--color-neutral-900);
-  --ext-sidebar-ring:             var(--color-brand-600);
 }
 
 @theme inline {
@@ -116,13 +127,6 @@
   --color-ext-button-gamified-bg-active:  var(--ext-button-gamified-bg-active);
   --color-ext-button-gamified-foreground: var(--ext-button-gamified-foreground);
   --color-ext-button-gamified-ring:       var(--ext-button-gamified-ring);
-
-  --color-ext-sidebar-bg:               var(--ext-sidebar-bg);
-  --color-ext-sidebar-foreground:       var(--ext-sidebar-foreground);
-  --color-ext-sidebar-border:           var(--ext-sidebar-border);
-  --color-ext-sidebar-accent:           var(--ext-sidebar-accent);
-  --color-ext-sidebar-accent-foreground: var(--ext-sidebar-accent-foreground);
-  --color-ext-sidebar-ring:             var(--ext-sidebar-ring);
 }
 
 /* ---------------------------------------------------------------------------
@@ -131,10 +135,12 @@
        --radix-accordion-content-height var Radix measures at runtime. Defining
        them in @theme is what makes Tailwind v4 emit the animate-* utilities.
        Not tokens — geeklego-level motion shared by collapsible components.
+       Durations chain to the governed motion vocabulary (var(--duration-*))
+       per the Motion Duration ADR — never hardcode a duration here.
    --------------------------------------------------------------------------- */
 @theme {
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-accordion-down: accordion-down var(--duration-normal) ease-out;
+  --animate-accordion-up: accordion-up var(--duration-normal) ease-out;
 
   @keyframes accordion-down {
     from { height: 0; }
@@ -147,8 +153,8 @@
 
   /* Collapsible — same technique as accordion, off Radix's
      --radix-collapsible-content-height measurement. */
-  --animate-collapsible-down: collapsible-down 0.2s ease-out;
-  --animate-collapsible-up: collapsible-up 0.2s ease-out;
+  --animate-collapsible-down: collapsible-down var(--duration-normal) ease-out;
+  --animate-collapsible-up: collapsible-up var(--duration-normal) ease-out;
 
   @keyframes collapsible-down {
     from { height: 0; }
@@ -162,7 +168,7 @@
   /* Caret blink — the fake cursor in InputOTP slots (input-otp drives a single
      hidden input, so each slot paints its own blinking caret). Not a token —
      geeklego-level motion shared by the OTP field. */
-  --animate-caret-blink: caret-blink 1s ease-out infinite;
+  --animate-caret-blink: caret-blink var(--duration-spin) ease-out infinite;
 
   @keyframes caret-blink {
     0%, 70%, 100% { opacity: 1; }

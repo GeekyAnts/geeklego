@@ -66,7 +66,7 @@ export const Default: Story = {
         {/* CSS columns masonry: cards flow top-to-bottom then wrap into the next
             column, each sized to its own content → the packed, varied-height
             collage in the reference, not a row of equal tiles. */}
-        <div className="[column-gap:1rem] columns-1 sm:columns-2 lg:columns-3 xl:columns-4">
+        <div className="gap-4 columns-1 sm:columns-2 lg:columns-3 xl:columns-4">
 
           {/* Contribution History — chart card */}
           <Card className="mb-4 break-inside-avoid">

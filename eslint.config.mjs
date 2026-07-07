@@ -26,7 +26,14 @@ export default tseslint.config(
     // component-builder-v2-workspace/**), not shipped source — never lint it.
     // `storybook-static` is the Storybook build artifact (gitignored, like dist) —
     // minified output, never lint it.
-    ignores: ["dist", "storybook-static", "node_modules", ".next", ".claude/**"],
+    ignores: [
+      "dist",
+      "**/dist/**",
+      "storybook-static",
+      "node_modules",
+      ".next",
+      ".claude/**",
+    ],
   },
 
   // Base JS recommended (applies to .js/.mjs/.cjs). `no-undef` is disabled

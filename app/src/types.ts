@@ -1,11 +1,3 @@
-// ─── Content Flexibility ─────────────────────────────────────────────────────
-
-export interface ContentFlexibilityPrimitives {
-  lineClamp: Record<string, number>
-  maxWidth: Record<string, string>
-  minWidth: Record<string, string>
-}
-
 // ─── Primitives ──────────────────────────────────────────────────────────────
 
 export interface ColorScale {
@@ -31,15 +23,10 @@ export interface Primitives {
   spacing: Record<string, string>
   radius: Record<string, string>
   borderWidth: Record<string, string>
-  opacity: Record<string, number>
-  zIndex: Record<string, number>
   duration: Record<string, string>
   easing: Record<string, string>
-  sizeScale: Record<string, string>
-  iconSize: Record<string, string>
   colorShadowNeutral: string
   breakpoints: Record<string, string>
-  contentFlexibility: ContentFlexibilityPrimitives
 }
 
 // ─── v2 flat ShadCN semantic model ─────────────────────────────────────────────
@@ -59,12 +46,25 @@ export type V2SemanticKey =
   | 'muted' | 'muted-foreground'
   | 'accent' | 'accent-foreground'
   | 'destructive' | 'destructive-foreground'
+  // Status semantics — geeklego extends the ShadCN set with success/warning/info
+  // (each with a -foreground pair), hand-authored in semantics.css after destructive.
+  | 'success' | 'success-foreground'
+  | 'warning' | 'warning-foreground'
+  | 'info' | 'info-foreground'
   | 'border' | 'input' | 'ring'
   | 'card' | 'card-foreground'
   | 'popover' | 'popover-foreground'
+  // Sidebar — standard ShadCN core vocab (ShadCN ships a dedicated --sidebar-*
+  // group), promoted out of the --ext-* block. Its own navigation surface.
+  | 'sidebar-bg' | 'sidebar-foreground' | 'sidebar-border'
+  | 'sidebar-accent' | 'sidebar-accent-foreground' | 'sidebar-ring'
   | 'radius'
 
-/** The complete allowlist of v2 core semantic keys (the only names applyV2SemanticToken accepts). */
+/** The canonical ordered list of v2 core semantic keys — drives the generator's
+ *  emission order and the @source safelist. NOTE: this is NOT a parse gate;
+ *  applyV2SemanticToken is a denylist (skips only ext-/color-), so forward-compat
+ *  extra semantics still round-trip via the generator's `extras` loop. Keys are
+ *  listed here so they emit in canonical order AND get safelisted. */
 export const V2_SEMANTIC_KEYS: readonly V2SemanticKey[] = [
   'background', 'foreground',
   'primary', 'primary-foreground',
@@ -72,9 +72,14 @@ export const V2_SEMANTIC_KEYS: readonly V2SemanticKey[] = [
   'muted', 'muted-foreground',
   'accent', 'accent-foreground',
   'destructive', 'destructive-foreground',
+  'success', 'success-foreground',
+  'warning', 'warning-foreground',
+  'info', 'info-foreground',
   'border', 'input', 'ring',
   'card', 'card-foreground',
   'popover', 'popover-foreground',
+  'sidebar-bg', 'sidebar-foreground', 'sidebar-border',
+  'sidebar-accent', 'sidebar-accent-foreground', 'sidebar-ring',
   'radius',
 ] as const
 
@@ -152,7 +157,7 @@ export type TabId = 'primitives' | 'semantics' | 'responsive' | 'export'
 export type ThemeMode = 'light' | 'dark'
 export type PrimitiveSection =
   | 'colors' | 'typography' | 'spacing' | 'sizing'
-  | 'radius' | 'borders' | 'opacity' | 'zindex' | 'motion'
+  | 'radius' | 'borders' | 'zindex' | 'motion'
 
 export interface ColorOption {
   label: string

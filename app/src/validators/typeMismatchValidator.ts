@@ -42,8 +42,7 @@ function getTokenType(tokenName: string): 'color' | 'spacing' | 'radius' | 'unkn
     return 'spacing'
   }
   if (tokenName.startsWith('--radius-') ||
-    tokenName.startsWith('--size-component-') ||
-    tokenName.startsWith('--icon-size-')) {
+    tokenName.startsWith('--size-component-')) {
     return 'radius'
   }
   if (tokenName.startsWith('--border-') ||

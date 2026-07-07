@@ -51,8 +51,18 @@ function toStorySegment(storyName: string): string {
     .toLowerCase()
 }
 
+/**
+ * The port Storybook is served on. Defaults to 6006 (Storybook's default), but is
+ * overridable via `VITE_STORYBOOK_PORT` so the Token Editor can point at a
+ * non-default instance (e.g. launch.json runs Storybook on 6008 to avoid clashes).
+ */
+export const STORYBOOK_PORT: number = Number(import.meta.env.VITE_STORYBOOK_PORT) || 6006
+
+/** Storybook origin, derived from {@link STORYBOOK_PORT}. */
+export const STORYBOOK_ORIGIN = `http://localhost:${STORYBOOK_PORT}`
+
 /** Full Storybook iframe URL for a given story id. */
-export function getStoryUrl(storyId: string, port = 6006): string {
+export function getStoryUrl(storyId: string, port = STORYBOOK_PORT): string {
   return `http://localhost:${port}/iframe.html?id=${storyId}&viewMode=story`
 }
 

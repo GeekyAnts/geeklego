@@ -12,6 +12,7 @@ import type {
   SemanticSubCategory
 } from './classify.types.ts'
 import type { TokenMetadata } from '../state/metadata.types'
+import { semanticBucketOf, type SemanticBucket } from './semanticBuckets.ts'
 
 // ─── Known Component List ───────────────────────────────────────────────────
 // v2 (2-tier) has no component-token tier, so there are no component tokens to
@@ -35,57 +36,34 @@ function getFoundationsCategories(): {
     { pattern: /^radius-/, categoryId: 'radius', label: 'Radius', icon: 'Box' },
     { pattern: /^(font|text|leading|tracking)-/, categoryId: 'typography', label: 'Fonts', icon: 'Type' },
     { pattern: /^shadow-/, categoryId: 'shadow', label: 'Shadows', icon: 'Layers' },
-    { pattern: /^motion-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
-    { pattern: /^z-/, categoryId: 'zIndex', label: 'Z-Index', icon: 'Layers' },
+    { pattern: /^(motion|duration|ease)-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
     { pattern: /^border-/, categoryId: 'border', label: 'Borders', icon: 'Frame' },
+    { pattern: /^breakpoint-/, categoryId: 'breakpoint', label: 'Breakpoints', icon: 'Monitor' },
   ]
 }
 
 // ─── Semantic Category Definitions ────────────────────────────────────────────
 
-function getSemanticCategories(): { 
-  pattern: RegExp; 
-  categoryId: SemanticSubCategory; 
-  label: string; 
-  icon?: string 
-}[] {
-  // v2 (2-tier) semantics are the flat, standard ShadCN/Tailwind vocabulary
-  // (background, primary, ring, radius, …) — NOT the old 3-tier prefixed names
-  // (surface-*, content-*, …). The classifier receives these bare keys (sans
-  // leading `--`), so each pattern anchors the exact name plus its optional
-  // `-foreground` pair. Grouping maps the core set onto the existing semantic
-  // sub-categories so routing / isRouteActive stay unchanged:
-  //   surface      → page/elevated surfaces + their foreground content
-  //   interactive  → brand/interactive fills (+ focus ring)
-  //   status       → feedback colors (destructive)
-  //   layout       → structural tokens (border, input, radius)
-  return [
-    {
-      pattern: /^(background|foreground|card|card-foreground|popover|popover-foreground)$/,
-      categoryId: 'surface', label: 'Surfaces', icon: 'Layout',
-    },
-    {
-      pattern: /^(primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring)$/,
-      categoryId: 'interactive', label: 'Interactive', icon: 'Zap',
-    },
-    {
-      pattern: /^(border|input|radius)$/,
-      categoryId: 'layout', label: 'Layout', icon: 'Maximize2',
-    },
-    // Status — feedback colors. Holds the standard `destructive` pair AND, as the catch-all,
-    // any newly-authored semantic that semantics.css introduces beyond the standard ShadCN set
-    // (e.g. info/success/warning status colors). This keeps the UI vocabulary 100%
-    // ShadCN-standard — there is no invented category; a discovered semantic is treated as a
-    // status color (its most common purpose) rather than getting a non-standard bucket name.
-    // MUST be last: first-match keeps surface/interactive/layout above intact. Names arrive
-    // WITHOUT the leading `--`; the negative lookahead excludes known primitive prefixes so a
-    // primitive lacking a Foundations pattern (breakpoint-*, opacity-*) falls through to
-    // `uncategorized` as before, rather than masquerading as a semantic.
-    {
-      pattern: /^(?!(?:color|spacing|radius|font|text|leading|tracking|shadow|duration|ease|motion|z-index|z-|border-width|border-|icon-size|size|breakpoint|opacity)\b).+/,
-      categoryId: 'status', label: 'Status', icon: 'CircleAlert',
-    },
-  ]
+// UI metadata (label + icon) per semantic bucket. Membership itself lives in the
+// shared `semanticBuckets` module — the single source of truth that NavRail (this
+// file) and CategoryPage both classify from, so they can never drift apart.
+//
+// v2 (2-tier) semantics are the flat, standard ShadCN/Tailwind vocabulary
+// (background, primary, ring, radius, …). The buckets map the core set onto the
+// existing semantic sub-categories so routing / isRouteActive stay unchanged:
+//   surface      → page/elevated surfaces + their foreground content
+//   interactive  → brand/interactive fills (+ focus ring)
+//   layout       → structural tokens (border, input, radius)
+//   status       → feedback colors (destructive) + any discovered semantic
+//                  beyond the standard ShadCN set (e.g. --chart-*, --info)
+const SEMANTIC_BUCKET_META: Record<
+  SemanticBucket,
+  { categoryId: SemanticSubCategory; label: string; icon: string }
+> = {
+  surface: { categoryId: 'surface', label: 'Surfaces', icon: 'Layout' },
+  interactive: { categoryId: 'interactive', label: 'Interactive', icon: 'Zap' },
+  layout: { categoryId: 'layout', label: 'Layout', icon: 'Maximize2' },
+  status: { categoryId: 'status', label: 'Status', icon: 'CircleAlert' },
 }
 
 // ─── Classification Functions ─────────────────────────────────────────────────
@@ -141,18 +119,17 @@ function classifyToken(tokenName: string, tokenMetadata?: TokenMetadata): Classi
     }
   }
 
-  const semantic = getSemanticCategories()
-  for (const { pattern, categoryId, label, icon } of semantic) {
-    if (pattern.test(tokenName)) {
-      return {
-        key: `semantic/${categoryId}`,
-        label: label,
-        categoryName: label,
-        topLevel: 'semantic',
-        subCategory: categoryId,
-        tokens: [tokenName],
-        icon: icon,
-      }
+  const bucket = semanticBucketOf(tokenName)
+  if (bucket) {
+    const { categoryId, label, icon } = SEMANTIC_BUCKET_META[bucket]
+    return {
+      key: `semantic/${categoryId}`,
+      label: label,
+      categoryName: label,
+      topLevel: 'semantic',
+      subCategory: categoryId,
+      tokens: [tokenName],
+      icon: icon,
     }
   }
 

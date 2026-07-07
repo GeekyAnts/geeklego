@@ -1,0 +1,11 @@
+{
+  "name": "GeekLego Sync",
+  "id": "1000000000000000001",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "src/ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}

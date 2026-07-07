@@ -36,7 +36,7 @@ function countAffectedTokens(
 
     if (dep.startsWith('--color-') || dep.startsWith('--spacing-') || dep.startsWith('--radius-') ||
       dep.startsWith('--font-') || dep.startsWith('--border-') || dep.startsWith('--layer-') ||
-      dep.startsWith('--size-') || dep.startsWith('--icon-') || dep.startsWith('--typography-')) {
+      dep.startsWith('--typography-')) {
       semanticCount++
       instanceCount++
 

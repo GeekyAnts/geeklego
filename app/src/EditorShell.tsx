@@ -9,107 +9,21 @@ import { CommandPalette } from './components/CommandPalette'
 import ExportModal from './components/ExportModal'
 import { PendingModal } from './components/PendingModal'
 import './components/PendingModal.css'
+import { SuggestionsModal } from './components/SuggestionsModal'
+import { countAvailableSuggestions } from './state/suggestions'
+import { ToastHost } from './components/ToastHost'
+import { pushEditToast } from './state/toasts'
 import { KeyboardShortcuts } from './components/KeyboardShortcuts'
 import { OnboardingTour } from './components/OnboardingTour'
 import { EdSkeleton } from './editor-ds/primitives'
-import { getPendingCount, subscribeToPendingChanges, stage, getAllStaged, discardAll, getStagedNewTokens } from './state/staging'
+import { getPendingCount, subscribeToPendingChanges, stage, getStagedValue, getAllStaged, discardAll, getStagedNewTokens } from './state/staging'
+import { subscribeToLockChanges } from './state/semanticLocks'
 import { generateMergedTokens } from './utils/exportFormatter'
 import { buildTokenGraph, type TokenGraph } from './graph/build'
 import { classifyTokens } from './ia'
 import type { GeeklegoTokensV2, TokenUsageMap } from './types'
+import { flattenTokens, collectTokenNames } from './utils/flattenTokens'
 import './EditorShell.css'
-
-interface TokenEntry {
-  name: string
-  value: string
-}
-
-// Maps a primitives top-level key to the CSS variable prefix used in the v2 design system.
-// Mirrors emission rules in utils/cssGenerator.ts.
-const PRIMITIVE_PREFIX: Record<string, string> = {
-  colors: 'color',
-  fontFamily: 'font',
-  fontSize: 'text',
-  fontWeight: 'font-weight',
-  lineHeight: 'leading',
-  letterSpacing: 'tracking',
-  spacing: 'spacing',
-  radius: 'radius',
-  borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
-  duration: 'duration',
-  easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
-  breakpoints: 'breakpoint',
-}
-
-function flattenTokens(tokens: GeeklegoTokensV2): TokenEntry[] {
-  const entries: TokenEntry[] = []
-
-  const prims = tokens.primitives as unknown as Record<string, unknown>
-  for (const category of Object.keys(prims)) {
-    const prefix = PRIMITIVE_PREFIX[category]
-    if (!prefix) continue
-    const values = prims[category]
-    if (!values || typeof values !== 'object') continue
-    for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        entries.push({ name: `--${prefix}-${k}`, value: v })
-      } else if (v && typeof v === 'object') {
-        // Nested (e.g. colors.neutral.500 → --color-neutral-500)
-        for (const [k2, v2] of Object.entries(v as Record<string, unknown>)) {
-          if (typeof v2 === 'string') {
-            entries.push({ name: `--${prefix}-${k}-${k2}`, value: v2 })
-          }
-        }
-      }
-    }
-  }
-
-  // v2 semantics are a FLAT map: { primary: 'var(--color-brand-900)', border: '…' }.
-  // The CSS var name is the key verbatim (e.g. --primary, --border).
-  const semantics = tokens.semantics?.light
-  if (semantics) {
-    for (const [k, v] of Object.entries(semantics)) {
-      entries.push({ name: `--${k}`, value: v })
-    }
-  }
-
-  return entries
-}
-
-function collectTokenNames(tokens: GeeklegoTokensV2): string[] {
-  const names: string[] = []
-  const prims = tokens.primitives as unknown as Record<string, unknown>
-  for (const category of Object.keys(prims)) {
-    const prefix = PRIMITIVE_PREFIX[category]
-    if (!prefix) continue
-    const values = prims[category]
-    if (!values || typeof values !== 'object') continue
-    for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        names.push(`${prefix}-${k}`)
-      } else if (v && typeof v === 'object') {
-        for (const k2 of Object.keys(v as Record<string, unknown>)) {
-          if (typeof (v as Record<string, unknown>)[k2] === 'string') {
-            names.push(`${prefix}-${k}-${k2}`)
-          }
-        }
-      }
-    }
-  }
-
-  // v2 semantics: classifier names are the flat ShadCN keys, sans leading "--".
-  const semantics = tokens.semantics?.light
-  if (semantics) {
-    for (const k of Object.keys(semantics)) {
-      names.push(k)
-    }
-  }
-  return names
-}
 
 function EditorShellContent() {
   const { route, navigate } = useRouter()
@@ -121,7 +35,9 @@ function EditorShellContent() {
   const [exportOpen, setExportOpen] = useState(false)
   const [pendingDrawerOpen, setPendingDrawerOpen] = useState(false)
   const [pendingModalOpen, setPendingModalOpen] = useState(false)
+  const [suggestionsModalOpen, setSuggestionsModalOpen] = useState(false)
   const [pendingCount, setPendingCount] = useState(() => getPendingCount())
+  const [suggestionCount, setSuggestionCount] = useState(0)
   const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false)
   const [showOnboarding, setShowOnboarding] = useState(() => {
     return !localStorage.getItem('geeklego.editor.onboarding.completed')
@@ -181,6 +97,16 @@ function EditorShellContent() {
     return subscribeToPendingChanges(() => setPendingCount(getPendingCount()))
   }, [])
 
+  // Recompute the available-suggestions count whenever the model, staged edits,
+  // or locks change (all three feed computeAvailableSuggestions).
+  useEffect(() => {
+    const recompute = () => setSuggestionCount(countAvailableSuggestions(tokens))
+    recompute()
+    const unsubP = subscribeToPendingChanges(recompute)
+    const unsubL = subscribeToLockChanges(recompute)
+    return () => { unsubP(); unsubL() }
+  }, [tokens])
+
   // Keyboard shortcuts — ⌘K, ⌘E, ?
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -228,7 +154,15 @@ function EditorShellContent() {
   }, [tokens])
 
   const handleStageEdit = useCallback((tokenName: string, newValue: string) => {
+    const prev = getStagedValue(tokenName)
     stage(tokenName, newValue)
+    pushEditToast({
+      stagingKey: tokenName,
+      label: tokenName.replace(/^dark:/, '') + (tokenName.startsWith('dark:') ? ' (dark)' : ''),
+      prevValue: prev,
+      newValue,
+      verb: 'Updated',
+    })
   }, [])
 
   const handleRestoreDefault = useCallback(async () => {
@@ -351,9 +285,11 @@ function EditorShellContent() {
     <div className="ed-shell">
       <Header
         pendingCount={pendingCount}
+        suggestionCount={suggestionCount}
         onOpenCommandPalette={() => setCommandOpen(true)}
         onOpenExport={() => setExportOpen(true)}
         onOpenPending={() => setPendingModalOpen(true)}
+        onOpenSuggestions={() => setSuggestionsModalOpen(true)}
       />
 
       {classification && (
@@ -401,6 +337,21 @@ function EditorShellContent() {
         onClose={() => setPendingModalOpen(false)}
         tokens={tokens}
       />
+
+      <SuggestionsModal
+        open={suggestionsModalOpen}
+        onClose={() => setSuggestionsModalOpen(false)}
+        tokens={tokens}
+        onApplied={(s, prev) => pushEditToast({
+          stagingKey: s.stagingKey,
+          label: `${s.cssName} (${s.theme})`,
+          prevValue: prev,
+          newValue: s.to,
+          verb: 'Applied suggestion to',
+        })}
+      />
+
+      <ToastHost />
 
       {exportOpen && (
         <ExportModal

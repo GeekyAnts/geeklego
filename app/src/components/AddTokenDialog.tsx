@@ -4,6 +4,7 @@ import { EdColorPicker } from '../editor-ds/primitives/EdColorPicker'
 import type { GeeklegoTokensV2 } from '../types'
 import { stageNewToken, getStagedNewTokens, getAllStaged, getStagedValue, type TokenTreePath } from '../state/staging'
 import { withPxAnnotation } from '../utils/colorUtils'
+import { PRIMITIVE_PREFIX } from '../utils/flattenTokens'
 
 interface AddTokenDialogProps {
   isOpen: boolean
@@ -13,6 +14,17 @@ interface AddTokenDialogProps {
   defaultCategory?: string
 }
 
+// ─── Primitive prefix table (derived, never hand-maintained) ────────────────────
+// [cssPrefix, primitives-model-category] for every flat primitive scale, built
+// from the canonical PRIMITIVE_PREFIX map. `colors` is dropped — primitive colors
+// carry a numeric shade and are matched separately in deriveTreePath. Sorted by
+// descending prefix length so a longer prefix (`--font-weight-`) is tested before a
+// shorter one it contains (`--font-`), matching the old hand-ordered list.
+const PRIMITIVE_PREFIXES: Array<[string, string]> = Object.entries(PRIMITIVE_PREFIX)
+  .filter(([category]) => category !== 'colors')
+  .map(([category, prefix]) => [`--${prefix}-`, category] as [string, string])
+  .sort((a, b) => b[0].length - a[0].length)
+
 // ─── deriveTreePath ────────────────────────────────────────────────────────────
 
 function deriveTreePath(name: string): TokenTreePath | null {
@@ -21,24 +33,13 @@ function deriveTreePath(name: string): TokenTreePath | null {
     return { kind: 'primitiveColor', family: colorPrimMatch[1], shade: colorPrimMatch[2] }
   }
   // Primitive scales — checked BEFORE the semantic fall-through so prefixed names
-  // (--spacing-4, --radius-lg, …) route to their primitive category, not to semantics.
-  const primitivePrefixes: Array<[string, string]> = [
-    ['--text-', 'fontSize'],
-    ['--font-weight-', 'fontWeight'],
-    ['--font-', 'fontFamily'],
-    ['--leading-', 'lineHeight'],
-    ['--tracking-', 'letterSpacing'],
-    ['--border-width-', 'borderWidth'],
-    ['--icon-size-', 'iconSize'],
-    ['--duration-', 'duration'],
-    ['--ease-', 'easing'],
-    ['--opacity-', 'opacity'],
-    ['--z-index-', 'zIndex'],
-    ['--spacing-', 'spacing'],
-    ['--radius-', 'radius'],
-    ['--size-', 'sizeScale'],
-  ]
-  for (const [prefix, category] of primitivePrefixes) {
+  // (--spacing-4, --radius-lg, --breakpoint-md, …) route to their primitive
+  // category, not to semantics. Derived from the canonical PRIMITIVE_PREFIX map so
+  // this list can never drift out of sync with the rest of the editor (the bug that
+  // sent --breakpoint-* down the semantic-color path). `colors` is excluded here —
+  // primitive colors are handled by the numeric-shade match above. Sorted
+  // longest-prefix-first so `--font-weight-` wins over `--font-`.
+  for (const [prefix, category] of PRIMITIVE_PREFIXES) {
     if (name.startsWith(prefix)) {
       const key = name.slice(prefix.length)
       if (key) return { kind: 'primitiveFlat', category, key }
@@ -95,16 +96,9 @@ function getPrimitiveScopePrefix(path: TokenTreePath): string | null {
 
 function getAllTokenNames(geeklegoTokens: GeeklegoTokensV2): Set<string> {
   const names = new Set<string>()
-  const PRIM_PREFIX: Record<string, string> = {
-    colors: 'color', fontFamily: 'font', fontSize: 'text',
-    fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
-    spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration', easing: 'ease',
-    sizeScale: 'size', iconSize: 'icon-size',
-  }
   const prims = geeklegoTokens.primitives as unknown as Record<string, unknown>
   for (const [cat, vals] of Object.entries(prims)) {
-    const prefix = PRIM_PREFIX[cat]
+    const prefix = PRIMITIVE_PREFIX[cat]
     if (!prefix || !vals || typeof vals !== 'object') continue
     for (const [k, v] of Object.entries(vals as Record<string, unknown>)) {
       if (typeof v === 'string' || typeof v === 'number') {
@@ -115,6 +109,12 @@ function getAllTokenNames(geeklegoTokens: GeeklegoTokensV2): Set<string> {
         }
       }
     }
+  }
+  // Scalar primitive: colorShadowNeutral is a single string, not a Record scale, so
+  // the PRIMITIVE_PREFIX loop skips it. Add --color-shadow-neutral so it's counted
+  // for duplicate detection.
+  if (typeof geeklegoTokens.primitives.colorShadowNeutral === 'string' && geeklegoTokens.primitives.colorShadowNeutral !== '') {
+    names.add('--color-shadow-neutral')
   }
   // Flat v2 semantics — CSS var for a key is `--<key>`
   for (const k of Object.keys(geeklegoTokens.semantics.light)) {
@@ -139,16 +139,9 @@ interface Candidate { name: string; value: string }
 
 function buildCandidates(geeklegoTokens: GeeklegoTokensV2, scopePrefix: string): Candidate[] {
   const result: Candidate[] = []
-  const PRIM_PREFIX: Record<string, string> = {
-    colors: 'color', fontFamily: 'font', fontSize: 'text',
-    fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
-    spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration', easing: 'ease',
-    sizeScale: 'size', iconSize: 'icon-size',
-  }
   const prims = geeklegoTokens.primitives as unknown as Record<string, unknown>
   for (const [cat, vals] of Object.entries(prims)) {
-    const prefix = PRIM_PREFIX[cat]
+    const prefix = PRIMITIVE_PREFIX[cat]
     if (!prefix || !vals || typeof vals !== 'object') continue
     for (const [k, v] of Object.entries(vals as Record<string, unknown>)) {
       if (typeof v === 'string' || typeof v === 'number') {
@@ -167,6 +160,11 @@ function buildCandidates(geeklegoTokens: GeeklegoTokensV2, scopePrefix: string):
         }
       }
     }
+  }
+  // Scalar primitive: --color-shadow-neutral (single string, skipped by the loop above).
+  const shadowNeutral = geeklegoTokens.primitives.colorShadowNeutral
+  if (typeof shadowNeutral === 'string' && shadowNeutral !== '' && '--color-shadow-neutral'.startsWith(scopePrefix)) {
+    result.push({ name: '--color-shadow-neutral', value: getStagedValue('--color-shadow-neutral') ?? shadowNeutral })
   }
   // Include brand-new staged primitives (e.g. new color palettes)
   for (const [cssName, value] of getAllStaged()) {

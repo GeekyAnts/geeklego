@@ -167,19 +167,6 @@ function applyThemeToken(
     return
   }
 
-  // Opacity: --opacity-{n}
-  const opacityMatch = name.match(/^opacity-(.+)$/)
-  if (opacityMatch) {
-    primitives.opacity[opacityMatch[1]] = parseNumeric(value)
-    return
-  }
-
-  // Z-index: --z-index-{name}
-  const zIndexMatch = name.match(/^z-index-(.+)$/)
-  if (zIndexMatch) {
-    primitives.zIndex[zIndexMatch[1]] = parseNumeric(value)
-    return
-  }
 
   // Duration: --duration-{name}
   const durationMatch = name.match(/^duration-(.+)$/)
@@ -202,41 +189,8 @@ function applyThemeToken(
     return
   }
 
-  // Size scale: --size-{n} (only numeric/simple names, not size-avatar-*, size-component-* etc.)
-  // In @theme the actual tokens are --size-6, --size-8, --size-10, etc.
-  const sizeScaleMatch = name.match(/^size-(\d+)$/)
-  if (sizeScaleMatch) {
-    primitives.sizeScale[sizeScaleMatch[1]] = value
-    return
-  }
 
-  // Icon size: --icon-size-{name}
-  const iconSizeMatch = name.match(/^icon-size-(.+)$/)
-  if (iconSizeMatch) {
-    primitives.iconSize[iconSizeMatch[1]] = value
-    return
-  }
 
-  // Line clamp: --line-clamp-{n}
-  const lineClampMatch = name.match(/^line-clamp-(.+)$/)
-  if (lineClampMatch) {
-    primitives.contentFlexibility.lineClamp[lineClampMatch[1]] = parseNumeric(value)
-    return
-  }
-
-  // Content max-width (in @theme): --content-max-width-{name}
-  const contentMaxWidthMatch = name.match(/^content-max-width-(.+)$/)
-  if (contentMaxWidthMatch) {
-    primitives.contentFlexibility.maxWidth[contentMaxWidthMatch[1]] = value
-    return
-  }
-
-  // Content min-width (in @theme): --content-min-width-{name}
-  const contentMinWidthMatch = name.match(/^content-min-width-(.+)$/)
-  if (contentMinWidthMatch) {
-    primitives.contentFlexibility.minWidth[contentMinWidthMatch[1]] = value
-    return
-  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -277,15 +231,10 @@ function emptyV2Primitives(): GeeklegoTokensV2['primitives'] {
     spacing: {},
     radius: {},
     borderWidth: {},
-    opacity: {},
-    zIndex: {},
     duration: {},
     easing: {},
-    sizeScale: {},
-    iconSize: {},
     colorShadowNeutral: '',
     breakpoints: {},
-    contentFlexibility: { lineClamp: {}, maxWidth: {}, minWidth: {} },
   }
 }
 

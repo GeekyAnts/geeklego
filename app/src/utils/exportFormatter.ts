@@ -59,9 +59,9 @@ function applyNewTokenToTree(modifiedTokens: GeeklegoTokensV2, newToken: StagedN
     case 'primitiveFlat': {
       const cat = treePath.category
       if (!prims[cat]) break
-      const numericCats = ['fontWeight', 'opacity', 'zIndex']
+      const numericCats = ['fontWeight']
       if (numericCats.includes(cat)) {
-        const num = cat === 'opacity' ? parseFloat(value) : parseInt(value, 10)
+        const num = parseInt(value, 10)
         prims[cat][treePath.key] = isNaN(num) ? value : num
       } else {
         prims[cat][treePath.key] = value
@@ -174,16 +174,6 @@ export function generateMergedTokens(
       if (key in modifiedTokens.primitives.easing) {
         modifiedTokens.primitives.easing[key] = stagedValue
       }
-    } else if (tokenName.startsWith('--z-index-')) {
-      const key = parts.slice(2).join('-')
-      if (key in modifiedTokens.primitives.zIndex) {
-        modifiedTokens.primitives.zIndex[key] = parseInt(stagedValue, 10) || 0
-      }
-    } else if (tokenName.startsWith('--opacity-')) {
-      const key = parts.slice(1).join('-')
-      if (key in modifiedTokens.primitives.opacity) {
-        modifiedTokens.primitives.opacity[key] = parseFloat(stagedValue) || 0
-      }
     } else if (tokenName.startsWith('--spacing-')) {
       const key = parts.slice(1).join('-')
       if (key in modifiedTokens.primitives.spacing) {
@@ -193,16 +183,6 @@ export function generateMergedTokens(
       const key = parts.slice(1).join('-')
       if (key in modifiedTokens.primitives.radius) {
         modifiedTokens.primitives.radius[key] = stagedValue
-      }
-    } else if (tokenName.startsWith('--size-icon-') || tokenName.startsWith('--size-')) {
-      const key = parts.slice(parts[1] === 'icon' ? 3 : 1).join('-')
-      if (key in modifiedTokens.primitives.sizeScale) {
-        modifiedTokens.primitives.sizeScale[key] = stagedValue
-      }
-    } else if (tokenName.startsWith('--icon-size-')) {
-      const key = parts.slice(2).join('-')
-      if (key in modifiedTokens.primitives.iconSize) {
-        modifiedTokens.primitives.iconSize[key] = stagedValue
       }
     }
   }

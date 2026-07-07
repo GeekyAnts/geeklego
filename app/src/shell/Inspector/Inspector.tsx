@@ -7,10 +7,13 @@ import { EdButton, EdScrollArea, EdEmptyState, EdColorPicker, EdInput } from '..
 import { isPinned, togglePin } from '../../state/pinning'
 import { subscribeToPendingChanges, getAllStaged, getStagedValue, setDraft, unstage, getStagedNewTokens, stage, DARK_EDIT_PREFIX, themedStagingKey } from '../../state/staging'
 import { isLocked, lockSemantic, toggleLock, subscribeToLockChanges } from '../../state/semanticLocks'
+import { pushEditToast, pushToast } from '../../state/toasts'
 import { usePreviewTheme, setPreviewTheme } from '../../state/previewTheme'
 import { withPxAnnotation, suggestBrandSemantics, suggestNeutralSemantics, parseColorRef } from '../../utils/colorUtils'
+import { PRIMITIVE_PREFIX } from '../../utils/flattenTokens'
 import type { GeeklegoTokensV2, TokenUsageMap } from '../../types'
 import { V2_SEMANTIC_KEYS } from '../../types'
+import { semanticBucketOfVar, type SemanticBucket } from '../../ia'
 import { UsedBy } from './UsedBy'
 import { UsedInComponents } from './UsedInComponents'
 import { GoogleFontPicker } from './GoogleFontPicker'
@@ -35,8 +38,8 @@ function fontFamilySlot(tokenName: string): string | null {
 // semantics/ext it would always say "not used by any other tokens" — misleading noise.
 const PRIMITIVE_TOKEN_PREFIXES = [
   '--color-', '--spacing-', '--radius-', '--font-', '--text-', '--leading-', '--tracking-',
-  '--border-', '--shadow-', '--motion-', '--duration-', '--ease-', '--z-', '--z-index-',
-  '--icon-size-', '--size-', '--opacity-', '--breakpoint-',
+  '--border-', '--shadow-', '--motion-', '--duration-', '--ease-',
+  '--breakpoint-',
 ]
 function isPrimitiveToken(tokenName: string): boolean {
   return PRIMITIVE_TOKEN_PREFIXES.some(p => tokenName.startsWith(p))
@@ -49,11 +52,24 @@ function deriveBreadcrumb(tokenName: string): string {
   if (tokenName.startsWith('--font-')) return 'Foundations / Fonts'
   if (tokenName.startsWith('--typography-')) return 'Semantic / Typography'
   if (tokenName.startsWith('--border-')) return 'Foundations / Borders'
-  if (tokenName.startsWith('--opacity-')) return 'Foundations / Opacity'
   if (tokenName.startsWith('--z-')) return 'Foundations / Z-Index'
-  if (tokenName.startsWith('--motion-')) return 'Foundations / Motion'
+  if (tokenName.startsWith('--motion-') || tokenName.startsWith('--duration-') || tokenName.startsWith('--ease-')) return 'Foundations / Motion'
   if (tokenName.startsWith('--shadow-')) return 'Foundations / Shadows'
+  if (tokenName.startsWith('--breakpoint-')) return 'Foundations / Breakpoints'
+  // Core semantics (Tier 2) — derive the sub-bucket from the single-source-of-truth
+  // bucketer so status semantics (destructive/success/warning/info) get a proper
+  // "Semantic / Status" breadcrumb instead of the generic 'Tokens' fallback.
+  const bucket = semanticBucketOfVar(tokenName)
+  if (bucket) return `Semantic / ${SEMANTIC_BUCKET_LABEL[bucket]}`
   return 'Tokens'
+}
+
+/** Sub-bucket → breadcrumb label, mirroring ia/classify.ts SEMANTIC_SUB_CATEGORIES. */
+const SEMANTIC_BUCKET_LABEL: Record<SemanticBucket, string> = {
+  surface: 'Surfaces',
+  interactive: 'Interactive',
+  layout: 'Layout',
+  status: 'Status',
 }
 
 const SEMANTIC_PREFIXES = ['bg', 'text', 'border', 'action', 'status', 'state', 'data-series', 'surface', 'hue', 'alpha']
@@ -62,28 +78,6 @@ function isFoundationColorToken(tokenName: string): boolean {
   if (!tokenName.startsWith('--color-')) return false
   const rest = tokenName.slice('--color-'.length)
   return !SEMANTIC_PREFIXES.some(p => rest.startsWith(p + '-') || rest === p)
-}
-
-/** Extract the colour family name from a foundation token, e.g. "brand" from "--color-brand-50" */
-// Mirrors PRIMITIVE_PREFIX in EditorShell.tsx and ContextPane.tsx —
-// maps the JS primitive-object key to the CSS variable prefix.
-const PRIMITIVE_PREFIX: Record<string, string> = {
-  colors: 'color',
-  fontFamily: 'font',
-  fontSize: 'text',
-  fontWeight: 'font-weight',
-  lineHeight: 'leading',
-  letterSpacing: 'tracking',
-  spacing: 'spacing',
-  radius: 'radius',
-  borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
-  duration: 'duration',
-  easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
-  breakpoints: 'breakpoint',
 }
 
 function resolveTokenValue(
@@ -178,9 +172,6 @@ function getTokenFamily(tokenName: string): string {
   if (tokenName.startsWith('--leading-')) return 'line-height'
   if (tokenName.startsWith('--tracking-')) return 'letter-spacing'
   if (tokenName.startsWith('--border-width-')) return 'border-width'
-  if (tokenName.startsWith('--opacity-')) return 'opacity'
-  if (tokenName.startsWith('--size-')) return 'size'
-  if (tokenName.startsWith('--icon-size-')) return 'icon-size'
   if (tokenName.startsWith('--duration-')) return 'duration'
   if (tokenName.startsWith('--ease-')) return 'ease'
   if (tokenName.startsWith('--shadow-')) return 'shadow'
@@ -723,6 +714,11 @@ function semanticKeyOf(tokenName: string): string {
   return tokenName.replace(/^--/, '')
 }
 
+/** "var(--color-neutral-100)" → "neutral-100" for compact toast detail. */
+function shortAlias(v: string): string {
+  return v.replace(/^var\(--color-|^var\(--|\)$/g, '')
+}
+
 /**
  * Build the brand/neutral color map for suggestBrandSemantics, overlaying any
  * staged primitive-color edits (e.g. `--color-brand-600`) onto the model so the
@@ -802,11 +798,19 @@ export function Inspector({
   // All useCallbacks must be unconditional — before any early return
   const handleSave = useCallback(() => {
     if (activeDraft !== null && activeStagingKey !== null && selectedTokenName !== null) {
+      const prev = getStagedValue(activeStagingKey)
       stage(activeStagingKey, activeDraft)
       // Auto-lock on manual edit (per-theme): the saved theme's value is pinned so
       // the auto-pick engine won't overwrite it. User can unlock later.
       const key = selectedTokenName.replace(/^--/, '')
       if (CORE_SEMANTIC_KEYS.has(key)) lockSemantic(activeLockKey(key))
+      pushEditToast({
+        stagingKey: activeStagingKey,
+        label: `${selectedTokenName}${editTheme === 'dark' ? ' (dark)' : ''}`,
+        prevValue: prev,
+        newValue: activeDraft,
+        verb: 'Updated',
+      })
       setActiveDraft(null)
     }
   }, [activeDraft, activeStagingKey, selectedTokenName, editTheme]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -828,16 +832,48 @@ export function Inspector({
   // (primary, primary-foreground, or ring) under the active theme, honoring its lock.
   const handleApplyBrandSuggestion = useCallback(
     (key: string, value: string) => {
-      if (!isLocked(activeLockKey(key))) stage(themedStagingKey(`--${key}`, editTheme), value)
+      if (isLocked(activeLockKey(key))) return
+      const sk = themedStagingKey(`--${key}`, editTheme)
+      const prev = getStagedValue(sk)
+      stage(sk, value)
+      pushEditToast({
+        stagingKey: sk,
+        label: `--${key}${editTheme === 'dark' ? ' (dark)' : ''}`,
+        prevValue: prev,
+        newValue: value,
+        verb: 'Applied suggestion to',
+      })
     },
     [editTheme], // eslint-disable-line react-hooks/exhaustive-deps
   )
 
-  // Apply a neutral-role suggestion into the ACTIVE theme.
+  // Apply a neutral-role suggestion into the ACTIVE theme. Stages the pair and
+  // fires a single toast whose Undo reverts BOTH the surface and the foreground.
   const handleApplyNeutralSuggestion = useCallback(
     (role: string, s: { surface: string; foreground: string }) => {
-      if (!isLocked(activeLockKey(role))) stage(themedStagingKey(`--${role}`, editTheme), s.surface)
-      if (!isLocked(activeLockKey(`${role}-foreground`))) stage(themedStagingKey(`--${role}-foreground`, editTheme), s.foreground)
+      const skSurface = themedStagingKey(`--${role}`, editTheme)
+      const skFg = themedStagingKey(`--${role}-foreground`, editTheme)
+      const surfaceLocked = isLocked(activeLockKey(role))
+      const fgLocked = isLocked(activeLockKey(`${role}-foreground`))
+      const prevSurface = getStagedValue(skSurface)
+      const prevFg = getStagedValue(skFg)
+      if (!surfaceLocked) stage(skSurface, s.surface)
+      if (!fgLocked) stage(skFg, s.foreground)
+      const themeTag = editTheme === 'dark' ? ' (dark)' : ''
+      pushToast({
+        message: `Applied suggestion to ${role} + ${role}-foreground${themeTag}`,
+        detail: `${shortAlias(s.surface)} · ${shortAlias(s.foreground)}`,
+        undo: () => {
+          if (!surfaceLocked) {
+            if (prevSurface === undefined) unstage(skSurface)
+            else stage(skSurface, prevSurface)
+          }
+          if (!fgLocked) {
+            if (prevFg === undefined) unstage(skFg)
+            else stage(skFg, prevFg)
+          }
+        },
+      })
     },
     [editTheme], // eslint-disable-line react-hooks/exhaustive-deps
   )
@@ -905,7 +941,7 @@ export function Inspector({
     ? suggestBrandSemantics(resolvedColors, 'brand')
     : null
   const neutralSuggestion = neutralRole
-    ? suggestNeutralSemantics(resolvedColors, neutralRole)
+    ? suggestNeutralSemantics(resolvedColors, neutralRole, undefined, effectiveTheme)
     : null
 
   // Selected brand key → the one alias the suggestion would write for it.
@@ -919,9 +955,19 @@ export function Inspector({
 
   // The current alias's step vs the suggested step, for the hint.
   const currentStep = parseColorRef(committedValue)?.shade ?? null
+
+  // Is the SELECTED neutral token the surface (e.g. `muted`) or its foreground
+  // (`muted-foreground`)? The card leads with whichever the user is actually editing.
+  const isNeutralForeground = neutralRole != null && semKey === `${neutralRole}-foreground`
+  // The single value the suggestion proposes for the SELECTED neutral token.
+  const selectedNeutralValue = neutralSuggestion
+    ? (isNeutralForeground ? neutralSuggestion.foreground : neutralSuggestion.surface)
+    : null
+  // Suggested step shown in the hint — for a foreground token that's the fg step (0/900),
+  // for a surface token it's the surface step.
   const suggestedStep = brandSuggestion
     ? parseColorRef(brandSuggestion.primary)?.shade ?? null
-    : neutralSuggestion?.step ?? null
+    : (selectedNeutralValue ? parseColorRef(selectedNeutralValue)?.shade ?? null : null)
 
   // Current committed value of a semantic key in the ACTIVE theme (staged wins, else model).
   const currentSemanticValue = (key: string): string =>
@@ -1015,9 +1061,13 @@ export function Inspector({
               variant="primary"
               size="sm"
               onClick={() => handleApplyBrandSuggestion(semKey, selectedBrandValue!)}
-              disabled={brandNoChange || selectedBrandValue == null}
+              disabled={keyLocked || brandNoChange || selectedBrandValue == null}
             >
-              {brandNoChange ? 'Already matches suggestion' : 'Suggest from brand'}
+              {keyLocked
+                ? 'Locked — unlock to apply'
+                : brandNoChange
+                  ? 'Already matches suggestion'
+                  : 'Suggest from brand'}
             </EdButton>
           </div>
         ) : (
@@ -1030,16 +1080,22 @@ export function Inspector({
       {neutralRole && (
         neutralSuggestion ? (
           <div className="ed-brand-suggest__card">
+            {/* Lead with the SELECTED token's own suggested value so the card
+                matches what the value picker above is editing. */}
             <div className="ed-brand-suggest__line">
-              Suggested {neutralRole}:{' '}
-              <strong>neutral-{neutralSuggestion.step}</strong>
-              {currentStep && currentStep !== neutralSuggestion.step && (
+              Suggested {semKey}:{' '}
+              <strong>{(selectedNeutralValue ?? '').replace(/^var\(--color-|\)$/g, '')}</strong>
+              {currentStep && suggestedStep && currentStep !== suggestedStep && (
                 <span className="ed-brand-suggest__from"> (currently {parseColorRef(committedValue)?.family ?? '?'}-{currentStep})</span>
               )}
             </div>
+            {/* The paired value (the other half of the surface/foreground pair) for context. */}
             <div className="ed-brand-suggest__line">
-              Foreground:{' '}
-              <strong>{neutralSuggestion.foreground.replace(/^var\(--color-|\)$/g, '')}</strong>
+              {isNeutralForeground ? 'Surface' : 'Foreground'}:{' '}
+              <strong>
+                {(isNeutralForeground ? neutralSuggestion.surface : neutralSuggestion.foreground)
+                  .replace(/^var\(--color-|\)$/g, '')}
+              </strong>
               {' · '}
               <span
                 className={
@@ -1062,9 +1118,13 @@ export function Inspector({
               variant="primary"
               size="sm"
               onClick={() => handleApplyNeutralSuggestion(neutralRole, neutralSuggestion)}
-              disabled={neutralNoChange}
+              disabled={keyLocked || neutralNoChange}
             >
-              {neutralNoChange ? 'Already matches suggestion' : 'Suggest neutral pair'}
+              {keyLocked
+                ? 'Locked — unlock to apply'
+                : neutralNoChange
+                  ? 'Already matches suggestion'
+                  : `Apply ${neutralRole} + ${neutralRole}-foreground`}
             </EdButton>
           </div>
         ) : (

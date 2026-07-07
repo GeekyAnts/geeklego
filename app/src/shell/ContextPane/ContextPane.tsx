@@ -4,6 +4,7 @@ import { CategoryPage } from '../../views'
 import { PreviewBand } from '../PreviewBand/PreviewBand'
 import type { GeeklegoTokensV2 } from '../../types'
 import type { RoutePath } from '../../routing'
+import { flattenTokens } from '../../utils/flattenTokens'
 import './ContextPane.css'
 
 interface ContextPaneProps {
@@ -11,55 +12,6 @@ interface ContextPaneProps {
   onSelectToken: (tokenName: string) => void
 }
 
-// Maps a primitives top-level key to the CSS variable prefix used in the v2 design system.
-const PRIMITIVE_PREFIX: Record<string, string> = {
-  colors: 'color',
-  fontFamily: 'font',
-  fontSize: 'text',
-  fontWeight: 'font-weight',
-  lineHeight: 'leading',
-  letterSpacing: 'tracking',
-  spacing: 'spacing',
-  radius: 'radius',
-  borderWidth: 'border-width',
-  opacity: 'opacity',
-  zIndex: 'z-index',
-  duration: 'duration',
-  easing: 'ease',
-  sizeScale: 'size',
-  iconSize: 'icon-size',
-  breakpoints: 'breakpoint',
-}
-
-function flattenTokens(tokens: GeeklegoTokensV2): { name: string; value: string }[] {
-  const entries: { name: string; value: string }[] = []
-
-  const prims = tokens.primitives as unknown as Record<string, unknown>
-  for (const category of Object.keys(prims)) {
-    const prefix = PRIMITIVE_PREFIX[category]
-    if (!prefix) continue
-    const values = prims[category]
-    if (!values || typeof values !== 'object') continue
-    for (const [k, v] of Object.entries(values as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        entries.push({ name: `--${prefix}-${k}`, value: v })
-      } else if (v && typeof v === 'object') {
-        for (const [k2, v2] of Object.entries(v as Record<string, unknown>)) {
-          if (typeof v2 === 'string') {
-            entries.push({ name: `--${prefix}-${k}-${k2}`, value: v2 })
-          }
-        }
-      }
-    }
-  }
-
-  // Flat v2 semantics — CSS var for a key is `--<key>`
-  for (const [k, v] of Object.entries(tokens.semantics.light)) {
-    entries.push({ name: `--${k}`, value: v })
-  }
-
-  return entries
-}
 
 function HomePage({ onNavigate }: { onNavigate: (route: RoutePath) => void }) {
   return (

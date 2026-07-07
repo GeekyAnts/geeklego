@@ -12,5 +12,5 @@
     "jsx": "react-jsx",
     "strict": true
   },
-  "include": ["app", "components", "stories", "utils", "design-system", "scripts"]
+  "include": ["app", "components", "stories", "utils", "design-system", "scripts", "figma-plugin/src"]
 }

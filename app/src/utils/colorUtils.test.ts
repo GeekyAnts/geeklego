@@ -12,7 +12,7 @@ import {
 // A realistic neutral ramp (light → dark), matching the shipped primitives shape.
 const NEUTRAL_RAMP: Record<string, string> = {
   '0': '#ffffff', '50': '#fafafa', '100': '#f4f4f5', '200': '#e4e4e7',
-  '500': '#71717a', '900': '#1c1c20',
+  '500': '#71717a', '700': '#3f3f46', '800': '#27272a', '900': '#1c1c20',
 }
 
 // Neutral extremes the editor ships (primitives.css): neutral-0 = white, neutral-900 ≈ near-black.
@@ -158,5 +158,24 @@ describe('suggestNeutralSemantics', () => {
 
   it('null when the neutral ramp is missing', () => {
     expect(suggestNeutralSemantics({ brand: {} }, 'accent')).toBeNull()
+  })
+
+  for (const role of ['accent', 'secondary', 'muted']) {
+    it(`suggests a DARK neutral surface (800) + light, AA-safe foreground for ${role} in dark theme`, () => {
+      const s = suggestNeutralSemantics(colors, role, undefined, 'dark')
+      expect(s).not.toBeNull()
+      expect(s!.surface).toBe('var(--color-neutral-800)')
+      expect(s!.step).toBe('800')
+      // dark surface → light text
+      expect(s!.foreground).toBe('var(--color-neutral-0)')
+      expect(s!.belowAA).toBe(false)
+      expect(s!.contrast).toBeGreaterThanOrEqual(WCAG_AA_NORMAL)
+    })
+  }
+
+  it('explicit step override wins over the dark-theme default', () => {
+    const s = suggestNeutralSemantics(colors, 'muted', '50', 'dark')
+    expect(s!.surface).toBe('var(--color-neutral-50)')
+    expect(s!.step).toBe('50')
   })
 })

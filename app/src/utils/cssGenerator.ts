@@ -90,15 +90,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
 
   lines.push(``)
   lines.push(`  /* ===========================================================================`)
-  lines.push(`     Z-INDEX`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.zIndex)) {
-    lines.push(`  ${pad(`--z-index-${k}:`, 24)} ${v};`)
-  }
-
-  lines.push(``)
-  lines.push(`  /* ===========================================================================`)
   lines.push(`     MOTION / ANIMATION`)
   lines.push(`     =========================================================================== */`)
   lines.push(``)
@@ -135,23 +126,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
     lines.push(``)
   }
 
-  lines.push(`  /* ===========================================================================`)
-  lines.push(`     SIZE SCALE (6, 8, 10, 12, 14, 16)`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.sizeScale)) {
-    lines.push(`  ${pad(`--size-${k}:`, 24)} ${v};`)
-  }
-
-  lines.push(``)
-  lines.push(`  /* ===========================================================================`)
-  lines.push(`     ICON SIZES (xs, sm, md, lg, xl, 2xl)`)
-  lines.push(`     =========================================================================== */`)
-  lines.push(``)
-  for (const [k, v] of Object.entries(p.iconSize)) {
-    lines.push(`  ${pad(`--icon-size-${k}:`, 20)} ${v};`)
-  }
-
   lines.push(``)
   lines.push(`  /* ===========================================================================`)
   lines.push(`     SHADOW COLORS`)
@@ -159,32 +133,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
   lines.push(``)
   lines.push(`  ${pad(`--color-shadow-neutral:`, 24)} ${p.colorShadowNeutral};`)
   lines.push(``)
-
-  // (stagger durations are already emitted in the MOTION/ANIMATION block above —
-  // do not re-emit them here; a second block produced a duplicate declaration.)
-
-  // ── Content flexibility primitives ──
-  if (p.contentFlexibility) {
-    lines.push(``)
-    lines.push(`  /* ===========================================================================`)
-    lines.push(`     CONTENT FLEXIBILITY`)
-    lines.push(`     =========================================================================== */`)
-    lines.push(``)
-    lines.push(`  /* Line clamp values */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.lineClamp)) {
-      lines.push(`  ${pad(`--line-clamp-${k}:`, 28)} ${v};`)
-    }
-    lines.push(``)
-    lines.push(`  /* Content max-width */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.maxWidth)) {
-      lines.push(`  ${pad(`--content-max-width-${k}:`, 32)} ${v};`)
-    }
-    lines.push(``)
-    lines.push(`  /* Content min-width */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.minWidth)) {
-      lines.push(`  ${pad(`--content-min-width-${k}:`, 32)} ${v};`)
-    }
-  }
 
   lines.push(``)
   lines.push(`} /* end @theme */`)
@@ -242,11 +190,6 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
   // Opacity: intentionally not emitted — stock Tailwind/ShadCN has no opacity
   // theme scale; the built-in opacity-NN utility needs none. (See @theme note.)
   lines.push(``)
-  lines.push(`  /* Z-index */`)
-  for (const [k, v] of Object.entries(p.zIndex)) {
-    lines.push(`  ${pad(`--z-index-${k}:`, 24)} ${v};`)
-  }
-  lines.push(``)
   lines.push(`  /* Motion */`)
   for (const [k, v] of Object.entries(p.duration)) {
     lines.push(`  ${pad(`--duration-${k}:`, 24)} ${v};`)
@@ -272,33 +215,8 @@ function generateThemeBlock(tokens: { primitives: Primitives }): string {
     }
     lines.push(``)
   }
-  lines.push(`  /* Size scale */`)
-  for (const [k, v] of Object.entries(p.sizeScale)) {
-    lines.push(`  ${pad(`--size-${k}:`, 24)} ${v};`)
-  }
-  lines.push(``)
-  lines.push(`  /* Icon sizes */`)
-  for (const [k, v] of Object.entries(p.iconSize)) {
-    lines.push(`  ${pad(`--icon-size-${k}:`, 20)} ${v};`)
-  }
-  lines.push(``)
   lines.push(`  /* Shadow colors */`)
   lines.push(`  ${pad(`--color-shadow-neutral:`, 24)} ${p.colorShadowNeutral};`)
-  if (p.contentFlexibility) {
-    lines.push(``)
-    lines.push(`  /* Content flexibility */`)
-    for (const [k, v] of Object.entries(p.contentFlexibility.lineClamp)) {
-      lines.push(`  ${pad(`--line-clamp-${k}:`, 28)} ${v};`)
-    }
-    lines.push(``)
-    for (const [k, v] of Object.entries(p.contentFlexibility.maxWidth)) {
-      lines.push(`  ${pad(`--content-max-width-${k}:`, 32)} ${v};`)
-    }
-    lines.push(``)
-    for (const [k, v] of Object.entries(p.contentFlexibility.minWidth)) {
-      lines.push(`  ${pad(`--content-min-width-${k}:`, 32)} ${v};`)
-    }
-  }
   lines.push(``)
   lines.push(`} /* end :root primitive mirror */`)
 
@@ -401,14 +319,31 @@ export function generateV2Semantics(t: GeeklegoTokensV2): string {
   //   tree-shaken out of the built dist/geeklego.css. Editing --accent then has no rule to apply to.
   //   This safelist guarantees every semantic's bg/text (+ border/ring for the structural ones)
   //   utility is always built, regardless of usage. Emitted by the generator so it survives export.
-  const bgText = V2_SEMANTIC_KEYS.filter((k) => k !== 'radius' && k !== 'border' && k !== 'input' && k !== 'ring')
+  // bg/text keys: every semantic EXCEPT the structural ones consumed as border/ring
+  // (radius/border/input/ring, plus sidebar-border/sidebar-ring which are the sidebar
+  // group's structural members — they need border-/ring- utilities, not bg-/text-).
+  const structural = new Set(['radius', 'border', 'input', 'ring', 'sidebar-border', 'sidebar-ring'])
+  // Derive the safelist from the FULL semantic set (every canonical key + any parsed extras),
+  // not the type list alone — so both canonical status semantics (success/warning/info) AND
+  // forward-compat extras always get their utilities force-built or they'd be tree-shaken from
+  // dist (see C1). All canonical keys are always listed (the safelist is a static guarantee,
+  // independent of what a given parse happened to see); extras append after.
+  const allSemanticKeys = [...V2_SEMANTIC_KEYS, ...extras]
+  // bg/text safelist covers every semantic EXCEPT the structural ones consumed as border/ring.
+  const bgText = allSemanticKeys.filter((k) => !structural.has(k))
+  // border- safelist: the structural border members PLUS the feedback/status color semantics
+  // (destructive + success/warning/info) — the ones actually consumed as border-* utilities
+  // (e.g. Input/Alert borders), plus any extra color semantic that has a matching -foreground.
+  const BORDER_STATUS = ['destructive', 'success', 'warning', 'info']
+  const borderExtras = extras.filter((k) => !k.endsWith('-foreground') && sem[`${k}-foreground`] !== undefined)
+  const borderKeys = [...new Set(['border', 'input', 'sidebar-border', ...BORDER_STATUS, ...borderExtras])]
   lines.push(``)
   lines.push(`/* ---------------------------------------------------------------------------`)
   lines.push(`   2b · Safelist — always generate the semantic color utilities (see note above).`)
   lines.push(`   --------------------------------------------------------------------------- */`)
   lines.push(`@source inline("{hover:,focus:,}{bg,text}-{${bgText.join(',')}}");`)
-  lines.push(`@source inline("border-{border,input}");`)
-  lines.push(`@source inline("ring-ring");`)
+  lines.push(`@source inline("border-{${borderKeys.join(',')}}");`)
+  lines.push(`@source inline("ring-{ring,sidebar-ring}");`)
 
   // 3 · ext.rawBlock — opaque, appended verbatim.
   let out = lines.join('\n')

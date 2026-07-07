@@ -406,6 +406,17 @@
     ]
   },
   {
+    "name": "RadioGroup",
+    "storyIdPrefix": "v2-radiogroup",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Horizontal",
+      "Disabled",
+      "DarkMode"
+    ]
+  },
+  {
     "name": "Resizable",
     "storyIdPrefix": "v2-resizable",
     "defaultStory": "Default",
@@ -486,6 +497,19 @@
     ]
   },
   {
+    "name": "Slider",
+    "storyIdPrefix": "v2-slider",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Range",
+      "Steps",
+      "Vertical",
+      "Disabled",
+      "DarkMode"
+    ]
+  },
+  {
     "name": "Sonner",
     "storyIdPrefix": "v2-sonner",
     "defaultStory": "Default",
@@ -524,6 +548,19 @@
       "Default",
       "ThreeTabs",
       "DisabledTab",
+      "DarkMode"
+    ]
+  },
+  {
+    "name": "Textarea",
+    "storyIdPrefix": "v2-textarea",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Variants",
+      "Sizes",
+      "Disabled",
+      "WithLabel",
       "DarkMode"
     ]
   },

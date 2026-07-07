@@ -3,42 +3,11 @@ import { X, ArrowRight, RotateCcw } from 'lucide-react'
 import { getAllStaged, unstage, discardAll, subscribeToPendingChanges, getStagedNewTokens, unstageNewToken } from '../state/staging'
 import { withPxAnnotation } from '../utils/colorUtils'
 import type { GeeklegoTokensV2 } from '../types'
+import { flattenTokens } from '../utils/flattenTokens'
 import { useState } from 'react'
 
-function buildOriginalMap(
-  tokens: GeeklegoTokensV2
-): Map<string, string> {
-  const map = new Map<string, string>()
-
-  // Flatten primitives
-  const PRIMITIVE_PREFIX: Record<string, string> = {
-    colors: 'color', fontFamily: 'font', fontSize: 'text',
-    fontWeight: 'font-weight', lineHeight: 'leading', letterSpacing: 'tracking',
-    spacing: 'spacing', radius: 'radius', borderWidth: 'border-width',
-    opacity: 'opacity', zIndex: 'z-index', duration: 'duration',
-    easing: 'ease', sizeScale: 'size', iconSize: 'icon-size',
-  }
-  const prims = tokens.primitives as unknown as Record<string, unknown>
-  for (const [cat, prefix] of Object.entries(PRIMITIVE_PREFIX)) {
-    const data = prims[cat]
-    if (!data || typeof data !== 'object') continue
-    for (const [k, v] of Object.entries(data as Record<string, unknown>)) {
-      if (typeof v === 'string') {
-        map.set(`--${prefix}-${k}`, v)
-      } else if (v && typeof v === 'object') {
-        for (const [k2, v2] of Object.entries(v as Record<string, string>)) {
-          map.set(`--${prefix}-${k}-${k2}`, v2)
-        }
-      }
-    }
-  }
-
-  // Flatten flat v2 semantics — CSS var for a key is `--<key>`
-  for (const [k, v] of Object.entries(tokens.semantics.light)) {
-    map.set(`--${k}`, v)
-  }
-
-  return map
+function buildOriginalMap(tokens: GeeklegoTokensV2): Map<string, string> {
+  return new Map(flattenTokens(tokens).map((e) => [e.name, e.value]))
 }
 
 interface PendingModalProps {

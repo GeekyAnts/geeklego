@@ -20,9 +20,9 @@
  *    and `$value`. Group names use DTCG dot-path segments (color.brand.900, spacing.4, …).
  *
  *  • Tier 1 — PRIMITIVES: live under top-level groups (color, fontFamily, fontSize,
- *    fontWeight, lineHeight, letterSpacing, spacing, radius, borderWidth, opacity, zIndex,
- *    duration, easing, size, iconSize, breakpoint, lineClamp, contentMaxWidth,
- *    contentMinWidth, shadowColor). Their `$value` is the resolved literal (primitives are
+ *    fontWeight, lineHeight, letterSpacing, spacing, radius, borderWidth,
+ *    duration, easing, size, breakpoint,
+ *    shadowColor). Their `$value` is the resolved literal (primitives are
  *    leaves — they don't alias anything).
  *
  *  • Tier 2 — SEMANTICS: live under the `semantic` group. Each semantic aliases a
@@ -41,9 +41,9 @@
  *    way). The one non-aliasing ext token (--ext-button-gamified-shadow, a composite shadow
  *    value) is emitted with its literal `$value` and `$type: "shadow"`.
  *
- *  • $type mapping: color | dimension (spacing/radius/size/fontSize/iconSize/width/
- *    breakpoint/letterSpacing/lineHeight-with-unit) | fontWeight | number (opacity/zIndex/
- *    lineClamp/unitless lineHeight) | duration | cubicBezier (easing) | fontFamily | shadow.
+ *  • $type mapping: color | dimension (spacing/radius/size/fontSize/width/
+ *    breakpoint/letterSpacing/lineHeight-with-unit) | fontWeight | number (
+ *    unitless lineHeight) | duration | cubicBezier (easing) | fontFamily | shadow.
  *
  *  • Versioning (MULTI-TARGET §6.5): a STATIC semver + source id are stamped in `$extensions`
  *    at the document root. This repo has NO git, so we do NOT shell out for a SHA, and we
@@ -161,14 +161,6 @@ function buildPrimitiveIndex(p: Primitives): {
   for (const name of Object.keys(p.borderWidth)) {
     push(`border-width-${name}`, ['borderWidth', name], p.borderWidth[name], 'dimension')
   }
-  // Opacity: --opacity-{n} (number)
-  for (const n of Object.keys(p.opacity)) {
-    push(`opacity-${n}`, ['opacity', n], String(p.opacity[n]), 'number')
-  }
-  // Z-index: --z-index-{name} (number)
-  for (const name of Object.keys(p.zIndex)) {
-    push(`z-index-${name}`, ['zIndex', name], String(p.zIndex[name]), 'number')
-  }
   // Duration: --duration-{name} (duration)
   for (const name of Object.keys(p.duration)) {
     push(`duration-${name}`, ['duration', name], p.duration[name], 'duration')
@@ -177,27 +169,9 @@ function buildPrimitiveIndex(p: Primitives): {
   for (const name of Object.keys(p.easing)) {
     push(`ease-${name}`, ['easing', name], p.easing[name], 'cubicBezier')
   }
-  // Size scale: --size-{n} (dimension)
-  for (const n of Object.keys(p.sizeScale)) {
-    push(`size-${n}`, ['size', n], p.sizeScale[n], 'dimension')
-  }
-  // Icon size: --icon-size-{name} (dimension)
-  for (const name of Object.keys(p.iconSize)) {
-    push(`icon-size-${name}`, ['iconSize', name], p.iconSize[name], 'dimension')
-  }
   // Breakpoints: --breakpoint-{name} (dimension)
   for (const name of Object.keys(p.breakpoints)) {
     push(`breakpoint-${name}`, ['breakpoint', name], p.breakpoints[name], 'dimension')
-  }
-  // Content flexibility
-  for (const n of Object.keys(p.contentFlexibility.lineClamp)) {
-    push(`line-clamp-${n}`, ['lineClamp', n], String(p.contentFlexibility.lineClamp[n]), 'number')
-  }
-  for (const name of Object.keys(p.contentFlexibility.maxWidth)) {
-    push(`content-max-width-${name}`, ['contentMaxWidth', name], p.contentFlexibility.maxWidth[name], 'dimension')
-  }
-  for (const name of Object.keys(p.contentFlexibility.minWidth)) {
-    push(`content-min-width-${name}`, ['contentMinWidth', name], p.contentFlexibility.minWidth[name], 'dimension')
   }
 
   const byCssVar = new Map<string, PrimitiveRecord>()

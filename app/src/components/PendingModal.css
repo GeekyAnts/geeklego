@@ -242,3 +242,61 @@
   border-color: var(--ed-status-error, #e53e3e);
   color: var(--ed-status-error, #e53e3e);
 }
+
+/* ── Suggestions modal additions ─────────────────────────────────────────── */
+.ed-suggest-theme-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+.ed-suggest-theme-tag--light {
+  background: var(--ed-surface-2);
+  color: var(--ed-text-secondary);
+  border: 1px solid var(--ed-border);
+}
+.ed-suggest-theme-tag--dark {
+  background: var(--ed-accent);
+  color: var(--ed-accent-fg);
+}
+
+/* Apply (single) — info-accented, distinct from the destructive Undo style. */
+.ed-suggest-apply-btn {
+  color: var(--ed-info) !important;
+  border-color: color-mix(in srgb, var(--ed-info) 40%, transparent) !important;
+}
+.ed-suggest-apply-btn:hover {
+  background: var(--ed-info-bg) !important;
+  border-color: var(--ed-info) !important;
+}
+
+/* Apply all — info-accented (overrides the destructive .undo-all hover). */
+.ed-suggest-apply-all:hover {
+  background: var(--ed-info-bg) !important;
+  border-color: var(--ed-info) !important;
+  color: var(--ed-info) !important;
+}
+
+/* Warn-only entries: a legibility problem with no safe auto-pick (no Apply button). */
+.ed-suggest-item--warn {
+  background: var(--ed-warning-bg);
+}
+.ed-suggest-warn-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ed-warning);
+}
+.ed-suggest-warn-msg svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}

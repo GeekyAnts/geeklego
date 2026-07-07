@@ -126,6 +126,10 @@ design-system/v2/
 
 `--background` `--foreground` · `--primary` `--primary-foreground` · `--secondary` `--secondary-foreground` · `--muted` `--muted-foreground` · `--accent` `--accent-foreground` · `--destructive` `--destructive-foreground` · `--border` · `--input` · `--ring` · `--card` `--card-foreground` · `--popover` `--popover-foreground` · `--radius`.
 
+**geeklego extends ShadCN (deliberate, documented):**
+- **Status** — `--success` `--success-foreground` · `--warning` `--warning-foreground` · `--info` `--info-foreground`. Feedback/status semantics beyond ShadCN's lone `--destructive`; bucketed under *Status* in the cockpit.
+- **Sidebar** — `--sidebar-bg` `--sidebar-foreground` `--sidebar-border` `--sidebar-accent` `--sidebar-accent-foreground` `--sidebar-ring`. A dedicated navigation-chrome surface. **Naming deviation:** the panel-surface key is `--sidebar-bg`, *not* ShadCN's `--sidebar`, so the whole group is uniformly suffixed (`bg`/`foreground`/`border`/…). Internally consistent across component + variants + dark + defaults; bucketed under *Layout*.
+
 These map to Tailwind utilities `bg-*`, `text-*`, `border-*`, `ring-*`, `rounded-*`. **Do not invent new core semantics.** If geeklego genuinely needs a semantic ShadCN doesn't define (e.g. status/info, data-series for charts), extend the standard set *deliberately*, document it as "geeklego extends ShadCN," and add it to this list — don't smuggle it in via a component.
 
 ---

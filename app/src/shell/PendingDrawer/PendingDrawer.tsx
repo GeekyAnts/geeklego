@@ -27,7 +27,7 @@ function buildTokenMap(tokens: GeeklegoTokensV2): Map<string, string> {
     }
   }
 
-  const primitiveKeys = ['spacing', 'radius', 'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight', 'borderWidth', 'opacity', 'zIndex', 'duration', 'easing', 'sizeScale', 'iconSize', 'contentFlexibility']
+  const primitiveKeys = ['spacing', 'radius', 'fontSize', 'fontFamily', 'lineHeight', 'letterSpacing', 'fontWeight', 'borderWidth', 'duration', 'easing']
   for (const key of primitiveKeys) {
     const data = tokens.primitives[key as keyof typeof tokens.primitives]
     if (data && typeof data === 'object') {

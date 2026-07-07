@@ -45,26 +45,11 @@ function collectPrimitiveNames(primitives: GeeklegoTokensV2['primitives']): Set<
   for (const k of Object.keys(primitives.spacing)) names.add(`--spacing-${k}`)
   for (const k of Object.keys(primitives.radius)) names.add(`--radius-${k}`)
   for (const k of Object.keys(primitives.borderWidth)) names.add(`--border-width-${k}`)
-  for (const k of Object.keys(primitives.opacity)) names.add(`--opacity-${k}`)
-  for (const k of Object.keys(primitives.zIndex)) names.add(`--z-index-${k}`)
   for (const k of Object.keys(primitives.duration)) names.add(`--duration-${k}`)
   for (const k of Object.keys(primitives.easing)) names.add(`--ease-${k}`)
-  // New primitives - sizeScale
-  if (primitives.sizeScale) {
-    for (const k of Object.keys(primitives.sizeScale)) names.add(`--size-${k}`)
-  }
-  // New primitives - iconSize
-  if (primitives.iconSize) {
-    for (const k of Object.keys(primitives.iconSize)) names.add(`--icon-size-${k}`)
-  }
   // New primitive - colorShadowNeutral
   if (primitives.colorShadowNeutral) {
     names.add(`--color-shadow-neutral`)
-  }
-  // New duration tokens for stagger values
-  if (primitives.duration) {
-    if ('stagger-sm' in primitives.duration) names.add(`--duration-stagger-sm`)
-    if ('stagger-md' in primitives.duration) names.add(`--duration-stagger-md`)
   }
   if (primitives.breakpoints) {
     for (const k of Object.keys(primitives.breakpoints)) names.add(`--breakpoint-${k}`)

@@ -103,9 +103,12 @@
   --spacing-30:        7.5rem;
   --spacing-32:        8rem;
   --spacing-40:        10rem;
+  --spacing-44:        11rem;
   --spacing-48:        12rem;
   --spacing-64:        16rem;
   --spacing-72:        18rem;
+  --spacing-96:        24rem;
+  --spacing-128:       32rem;
   --spacing-px:        1px;
   --spacing-raw-2:     0.125rem;
   --spacing-raw-6:     0.375rem;
@@ -361,9 +364,12 @@
   --spacing-30:        7.5rem;
   --spacing-32:        8rem;
   --spacing-40:        10rem;
+  --spacing-44:        11rem;
   --spacing-48:        12rem;
   --spacing-64:        16rem;
   --spacing-72:        18rem;
+  --spacing-96:        24rem;
+  --spacing-128:       32rem;
   --spacing-px:        1px;
   --spacing-raw-2:     0.125rem;
   --spacing-raw-6:     0.375rem;

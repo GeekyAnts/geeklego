@@ -38,7 +38,7 @@ function fontFamilySlot(tokenName: string): string | null {
 // semantics/ext it would always say "not used by any other tokens" — misleading noise.
 const PRIMITIVE_TOKEN_PREFIXES = [
   '--color-', '--spacing-', '--radius-', '--font-', '--text-', '--leading-', '--tracking-',
-  '--border-', '--shadow-', '--motion-', '--duration-', '--ease-',
+  '--border-width-', '--shadow-', '--motion-', '--duration-', '--ease-',
   '--breakpoint-',
 ]
 function isPrimitiveToken(tokenName: string): boolean {
@@ -51,7 +51,7 @@ function deriveBreadcrumb(tokenName: string): string {
   if (tokenName.startsWith('--radius-')) return 'Foundations / Radius'
   if (tokenName.startsWith('--font-')) return 'Foundations / Fonts'
   if (tokenName.startsWith('--typography-')) return 'Semantic / Typography'
-  if (tokenName.startsWith('--border-')) return 'Foundations / Borders'
+  if (tokenName.startsWith('--border-width-')) return 'Foundations / Borders'
   if (tokenName.startsWith('--z-')) return 'Foundations / Z-Index'
   if (tokenName.startsWith('--motion-') || tokenName.startsWith('--duration-') || tokenName.startsWith('--ease-')) return 'Foundations / Motion'
   if (tokenName.startsWith('--shadow-')) return 'Foundations / Shadows'
@@ -176,19 +176,6 @@ function getTokenFamily(tokenName: string): string {
   if (tokenName.startsWith('--ease-')) return 'ease'
   if (tokenName.startsWith('--shadow-')) return 'shadow'
   return ''
-}
-
-/**
- * For a semantic token (already in the semantic tier), return the colour-family
- * of its current alias so we can scope the primitive pool.
- * e.g. "--color-action-primary" aliases "--color-brand-*" → return "brand"
- * Returns null when the alias isn't a primitive colour token.
- */
-function getAliasedColorFamily(currentAlias: string | null): string | null {
-  if (!currentAlias) return null
-  // primitive colours follow --color-{family}-{shade}
-  const m = currentAlias.match(/^--color-([a-z][a-z0-9]*(?:-[a-z][a-z0-9]*)*?)-\d+$/)
-  return m ? m[1] : null
 }
 
 function flattenPrimitiveTokens(tokens: GeeklegoTokensV2): { name: string; value: string }[] {
@@ -318,22 +305,18 @@ function TokenAliasPicker({ currentValue, tokenName, tokens, onChange }: TokenAl
   // When the user is actively typing a search query we always search the full
   // pool so they can escape the scope and find any token they want.
   const scopedPool = useMemo(() => {
-    // Semantic → primitives
+    // Semantic → primitives. A color semantic (e.g. --primary) may re-point to ANY
+    // color primitive — primary is a role, not "brand" — so offer the whole color
+    // palette by default (brand, neutral, accent, success, …), not just the family
+    // the current alias happens to sit in. Search still narrows across the full pool.
     if (family === 'color') {
-      // Scope to the same palette family as the current alias.
-      // e.g. "--color-action-primary" currently aliases "--color-brand-500"
-      // → show brand palette by default. Falls back to all color primitives.
-      const aliasedFamily = getAliasedColorFamily(currentAlias)
-      if (aliasedFamily) {
-        return allPrimitives.filter(t => t.name.startsWith(`--color-${aliasedFamily}-`))
-      }
       return allPrimitives.filter(t => getTokenFamily(t.name) === 'color')
     }
     if (family) {
       return allPrimitives.filter(t => getTokenFamily(t.name) === family)
     }
     return allPrimitives
-  }, [allPrimitives, family, currentAlias])
+  }, [allPrimitives, family])
 
   // Full pool for search escape-hatch
   const fullPool = useMemo(
@@ -909,7 +892,13 @@ export function Inspector({
 
   // A semantic token can be edited per-theme via the Light|Dark tab. Primitives and
   // non-semantic tokens have no dark tier, so they ignore editTheme (always light).
-  const isSemanticToken = CORE_SEMANTIC_KEYS.has(semanticKeyOf(selectedTokenName))
+  // A token is themeable (gets the Light|Dark tabs + a dark override) when it's a Tier-2
+  // SEMANTIC — not just the hardcoded default set. Newly-added semantics (e.g. --brand-emphasis,
+  // --border-strong) aren't in V2_SEMANTIC_KEYS but DO classify into a bucket, so gate on the
+  // classifier too. semanticBucketOfVar returns null for primitives, so those stay light-only.
+  const isSemanticToken =
+    CORE_SEMANTIC_KEYS.has(semanticKeyOf(selectedTokenName)) ||
+    semanticBucketOfVar(selectedTokenName) !== null
   const effectiveTheme: 'light' | 'dark' = isSemanticToken ? editTheme : 'light'
 
   // Active-theme staged value + resolved value (theme-aware).

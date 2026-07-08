@@ -38,6 +38,10 @@ function EditorShellContent() {
   const [suggestionsModalOpen, setSuggestionsModalOpen] = useState(false)
   const [pendingCount, setPendingCount] = useState(() => getPendingCount())
   const [suggestionCount, setSuggestionCount] = useState(0)
+  // Bumped on every staging change so the NavRail classification (which counts
+  // staged-NEW tokens, not just the on-disk model) recomputes. Without this a
+  // newly-added semantic never increments its category badge.
+  const [stagingTick, setStagingTick] = useState(0)
   const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false)
   const [showOnboarding, setShowOnboarding] = useState(() => {
     return !localStorage.getItem('geeklego.editor.onboarding.completed')
@@ -94,7 +98,12 @@ function EditorShellContent() {
 
   // Subscribe to pending changes
   useEffect(() => {
-    return subscribeToPendingChanges(() => setPendingCount(getPendingCount()))
+    return subscribeToPendingChanges(() => {
+      setPendingCount(getPendingCount())
+      // Recompute derived lists that fold in staged-new tokens (NavRail counts,
+      // token entries) — see stagingTick usage in the memos below.
+      setStagingTick(t => t + 1)
+    })
   }, [])
 
   // Recompute the available-suggestions count whenever the model, staged edits,
@@ -140,9 +149,16 @@ function EditorShellContent() {
 
   const classification = useMemo(() => {
     if (!tokens) return null
-    const tokenNames = collectTokenNames(tokens)
+    // Fold in staged-NEW tokens (which live in the staging store, not the on-disk
+    // model) so their category badge increments the moment they're added — a
+    // persistent confirmation that survives the create toast. The classifier
+    // consumes bare names (no leading `--`).
+    const stagedNewNames = [...getStagedNewTokens().values()].map(t => t.cssName.replace(/^--/, ''))
+    const tokenNames = [...collectTokenNames(tokens), ...stagedNewNames]
     return classifyTokens(tokenNames)
-  }, [tokens])
+    // stagingTick forces a recompute when the (non-reactive) staged-new store mutates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokens, stagingTick])
 
   const allTokenEntries = useMemo(() => {
     if (!tokens) return []
@@ -151,7 +167,9 @@ function EditorShellContent() {
       base.push({ name: newToken.cssName, value: newToken.value })
     }
     return base
-  }, [tokens])
+    // stagingTick forces a recompute when the (non-reactive) staged-new store mutates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokens, stagingTick])
 
   const handleStageEdit = useCallback((tokenName: string, newValue: string) => {
     const prev = getStagedValue(tokenName)

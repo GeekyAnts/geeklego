@@ -11,7 +11,7 @@
 .dark {
   --background:            var(--color-neutral-950);
   --foreground:            var(--color-neutral-50);
-  --primary:               var(--color-brand-50);
+  --primary:               var(--color-neutral-0);
   --primary-foreground:    var(--color-neutral-900);
   --secondary:             var(--color-neutral-800);
   --secondary-foreground:  var(--color-neutral-50);
@@ -29,7 +29,7 @@
   --info-foreground:       var(--color-neutral-50);
   --border:                var(--color-neutral-700);
   --input:                 var(--color-neutral-700);
-  --ring:                  var(--color-brand-50);
+  --ring:                  var(--color-brand-600);
   --card:                  var(--color-neutral-900);
   --card-foreground:       var(--color-neutral-50);
   --popover:               var(--color-neutral-900);
@@ -45,6 +45,13 @@
   --chart-3:               var(--color-success-400);
   --chart-4:               var(--color-warning-400);
   --chart-5:               var(--color-info-400);
+  --brand-emphasis:        var(--color-brand-500);
+  --brand-foreground:      var(--color-neutral-0);
+  --brand-border:          var(--color-brand-500);
+  --brand-subtle:          var(--color-brand-900);
+  --brand-ring:            var(--color-brand-300);
+  --border-strong:         var(--color-neutral-600);
+  --border-muted:          var(--color-neutral-800);
 
   /* --ext-* overrides for dark (opaque passthrough). */
   --ext-button-gamified-shadow: 0 2px 0 0 var(--color-accent-800);

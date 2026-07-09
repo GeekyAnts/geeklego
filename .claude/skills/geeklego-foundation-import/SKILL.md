@@ -47,6 +47,18 @@ the variables that are already there. Do not rebuild tokens — that is the `fig
 skill's job. If a semantic variable a component needs is genuinely missing, surface it
 (decision fork) rather than hardcoding the value.
 
+**The variables are now true-to-code — three collections:** `01 · Primitives` (`8:2`,
+mode `Value`, ~190 vars: groups `color/ spacing/ radius/ border-width/ font/ motion/
+breakpoint`), `02 · Semantics` (`9:2`, modes `Light`/`Dark`, ~44 vars: groups `surface/
+interactive/ layout/ status/`), `03 · Ext` (`9:40`, `Light`/`Dark`, 5 `button-gamified/*`
+vars). **The Figma variable NAME is grouped, but its WEB code syntax is the exact CSS
+var the code uses** — `interactive/primary` → `var(--primary)`, `surface/popover` →
+`var(--popover)`, `layout/border` → `var(--border)`, `button-gamified/bg` →
+`var(--ext-button-gamified-bg)`. So bind by resolving the code's `cva` class to its CSS
+var, then finding the Figma variable whose WEB code syntax is that `var(--…)` — do **not**
+assume a `core/*` name (that was an older, wrong mapping). **Always re-resolve variable
+IDs by name at build time** (IDs and even group names have drifted between sessions).
+
 ---
 
 ## The four-step workflow
@@ -59,19 +71,40 @@ Before building anything, learn the house style from what is already there, so y
 additions look like the same person made them. Do **not** invent a new documentation
 layout.
 
-1. `get_metadata` on the Foundation page (start at the file URL / the `Foundation
-   Library` section) to read the current frame hierarchy, names, and positions.
+1. **List the pages first** (`figma.root.children`). The library is now **one page per
+   component** (restructured 2026-07-08), not a single grid. Page order is
+   `Welcome → Foundation → Icons → -------Components------- → <Component> pages A–Z`.
+   Each component's `Foundation / <Name>` doc frame lives at (0,0) on its **own page**
+   named `<Name>`. The old single-grid `Foundation` page is now just the shared
+   **Interaction States** reference (the dead grid wrapper was deleted). Then
+   `get_metadata` on the specific page you care about to read its frame hierarchy.
 2. From that, determine:
-   - **Which components already exist** — never duplicate one; if asked to import
-     something already present, say so and offer to update it instead.
-   - **Where the next doc frame goes** — components stack vertically inside the single
-     wrapping frame; compute the next `y` from the last frame's `y + height + gap`.
+   - **Which components already exist** — a page named `<Name>` (or a `Foundation / <Name>`
+     frame on it) means it's already imported; never duplicate one. If asked to import
+     something already present, say so and offer to update it instead. (Verify against the
+     live page list — the count moves between sessions; do not trust a cached list.)
+   - **Where the new doc frame goes** — create a **new dedicated page** named `<Name>` and
+     place the `Foundation / <Name>` frame at (0,0). Do **not** append into a grid or
+     compute a stacking `y` — that model is retired. Insert the page alphabetically among
+     the component pages (after the `-------Components-------` divider) via
+     `figma.root.insertChild(index, page)`.
    - **The exact naming + layout conventions** in play (see the house-style template
      below, which is derived from the current library — reconcile it against what you
      actually read, and follow the file if it has drifted).
-3. Confirm the **icon components already in the file** (Checkbox's check/minus, Alert's
-   icons, Badge/Button leading icons all use them). You will reuse these as instances —
-   never redraw an icon.
+   - **Cross-page instances are safe.** A component that nests another (Combobox→Command,
+     AlertDialog→Button) puts *instances* on its own page pointing at a *master on another
+     page* — the instance→master link is stable within a file (verified: 0 detachments
+     across the whole restructure). Only copy-and-delete detaches; a true move/append never does.
+3. Confirm the **`Icon` component** on the **Icons** page. It is now a **single
+   COMPONENT_SET** (`Icon`, id `157:10`) with two variant axes — **`Type`** (1666 Lucide
+   glyph names, e.g. `check`, `chevron-right`, `search`, `x`, `circle`, `minus`) ×
+   **`Size`** (`24` / `16` / `14` / `12`) = 6664 variants; default `Type=a-arrow-down,
+   Size=24`. **This replaced the old one-component-per-icon model.** To place an icon:
+   instance the `Icon` set, then set its `Type` property to the glyph and `Size` to the
+   pixel size the code's class implies (`size-4`→`16`, `size-3.5`→`14`, `size-3`→`12`,
+   `size-5/6`→`24`). Never redraw an icon; never look for a per-glyph component — there is
+   only the one `Icon` set now. (Icon-instance sizes stay owned by the set — never bind
+   their width/height, and set `Size` via the variant property, not `resize()`.)
 4. Load the **text styles** with `getLocalTextStylesAsync()` — the type system every
    piece of text must link to (see the style→role map in house-style.md). Just as
    variables are the source of truth for colour, text styles are the source of truth for
@@ -222,7 +255,9 @@ supports lives here as properties/variants:
     `set.componentPropertyDefinitions`** has the expected named keys; if mangled,
     renormalize every child to the full `Prop=Val, …` form to repair.
 - Add component properties and link them to child nodes: TEXT for labels, BOOLEAN for
-  optional slots / flags, INSTANCE_SWAP for icons (never a variant-per-icon).
+  optional slots / flags, INSTANCE_SWAP for icons — the swap target is the single `Icon`
+  set (id `157:10`); a leading/trailing icon slot is an `Icon` instance with its `Type`
+  property set to the glyph, never a variant-per-icon and never a per-glyph component.
 - **Sizing trap — source must HUG before instances can grow.** If a source variant must
   grow with content (a label that toggles visible, an expanding panel), calling
   `resize(w,h)` on its auto-layout frame LOCKS that axis to `FIXED`, so instances stay
@@ -258,7 +293,8 @@ of the source component** (or instances composed together). Rules:
 
 - Examples are always instances linked to the source — **never** manually recreated,
   **never** detached.
-- Icons are **instances of the existing icon components** — never redrawn.
+- Icons are **instances of the single `Icon` set** (`157:10`) with the right `Type` +
+  `Size` variant — never redrawn, never a per-glyph component.
 - The `Master (original)` sits in the purple-dashed source region inside the doc frame;
   showcase instances live in the sibling showcase frames, outside that source region.
 - Reproduce the stories: a variant row, a states row, a with-icon row, sizes, and
@@ -300,7 +336,8 @@ per `figma-generate-library` Phase 3):
   copies. A component that reuses another's look (shared `cva`) has NO own master —
   it's composed from that component's instances.
 - ✓ **Examples are instances** — no detached nodes, no hand-drawn copies.
-- ✓ **Existing icons reused** — every icon is an instance of a library icon component.
+- ✓ **Icons reused from the `Icon` set** — every icon is an instance of the single `Icon`
+  set (`157:10`) with `Type`=glyph + `Size`=px, never redrawn, never a per-glyph component.
 - ✓ **Variables everywhere** — no hardcoded fill/stroke/radius that has a token.
   Bindings match the component's `cva` semantic utilities.
 - ✓ **Spacing bound** — every `paddingLeft/Right/Top/Bottom` + `itemSpacing` on a
@@ -325,8 +362,9 @@ per `figma-generate-library` Phase 3):
 - ✓ **House style matched** — frame named `Foundation / <Name>`, correct sub-frames
   (`Header`, `Component set`/`Component`, showcase frames, `Documentation`), ALL-CAPS
   section labels, purple-dashed `Master (original)`, real guideline text.
-- ✓ **Placed correctly** — stacked below the previous component at the right `y`, inside
-  the wrapping frame, not floating.
+- ✓ **Placed correctly** — the `Foundation / <Name>` frame sits at (0,0) on its **own
+  dedicated page** named `<Name>`, and that page is inserted alphabetically among the
+  component pages (after the `-------Components-------` divider). Not in a grid, not floating.
 - ✓ Consistent naming (`Variant=…, Size=…`), consistent spacing, production-ready.
 
 If any check fails, fix it before moving to the next component. Never build the next
@@ -343,7 +381,8 @@ component on an unvalidated one.
    documented formula, never a `State` value. Only `disabled` and persistent selection
    states become properties (see the state doctrine).
 4. **Never detach an instance** and never hand-redraw something a component/instance can express.
-5. **Never redraw an icon** — reuse the existing icon components as instances.
+5. **Never redraw an icon, and never look for a per-glyph icon component** — there is one
+   `Icon` set (`157:10`); instance it and set `Type`=glyph + `Size`=px.
 6. **Never hardcode** a color, radius, border, or effect that has a
    variable — bind to the existing semantic variables the code's `cva` points at.
    **Never leave text as raw `fontName`/`fontSize`** — every text node links to a text

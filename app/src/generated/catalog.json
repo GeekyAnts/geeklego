@@ -112,7 +112,9 @@
       "HeaderOnly",
       "WithForm",
       "ContentOnly",
-      "DarkMode"
+      "DarkMode",
+      "CaseStudy",
+      "CaseStudyDark"
     ]
   },
   {
@@ -271,6 +273,16 @@
     ]
   },
   {
+    "name": "Footer",
+    "storyIdPrefix": "v2-footer",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Muted",
+      "DarkMode"
+    ]
+  },
+  {
     "name": "Form",
     "storyIdPrefix": "v2-form",
     "defaultStory": "Default",
@@ -339,12 +351,33 @@
     ]
   },
   {
+    "name": "Navbar",
+    "storyIdPrefix": "v2-navbar",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Transparent",
+      "DarkMode"
+    ]
+  },
+  {
     "name": "NavigationMenu",
     "storyIdPrefix": "v2-navigationmenu",
     "defaultStory": "Default",
     "stories": [
       "Default",
       "LinkBar",
+      "DarkMode"
+    ]
+  },
+  {
+    "name": "Onboarding",
+    "storyIdPrefix": "preview-onboarding",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "GridStyle",
+      "GridStyleDarkMode",
       "DarkMode"
     ]
   },
@@ -517,6 +550,16 @@
       "Default",
       "Promise",
       "RichColors",
+      "DarkMode"
+    ]
+  },
+  {
+    "name": "Stats",
+    "storyIdPrefix": "v2-stats",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "TwoMetrics",
       "DarkMode"
     ]
   },

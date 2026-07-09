@@ -1,37 +1,47 @@
 # House Style — the GeekLego Foundation library doc-frame template
 
 This is the documentation pattern **already established** in `geeklego-v2-final`,
-distilled from the components currently imported (Button, Input, Checkbox, Switch,
+distilled from the 30 components currently imported (Button, Input, Checkbox, Switch,
 Badge, Card, Label, Separator, Avatar, Progress, Alert, Skeleton, Toggle, ToggleGroup,
 Tooltip, Tabs, Typography, Accordion, Textarea, Breadcrumb, RadioGroup, Slider, Select,
-Sonner). New components MUST match it so the library reads as one author's work — that
-includes linking every text node to a **text style** (see the text-style → role map
-below); the library was migrated fully onto text styles, so nothing is raw Inter.
+Sonner, Dialog, Popover, DropdownMenu, HoverCard, Sheet, AspectRatio) — each on its **own
+page** now (see the page hierarchy below). New components MUST match it so the library
+reads as one author's work — that includes linking every text node to a **text style**
+(see the text-style → role map below); the library was migrated fully onto text styles,
+so nothing is raw Inter. (This list drifts — verify against the live page list in Step 1.)
 
 **Always reconcile this doc against what you actually read in Step 1.** If the live file
 has drifted from what's written here, follow the file — it is the real source of truth.
 
 ---
 
-## Container hierarchy
+## Page & container hierarchy (RESTRUCTURED 2026-07-08 — page-per-component)
+
+The library is now **one page per component**, not a single stacked grid. Page order:
 
 ```
-Section  "Foundation Library"          (the outer page section)
-└─ Frame "Frame 1"  (~1200 wide)        (the single wrapping frame; components stack in it)
-   ├─ text  "Foundation"                (page title, ~48px)
-   ├─ text  "Core components of the GeekLego v2 design system. Each block below
-   │         documents one component: variants, states, and usage."   (intro)
-   ├─ frame "Foundation / Button"       (one doc frame per component, ~1200 wide)
-   ├─ frame "Foundation / Input"
-   ├─ frame "Foundation / <NextComponent>"   ← new imports append here
-   └─ …
+Welcome
+Foundation                       (now just the shared "Interaction States" reference frame)
+Icons                            (the single Icon set — Type × Size)
+-------Components-------          (separator page)
+<Component> pages, A–Z           each named e.g. "Button", "Dialog", "Popover"
 ```
 
-**Placement of a new component:** append a new `Foundation / <Name>` frame **inside the
-wrapping frame**, stacked below the last one. Compute its `y` from the previous frame's
-`y + height` plus the gap the file uses between doc frames (read two adjacent frames'
-`y`/`height` in Step 1 to get the exact rhythm; it is roughly frame-height + ~75px). Do
-not create a floating frame outside the wrapper.
+Each component page holds exactly one `Foundation / <Name>` doc frame at **(0,0)**:
+
+```
+PAGE "Button"
+└─ frame "Foundation / Button"   (~1200 wide, at 0,0 — the whole doc frame)
+```
+
+**Placement of a new component:** create a **new page** named `<Name>`, `appendChild` the
+`Foundation / <Name>` frame onto it, set the frame to `x=0, y=0`. Then insert the page
+alphabetically among the component pages (after `-------Components-------`) via
+`figma.root.insertChild(index, page)`. Do **not** append into a grid/wrapper or compute a
+stacking `y` — the old single-`Frame 1` grid was deleted. A component that nests another
+(e.g. AlertDialog→Button, Combobox→Command) places *instances* on its own page pointing at
+a master on **another** page — this is safe (instance→master links are stable within a
+file; verified 0 detachments across the full restructure). Only copy-and-delete detaches.
 
 ---
 
@@ -124,19 +134,28 @@ Variant property **names are capitalized** in Figma (`Variant`, `Size`, `State`,
 ## Binding hints — cva class → variable
 
 Read the source component's `cva` and bind Figma visual props to the variable the class
-points at. Common mappings (the semantic variables already exist in the file):
+points at. **How to find the variable:** the Figma variable NAME is grouped
+(`interactive/primary`, `surface/popover`, `layout/border`, `button-gamified/bg`) but its
+**WEB code syntax is the exact CSS var** the class resolves to (`var(--primary)`,
+`var(--popover)`, `var(--border)`, `var(--ext-button-gamified-bg)`). So map the cva class →
+CSS var → the Figma variable whose WEB code syntax is that `var(--…)`. The `--foo` column
+below is the **code target** (the CSS var / code syntax); the Figma variable that carries
+it lives under the grouped name in the middle-column collection. Re-resolve IDs by name at
+build time.
 
-| Tailwind/cva class | Figma property | Semantic variable |
+| Tailwind/cva class | Figma variable (grouped name → collection) | Code syntax (`var(--…)`) |
 |---|---|---|
-| `bg-primary` / `bg-secondary` / `bg-destructive` / `bg-muted` / `bg-card` / `bg-background` | fill | `--primary` / `--secondary` / `--destructive` / `--muted` / `--card` / `--background` |
-| `text-primary-foreground` / `text-foreground` / `text-muted-foreground` | text fill | matching `*-foreground` |
-| `border-input` / `border-border` / `border-destructive` | stroke | `--input` / `--border` / `--destructive` |
-| `rounded-md` / `rounded-lg` / `rounded-full` | corner radius | the radius variable of that step |
-| `ring-ring` (focus) | focus/stroke on the focused-state variant | `--ring` |
-| `p-*` / `px-*` / `py-*` / `pt/pb/pl/pr-*` | `paddingLeft/Right/Top/Bottom` | `spacing/N` (N = the Tailwind step) |
-| `gap-*` / `space-*` | `itemSpacing` | `spacing/N` |
-| `size-*` / `w-*` / `h-*` / `min-w-*` / `min-h-*` (fixed numeric) | width / height (FIXED axis only) | `spacing/N` |
-| `--ext-<component>-<variant>-*` (e.g. Button `gamified`) | fill/text for that variant | the matching `--ext-*` variable |
+| `bg-primary` / `bg-secondary` / `bg-destructive` / `bg-muted` / `bg-accent` | `interactive/primary`·`secondary`·`accent` / `status/destructive` (Semantics) | `var(--primary)` / `--secondary` / `--destructive` / `--muted` / `--accent` |
+| `bg-card` / `bg-background` / `bg-popover` | `surface/card` · `surface/background` · `surface/popover` (Semantics) | `var(--card)` / `--background` / `--popover` |
+| `text-primary-foreground` / `text-foreground` / `text-muted-foreground` / `text-popover-foreground` | matching `*-foreground` (same group as its surface) | matching `var(--*-foreground)` |
+| `border-input` / `border-border` / `border-destructive` | `layout/input` · `layout/border` / `status/destructive` | `var(--input)` / `--border` / `--destructive` |
+| `rounded-sm/md/lg/full` | `radius/sm·md·lg·full` (Primitives) | the radius var of that step |
+| `ring-ring` (focus) | `interactive/ring` | `var(--ring)` |
+| `p-*` / `px-*` / `py-*` / `pt/pb/pl/pr-*` | `spacing/N` (Primitives) | `paddingLeft/Right/Top/Bottom` = `--spacing-N` |
+| `gap-*` / `space-*` | `spacing/N` (Primitives) | `itemSpacing` |
+| `size-*` / `w-*` / `h-*` / `min-w-*` / `min-h-*` (fixed numeric) | `spacing/N` (Primitives), FIXED axis only | width / height |
+| `--ext-<component>-<variant>-*` (Button `gamified`) | `button-gamified/*` (Ext collection `9:40`) | `var(--ext-button-gamified-*)` |
+| a lucide icon (`<Check/>`, `size-4`) | instance of the **`Icon` set** (`157:10`), `Type`=glyph, `Size`=16 | — (Type/Size are variant props, not variables) |
 
 If a class points at a variable that isn't in the file, that's a decision fork —
 surface it; don't hardcode the raw value.

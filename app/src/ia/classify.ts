@@ -37,7 +37,10 @@ function getFoundationsCategories(): {
     { pattern: /^(font|text|leading|tracking)-/, categoryId: 'typography', label: 'Fonts', icon: 'Type' },
     { pattern: /^shadow-/, categoryId: 'shadow', label: 'Shadows', icon: 'Layers' },
     { pattern: /^(motion|duration|ease)-/, categoryId: 'motion', label: 'Motion', icon: 'Zap' },
-    { pattern: /^border-/, categoryId: 'border', label: 'Borders', icon: 'Frame' },
+    // Match the border-WIDTH primitive scale specifically, not a bare `border-` prefix:
+    // the semantic border ramp (border-strong / border-muted) also starts with `border-`
+    // and must fall through to the semantic Layout bucket, not be grabbed as a primitive here.
+    { pattern: /^border-width-/, categoryId: 'border', label: 'Borders', icon: 'Frame' },
     { pattern: /^breakpoint-/, categoryId: 'breakpoint', label: 'Breakpoints', icon: 'Monitor' },
   ]
 }

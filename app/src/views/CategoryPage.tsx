@@ -53,7 +53,9 @@ const categoryFilters: Record<string, (name: string) => boolean> = {
   typography: (name) => /^--(?:font-|text-|leading-|tracking-)/.test(name),
   shadow: (name) => /^--shadow-/.test(name),
   motion: (name) => /^--(?:motion-|duration-|ease-)/.test(name),
-  border: (name) => /^--border-/.test(name),
+  // border-WIDTH primitives only — the semantic border ramp (--border-strong /
+  // --border-muted) starts with --border- too but belongs to the Layout semantic page.
+  border: (name) => /^--border-width-/.test(name),
   breakpoint: (name) => /^--breakpoint-/.test(name),
   // Semantic — v2 (2-tier) uses the flat standard ShadCN/Tailwind vocabulary.
   // Membership for surface/interactive/layout/status comes from the shared

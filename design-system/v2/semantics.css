@@ -12,7 +12,7 @@
 :root {
   --background:            var(--color-neutral-0);
   --foreground:            var(--color-neutral-900);
-  --primary:               var(--color-brand-600);
+  --primary:               var(--color-neutral-900);
   --primary-foreground:    var(--color-neutral-0);
   --secondary:             var(--color-neutral-100);
   --secondary-foreground:  var(--color-neutral-900);
@@ -49,6 +49,13 @@
   --chart-3:               var(--color-success-500);
   --chart-4:               var(--color-warning-500);
   --chart-5:               var(--color-info-500);
+  --brand-emphasis:        var(--color-brand-600);
+  --brand-foreground:      var(--color-neutral-0);
+  --brand-border:          var(--color-brand-600);
+  --brand-subtle:          var(--color-brand-50);
+  --brand-ring:            var(--color-brand-600);
+  --border-strong:         var(--color-neutral-300);
+  --border-muted:          var(--color-neutral-100);
 }
 
 /* ---------------------------------------------------------------------------
@@ -92,6 +99,13 @@
   --color-chart-3:               var(--chart-3);
   --color-chart-4:               var(--chart-4);
   --color-chart-5:               var(--chart-5);
+  --color-brand-emphasis:        var(--brand-emphasis);
+  --color-brand-foreground:      var(--brand-foreground);
+  --color-brand-border:          var(--brand-border);
+  --color-brand-subtle:          var(--brand-subtle);
+  --color-brand-ring:            var(--brand-ring);
+  --color-border-strong:         var(--border-strong);
+  --color-border-muted:          var(--border-muted);
 
   --radius-sm:                   calc(var(--radius) - 4px);
   --radius-md:                   calc(var(--radius) - 2px);
@@ -102,9 +116,9 @@
 /* ---------------------------------------------------------------------------
    2b · Safelist — always generate the semantic color utilities (see note above).
    --------------------------------------------------------------------------- */
-@source inline("{hover:,focus:,}{bg,text}-{background,foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,success,success-foreground,warning,warning-foreground,info,info-foreground,card,card-foreground,popover,popover-foreground,sidebar-bg,sidebar-foreground,sidebar-accent,sidebar-accent-foreground,chart-1,chart-2,chart-3,chart-4,chart-5}");
-@source inline("border-{border,input,sidebar-border,destructive,success,warning,info}");
-@source inline("ring-{ring,sidebar-ring}");
+@source inline("{hover:,focus:,}{bg,text}-{background,foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,success,success-foreground,warning,warning-foreground,info,info-foreground,card,card-foreground,popover,popover-foreground,sidebar-bg,sidebar-foreground,sidebar-accent,sidebar-accent-foreground,chart-1,chart-2,chart-3,chart-4,chart-5,brand-emphasis,brand-foreground,brand-border,brand-subtle,brand-ring,border-strong,border-muted}");
+@source inline("border-{border,input,sidebar-border,destructive,success,warning,info,brand-border,border-strong,border-muted}");
+@source inline("ring-{ring,sidebar-ring,brand-ring}");
 
 /* ---------------------------------------------------------------------------
    3 · CUSTOM VARIANTS — namespaced --ext-<component>-<variant>-* tokens.

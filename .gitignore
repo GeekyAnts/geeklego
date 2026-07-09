@@ -89,3 +89,9 @@ docs/
 
 # ─── figma plugin ───────────────────────────────────────────────
 figma-plugin
+
+# ─── comps (landing-page components — local-only) ────────────────────────────
+components/v2/Footer/
+components/v2/Navbar/
+components/v2/Stats/
+components/v2/_preview/Onboarding.stories.tsx

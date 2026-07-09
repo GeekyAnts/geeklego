@@ -22,9 +22,13 @@ export type SemanticBucket = 'surface' | 'interactive' | 'layout' | 'status'
 export const SURFACE_RE =
   /^(background|foreground|card|card-foreground|popover|popover-foreground)$/
 
-/** Brand / interactive fills + the focus ring. */
+/** Brand / interactive fills + the focus ring. Includes the brand-* group — the
+ *  brand-EXPRESSION semantics (brand fill, its foreground, brand border/subtle/ring)
+ *  live here alongside primary/ring rather than in the status catch-all, since they're
+ *  interactive brand fills, not feedback colors. `brand-border` is bucketed here (with
+ *  its group) rather than under layout — the whole brand expression set stays together. */
 export const INTERACTIVE_RE =
-  /^(primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring)$/
+  /^(primary|primary-foreground|secondary|secondary-foreground|accent|accent-foreground|muted|muted-foreground|ring|brand-emphasis|brand-foreground|brand-border|brand-subtle|brand-ring)$/
 
 /** Structural semantics (border, input, radius) + the sidebar navigation-chrome
  *  group. The `sidebar-*` group is a dedicated navigation surface promoted to core;
@@ -33,7 +37,7 @@ export const INTERACTIVE_RE =
  *  here rather than split across surface/interactive so the cockpit renders it as one
  *  coherent navigation block. */
 export const LAYOUT_RE =
-  /^(border|input|radius|sidebar-bg|sidebar-foreground|sidebar-border|sidebar-accent|sidebar-accent-foreground|sidebar-ring)$/
+  /^(border|border-strong|border-muted|input|radius|sidebar-bg|sidebar-foreground|sidebar-border|sidebar-accent|sidebar-accent-foreground|sidebar-ring)$/
 
 // The canonical "this is a primitive / foundation prefix" exclusion. A bare name
 // matching this is a Tier-1 primitive (or a registered foundation scale), NOT a

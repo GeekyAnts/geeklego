@@ -334,16 +334,29 @@ export function generateV2Semantics(t: GeeklegoTokensV2): string {
   // border- safelist: the structural border members PLUS the feedback/status color semantics
   // (destructive + success/warning/info) — the ones actually consumed as border-* utilities
   // (e.g. Input/Alert borders), plus any extra color semantic that has a matching -foreground.
+  // ALSO any semantic whose NAME implies a border role: a `border-*` ramp member
+  // (border-strong/border-muted) or a `*-border` token (brand-border) — these are consumed
+  // as border-* utilities but have no -foreground pair, so the pair-gated rule would miss
+  // them and Tailwind would tree-shake border-brand-border / border-border-strong from dist.
   const BORDER_STATUS = ['destructive', 'success', 'warning', 'info']
-  const borderExtras = extras.filter((k) => !k.endsWith('-foreground') && sem[`${k}-foreground`] !== undefined)
+  const borderExtras = extras.filter(
+    (k) =>
+      !k.endsWith('-foreground') &&
+      (sem[`${k}-foreground`] !== undefined || k.endsWith('-border') || /^border-/.test(k)),
+  )
   const borderKeys = [...new Set(['border', 'input', 'sidebar-border', ...BORDER_STATUS, ...borderExtras])]
+  // ring- safelist: the structural ring members PLUS any semantic whose name implies a ring
+  // role (`*-ring`, e.g. brand-ring). Name-derived, not hardcoded, so new *-ring semantics
+  // don't get their ring-* utility tree-shaken.
+  const ringExtras = extras.filter((k) => k.endsWith('-ring'))
+  const ringKeys = [...new Set(['ring', 'sidebar-ring', ...ringExtras])]
   lines.push(``)
   lines.push(`/* ---------------------------------------------------------------------------`)
   lines.push(`   2b · Safelist — always generate the semantic color utilities (see note above).`)
   lines.push(`   --------------------------------------------------------------------------- */`)
   lines.push(`@source inline("{hover:,focus:,}{bg,text}-{${bgText.join(',')}}");`)
   lines.push(`@source inline("border-{${borderKeys.join(',')}}");`)
-  lines.push(`@source inline("ring-{ring,sidebar-ring}");`)
+  lines.push(`@source inline("ring-{${ringKeys.join(',')}}");`)
 
   // 3 · ext.rawBlock — opaque, appended verbatim.
   let out = lines.join('\n')

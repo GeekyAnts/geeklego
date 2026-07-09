@@ -5,6 +5,8 @@ import type { GeeklegoTokensV2 } from '../types'
 import { stageNewToken, getStagedNewTokens, getAllStaged, getStagedValue, type TokenTreePath } from '../state/staging'
 import { withPxAnnotation } from '../utils/colorUtils'
 import { PRIMITIVE_PREFIX } from '../utils/flattenTokens'
+import { pushToast } from '../state/toasts'
+import { semanticBucketOfVar } from '../ia'
 
 interface AddTokenDialogProps {
   isOpen: boolean
@@ -399,6 +401,18 @@ export function AddTokenDialog({ isOpen, onClose, geeklegoTokens, defaultNamePre
       finalValue = `${rem}rem`
     }
     stageNewToken({ cssName: name, value: finalValue, treePath, addedAt: Date.now() })
+    // Confirm the create AND tell the user where it landed. A brand-new semantic
+    // routes to the "Status" bucket (the standard catch-all), so it renders under
+    // Semantic → <bucket> — naming it here stops the "did it even save?" confusion.
+    const destination =
+      treePath.kind === 'primitiveColor' ? 'Foundations / Color'
+      : treePath.kind === 'primitiveFlat' ? `Foundations / ${treePath.category}`
+      : (() => {
+          const bucket = semanticBucketOfVar(name)
+          const label = bucket ? bucket.charAt(0).toUpperCase() + bucket.slice(1) : 'Status'
+          return `Semantic / ${label}`
+        })()
+    pushToast({ message: `Added ${name}`, detail: destination })
     onClose()
   }
 

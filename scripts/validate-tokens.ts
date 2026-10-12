@@ -22,9 +22,7 @@
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { glob } from 'node:fs'
-import { promisify } from 'node:util'
-const globAsync = promisify(glob)
+import { glob } from 'tinyglobby'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -350,8 +348,10 @@ async function main() {
     // Cross-file validation: scan v2 component files for var() references.
     // v2 components style with semantic Tailwind utilities, so the only var()
     // refs expected here are the namespaced --ext-* custom-variant tokens.
-    const componentGlob = resolve(__dirname, '../components/v2/**/*.{tsx,ts}')
-    const componentFilePaths = (await globAsync(componentGlob)) as string[]
+    const componentFilePaths = await glob('components/v2/**/*.{tsx,ts}', {
+      cwd: resolve(__dirname, '..'),
+      absolute: true,
+    })
 
     const refs: ComponentRef[] = await Promise.all(
       componentFilePaths.map(async (fp: string) => ({

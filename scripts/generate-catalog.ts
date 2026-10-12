@@ -22,11 +22,8 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync } from 'fs'
-import { glob } from 'node:fs'
-import { promisify } from 'node:util'
 import { relative, dirname, resolve } from 'path'
-
-const globAsync = promisify(glob)
+import { glob } from 'tinyglobby'
 
 const REPO_ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const STORIES_GLOB = 'components/v2/**/*.stories.tsx'
@@ -79,7 +76,7 @@ function extractStoryExports(source: string): string[] {
 
 /** Build the catalog by scanning the story files. Pure — returns the entries. */
 export async function buildCatalog(root: string = REPO_ROOT): Promise<CatalogEntry[]> {
-  const files = (await globAsync(`${root}/${STORIES_GLOB}`)) as string[]
+  const files = await glob(STORIES_GLOB, { cwd: root, absolute: true })
   const entries: CatalogEntry[] = []
 
   for (const file of files.sort()) {

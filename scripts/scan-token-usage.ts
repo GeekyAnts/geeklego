@@ -16,11 +16,8 @@
  */
 
 import { readFileSync } from 'fs'
-import { glob } from 'node:fs'
-import { promisify } from 'node:util'
 import { relative } from 'path'
-
-const globAsync = promisify(glob)
+import { glob } from 'tinyglobby'
 
 // Framework-injected runtime vars that are never design tokens (Tailwind internal, Radix runtime).
 const FRAMEWORK_INTERNAL_PREFIXES = ['tw-', 'radix-']
@@ -199,7 +196,7 @@ export async function scanTokenUsage({ css, componentsDir, repoRoot }: ScanArgs)
   const known = collectKnownTokenNames(css)
   const resolveUtility = buildUtilityResolver(known)
 
-  const files = (await globAsync(`${componentsDir}/**/*.{tsx,ts}`)) as string[]
+  const files = await glob('**/*.{tsx,ts}', { cwd: componentsDir, absolute: true })
 
   const usage: TokenUsageMap = {}
   // Dedup by token|file|line|kind so repeated hits on one line collapse.

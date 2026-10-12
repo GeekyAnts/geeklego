@@ -23,7 +23,7 @@
   },
   "author": "Geeklego",
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=20.19.0",
     "pnpm": ">=9.0.0"
   },
   "exports": {
@@ -88,6 +88,7 @@
     "storybook": "^10.2.19",
     "stylelint": "^16.0.0",
     "tailwindcss": "^4.2.1",
+    "tinyglobby": "^0.2.16",
     "tsup": "^8.5.1",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.61.1",

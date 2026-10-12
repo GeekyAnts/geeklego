@@ -112,9 +112,7 @@
       "HeaderOnly",
       "WithForm",
       "ContentOnly",
-      "DarkMode",
-      "CaseStudy",
-      "CaseStudyDark"
+      "DarkMode"
     ]
   },
   {
@@ -269,6 +267,22 @@
       "WithDescription",
       "WithValidationError",
       "Disabled",
+      "DarkMode"
+    ]
+  },
+  {
+    "name": "FileUpload",
+    "storyIdPrefix": "v2-fileupload",
+    "defaultStory": "Default",
+    "stories": [
+      "Default",
+      "Multiple",
+      "WithAccept",
+      "Sizes",
+      "ErrorState",
+      "Disabled",
+      "WithFileStatuses",
+      "Controlled",
       "DarkMode"
     ]
   },

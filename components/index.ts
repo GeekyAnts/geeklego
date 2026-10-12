@@ -58,6 +58,8 @@ export * from './v2/Drawer/Drawer';
 export type * from './v2/Drawer/Drawer.types';
 export * from './v2/DropdownMenu/DropdownMenu';
 export type * from './v2/DropdownMenu/DropdownMenu.types';
+export * from './v2/FileUpload/FileUpload';
+export type * from './v2/FileUpload/FileUpload.types';
 // Form is the canonical import path for the ShadCN Form recipe; its single
 // implementation lives in Field/Field and is re-exported by Form/Form. We export
 // the recipe's names from Form/Form ONLY (not also from Field/Field) to avoid a

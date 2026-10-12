@@ -95,3 +95,6 @@ components/v2/Footer/
 components/v2/Navbar/
 components/v2/Stats/
 components/v2/_preview/Onboarding.stories.tsx
+# Local Doss colour research notes (not part of the library)
+/design.md
+/doss-neutrals-analysis.md

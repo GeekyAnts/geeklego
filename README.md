@@ -66,7 +66,7 @@ Each component is built from `cva` variants + a `cn()` class merger + Radix prim
 Build the package, then import components and the stylesheet from it:
 
 ```bash
-pnpm run build   # → dist/index.js, dist/index.cjs, dist/index.d.ts, dist/geeklego.css
+pnpm run build   # → dist/index.js (+ split modules), dist/index.cjs, dist/index.d.ts, dist/geeklego.css
 ```
 
 ```tsx
@@ -87,7 +87,7 @@ export function Example() {
 }
 ```
 
-> `@geeklego/ui` is not published to npm yet, and `dist/` is gitignored — build it locally (or click **Export to CSS** in the Token Editor, which rebuilds it) and install it in the client with a `link:` dependency. **See [USAGE.md](USAGE.md) for the full client-app guide** — install, styles with or without Tailwind, providers, Next.js, dark mode, theming and troubleshooting.
+> `@geeklego/ui` is not published to npm yet, and `dist/` is gitignored — build it locally (or click **Export to CSS** in the Token Editor, which rebuilds it), run `pnpm pack`, and install the tarball in the client (`pnpm add ./geeklego-ui-0.1.0.tgz`); `file:` and `link:` installs work too. Components import straight into Next.js App Router Server Components. **See [USAGE.md](USAGE.md) for the full client-app guide** — install, styles with or without Tailwind, providers, Next.js, dark mode, theming and troubleshooting.
 
 The package also exports a few shared helpers: `GeeklegoI18nProvider` (localized component strings), `sanitizeHref` / `getSafeExternalLinkProps`, ARIA prop helpers, `VisuallyHidden` and `StructuredData`.
 

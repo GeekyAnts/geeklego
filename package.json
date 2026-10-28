@@ -26,11 +26,33 @@
     "node": ">=20.19.0",
     "pnpm": ">=9.0.0"
   },
+  "files": [
+    "dist/index.*",
+    "dist/components/",
+    "dist/utils/",
+    "dist/chunks/",
+    "dist/styles.d.ts",
+    "dist/geeklego.css",
+    "design-system/v2/",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./styles": {
       "types": "./dist/styles.d.ts",
@@ -39,16 +61,18 @@
       "require": "./dist/geeklego.css"
     },
     "./styles-source": {
+      "types": "./dist/styles.d.ts",
       "style": "./design-system/v2/index.css",
       "import": "./design-system/v2/index.css",
       "require": "./design-system/v2/index.css"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
-    "preinstall": "only-allow pnpm",
+    "preinstall": "node -e \"try { require('fs').existsSync('pnpm-lock.yaml') && require('child_process').execSync('only-allow pnpm', { stdio: 'inherit' }) } catch { process.exit(1) }\"",
     "dev": "vite --config vite.config.mts app",
     "dev:all": "pnpm run dev & pnpm run storybook & wait",
-    "build": "tsup components/index.ts --format esm,cjs --dts && pnpm run build:css",
+    "build": "tsup && pnpm run build:css",
     "storybook": "storybook dev -p 6006",
     "lint": "eslint --max-warnings 0",
     "build:css": "tailwindcss -i ./design-system/v2/index.css -o ./dist/geeklego.css --minify",

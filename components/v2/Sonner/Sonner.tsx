@@ -1,6 +1,21 @@
 "use client";
+import type { CSSProperties } from "react";
 import { Toaster as SonnerToaster, toast } from "sonner";
 import type { ToasterProps } from "./Sonner.types";
+
+/**
+ * Sonner's injected stylesheet is unlayered, so it beats every Tailwind utility
+ * (which live in @layer utilities). Its toast surface reads --normal-bg /
+ * --normal-text / --normal-border, set per `data-sonner-theme` on the toaster
+ * (default "light" → #fff). Re-pointing those vars at our semantics via inline
+ * custom properties (inline beats any stylesheet rule) makes the surface follow
+ * the host's `.dark` / data-theme live, with no `theme` prop needed.
+ */
+const semanticSurface = {
+  "--normal-bg": "var(--popover)",
+  "--normal-text": "var(--popover-foreground)",
+  "--normal-border": "var(--border)",
+} as CSSProperties;
 
 /**
  * Sonner (Toaster) — ShadCN pattern on geeklego's 2-tier tokens, built on the
@@ -12,17 +27,19 @@ import type { ToasterProps } from "./Sonner.types";
  *
  * Render <Toaster /> once near the app root, then fire toasts imperatively with
  * the re-exported `toast()` (toast.success / .error / .promise / …). Theming
- * follows the host's `.dark` / data-theme since the portalled surface uses the
- * same semantic tokens.
+ * follows the host's `.dark` / data-theme through the semantic surface vars
+ * above; `theme` and `style` stay overridable through props.
  */
-export const Toaster = ({ ...props }: ToasterProps) => (
+export const Toaster = ({ style, ...props }: ToasterProps) => (
   <SonnerToaster
     className="toaster group"
+    style={{ ...semanticSurface, ...style }}
     toastOptions={{
       classNames: {
         toast:
           "group toast group-[.toaster]:bg-popover group-[.toaster]:text-popover-foreground group-[.toaster]:border group-[.toaster]:border-border group-[.toaster]:rounded-lg group-[.toaster]:shadow-lg",
-        description: "group-[.toast]:text-muted-foreground",
+        // `!` — sonner hardcodes the description colour (#3f3f3f) unlayered.
+        description: "group-[.toast]:text-muted-foreground!",
         actionButton:
           "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground group-[.toast]:rounded-md",
         cancelButton:

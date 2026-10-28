@@ -112,14 +112,14 @@ export const DarkMode: Story = {
           Show toast (dark)
         </Button>
       </div>
-      <Toaster theme="dark" />
+      <Toaster />
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          "Sonner toasts are portalled to `<body>`, so this story sets `data-theme=\"dark\"` and `.dark` on the document root (decorator) as well as the wrapper, and passes `theme=\"dark\"` to the Toaster, proving the portalled toasts re-theme from the same Tier-2 semantic overrides.",
+          "Sonner toasts are portalled to `<body>`, so this story sets `data-theme=\"dark\"` and `.dark` on the document root (decorator) as well as the wrapper, with no `theme` prop — the Toaster re-points Sonner's surface vars at `--popover` / `--popover-foreground` / `--border`, so toasts re-theme from the same Tier-2 semantic overrides.",
       },
     },
   },

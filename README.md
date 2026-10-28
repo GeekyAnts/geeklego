@@ -87,7 +87,7 @@ export function Example() {
 }
 ```
 
-> `@geeklego/ui` is not published to npm yet. Until it is, consume the built `dist/` via a workspace or `file:` dependency, or copy components straight from `components/v2/`.
+> `@geeklego/ui` is not published to npm yet, and `dist/` is gitignored — build it locally (or click **Export to CSS** in the Token Editor, which rebuilds it) and install it in the client with a `link:` dependency. **See [USAGE.md](USAGE.md) for the full client-app guide** — install, styles with or without Tailwind, providers, Next.js, dark mode, theming and troubleshooting.
 
 The package also exports a few shared helpers: `GeeklegoI18nProvider` (localized component strings), `sanitizeHref` / `getSafeExternalLinkProps`, ARIA prop helpers, `VisuallyHidden` and `StructuredData`.
 
